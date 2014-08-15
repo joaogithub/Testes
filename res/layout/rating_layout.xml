@@ -1,0 +1,49 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="60dp"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    android:gravity="left"
+    android:orientation="vertical"
+    android:weightSum="5" >
+
+    <ImageView
+        android:id="@+id/oneStar"
+        android:layout_width="50dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:src="@drawable/ic_launcher" />
+
+    <ImageView
+        android:id="@+id/twoStars"
+        android:layout_width="50dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:src="@drawable/ic_launcher"
+        android:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/threeStars"
+        android:layout_width="50dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:src="@drawable/ic_launcher"
+        android:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/fourStars"
+        android:layout_width="50dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:src="@drawable/ic_launcher"
+        android:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/fiveStars"
+        android:layout_width="50dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:src="@drawable/ic_launcher"
+        android:visibility="visible" />
+
+</LinearLayout>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#444488"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/home_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="home_btn_label" />
+
+        <Button
+            android:id="@+id/mybooks_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="mybooks_btn" />
+
+        <Button
+            android:id="@+id/about_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="about_btn" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:background="#888888"
+        android:orientation="vertical" >
+
+        <LinearLayout
+
+            android:id="@+id/home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#888888"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="hello_world"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/search_layout"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:background="#888888"
+            android:orientation="vertical" >
+
+            <ListView
+                android:id="@+id/bookListView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:dividerHeight="0dp"
+                android:listSelector="@drawable/list_selector" />           
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

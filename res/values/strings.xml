@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<resources>
+    <string name="app_name">Tests</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="ok">OK</string>
+    <string name="bulkCompleteDownload">Complete Download</string>
+    <string name="bulkDownloadContinue">Continue Download</string>
+    <string name="enabled">enabled</string>
+    <string name="create_title_hint">Create Title</string>
+    <string name="disabled">disabled</string>
+    <string name="things">coisas</string>
+    <string name="code">\u00B9 \u2074</string>
+</resources>

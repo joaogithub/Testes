@@ -1,0 +1,35 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+
+    <EditText
+        android:id="@+id/editTextAct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:hint="First edit"
+        android:imeOptions="actionNext"
+        android:singleLine="true" />
+
+    <EditText
+        android:id="@+id/user2"
+        android:layout_width="230dp"
+        android:layout_height="37dp"
+        android:layout_below="@+id/editTextAct"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:height="137dp"
+        android:hint="hint_username"
+        android:imeOptions="actionNext"
+        android:maxLength="22"
+        android:paddingLeft="7dp"
+        android:saveEnabled="false"
+        android:singleLine="true"
+        android:textColorHint="#DDAAAAAA"
+        android:textSize="17sp" />
+
+</RelativeLayout>

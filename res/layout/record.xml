@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D1EFCD"
+    android:gravity="center_vertical"
+    android:minHeight="50dp" >
+
+    <TextView
+        android:id="@+id/serial_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#9EC39A"
+        android:gravity="center"
+        android:text="123"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:width="100dp" />
+
+    <TextView
+        android:id="@+id/item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="1dp"
+        android:background="#9EC39A"
+        android:gravity="center"
+        android:text="asf"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:width="100dp" />
+
+    <TextView
+        android:id="@+id/wt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="1dp"
+        android:background="#9EC39A"
+        android:gravity="center"
+        android:text="sadasd"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:width="100dp" />
+
+    <TextView
+        android:id="@+id/dte"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="1dp"
+        android:background="#9EC39A"
+        android:gravity="center"
+        android:text="23"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:width="100dp" />
+
+    <TextView
+        android:id="@+id/amt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="1dp"
+        android:background="#9EC39A"
+        android:gravity="center"
+        android:text="null"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:width="100dp" />
+
+    <TextView
+        android:id="@+id/cust_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="1dp"
+        android:background="#9EC39A"
+        android:gravity="center"
+        android:text="null"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:width="100dp" />
+
+    <TextView
+        android:id="@+id/rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="1dp"
+        android:background="#9EC39A"
+        android:gravity="center"
+        android:text="null"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:width="100dp" />
+
+</TableRow>

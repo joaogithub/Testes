@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="DuplicateDefinition" severity="warning" />
+    <issue id="LibraryCustomView" severity="warning" />
+    <issue id="MissingRegistered" severity="warning" />
+    <issue id="MissingTranslation" severity="warning" />
+    <issue id="ResAuto" severity="warning" />
+    <issue id="WrongFolder" severity="warning" />
+</lint>

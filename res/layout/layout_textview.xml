@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_title_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <ImageView
+        android:id="@+id/fragment_back"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/fragment_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/fragment_back"
+        android:gravity="center"
+        android:singleLine="true"
+        android:text="Title" />
+
+    <ImageButton
+        android:id="@+id/fragment_close"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_launcher" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/timerValue"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="timervalue" >
+        </TextView>
+
+        <Button
+            android:id="@+id/startButton"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:background="@drawable/startbutton"
+            android:gravity="center" >
+        </Button>
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:background="@color/red"
+            android:text="pause"
+            android:gravity="center" >
+        </Button>
+    </LinearLayout>
+
+</RelativeLayout>

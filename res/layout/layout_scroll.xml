@@ -1,0 +1,71 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <TableLayout
+            android:id="@+id/table_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:baselineAligned="false"
+            android:clickable="false"
+            android:focusable="true"
+            android:focusableInTouchMode="false" >
+
+            <TableRow
+                android:id="@+id/tableRow1"
+                android:layout_width="match_parent"
+                android:layout_height="190dp"
+                android:gravity="center_horizontal" >
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_span="6"
+                    android:gravity="center"
+                    android:text="Weather Report counting indeifreinfaf ad ad"
+                    android:textSize="18sp"
+                    android:textStyle="bold" >
+                </TextView>
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRow2"
+                android:layout_width="match_parent"
+                android:layout_height="150dp" >
+
+                <TextView
+                    android:id="@+id/TextView21"
+                    android:layout_height="50dp"
+                    android:text="textview 21" >
+                </TextView>
+
+                <TextView
+                    android:id="@+id/TextView22"
+                    android:gravity="center"
+                    android:text="My textview"
+                    android:textStyle="bold"
+                    android:typeface="serif" >
+                </TextView>
+
+                <TextView
+                    android:id="@+id/TextView23"
+                    android:gravity="center"
+                    android:text="Third column"
+                    android:textStyle="bold"
+                    android:typeface="serif" >
+                </TextView>
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+
+</ScrollView>

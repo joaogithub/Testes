@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:com.testes.android="http://schemas.android.com/apk/res-auto" >
+
+    <item
+        android:id="@+id/action_bar_action_exercises"
+        android:icon="@drawable/icn_exercises_2dig"
+        android:title="exercises"
+        com.testes.android:showAsAction="ifRoom"/>
+</menu>

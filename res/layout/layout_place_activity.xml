@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <FrameLayout
+            android:id="@+id/container"
+            android:layout_width="400dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/btnSearch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Search" />
+            </LinearLayout>
+        </FrameLayout>
+
+        <EditText
+            android:id="@+id/timeEdit"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:inputType="time" />
+
+        <ImageView
+            android:id="@+id/helloWorldImage"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/agenda_square" >
+        </ImageView>
+
+        <CheckBox
+            android:id="@+id/checkbox_meat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onCheckBoxClicked"
+            android:text="Meat" />
+
+        <CheckBox
+            android:id="@+id/checkbox_cheese"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/ic_launcher"
+            android:onClick="onCheckBoxClicked"
+            android:text="Cheese" />
+
+        <Button
+            android:id="@+id/operateButton"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:onClick="press"
+            android:text="Fade" />
+    </LinearLayout>
+
+</ScrollView>

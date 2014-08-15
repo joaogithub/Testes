@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollViewLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/red" >
+
+    <RelativeLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <!-- The main content view -->
+
+        <fragment
+            android:id="@+id/main_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            class="com.testes.android.MainFragment" />
+
+        <EditText
+            android:id="@+id/myEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/main_list"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:hint="@string/create_title_hint"
+            android:imeActionLabel="Done"
+            android:imeOptions="actionDone"
+            android:singleLine="true"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/add"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/myEditText"
+            android:layout_centerHorizontal="true"
+            android:text="Dialog" />
+
+        <Button
+            android:id="@+id/mainButtton"
+            android:layout_width="190dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/add"
+            android:layout_centerHorizontal="true"
+            android:text="MainActivity" />
+
+        <Button
+            android:id="@+id/spinnerButton"
+            android:layout_width="190dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/mainButtton"
+            android:layout_centerHorizontal="true"
+            android:text="Spinneractivity" />
+
+        <Button
+            android:id="@+id/seekBarButton"
+            android:layout_width="190dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/spinnerButton"
+            android:layout_centerHorizontal="true"
+            android:text="SeekBar" />
+
+        <Button
+            android:id="@+id/sensorButton"
+            android:layout_width="190dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/seekBarButton"
+            android:layout_centerHorizontal="true"
+            android:text="Sensor" />
+
+        <Button
+            android:id="@+id/drawableButton"
+            android:layout_width="190dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/sensorButton"
+            android:layout_centerHorizontal="true"
+            android:text="Drawable top" />
+
+
+        <Button
+            android:id="@+id/intentsButton"
+            android:layout_width="190dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/drawableButton"
+            android:layout_centerHorizontal="true"
+            android:text="Intents" />
+
+        <ImageView
+            android:id="@+id/imageViewFirst"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/intentsButton"
+            android:layout_centerHorizontal="true"
+            android:src="@color/green" />
+
+        <TextView
+            android:id="@+id/changingtext"
+            android:layout_width="190dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/imageViewFirst"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="DEFAULT text" />
+
+        <Button
+            android:id="@+id/createTempFilesButton"
+            android:layout_width="190dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/changingtext"
+            android:layout_centerHorizontal="true"
+            android:text="CreateTemp"
+            android:visibility="visible" />
+
+         <Button
+            android:id="@+id/pickersButton"
+            android:layout_width="190dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/createTempFilesButton"
+            android:layout_centerHorizontal="true"
+            android:text="PIckers"
+            android:visibility="visible" />
+        
+          <Button
+            android:id="@+id/editTextButton"
+            android:layout_width="190dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/pickersButton"
+            android:layout_centerHorizontal="true"
+            android:text="EditText"
+            android:visibility="visible" />
+         
+        <Button
+            android:id="@+id/listViewButton"
+            android:layout_width="190dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/editTextButton"
+            android:layout_centerHorizontal="true"
+            android:text="Listview"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/tabsHostButton"
+            android:layout_width="190dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/listViewButton"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="TabHost" />
+
+        <Button
+            android:id="@+id/fragmentsInfoButton"
+            android:layout_width="190dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/tabsHostButton"
+            android:layout_centerHorizontal="true"
+            android:text="Fragments" />
+
+        <Button
+            android:id="@+id/scrollViewButton"
+            android:layout_width="190dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/fragmentsInfoButton"
+            android:layout_centerHorizontal="true"
+            android:text="Scroll" />
+
+        <Button
+            android:id="@+id/testViewButton"
+            android:layout_width="190dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/scrollViewButton"
+            android:layout_centerHorizontal="true"
+            android:text="CircleTest" />
+
+        <Button
+            android:id="@+id/fullImage"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/testViewButton"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="4dp"
+            android:text="FullImageActivity" />
+
+        <Button
+            android:id="@+id/connect"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/fullImage"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="2dp"
+            android:text="Connect" />
+
+        <Button
+            android:id="@+id/secondButton"
+            android:layout_width="190dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/connect"
+            android:layout_centerHorizontal="true"
+            android:text="secondActivity" />
+
+        <Button
+            android:id="@+id/viewPagerActivityButton"
+            android:layout_width="190dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/secondButton"
+            android:layout_centerHorizontal="true"
+            android:text="ViewPager" />
+
+        <Button
+            android:id="@+id/webViewButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/viewPagerActivityButton"
+            android:layout_centerHorizontal="true"
+            android:ems="10"
+            android:text="See in Webview" />
+    </RelativeLayout>
+
+</ScrollView>

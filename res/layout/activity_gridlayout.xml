@@ -1,0 +1,78 @@
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:columnCount="2"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:layout_columnSpan="1"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
+        android:text="title1"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_columnSpan="1"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
+        android:text="value1" />
+
+    <TextView
+        android:layout_columnSpan="2"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
+        android:text="title2"
+        android:textStyle="bold" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_columnSpan="2"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp" />
+
+    <TextView
+        android:layout_columnSpan="2"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
+        android:text="title3"
+        android:textStyle="bold" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_columnSpan="2"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp" />
+
+    <TextView
+        android:layout_columnSpan="1"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
+        android:text="title4"
+        android:textStyle="bold" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_columnSpan="1"
+        android:layout_gravity="fill_horizontal"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="25dp"
+        android:inputType="number" />
+
+    <TextView
+        android:layout_columnSpan="1"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
+        android:text="title5"
+        android:textStyle="bold" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_columnSpan="1"
+        android:layout_gravity="fill_horizontal"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="25dp"
+        android:inputType="number" />
+
+</GridLayout>

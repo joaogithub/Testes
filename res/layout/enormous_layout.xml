@@ -1,0 +1,711 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:id="@+id/RelativeLayout1"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical" >
+
+<View
+    android:id="@+id/Space1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentTop="true" />
+
+<View
+    android:id="@+id/Space2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentLeft="true"
+    android:layout_below="@+id/Space1" />
+
+<ImageView
+    android:id="@+id/imageView2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentTop="true"
+    android:layout_marginBottom="42dp"
+    android:layout_marginLeft="40dp"
+    android:layout_marginRight="42dp"
+    android:layout_marginTop="50dp"
+    android:scaleType="fitXY"
+    android:src="@drawable/ic_launcher" />
+
+<TextView
+    android:id="@+id/textView1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignLeft="@+id/imageView2"
+    android:layout_alignTop="@+id/imageView2"
+    android:layout_marginLeft="41dp"
+    android:layout_marginTop="79dp"
+    android:text="housing"
+    android:textAppearance="?android:attr/textAppearanceLarge" 
+    android:includeFontPadding="false"/>
+
+<TextView
+    android:id="@+id/textView2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignLeft="@+id/textView1"
+    android:layout_below="@+id/textView1"
+    android:layout_marginTop="26dp"
+    android:text="debt"
+    android:textAppearance="?android:attr/textAppearanceLarge"
+    android:includeFontPadding="false" />
+
+<TextView
+    android:id="@+id/textView3"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignLeft="@+id/textView2"
+    android:layout_below="@+id/textView2"
+    android:layout_marginTop="25dp"
+    android:text="child"
+    android:textAppearance="?android:attr/textAppearanceLarge"
+    android:includeFontPadding="false" />
+
+<TextView
+    android:id="@+id/textView4"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignLeft="@+id/textView3"
+    android:layout_below="@+id/textView3"
+    android:layout_marginTop="25dp"
+    android:text="edu"
+    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+<TextView
+    android:id="@+id/textView5"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignLeft="@+id/textView4"
+    android:layout_below="@+id/textView4"
+    android:layout_marginTop="30dp"
+    android:text="exp"
+    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+<TextView
+    android:id="@+id/textView6"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignLeft="@+id/textView5"
+    android:layout_below="@+id/textView5"
+    android:layout_marginTop="25dp"
+    android:text="special"
+    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+<TextView
+    android:id="@+id/textView7"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignLeft="@+id/textView6"
+    android:layout_below="@+id/textView6"
+    android:layout_marginTop="25dp"
+    android:text="surv"
+    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+<TextView
+    android:id="@+id/textView8"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignBottom="@+id/textView1"
+    android:layout_marginLeft="176dp"
+    android:layout_toRightOf="@+id/textView1"
+    android:freezesText="true"
+    android:text="$0"
+    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+<TextView
+    android:id="@+id/textView9"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignBaseline="@+id/textView2"
+    android:layout_alignBottom="@+id/textView2"
+    android:layout_alignParentStart="false"
+    android:layout_alignRight="@+id/textView8"
+    android:freezesText="true"
+    android:text="$0"
+    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+<TextView
+    android:id="@+id/textView10"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignBaseline="@+id/textView3"
+    android:layout_alignBottom="@+id/textView3"
+    android:layout_alignLeft="@+id/textView9"
+    android:text="$0"
+    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+<TextView
+    android:id="@+id/textView11"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignBaseline="@+id/textView4"
+    android:layout_alignBottom="@+id/textView4"
+    android:layout_alignLeft="@+id/textView10"
+    android:text="$0"
+    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+<TextView
+    android:id="@+id/textView12"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignBaseline="@+id/textView5"
+    android:layout_alignBottom="@+id/textView5"
+    android:layout_alignLeft="@+id/textView11"
+    android:text="$0"
+    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+<TextView
+    android:id="@+id/textView13"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignBaseline="@+id/textView6"
+    android:layout_alignBottom="@+id/textView6"
+    android:layout_alignLeft="@+id/textView12"
+    android:text="$0"
+    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+<TextView
+    android:id="@+id/textView14"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignBaseline="@+id/textView7"
+    android:layout_alignBottom="@+id/textView7"
+    android:layout_alignLeft="@+id/textView13"
+    android:text="$0"
+    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+<SeekBar
+    android:id="@+id/seekBar1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_above="@+id/textView2"
+    android:layout_toLeftOf="@+id/imageView1"
+    android:layout_toRightOf="@+id/button1" />
+
+<Button
+    android:id="@+id/button2"
+    style="?android:attr/buttonStyleSmall"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_above="@+id/textView9"
+    android:layout_alignRight="@+id/imageView2"
+    android:layout_alignTop="@+id/button1"
+    android:layout_marginRight="219dp"
+    android:background="@null"
+    android:text="+"
+    android:textStyle="bold" />
+
+<ImageView
+    android:id="@+id/imageView1"
+    android:layout_width="25dp"
+    android:layout_height="25dp"
+    android:layout_alignLeft="@+id/button2"
+    android:layout_alignTop="@+id/seekBar1"
+    android:layout_marginLeft="48dp"
+    android:scaleType="fitXY"
+    android:src="@drawable/icn_seta_preto" />
+
+<Button
+    android:id="@+id/button4"
+    style="?android:attr/buttonStyleSmall"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_above="@+id/textView2"
+    android:layout_alignRight="@+id/imageView2"
+    android:text="Perm" />
+
+<Button
+    android:id="@+id/Button01"
+    style="?android:attr/buttonStyleSmall"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignBaseline="@+id/textView9"
+    android:layout_alignBottom="@+id/textView9"
+    android:layout_alignLeft="@+id/button1"
+    android:background="@null"
+    android:text="-"
+    android:textSize="25dp"
+    android:textStyle="bold" />
+
+<Button
+    android:id="@+id/Button04"
+    style="?android:attr/buttonStyleSmall"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignBaseline="@+id/textView10"
+    android:layout_alignBottom="@+id/textView10"
+    android:layout_toLeftOf="@+id/seekBar1"
+    android:background="@null"
+    android:text="-"
+    android:textSize="25dp"
+    android:textStyle="bold" />
+
+<Button
+    android:id="@+id/Button06"
+    style="?android:attr/buttonStyleSmall"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignBaseline="@+id/textView14"
+    android:layout_alignBottom="@+id/textView14"
+    android:layout_toLeftOf="@+id/seekBar1"
+    android:background="@null"
+    android:text="-"
+    android:textSize="25dp"
+    android:textStyle="bold" />
+
+<Button
+    android:id="@+id/Button05"
+    style="?android:attr/buttonStyleSmall"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignBaseline="@+id/textView13"
+    android:layout_alignBottom="@+id/textView13"
+    android:layout_alignLeft="@+id/Button06"
+    android:background="@null"
+    android:text="-"
+    android:textSize="25dp"
+    android:textStyle="bold" />
+
+<Button
+    android:id="@+id/Button02"
+    style="?android:attr/buttonStyleSmall"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignBaseline="@+id/textView12"
+    android:layout_alignBottom="@+id/textView12"
+    android:layout_toLeftOf="@+id/seekBar1"
+    android:background="@null"
+    android:text="-"
+    android:textSize="25dp"
+    android:textStyle="bold" />
+
+<Button
+    android:id="@+id/Button03"
+    style="?android:attr/buttonStyleSmall"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignBaseline="@+id/textView11"
+    android:layout_alignBottom="@+id/textView11"
+    android:layout_toRightOf="@+id/textView8"
+    android:background="@null"
+    android:textSize="25dp"
+    android:textStyle="bold" />
+
+<SeekBar
+    android:id="@+id/seekBar2"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignBottom="@+id/textView9"
+    android:layout_alignLeft="@+id/seekBar1"
+    android:layout_alignRight="@+id/seekBar1" />
+
+<SeekBar
+    android:id="@+id/SeekBar04"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignLeft="@+id/seekBar2"
+    android:layout_alignTop="@+id/textView10"
+    android:layout_toLeftOf="@+id/button2" />
+
+<SeekBar
+    android:id="@+id/SeekBar03"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignLeft="@+id/SeekBar04"
+    android:layout_alignRight="@+id/SeekBar04"
+    android:layout_alignTop="@+id/textView11" />
+
+<SeekBar
+    android:id="@+id/SeekBar02"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignLeft="@+id/SeekBar03"
+    android:layout_alignTop="@+id/textView12"
+    android:layout_toLeftOf="@+id/button2" />
+
+<SeekBar
+    android:id="@+id/SeekBar01"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignLeft="@+id/SeekBar02"
+    android:layout_alignRight="@+id/SeekBar02"
+    android:layout_alignTop="@+id/textView13" />
+
+<SeekBar
+    android:id="@+id/seekBar3"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignBottom="@+id/Button06"
+    android:layout_alignLeft="@+id/SeekBar01"
+    android:layout_alignRight="@+id/SeekBar01" />
+
+<Button
+    android:id="@+id/Button12"
+    style="?android:attr/buttonStyleSmall"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignBaseline="@+id/Button01"
+    android:layout_alignBottom="@+id/Button01"
+    android:layout_alignLeft="@+id/button2"
+    android:background="@null"
+    android:text="+"
+    android:textStyle="bold" />
+
+<Button
+    android:id="@+id/Button11"
+    style="?android:attr/buttonStyleSmall"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignBaseline="@+id/Button04"
+    android:layout_alignBottom="@+id/Button04"
+    android:layout_alignLeft="@+id/Button12"
+    android:background="@null"
+    android:text="+"
+    android:textStyle="bold" />
+
+<Button
+    android:id="@+id/Button07"
+    style="?android:attr/buttonStyleSmall"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignLeft="@+id/Button08"
+    android:layout_alignTop="@+id/seekBar3"
+    android:background="@null"
+    android:text="+"
+    android:textStyle="bold" />
+
+<Button
+    android:id="@+id/Button08"
+    style="?android:attr/buttonStyleSmall"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignBaseline="@+id/Button05"
+    android:layout_alignBottom="@+id/Button05"
+    android:layout_alignLeft="@+id/Button09"
+    android:background="@null"
+    android:text="+"
+    android:textStyle="bold" />
+
+<Button
+    android:id="@+id/Button09"
+    style="?android:attr/buttonStyleSmall"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignLeft="@+id/Button10"
+    android:layout_alignTop="@+id/SeekBar02"
+    android:background="@null"
+    android:text="+"
+    android:textStyle="bold" />
+
+<Button
+    android:id="@+id/Button10"
+    style="?android:attr/buttonStyleSmall"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_above="@+id/Button02"
+    android:layout_alignLeft="@+id/Button11"
+    android:background="@null"
+    android:text="+"
+    android:textStyle="bold" />
+
+<ImageView
+    android:id="@+id/ImageView07"
+    android:layout_width="25dp"
+    android:layout_height="25dp"
+    android:layout_alignTop="@+id/textView9"
+    android:layout_toRightOf="@+id/Button12"
+    android:scaleType="fitXY"
+    android:src="@drawable/icn_seta_preto" />
+
+<ImageView
+    android:id="@+id/ImageView06"
+    android:layout_width="25dp"
+    android:layout_height="25dp"
+    android:layout_alignBottom="@+id/textView10"
+    android:layout_alignLeft="@+id/ImageView07"
+    android:scaleType="fitXY"
+    android:src="@drawable/icn_seta_preto" />
+
+<ImageView
+    android:id="@+id/ImageView05"
+    android:layout_width="25dp"
+    android:layout_height="25dp"
+    android:layout_alignTop="@+id/SeekBar03"
+    android:layout_toRightOf="@+id/Button10"
+    android:scaleType="fitXY"
+    android:src="@drawable/icn_seta_preto" />
+
+<ImageView
+    android:id="@+id/ImageView04"
+    android:layout_width="25dp"
+    android:layout_height="25dp"
+    android:layout_alignBottom="@+id/Button02"
+    android:layout_alignLeft="@+id/ImageView05"
+    android:scaleType="fitXY"
+    android:src="@drawable/icn_seta_preto" />
+
+<ImageView
+    android:id="@+id/ImageView03"
+    android:layout_width="25dp"
+    android:layout_height="25dp"
+    android:layout_alignBottom="@+id/textView13"
+    android:layout_alignLeft="@+id/ImageView04"
+    android:scaleType="fitXY"
+    android:src="@drawable/icn_seta_preto" />
+
+<ImageView
+    android:id="@+id/ImageView02"
+    android:layout_width="25dp"
+    android:layout_height="25dp"
+    android:layout_alignBottom="@+id/seekBar3"
+    android:layout_alignLeft="@+id/ImageView03"
+    android:scaleType="fitXY"
+    android:src="@drawable/icn_seta_preto" />
+
+<Button
+    android:id="@+id/Button16"
+    style="?android:attr/buttonStyleSmall"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignBottom="@+id/SeekBar03"
+    android:layout_toLeftOf="@+id/button4"
+    android:text="Temporary" />
+
+<Button
+    android:id="@+id/button3"
+    style="?android:attr/buttonStyleSmall"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignTop="@+id/button1"
+    android:layout_toLeftOf="@+id/button4"
+    android:text="Temporary" />
+
+<Button
+    android:id="@+id/Button18"
+    style="?android:attr/buttonStyleSmall"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_above="@+id/textView3"
+    android:layout_toLeftOf="@+id/button4"
+    android:text="Temporary" />
+
+<Button
+    android:id="@+id/Button17"
+    style="?android:attr/buttonStyleSmall"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignBottom="@+id/SeekBar04"
+    android:layout_toLeftOf="@+id/button4"
+    android:text="Temporary" />
+
+<Button
+    android:id="@+id/Button15"
+    style="?android:attr/buttonStyleSmall"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignTop="@+id/Button02"
+    android:layout_toLeftOf="@+id/button4"
+    android:text="Temporary" />
+
+<Button
+    android:id="@+id/Button14"
+    style="?android:attr/buttonStyleSmall"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_above="@+id/textView7"
+    android:layout_alignLeft="@+id/Button15"
+    android:text="Temporary" />
+
+<Button
+    android:id="@+id/Button13"
+    style="?android:attr/buttonStyleSmall"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/Button05"
+    android:layout_toLeftOf="@+id/button4"
+    android:text="Temporary" />
+
+<Button
+    android:id="@+id/Button23"
+    style="?android:attr/buttonStyleSmall"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignBottom="@+id/Button17"
+    android:layout_alignRight="@+id/imageView2"
+    android:layout_alignTop="@+id/Button17"
+    android:text="Perm" />
+
+<Button
+    android:id="@+id/Button21"
+    style="?android:attr/buttonStyleSmall"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_above="@+id/Button14"
+    android:layout_alignRight="@+id/imageView2"
+    android:layout_alignTop="@+id/Button15"
+    android:text="Perm" />
+
+<Button
+    android:id="@+id/Button24"
+    style="?android:attr/buttonStyleSmall"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_above="@+id/textView3"
+    android:layout_alignRight="@+id/imageView2"
+    android:layout_alignTop="@+id/Button18"
+    android:text="Perm" />
+
+<Button
+    android:id="@+id/Button22"
+    style="?android:attr/buttonStyleSmall"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_above="@+id/Button21"
+    android:layout_alignRight="@+id/imageView2"
+    android:layout_alignTop="@+id/Button16"
+    android:text="Perm" />
+
+<Button
+    android:id="@+id/Button20"
+    style="?android:attr/buttonStyleSmall"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignBaseline="@+id/Button14"
+    android:layout_alignBottom="@+id/Button14"
+    android:layout_alignLeft="@+id/Button21"
+    android:text="Perm" />
+
+<Button
+    android:id="@+id/Button19"
+    style="?android:attr/buttonStyleSmall"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignTop="@+id/Button13"
+    android:layout_toRightOf="@+id/Button13"
+    android:text="Perm" />
+
+<Button
+    android:id="@+id/button1"
+    style="?android:attr/buttonStyleSmall"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignBaseline="@+id/textView8"
+    android:layout_alignBottom="@+id/textView8"
+    android:layout_marginLeft="182dp"
+    android:layout_toRightOf="@+id/Button03"
+    android:background="@null"
+    android:text="-"
+    android:textSize="25dp"
+    android:textStyle="bold" />
+
+<Button
+    android:id="@+id/Button25"
+    style="?android:attr/buttonStyleSmall"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignBaseline="@+id/Button03"
+    android:layout_alignBottom="@+id/Button03"
+    android:layout_toLeftOf="@+id/SeekBar03"
+    android:background="@null"
+    android:text="-"
+    android:textSize="25dp"
+    android:textStyle="bold" />
+
+<TextView
+    android:id="@+id/textView15"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignLeft="@+id/textView7"
+    android:layout_below="@+id/Button07"
+    android:text="permNeeds"
+    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+<TextView
+    android:id="@+id/textView16"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignLeft="@+id/textView15"
+    android:layout_below="@+id/textView15"
+    android:layout_marginTop="21dp"
+    android:text="tempNeeds"
+    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+<TextView
+    android:id="@+id/textView17"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignLeft="@+id/textView16"
+    android:layout_below="@+id/textView16"
+    android:layout_marginTop="21dp"
+    android:text="tNeeds:"
+    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+<TextView
+    android:id="@+id/textView18"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignBaseline="@+id/textView15"
+    android:layout_alignBottom="@+id/textView15"
+    android:layout_alignLeft="@+id/textView14"
+    android:text="$0"
+    android:textAppearance="?android:attr/textAppearanceMedium"
+    android:textStyle="bold" />
+
+<TextView
+    android:id="@+id/textView19"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_above="@+id/textView17"
+    android:layout_alignLeft="@+id/textView18"
+    android:text="$0"
+    android:textAppearance="?android:attr/textAppearanceMedium"
+    android:textStyle="bold" />
+
+<TextView
+    android:id="@+id/textView20"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignBottom="@+id/textView17"
+    android:layout_alignLeft="@+id/textView19"
+    android:text="$0"
+    android:textAppearance="?android:attr/textAppearanceLarge"
+    android:textStyle="bold" />
+
+<TextView
+    android:id="@+id/textView21"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentRight="true"
+    android:layout_alignTop="@+id/imageView2"
+    android:layout_toRightOf="@+id/imageView1"
+    android:text="typeNeed"
+    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+<ImageView
+    android:id="@+id/imageView3"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_above="@+id/textView1"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentTop="true"
+    android:scaleType="fitXY"
+    android:src="@drawable/list_selector" />
+
+<TextView
+    android:id="@+id/textView22"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignBottom="@+id/imageView3"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentTop="true"
+    android:text="lifebar"
+    android:textAppearance="?android:attr/textAppearanceLarge" />
+</RelativeLayout>
