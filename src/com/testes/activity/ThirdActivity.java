@@ -98,7 +98,7 @@ public class ThirdActivity extends ActionBarActivity {
 
 		if(getIntent().getExtras()!=null){
 			coinsValue  = getIntent().getIntExtra("coins", 0);
-			Log.i("COins", "coins: "+ coinsValue);
+			Log.i("Coins", "coins: "+ coinsValue);
 		}
 		//		Serializable s = getIntent().getExtras().getSerializable("key");
 		//		System.out.println(s);
@@ -217,10 +217,10 @@ public class ThirdActivity extends ActionBarActivity {
 			osw.close();
 
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		//        home=(Button)findViewById(R.id.home_btn);

@@ -72,7 +72,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 	TextView text1;
 	EditText linkEditText, e2;
 	Button dialogButton, sub, circleTestButton, intentsButton, connectbutton, mainActivityButton, secondButton, scrollViewButton, tabHostButton, listViewButton, createTemFiles,webViewButton,viewPagerButton, spinnerButton;
-	Button fullImage, fragmentsButton,sensorButton, drawableButton,pickerButton,seekBarButton,editTextButton;
+	Button fullImage, fragmentsButton,sensorButton, drawableButton,canvasButton,pickerButton,seekBarButton,editTextButton;
 	Context c=this;
 	ScrollView scrollViewLayout;
 	RelativeLayout drawerRelativeLayout;
@@ -98,6 +98,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		connectbutton = (Button) findViewById(R.id.connect);
 		editTextButton = (Button) findViewById(R.id.editTextButton);
 		sensorButton = (Button) findViewById(R.id.sensorButton);
+		canvasButton = (Button) findViewById(R.id.canvasButton);
 		seekBarButton = (Button) findViewById(R.id.seekBarButton);
 		pickerButton = (Button) findViewById(R.id.pickersButton);
 		mainActivityButton = (Button) findViewById(R.id.mainButtton);
@@ -141,19 +142,6 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 	    Options options = new Options();
 	    options.inSampleSize = 2;
 	    Bitmap failBitmap = BitmapFactory.decodeResource(getResources(),  R.drawable.image_load_failed,options);
-	    
-	    Bitmap bmp = Bitmap.createBitmap(800,600,Bitmap.Config.ARGB_8888);
-	    Canvas canvas = new Canvas(bmp);
-	    Paint textPaint = new Paint();
-	    textPaint.setColor(Color.RED);
-	    textPaint.setStrokeWidth(5);
-	    canvas.drawLine(0, 0, 40, 40, textPaint);
-	    canvas.save();
-	    canvas.drawLine(40, 40, 80, 20, textPaint);
-	    canvas.restore();
-	    canvas.drawLine(80, 20, 180, 30, textPaint);
-//	    canvas.drawPath(new Path(), textPaint);
-	    imageView.setImageBitmap(bmp);
 		
 		Button button = new Button(c);
 		button.setId(2000);
@@ -253,7 +241,16 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 
 			}
 		});
-
+		
+		canvasButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				startActivity(new Intent(FirstActivity.this, CanvasActivity.class));
+				
+			}
+		});
+		
 		editTextButton.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -851,14 +848,14 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			//			}
 			//
 			
-			
-			Ion.with(FirstActivity.this).load("http://---------").setMultipartParameter("IUser_ID=", "126").setMultipartFile("", new File(strFilePath)).setMultipartParameter("User_ID=", "amody@gmail.com").setMultipartParameter("FileTitle", strFileTitle).setMultipartParameter("DT", strDocumentType).asString().setCallback(new FutureCallback<String>() {
-				@Override
-				public void onCompleted(Exception e, String result) {
-				Log.e("Response", "" + result);
-
-				}
-				});
+//			
+//			Ion.with(FirstActivity.this).load("http://---------").setMultipartParameter("IUser_ID=", "126").setMultipartFile("", new File(strFilePath)).setMultipartParameter("User_ID=", "amody@gmail.com").setMultipartParameter("FileTitle", strFileTitle).setMultipartParameter("DT", strDocumentType).asString().setCallback(new FutureCallback<String>() {
+//				@Override
+//				public void onCompleted(Exception e, String result) {
+//				Log.e("Response", "" + result);
+//
+//				}
+//				});
 			
 			//			try {
 			//				InetAddress address = InetAddress.getByName(new URL(stringUrl).getHost());

@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="9"
         android:targetSdkVersion="20" />
 
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -14,6 +14,7 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <uses-feature android:name="android.hardware.camera" />
@@ -49,6 +50,8 @@
         <activity android:name="com.testes.activity.PickerActivity" >
         </activity>
         <activity android:name="com.testes.activity.EditTextActivity" >
+        </activity>
+        <activity android:name="com.testes.activity.CanvasActivity" >
         </activity>
         <activity android:name="com.testes.activity.SeekBarActivity" >
         </activity>
