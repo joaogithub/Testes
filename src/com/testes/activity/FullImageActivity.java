@@ -65,7 +65,7 @@ public class FullImageActivity extends ActionBarActivity implements NavigationDr
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.layout_video_activity);
+		setContentView(R.layout.layout_drawerimage_activity);
 
 		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
 		mUserLearnedDrawer = sp.getBoolean(PREF_USER_LEARNED_DRAWER, false);

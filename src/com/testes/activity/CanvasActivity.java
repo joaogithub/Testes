@@ -1,12 +1,18 @@
 package com.testes.activity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.view.WindowManager;
@@ -44,9 +50,41 @@ public class CanvasActivity extends ActionBarActivity{
 		//		    canvas.drawPath(new Path(), textPaint);
 		imageView.setImageBitmap(bmp);
 
+	new MyAsyncTask().execute();
 
 	}
 
+public class MyAsyncTask extends AsyncTask<Void, Void, Void>{
 
+	@Override
+	protected Void doInBackground(Void... params) {
+		return null;
+	}
+	
+	@Override
+	protected void onPostExecute(Void result) {
+		super.onPostExecute(result);
+		
+		   AlertDialog.Builder builder = new AlertDialog.Builder(CanvasActivity.this);
+           LayoutInflater inflater = getLayoutInflater();
+           View imageLayoutView = inflater.inflate(R.layout.image_layout, null);
+           ImageView image = (ImageView) imageLayoutView.findViewById(R.id.starterPic);
+           Uri uri = Uri.parse("content://media/external/images/media/1602");
+
+           image.setImageURI(uri);
+           
+           builder.setView(imageLayoutView)
+              .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                  public void onClick(DialogInterface dialog, int id) {
+                         dialog.cancel();
+                  }
+           });
+
+           builder.create();
+           builder.show();
+		
+	}
+	
+}
 
 }

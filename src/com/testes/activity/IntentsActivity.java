@@ -203,7 +203,7 @@ public class IntentsActivity extends ActionBarActivity {
 				fos.flush();
 				fos.close();
 
-				Log.i("Intents", imageUri);
+				Log.i("IntentsActivity", "imageuri ="+ imageUri);
 				exif = new ExifInterface(imageUri);
 				int exifOrientation = exif.getAttributeInt(
 						ExifInterface.TAG_ORIENTATION,

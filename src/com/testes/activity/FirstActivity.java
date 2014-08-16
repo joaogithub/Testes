@@ -71,7 +71,7 @@ import com.testes.receiver.WifiScanReceiver;
 public class FirstActivity extends FragmentActivity implements ActionMode.Callback, NavigationDrawerCallbacks {
 	TextView text1;
 	EditText linkEditText, e2;
-	Button dialogButton, sub, circleTestButton, intentsButton, connectbutton, mainActivityButton, secondButton, scrollViewButton, tabHostButton, listViewButton, createTemFiles,webViewButton,viewPagerButton, spinnerButton;
+	Button dialogButton, sub, circleTestButton, imageButton,intentsButton, connectbutton, mainActivityButton, secondButton, scrollViewButton, tabHostButton, listViewButton, createTemFiles,webViewButton,viewPagerButton, spinnerButton;
 	Button fullImage, fragmentsButton,sensorButton, drawableButton,canvasButton,pickerButton,seekBarButton,editTextButton;
 	Context c=this;
 	ScrollView scrollViewLayout;
@@ -96,6 +96,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		secondButton = (Button) findViewById(R.id.secondButton);
 		webViewButton = (Button) findViewById(R.id.webViewButton);
 		connectbutton = (Button) findViewById(R.id.connect);
+		imageButton = (Button) findViewById(R.id.imageButton);
 		editTextButton = (Button) findViewById(R.id.editTextButton);
 		sensorButton = (Button) findViewById(R.id.sensorButton);
 		canvasButton = (Button) findViewById(R.id.canvasButton);
@@ -239,6 +240,15 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			public void onClick(View v) {
 				startActivity(new Intent(FirstActivity.this, SpinnerActivity.class));
 
+			}
+		});
+		
+		imageButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				startActivity(new Intent(FirstActivity.this, ImageActivity.class));
+				
 			}
 		});
 		

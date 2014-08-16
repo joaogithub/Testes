@@ -196,7 +196,7 @@
             android:layout_below="@+id/testViewButton"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="4dp"
-            android:text="FullImageActivity" />
+            android:text="DrawerActivity" />
 
         <Button
             android:id="@+id/connect"
@@ -208,10 +208,18 @@
             android:text="Connect" />
 
         <Button
+            android:id="@+id/imageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/connect"
+            android:layout_centerHorizontal="true"
+            android:text="ImageActivity" />
+        
+        <Button
             android:id="@+id/secondButton"
             android:layout_width="190dp"
             android:layout_height="40dp"
-            android:layout_below="@+id/connect"
+            android:layout_below="@+id/imageButton"
             android:layout_centerHorizontal="true"
             android:text="secondActivity" />
 

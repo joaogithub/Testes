@@ -125,6 +125,7 @@ android:orientation="vertical" >
     android:layout_alignBaseline="@+id/textView2"
     android:layout_alignBottom="@+id/textView2"
     android:layout_alignParentStart="false"
+    android:layout_alignParentLeft="false"
     android:layout_alignRight="@+id/textView8"
     android:freezesText="true"
     android:text="$0"

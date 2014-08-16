@@ -8,7 +8,7 @@
         android:id="@+id/datetitle"
         android:layout_width="wrap_content"
         android:layout_height="80dp"
-        android:text="mytexe" />
+        android:text="mytexe large" />
 
     <ImageView
         android:id="@+id/meetingline"

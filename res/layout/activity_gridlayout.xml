@@ -1,4 +1,4 @@
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:columnCount="2"
@@ -75,4 +75,4 @@
         android:layout_marginTop="25dp"
         android:inputType="number" />
 
-</GridLayout>
+</TextView>
