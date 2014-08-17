@@ -43,9 +43,9 @@ public class SeekBarActivity extends ActionBarActivity {
 
 		ObjectAnimator animator = ObjectAnimator.ofFloat(getWindow().getDecorView(), "rotation", 0,
 				90, 180, 270, 360);
-		animator.setDuration(4000);
-		animator.setRepeatCount(10);
-		animator.start();
+		animator.setDuration(3000);
+		animator.setRepeatCount(1);
+//		animator.start();
 
 		Animation movingJumpAnimation = AnimationUtils.loadAnimation(this, R.anim.animation_splash);
 		//		animText.startAnimation(movingJumpAnimation);

@@ -71,14 +71,13 @@ public class SecondActivity extends ActionBarActivity{
 		checkbox = (CheckBox) findViewById(R.id.checkbox_meat);
 		String path = "android.resource://" + getPackageName() + "/" + R.raw.music1; //set up MediaPlayer
 		MediaPlayer mediaPlayer = MediaPlayer.create(SecondActivity.this, R.raw.music1);
-		//				new MediaPlayer(); 
-		try { 
-			//			mediaPlayer.setDataSource(path); 
 
-			//			mediaPlayer.prepare(); 
-			mediaPlayer.setLooping(true); 
-			mediaPlayer.setVolume(100, 100);
-			//			mediaPlayer.start(); 
+		try {
+//			mediaPlayer.setDataSource(path); 
+//			mediaPlayer.prepare(); 
+//			mediaPlayer.setLooping(true); 
+//			mediaPlayer.setVolume(100, 100);
+			mediaPlayer.start(); 
 		}
 		catch (Exception e) {
 			e.printStackTrace(); 
@@ -164,6 +163,12 @@ public class SecondActivity extends ActionBarActivity{
 
 			return rootView;
 		}
+		
+		@Override
+		public void onActivityCreated(Bundle savedInstanceState) {
+			super.onActivityCreated(savedInstanceState);
+		}
+		
 	}
 
 	/**
@@ -214,7 +219,7 @@ public class SecondActivity extends ActionBarActivity{
 						}
 					});
 
-//					transaction.add(((ViewGroup)getView().getParent()).getId(), mapf, "TAG").commit();
+					//					transaction.add(((ViewGroup)getView().getParent()).getId(), mapf, "TAG").commit();
 
 				}
 			});

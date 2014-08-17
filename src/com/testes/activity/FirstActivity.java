@@ -72,7 +72,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 	TextView text1;
 	EditText linkEditText, e2;
 	Button dialogButton, sub, circleTestButton, imageButton,intentsButton, connectbutton, mainActivityButton, secondButton, scrollViewButton, tabHostButton, listViewButton, createTemFiles,webViewButton,viewPagerButton, spinnerButton;
-	Button fullImage, fragmentsButton,sensorButton, drawableButton,canvasButton,pickerButton,seekBarButton,editTextButton;
+	Button fullImage, fragmentsButton,sensorButton,toggleButtonActivity, drawableButton,canvasButton,pickerButton,seekBarButton,editTextButton;
 	Context c=this;
 	ScrollView scrollViewLayout;
 	RelativeLayout drawerRelativeLayout;
@@ -95,6 +95,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		drawableButton = (Button) findViewById(R.id.drawableButton);
 		secondButton = (Button) findViewById(R.id.secondButton);
 		webViewButton = (Button) findViewById(R.id.webViewButton);
+		toggleButtonActivity = (Button) findViewById(R.id.toggleButton);
 		connectbutton = (Button) findViewById(R.id.connect);
 		imageButton = (Button) findViewById(R.id.imageButton);
 		editTextButton = (Button) findViewById(R.id.editTextButton);
@@ -239,7 +240,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			@Override
 			public void onClick(View v) {
 				startActivity(new Intent(FirstActivity.this, SpinnerActivity.class));
-
+				overridePendingTransition(R.anim.animation, R.anim.animation2);
 			}
 		});
 		
@@ -248,6 +249,15 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			@Override
 			public void onClick(View v) {
 				startActivity(new Intent(FirstActivity.this, ImageActivity.class));
+				
+			}
+		});
+		
+		toggleButtonActivity.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				startActivity(new Intent(FirstActivity.this, ToggleButtonActivity.class));
 				
 			}
 		});
@@ -275,7 +285,8 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			@Override
 			public void onClick(View v) {
 				startActivity(new Intent(FirstActivity.this, SeekBarActivity.class));
-				
+//				
+				FirstActivity.this.overridePendingTransition(R.anim.animation1, R.anim.animation3);
 			}
 		});
 		
@@ -284,7 +295,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			@Override
 			public void onClick(View v) {
 				startActivity(new Intent(FirstActivity.this, PickerActivity.class));
-				
+				overridePendingTransition(android.R.anim.slide_out_right, android.R.anim.slide_in_left);
 			}
 		});
 		

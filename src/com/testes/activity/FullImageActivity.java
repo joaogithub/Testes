@@ -354,7 +354,7 @@ public class FullImageActivity extends ActionBarActivity implements NavigationDr
 
 		case 3:
 			// about
-			Intent aboutIntent = new Intent(FullImageActivity.this, Home.class);
+			Intent aboutIntent = new Intent(FullImageActivity.this, GridViewActivity.class);
 			aboutIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 			aboutIntent.putExtra(SELECTED_POSITION, position);
 			startActivity(aboutIntent);

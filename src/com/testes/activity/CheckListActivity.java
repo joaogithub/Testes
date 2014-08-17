@@ -1,9 +1,5 @@
 package com.testes.activity;
 
-import com.testes.android.R;
-import com.testes.android.R.layout;
-
-import android.app.Activity;
 import android.app.ListActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +7,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.testes.android.R;
 
 
 public class CheckListActivity extends ListActivity{

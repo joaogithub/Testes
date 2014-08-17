@@ -15,7 +15,7 @@ import android.widget.AbsListView;
 import android.widget.Button;
 import android.widget.GridView;
 
-public class Home extends ActionBarActivity 
+public class GridViewActivity extends ActionBarActivity 
 {
 
 	ArrayList<String> abc;
@@ -47,7 +47,7 @@ public class Home extends ActionBarActivity
 			abc.add(String.valueOf(i));
 		}
 
-		testGridAdapter = new TestGridAdapter(Home.this,Home.this,abc);
+		testGridAdapter = new TestGridAdapter(GridViewActivity.this,GridViewActivity.this,abc);
 
 		button.setOnClickListener(new OnClickListener() {
 			
