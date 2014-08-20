@@ -149,8 +149,10 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		button.setId(2000);
 		final AlertDialog myDialog = new AlertDialog.Builder(FirstActivity.this)
 		.setMessage("errorConnectingToServer")
-		.setView(new Button(c)).setCancelable(true).create();
-		//		myDialog.show();
+		/*.setView(new Button(c))*/.setCancelable(true).create();
+		TextView textView = (TextView) myDialog.findViewById(android.R.id.message);
+		textView.setTextSize(40);
+//		myDialog.show();
 
 		button.setOnClickListener(new OnClickListener() {
 
