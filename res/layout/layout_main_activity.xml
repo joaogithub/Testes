@@ -182,10 +182,18 @@
             android:text="Scroll" />
 
         <Button
-            android:id="@+id/testViewButton"
+            android:id="@+id/tableButton"
             android:layout_width="190dp"
             android:layout_height="40dp"
             android:layout_below="@+id/scrollViewButton"
+            android:layout_centerHorizontal="true"
+            android:text="TableLayout" />
+
+        <Button
+            android:id="@+id/testViewButton"
+            android:layout_width="190dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/tableButton"
             android:layout_centerHorizontal="true"
             android:text="CircleTest" />
 

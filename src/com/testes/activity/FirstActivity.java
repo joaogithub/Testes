@@ -71,7 +71,7 @@ import com.testes.receiver.WifiScanReceiver;
 public class FirstActivity extends FragmentActivity implements ActionMode.Callback, NavigationDrawerCallbacks {
 	TextView text1;
 	EditText linkEditText, e2;
-	Button dialogButton, sub, circleTestButton, imageButton,intentsButton, connectbutton, mainActivityButton, secondButton, scrollViewButton, tabHostButton, listViewButton, createTemFiles,webViewButton,viewPagerButton, spinnerButton;
+	Button dialogButton, sub, circleTestButton, imageButton,intentsButton, connectbutton, mainActivityButton, secondButton, scrollViewButton, tableLayoutButton,tabHostButton, listViewButton, createTemFiles,webViewButton,viewPagerButton, spinnerButton;
 	Button fullImage, fragmentsButton,sensorButton,toggleButtonActivity, drawableButton,canvasButton,pickerButton,seekBarButton,editTextButton;
 	Context c=this;
 	ScrollView scrollViewLayout;
@@ -115,6 +115,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		viewPagerButton = (Button) findViewById(R.id.viewPagerActivityButton);
 		spinnerButton = (Button) findViewById(R.id.spinnerButton);
 		text1 = (TextView) findViewById(R.id.changingtext);
+		tableLayoutButton = (Button) findViewById(R.id.tableButton);
 		scrollViewButton  = (Button) findViewById(R.id.scrollViewButton);
 		tabHostButton = (Button) findViewById(R.id.tabsHostButton);
 		listViewButton  = (Button) findViewById(R.id.listViewButton);
@@ -150,8 +151,8 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		final AlertDialog myDialog = new AlertDialog.Builder(FirstActivity.this)
 		.setMessage("errorConnectingToServer")
 		/*.setView(new Button(c))*/.setCancelable(true).create();
-		TextView textView = (TextView) myDialog.findViewById(android.R.id.message);
-		textView.setTextSize(40);
+//		TextView textView = (TextView) myDialog.findViewById(android.R.id.message);
+//		textView.setTextSize(40);
 //		myDialog.show();
 
 		button.setOnClickListener(new OnClickListener() {
@@ -331,6 +332,20 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			}
 		});
 
+		tableLayoutButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Bundle bundle =  new Bundle();
+				Intent scrollIntent = new Intent(FirstActivity.this, TableLayoutActivity.class);
+				bundle.putString("color", "#CCAABB");
+				bundle.putString("style", "bold");
+				scrollIntent.putExtras(bundle);
+				startActivity(scrollIntent);
+
+			}
+		});
+		
 		circleTestButton.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -446,12 +461,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 
 			@Override
 			public void onClick(View v) {
-				Bundle bundle =  new Bundle();
-				Intent scrollIntent = new Intent(FirstActivity.this, TableLayoutActivity.class);
-				bundle.putString("color", "#CCAABB");
-				bundle.putString("style", "bold");
-				scrollIntent.putExtras(bundle);
-				startActivity(scrollIntent);
+				startActivity(new Intent(FirstActivity.this, ScrollViewActivity.class));
 
 			}
 		});
