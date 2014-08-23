@@ -1,14 +1,18 @@
 package com.testes.activity;
 
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLConnection;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+
+import org.apache.http.util.ByteArrayBuffer;
 
 import android.annotation.SuppressLint;
 import android.app.ActivityManager;
@@ -71,7 +75,7 @@ import com.testes.receiver.WifiScanReceiver;
 public class FirstActivity extends FragmentActivity implements ActionMode.Callback, NavigationDrawerCallbacks {
 	TextView text1;
 	EditText linkEditText, e2;
-	Button dialogButton, sub, circleTestButton, imageButton,intentsButton, connectbutton, mainActivityButton, secondButton, scrollViewButton, tableLayoutButton,tabHostButton, listViewButton, createTemFiles,webViewButton,viewPagerButton, spinnerButton;
+	Button dialogButton, sub, circleTestButton, imageButton,intentsButton, connectbutton,animationActivityButton, mainActivityButton, secondButton, scrollViewButton, tableLayoutButton,tabHostButton, listViewButton, createTemFiles,webViewButton,viewPagerButton, spinnerButton;
 	Button fullImage, fragmentsButton,sensorButton,toggleButtonActivity, drawableButton,canvasButton,pickerButton,seekBarButton,editTextButton;
 	Context c=this;
 	ScrollView scrollViewLayout;
@@ -102,6 +106,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		sensorButton = (Button) findViewById(R.id.sensorButton);
 		canvasButton = (Button) findViewById(R.id.canvasButton);
 		seekBarButton = (Button) findViewById(R.id.seekBarButton);
+		animationActivityButton = (Button) findViewById(R.id.animationButton);
 		pickerButton = (Button) findViewById(R.id.pickersButton);
 		mainActivityButton = (Button) findViewById(R.id.mainButtton);
 		imageView = (ImageView)findViewById(R.id.imageViewFirst);
@@ -121,6 +126,21 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		listViewButton  = (Button) findViewById(R.id.listViewButton);
 
 		Log.i("FirstActivity", "onCreate() first");
+		
+//		
+//		try {
+//			URL url = new URL ("http://youcrypt.com/assets/images/osx.jpg");
+//			URLConnection urlconnect = url.openConnection();
+//			InputStream is = urlconnect.getInputStream();
+//            BufferedInputStream bis = new BufferedInputStream (is);
+//            ByteArrayBuffer baf = new ByteArrayBuffer(50);
+//		} catch (MalformedURLException e1) {
+//			
+//			e1.printStackTrace();
+//		} catch (IOException e) {
+//			
+//			e.printStackTrace();
+//		}
 		
 		View root = ((ViewGroup) findViewById(android.R.id.content)).getChildAt(0);
 
@@ -165,6 +185,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			}
 		});
 
+		
 		linkEditText.addTextChangedListener(new TextWatcher() {
 
 			@Override
@@ -238,6 +259,15 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		String dateString = sdf.format(date);
 		Log.i("current Date", dateString);
 
+		animationActivityButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				startActivity(new Intent(FirstActivity.this, AnimationActivity.class));
+				
+			}
+		});
+		
 		spinnerButton.setOnClickListener(new OnClickListener() {
 
 			@Override
