@@ -7,6 +7,7 @@ import java.io.IOException;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.media.ExifInterface;
@@ -15,6 +16,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.Contacts.Phones;
+import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -23,6 +26,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.testes.android.R;
 
@@ -146,6 +150,31 @@ public class IntentsActivity extends ActionBarActivity {
 			}
 		});
 
+		String incomingNumber = "+351916379917";
+		Uri uri = Uri.withAppendedPath(Phones.CONTENT_FILTER_URL,  Uri.encode(incomingNumber));
+        Toast.makeText(this, incomingNumber, Toast.LENGTH_LONG).show();
+                    String name = null;
+    Cursor cursor = getContentResolver().query(uri,new String[] { ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME }, null, null, null);
+                        Toast.makeText(this, "unknown", Toast.LENGTH_LONG).show();
+                        // Invoke endCall()
+                         if (cursor != null && cursor.moveToFirst()) {
+
+//                             editor1.putBoolean("fromcontacts", true);
+//                             editor1.putBoolean("notfromcontacts", false);
+//                             editor1.putString("incomingnumbername", cursor.getString(0));
+//                             editor1.commit();
+//                             Toast.makeText(this, p.getString("incomingnumbername", "unknown"), Toast.LENGTH_LONG).show();
+                         }
+
+                         else
+                         {
+//                             editor1.putBoolean("notfromcontacts", true);
+//                             editor1.putBoolean("fromcontacts", false);
+//                             editor1.putString("incomingnumbername", "Unknown");
+//                             editor1.commit();
+                     Toast.makeText(this, "incomingnumbername", Toast.LENGTH_LONG).show();
+                         }
+		
 		//		Matrix matrix = getMatrix();
 		//
 		//	    RectF drawableRect = new RectF(0, 0, Background.getWidth(), Background.getHeight());
@@ -168,6 +197,7 @@ public class IntentsActivity extends ActionBarActivity {
 			ExifInterface exif;
 			int rotate = 0;
 			Bitmap bitmap =(Bitmap) data.getExtras().get("data"); 
+			saveImageToSDCard(bitmap);
 			try 
 			{
 				imageUri = data.getData().toString();
@@ -294,4 +324,42 @@ public class IntentsActivity extends ActionBarActivity {
 			Log.i("IntentsActivity", "ACTION FAILED");
 		}
 	}
+
+	
+	
+	public void saveImageToSDCard(Bitmap bitmap) {
+        String dirname = "/Amazing Wallpapers/";
+
+        File myDir = new File(Environment
+                .getExternalStorageDirectory().getPath() + dirname);
+
+        myDir.mkdirs();
+
+        String str = String.valueOf(System.currentTimeMillis());
+
+        String fname = "Wallpaper-" + str +  ".jpg";
+        File file = new File(myDir, fname);
+        if (file.exists())
+            file.delete();
+        try {
+            FileOutputStream out = new FileOutputStream(file);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
+            out.flush();
+            out.close();
+            Toast.makeText(
+                    this,
+                    "Toast_saved".replace("#",
+                            "\"" + "Gallery name" + "\""),
+                    Toast.LENGTH_SHORT).show();
+            Log.d("Intents", "Wallpaper saved to:" + file.getAbsolutePath());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this,
+                    "toast_saved_failed",
+                    Toast.LENGTH_SHORT).show();
+        }
+    }
+	
 }
+

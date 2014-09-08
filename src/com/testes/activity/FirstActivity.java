@@ -8,11 +8,16 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.ByteArrayBuffer;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
 import android.annotation.SuppressLint;
 import android.app.ActivityManager;
@@ -65,6 +70,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.JsonParser;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 import com.testes.android.R;
@@ -895,15 +901,16 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		protected Bitmap doInBackground(Void... params) {
 			//			URL u = null;
 			Bitmap bitmap=null;
-			try {
-				
-				bitmap = BitmapFactory.decodeStream((InputStream)new URL("http://www.google.com").getContent());
-
-			} catch (MalformedURLException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+//			try {
+			List<NameValuePair> paramas = new ArrayList<NameValuePair>();
+            paramas.add(new BasicNameValuePair("product_id", "sdd2"));
+//				bitmap = BitmapFactory.decodeStream((InputStream)new URL("http://www.google.com").getContent());
+//
+//			} catch (MalformedURLException e) {
+//				e.printStackTrace();
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
 			//			try {
 			//				u = new URL(stringUrl);
 			//			} catch (MalformedURLException e1) {
@@ -911,6 +918,9 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			//			}
 			//
 			
+			
+	
+
 //			
 //			Ion.with(FirstActivity.this).load("http://---------").setMultipartParameter("IUser_ID=", "126").setMultipartFile("", new File(strFilePath)).setMultipartParameter("User_ID=", "amody@gmail.com").setMultipartParameter("FileTitle", strFileTitle).setMultipartParameter("DT", strDocumentType).asString().setCallback(new FutureCallback<String>() {
 //				@Override
