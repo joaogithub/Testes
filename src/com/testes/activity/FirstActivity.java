@@ -39,6 +39,8 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.hardware.usb.UsbDevice;
+import android.hardware.usb.UsbManager;
 import android.media.MediaRecorder;
 import android.net.Uri;
 import android.net.wifi.WifiManager;
@@ -132,29 +134,35 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		listViewButton  = (Button) findViewById(R.id.listViewButton);
 
 		Log.i("FirstActivity", "onCreate() first");
-		
-//		
-//		try {
-//			URL url = new URL ("http://youcrypt.com/assets/images/osx.jpg");
-//			URLConnection urlconnect = url.openConnection();
-//			InputStream is = urlconnect.getInputStream();
-//            BufferedInputStream bis = new BufferedInputStream (is);
-//            ByteArrayBuffer baf = new ByteArrayBuffer(50);
-//		} catch (MalformedURLException e1) {
-//			
-//			e1.printStackTrace();
-//		} catch (IOException e) {
-//			
-//			e.printStackTrace();
-//		}
-		
+
+		UsbManager manager = (UsbManager) getSystemService(Context.USB_SERVICE);
+		HashMap<String, UsbDevice> deviceList = manager.getDeviceList();
+		Log.i("FirstActivity", deviceList.toString());
+		UsbDevice device = deviceList.get("deviceName");
+		Toast.makeText(getApplicationContext(),"Attached device is : "+ device, Toast.LENGTH_LONG).show();
+
+		//		
+		//		try {
+		//			URL url = new URL ("http://youcrypt.com/assets/images/osx.jpg");
+		//			URLConnection urlconnect = url.openConnection();
+		//			InputStream is = urlconnect.getInputStream();
+		//            BufferedInputStream bis = new BufferedInputStream (is);
+		//            ByteArrayBuffer baf = new ByteArrayBuffer(50);
+		//		} catch (MalformedURLException e1) {
+		//			
+		//			e1.printStackTrace();
+		//		} catch (IOException e) {
+		//			
+		//			e.printStackTrace();
+		//		}
+
 		View root = ((ViewGroup) findViewById(android.R.id.content)).getChildAt(0);
 
-	    int color = Color.TRANSPARENT;
-	    Drawable background = root.getBackground();
-	    if (background instanceof ColorDrawable)
-	        color = ((ColorDrawable) background).getColor();
-		
+		int color = Color.TRANSPARENT;
+		Drawable background = root.getBackground();
+		if (background instanceof ColorDrawable)
+			color = ((ColorDrawable) background).getColor();
+
 		String uriBegin = "geo:" + "47.531605" + "," + "21.627312";
 		String query = "47.531605" + "," + "21.627312" + "(DeviceId"+")";
 
@@ -167,19 +175,19 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 
 		//	    startActivity(intent);
 
-	    Bitmap backBitmap = BitmapFactory.decodeResource(getResources(),  R.drawable.image_load_success1);
-	    Options options = new Options();
-	    options.inSampleSize = 2;
-	    Bitmap failBitmap = BitmapFactory.decodeResource(getResources(),  R.drawable.image_load_failed,options);
-		
+		Bitmap backBitmap = BitmapFactory.decodeResource(getResources(),  R.drawable.image_load_success1);
+		Options options = new Options();
+		options.inSampleSize = 2;
+		Bitmap failBitmap = BitmapFactory.decodeResource(getResources(),  R.drawable.image_load_failed,options);
+
 		Button button = new Button(c);
 		button.setId(2000);
 		final AlertDialog myDialog = new AlertDialog.Builder(FirstActivity.this)
 		.setMessage("errorConnectingToServer")
 		/*.setView(new Button(c))*/.setCancelable(true).create();
-//		TextView textView = (TextView) myDialog.findViewById(android.R.id.message);
-//		textView.setTextSize(40);
-//		myDialog.show();
+		//		TextView textView = (TextView) myDialog.findViewById(android.R.id.message);
+		//		textView.setTextSize(40);
+		//		myDialog.show();
 
 		button.setOnClickListener(new OnClickListener() {
 
@@ -191,7 +199,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			}
 		});
 
-		
+
 		linkEditText.addTextChangedListener(new TextWatcher() {
 
 			@Override
@@ -257,23 +265,23 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 
 		// The '-1' here means to vibrate once
 		// '0' would make the pattern vibrate indefinitely
-//		vibrator.vibrate(pattern, -1);
-		
-		
+		//		vibrator.vibrate(pattern, -1);
+
+
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date date = new Date();
 		String dateString = sdf.format(date);
 		Log.i("current Date", dateString);
 
 		animationActivityButton.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				startActivity(new Intent(FirstActivity.this, AnimationActivity.class));
-				
+
 			}
 		});
-		
+
 		spinnerButton.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -282,73 +290,73 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 				overridePendingTransition(R.anim.animation, R.anim.animation2);
 			}
 		});
-		
+
 		imageButton.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				startActivity(new Intent(FirstActivity.this, ImageActivity.class));
-				
+
 			}
 		});
-		
+
 		toggleButtonActivity.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				startActivity(new Intent(FirstActivity.this, ToggleButtonActivity.class));
-				
+
 			}
 		});
-		
+
 		canvasButton.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				startActivity(new Intent(FirstActivity.this, CanvasActivity.class));
-				
+
 			}
 		});
-		
+
 		editTextButton.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				startActivity(new Intent(FirstActivity.this, EditTextActivity.class));
-				
+
 			}
 		});
-		
+
 		seekBarButton.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				startActivity(new Intent(FirstActivity.this, SeekBarActivity.class));
-//				
+				//				
 				FirstActivity.this.overridePendingTransition(R.anim.animation1, R.anim.animation3);
 			}
 		});
-		
+
 		pickerButton.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				startActivity(new Intent(FirstActivity.this, PickerActivity.class));
 				overridePendingTransition(android.R.anim.slide_out_right, android.R.anim.slide_in_left);
 			}
 		});
-		
+
 		sensorButton.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				startActivity(new Intent(FirstActivity.this, SensorActivity.class));
-				
+
 			}
 		});
-	
-		
-		
+
+
+
 		listViewButton.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -381,7 +389,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 
 			}
 		});
-		
+
 		circleTestButton.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -402,10 +410,10 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 
 		ActivityManager am = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
 
-	     List<ActivityManager.RunningTaskInfo> taskInfo = am.getRunningTasks(1);
-	     Log.i("TASKs", ""+taskInfo.get(0).topActivity.getClassName() + " numActivities: "
-	     +  taskInfo.get(0).numActivities);
-		
+		List<ActivityManager.RunningTaskInfo> taskInfo = am.getRunningTasks(1);
+		Log.i("TASKs", ""+taskInfo.get(0).topActivity.getClassName() + " numActivities: "
+				+  taskInfo.get(0).numActivities);
+
 		fragmentsButton.setOnLongClickListener(new OnLongClickListener() {
 
 			@Override
@@ -550,7 +558,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		//		startActivity(intent);
 
 		text1.setText("TEXT" + getString(R.string.code));
-		
+
 		text1.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -901,35 +909,35 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		protected Bitmap doInBackground(Void... params) {
 			//			URL u = null;
 			Bitmap bitmap=null;
-//			try {
+			//			try {
 			List<NameValuePair> paramas = new ArrayList<NameValuePair>();
-            paramas.add(new BasicNameValuePair("product_id", "sdd2"));
-//				bitmap = BitmapFactory.decodeStream((InputStream)new URL("http://www.google.com").getContent());
-//
-//			} catch (MalformedURLException e) {
-//				e.printStackTrace();
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			}
+			paramas.add(new BasicNameValuePair("product_id", "sdd2"));
+			//				bitmap = BitmapFactory.decodeStream((InputStream)new URL("http://www.google.com").getContent());
+			//
+			//			} catch (MalformedURLException e) {
+			//				e.printStackTrace();
+			//			} catch (IOException e) {
+			//				e.printStackTrace();
+			//			}
 			//			try {
 			//				u = new URL(stringUrl);
 			//			} catch (MalformedURLException e1) {
 			//				e1.printStackTrace();
 			//			}
 			//
-			
-			
-	
 
-//			
-//			Ion.with(FirstActivity.this).load("http://---------").setMultipartParameter("IUser_ID=", "126").setMultipartFile("", new File(strFilePath)).setMultipartParameter("User_ID=", "amody@gmail.com").setMultipartParameter("FileTitle", strFileTitle).setMultipartParameter("DT", strDocumentType).asString().setCallback(new FutureCallback<String>() {
-//				@Override
-//				public void onCompleted(Exception e, String result) {
-//				Log.e("Response", "" + result);
-//
-//				}
-//				});
-			
+
+
+
+			//			
+			//			Ion.with(FirstActivity.this).load("http://---------").setMultipartParameter("IUser_ID=", "126").setMultipartFile("", new File(strFilePath)).setMultipartParameter("User_ID=", "amody@gmail.com").setMultipartParameter("FileTitle", strFileTitle).setMultipartParameter("DT", strDocumentType).asString().setCallback(new FutureCallback<String>() {
+			//				@Override
+			//				public void onCompleted(Exception e, String result) {
+			//				Log.e("Response", "" + result);
+			//
+			//				}
+			//				});
+
 			//			try {
 			//				InetAddress address = InetAddress.getByName(new URL(stringUrl).getHost());
 			//
@@ -1041,7 +1049,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			//				}
 			//			}
 
-//			imageView.setImageBitmap(result);
+			//			imageView.setImageBitmap(result);
 			// Dismiss loading dialog
 			//			if (showDialog){
 			//				if (loadingDialog.isShowing()) {
@@ -1185,7 +1193,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 	@Override
 	public void onNavigationDrawerItemSelected(int position) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 

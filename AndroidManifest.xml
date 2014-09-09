@@ -20,6 +20,7 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.usb.host" />
 
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -38,6 +39,13 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
+                android:resource="@xml/device_filter" />
         </activity>
         <activity
             android:name="com.testes.activity.SecondActivity"
@@ -55,9 +63,9 @@
         </activity>
         <activity android:name="com.testes.activity.ImageActivity" >
         </activity>
-         <activity android:name="com.testes.activity.ToggleButtonActivity" >
+        <activity android:name="com.testes.activity.ToggleButtonActivity" >
         </activity>
-         <activity android:name="com.testes.activity.AnimationActivity" >
+        <activity android:name="com.testes.activity.AnimationActivity" >
         </activity>
         <activity android:name="com.testes.activity.CanvasActivity" >
         </activity>
