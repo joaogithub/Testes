@@ -108,23 +108,21 @@ public class SecondActivity extends ActionBarActivity{
 		//        });
 	}
 	//
-	//    @Override
-	//    public boolean onCreateOptionsMenu(Menu menu){
-	//        MenuInflater inflater = getMenuInflater();
-	//        inflater.inflate(R.menu.block, menu);
-	//
-	//        return super.onCreateOptionsMenu(menu);
-	//    }
-	//    
-	//    @Override
-	//    public boolean onPrepareOptionsMenu(Menu menu) {
-	//    	// TODO Auto-generated method stub
-	//    	return super.onPrepareOptionsMenu(menu);
-	//    }
+	    @Override
+	    public boolean onCreateOptionsMenu(Menu menu){
+	        MenuInflater inflater = getMenuInflater();
+//	        inflater.inflate(R.menu.block, menu);
+	        inflater.inflate(R.menu.main_activity_actions, menu);
+	        return super.onCreateOptionsMenu(menu);
+	    }
+	    
+	    @Override
+	    public boolean onPrepareOptionsMenu(Menu menu) {
+	    	return super.onPrepareOptionsMenu(menu);
+	    }
 	//
 	//    @Override
 	//    public boolean onOptionsItemSelected(MenuItem item) {
-	//    	// TODO Auto-generated method stub
 	//    	return super.onOptionsItemSelected(item);
 	//    }
 
