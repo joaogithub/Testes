@@ -120,11 +120,15 @@ public class SecondActivity extends ActionBarActivity{
 	    public boolean onPrepareOptionsMenu(Menu menu) {
 	    	return super.onPrepareOptionsMenu(menu);
 	    }
-	//
-	//    @Override
-	//    public boolean onOptionsItemSelected(MenuItem item) {
-	//    	return super.onOptionsItemSelected(item);
-	//    }
+	
+	    @Override
+	    public boolean onOptionsItemSelected(MenuItem item) {
+	    	if(item.getItemId()== R.id.item_add){
+	    		Intent i = new Intent();
+	    		i.addCategory(Intent.CATEGORY_HOME);
+	    	}
+	    	return super.onOptionsItemSelected(item);
+	    }
 
 
 	/**
