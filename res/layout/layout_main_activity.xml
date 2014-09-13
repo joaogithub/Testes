@@ -48,10 +48,18 @@
             android:text="Dialog" />
 
         <Button
+            android:id="@+id/ttSpeechButton"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/add"
+            android:layout_centerHorizontal="true"
+            android:text="Text To Speech" />
+
+        <Button
             android:id="@+id/mainButtton"
             android:layout_width="190dp"
             android:layout_height="40dp"
-            android:layout_below="@+id/add"
+            android:layout_below="@+id/ttSpeechButton"
             android:layout_centerHorizontal="true"
             android:text="MainActivity" />
 
@@ -79,14 +87,14 @@
             android:layout_centerHorizontal="true"
             android:text="Sensor" />
 
-         <Button
+        <Button
             android:id="@+id/animationButton"
             android:layout_width="190dp"
             android:layout_height="40dp"
             android:layout_below="@+id/sensorButton"
             android:layout_centerHorizontal="true"
             android:text="Animation" />
-        
+
         <Button
             android:id="@+id/drawableButton"
             android:layout_width="190dp"

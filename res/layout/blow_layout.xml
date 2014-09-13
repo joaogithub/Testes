@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/btncontinuebook"
+        android:layout_width="230dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/btnQuickChat"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Continue with booking" />
+
+    <TextView
+        android:id="@+id/tactivityname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/btnQuickChat"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="106dp"
+        android:text="Match With"
+        android:textColor="#f2f2f2"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:typeface="serif" />
+
+    <TextView
+        android:id="@+id/tvmname1"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignTop="@+id/tactivityname"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
+        android:gravity="center"
+        android:padding="3dp"
+        android:textColor="#ADD8E6"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:typeface="serif" >
+
+    </TextView>
+
+    <Button
+        android:id="@+id/btnQuickChat"
+        android:layout_width="230dp"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@+id/btncontinuebook"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="210dp"
+        android:text="Quick Chat"
+        android:textColor="#000000" />
+
+</RelativeLayout>

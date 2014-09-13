@@ -9,9 +9,13 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Random;
+import java.util.Set;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -85,7 +89,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 	TextView text1;
 	EditText linkEditText, e2;
 	Button dialogButton, sub, circleTestButton, imageButton,intentsButton, connectbutton,animationActivityButton, mainActivityButton, secondButton, scrollViewButton, tableLayoutButton,tabHostButton, listViewButton, createTemFiles,webViewButton,viewPagerButton, spinnerButton;
-	Button fullImage, fragmentsButton,sensorButton,toggleButtonActivity, drawableButton,canvasButton,pickerButton,seekBarButton,editTextButton;
+	Button drawerButton, fragmentsButton,sensorButton,toggleButtonActivity, drawableButton,ttSpeechButton,canvasButton,pickerButton,seekBarButton,editTextButton;
 	Context c=this;
 	ScrollView scrollViewLayout;
 	RelativeLayout drawerRelativeLayout;
@@ -117,11 +121,12 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		seekBarButton = (Button) findViewById(R.id.seekBarButton);
 		animationActivityButton = (Button) findViewById(R.id.animationButton);
 		pickerButton = (Button) findViewById(R.id.pickersButton);
+		ttSpeechButton= (Button) findViewById(R.id.ttSpeechButton);
 		mainActivityButton = (Button) findViewById(R.id.mainButtton);
 		imageView = (ImageView)findViewById(R.id.imageViewFirst);
 		scrollViewLayout = (ScrollView) findViewById(R.id.scrollViewLayout);
 		fragmentsButton = (Button) findViewById(R.id.fragmentsInfoButton);
-		fullImage = (Button) findViewById(R.id.fullImage);
+		drawerButton = (Button) findViewById(R.id.fullImage);
 		intentsButton = (Button) findViewById(R.id.intentsButton);
 		circleTestButton =  (Button) findViewById(R.id.testViewButton);
 		drawerRelativeLayout = (RelativeLayout) findViewById(R.id.drawer_layout);
@@ -170,9 +175,9 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		String encodedQuery = Uri.encode(query);
 		String uriString = uriBegin + "?q=" + encodedQuery + "&z=16";
 		Uri uri = Uri.parse(uriString);
-		Intent intent = new Intent(android.content.Intent.ACTION_VIEW, uri);
+		Intent viewIntent = new Intent(android.content.Intent.ACTION_VIEW, uri);
 
-		intent.putExtra("DeviceId", "DeviceId");
+		viewIntent.putExtra("DeviceId", "DeviceId");
 
 		//	    startActivity(intent);
 
@@ -356,7 +361,31 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			}
 		});
 
-
+		Random i = new Random();
+		i.nextInt();
+		
+		ttSpeechButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				startActivity(new Intent(FirstActivity.this, AgendaDetail.class));
+			}
+		});
+		
+		
+//		  String CURRENT_LOCATION = "37.967775, 23.720689";
+//	        String DESTINATION_LOCATION = "37.925942, 23.938683";
+//
+//	        Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+//	        Uri.parse("http://maps.google.com/maps?saddr="+ CURRENT_LOCATION +"&daddr="+CURRENT_LOCATION)); //Added ampersand
+//	        startActivity(intent); 
+		
+//	        String DESTINATION_LOCATION = "37.925942,  23.938683";
+//	        Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+//	        Uri.parse("http://maps.google.com/maps?q="+DESTINATION_LOCATION));
+//	        startActivity(intent); 
+	        
+		HashMap<Integer, Random> randomsHashMap = new HashMap<Integer, Random>();
 
 		listViewButton.setOnClickListener(new OnClickListener() {
 
@@ -578,12 +607,12 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		});
 
 
-		fullImage.setOnClickListener(new OnClickListener() {
+		drawerButton.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 
-				startActivity(new Intent(FirstActivity.this, FullImageActivity.class));
+				startActivity(new Intent(FirstActivity.this, DrawerLayoutActivity.class));
 
 			}
 		});

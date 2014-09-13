@@ -64,6 +64,7 @@ public class SecondActivity extends ActionBarActivity{
 		}
 		ActionBar actionBar = getSupportActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
+		actionBar.setHomeButtonEnabled(true);
 		//	            actionBar.hide();
 
 		person.name= "John";
@@ -73,10 +74,10 @@ public class SecondActivity extends ActionBarActivity{
 		MediaPlayer mediaPlayer = MediaPlayer.create(SecondActivity.this, R.raw.music1);
 
 		try {
-//			mediaPlayer.setDataSource(path); 
-//			mediaPlayer.prepare(); 
-//			mediaPlayer.setLooping(true); 
-//			mediaPlayer.setVolume(100, 100);
+			//			mediaPlayer.setDataSource(path); 
+			//			mediaPlayer.prepare(); 
+			//			mediaPlayer.setLooping(true); 
+			//			mediaPlayer.setVolume(100, 100);
 			mediaPlayer.start(); 
 		}
 		catch (Exception e) {
@@ -87,11 +88,9 @@ public class SecondActivity extends ActionBarActivity{
 		//		Button buttonFade = (Button) findViewById(R.id.operateButton);
 		ImageView image = (ImageView) findViewById(R.id.helloWorldImage);
 		((GradientDrawable) image.getDrawable()).setColor(Color.RED);
-		//        final Animation animationFadeIn = AnimationUtils.loadAnimation(this,
-		//                android.R.anim.fade_in);
-		//        final Animation animationFadeOut = AnimationUtils.loadAnimation(this,
-		//                android.R.anim.fade_out);
-		//        
+		        final Animation animationFadeIn = AnimationUtils.loadAnimation(this, android.R.anim.fade_in);
+		        final Animation animationFadeOut = AnimationUtils.loadAnimation(this,android.R.anim.fade_out);
+		      
 		//        buttonFade.setOnClickListener(new Button.OnClickListener() {
 		//            int i = 0;
 		//            @Override
@@ -106,29 +105,67 @@ public class SecondActivity extends ActionBarActivity{
 		//                }
 		//            }
 		//        });
+		
+		        
 	}
-	//
-	    @Override
-	    public boolean onCreateOptionsMenu(Menu menu){
-	        MenuInflater inflater = getMenuInflater();
-//	        inflater.inflate(R.menu.block, menu);
-	        inflater.inflate(R.menu.main_activity_actions, menu);
-	        return super.onCreateOptionsMenu(menu);
-	    }
-	    
-	    @Override
-	    public boolean onPrepareOptionsMenu(Menu menu) {
-	    	return super.onPrepareOptionsMenu(menu);
-	    }
+
+	View.OnClickListener myhandler1 = new View.OnClickListener() {
+		public void onClick(View v) {
+			SecondActivity.this.onBackPressed();
+		}
+	};
+
+
+//    
+//    public void mostrarDetalle(){
+//        int n=MainActivity.lista.size();
+//
+//        for(int i=0;i<n;i++ ){
+//
+//            if(MainActivity.lista.get(i).getTitulo().toString().equals(str)){
+//
+//                titulo=MainActivity.lista.get(i).getTitulo().toString();
+//                hra=MainActivity.lista.get(i).getHora().toString();
+//                lugar=MainActivity.lista.get(i).getLugar().toString();
+//                detalles=MainActivity.lista.get(i).getDescripcion().toString();             
+//            }           
+//        }
+//
+//        TextView txtTitulo = (TextView)findViewById(R.id.titulo_lbl);
+//        txtTitulo.setText(titulo);
+//
+//        TextView txtHora = (TextView)findViewById(R.id.hora_lbl);
+//        txtHora.setText(hra);
+//
+//        TextView txtLugar = (TextView)findViewById(R.id.lugar_lbl);
+//        txtLugar.setText(lugar);
+//
+//        TextView txtCambiado = (TextView)findViewById(R.id.detalles_lbl);
+//        txtCambiado.setText(detalles);
+//
+//    }
 	
-	    @Override
-	    public boolean onOptionsItemSelected(MenuItem item) {
-	    	if(item.getItemId()== R.id.item_add){
-	    		Intent i = new Intent();
-	    		i.addCategory(Intent.CATEGORY_HOME);
-	    	}
-	    	return super.onOptionsItemSelected(item);
-	    }
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu){
+		MenuInflater inflater = getMenuInflater();
+		//	        inflater.inflate(R.menu.block, menu);
+		inflater.inflate(R.menu.main_activity_actions, menu);
+		return super.onCreateOptionsMenu(menu);
+	}
+
+	@Override
+	public boolean onPrepareOptionsMenu(Menu menu) {
+		return super.onPrepareOptionsMenu(menu);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		if(item.getItemId()== R.id.item_add){
+			Intent i = new Intent();
+			i.addCategory(Intent.CATEGORY_HOME);
+		}
+		return super.onOptionsItemSelected(item);
+	}
 
 
 	/**
@@ -165,12 +202,12 @@ public class SecondActivity extends ActionBarActivity{
 
 			return rootView;
 		}
-		
+
 		@Override
 		public void onActivityCreated(Bundle savedInstanceState) {
 			super.onActivityCreated(savedInstanceState);
 		}
-		
+
 	}
 
 	/**

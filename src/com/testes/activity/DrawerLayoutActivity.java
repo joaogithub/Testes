@@ -30,7 +30,7 @@ import com.testes.adapter.DrawerItemAdapter;
 import com.testes.android.R;
 import com.testes.interfaces.NavigationDrawerCallbacks;
 
-public class FullImageActivity extends ActionBarActivity implements NavigationDrawerCallbacks{
+public class DrawerLayoutActivity extends ActionBarActivity implements NavigationDrawerCallbacks{
 
 	private ImageView _imageView;
 	private ListView mDrawerListView;
@@ -222,7 +222,7 @@ public class FullImageActivity extends ActionBarActivity implements NavigationDr
 	{
 		try
 		{
-			mCallbacks = (NavigationDrawerCallbacks) FullImageActivity.this;
+			mCallbacks = (NavigationDrawerCallbacks) DrawerLayoutActivity.this;
 		}
 		catch (ClassCastException e)
 		{
@@ -300,7 +300,7 @@ public class FullImageActivity extends ActionBarActivity implements NavigationDr
 					// The user manually opened the drawer; store this flag to prevent auto-showing
 					// the navigation drawer automatically in the future.
 					mUserLearnedDrawer = true;
-					SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(FullImageActivity.this);
+					SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(DrawerLayoutActivity.this);
 					sp.edit().putBoolean(PREF_USER_LEARNED_DRAWER, true).commit();
 				}
 
@@ -330,14 +330,14 @@ public class FullImageActivity extends ActionBarActivity implements NavigationDr
 		switch (position)
 		{
 		case 0:
-			Intent wallIntent = new Intent(FullImageActivity.this, MainActivity.class);
+			Intent wallIntent = new Intent(DrawerLayoutActivity.this, MainActivity.class);
 			wallIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 			wallIntent.putExtra(SELECTED_POSITION, position);
 			startActivity(wallIntent);
 			overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out);
 			break;
 		case 1:
-			Intent accountIntent = new Intent(FullImageActivity.this, FirstActivity.class);
+			Intent accountIntent = new Intent(DrawerLayoutActivity.this, FirstActivity.class);
 			accountIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 			accountIntent.putExtra(SELECTED_POSITION, position);
 			startActivity(accountIntent);
@@ -345,7 +345,7 @@ public class FullImageActivity extends ActionBarActivity implements NavigationDr
 			break;
 			// feedback
 		case 2:
-			Intent feedbackIntent = new Intent(FullImageActivity.this, CheckListActivity.class);
+			Intent feedbackIntent = new Intent(DrawerLayoutActivity.this, CheckListActivity.class);
 			feedbackIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 			feedbackIntent.putExtra(SELECTED_POSITION, position);
 			startActivity(feedbackIntent);
@@ -354,7 +354,7 @@ public class FullImageActivity extends ActionBarActivity implements NavigationDr
 
 		case 3:
 			// about
-			Intent aboutIntent = new Intent(FullImageActivity.this, GridViewActivity.class);
+			Intent aboutIntent = new Intent(DrawerLayoutActivity.this, GridViewActivity.class);
 			aboutIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 			aboutIntent.putExtra(SELECTED_POSITION, position);
 			startActivity(aboutIntent);
@@ -362,7 +362,7 @@ public class FullImageActivity extends ActionBarActivity implements NavigationDr
 			break;
 			// FAQ
 		case 4:
-			Intent faqIntent = new Intent(FullImageActivity.this, ThirdActivity.class);
+			Intent faqIntent = new Intent(DrawerLayoutActivity.this, ThirdActivity.class);
 			faqIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 			faqIntent.putExtra(SELECTED_POSITION, position);
 			startActivity(faqIntent);

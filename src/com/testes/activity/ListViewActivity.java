@@ -43,6 +43,8 @@ public class ListViewActivity extends Activity {
 		_listView = (ListView) findViewById(R.id.bookListView);
 		//		adapter = new NormalAdapter(this, titles);
 		//		adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,titles);
+		
+		
 		adapter = new MyAdapter();
 		_listView.setAdapter(adapter);
 

@@ -14,7 +14,7 @@
     </style>
 
     <!-- Home theme. -->
-    <style name="HomeTheme" parent="@android:style/Theme.Holo">
+    <style name="HomeTheme" parent="@style/Theme.AppCompat">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 

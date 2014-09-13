@@ -61,6 +61,8 @@
         </activity>
         <activity android:name="com.testes.activity.EditTextActivity" >
         </activity>
+        <activity android:name="com.testes.activity.AgendaDetail" >
+        </activity>
         <activity android:name="com.testes.activity.ImageActivity" >
         </activity>
         <activity android:name="com.testes.activity.ToggleButtonActivity" >
@@ -88,7 +90,7 @@
         <activity android:name="com.testes.activity.DrawableActivity" >
         </activity>
         <activity
-            android:name="com.testes.activity.FullImageActivity"
+            android:name="com.testes.activity.DrawerLayoutActivity"
             android:theme="@style/AppTheme" >
         </activity>
         <activity android:name="com.testes.activity.ListViewActivity" >
