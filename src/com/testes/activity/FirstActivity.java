@@ -1178,7 +1178,6 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 
 	@Override
 	public boolean onPrepareActionMode(ActionMode arg0, Menu arg1) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
