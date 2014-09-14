@@ -28,7 +28,7 @@ public class TabsActivity extends TabActivity
 		tabSpec1.setIndicator("Home");
 		tabSpec2.setIndicator("Second");
 		Intent photosIntent = new Intent(this, GridViewActivity.class);
-		Intent secondactivIntent = new Intent(this, ThirdActivity.class);
+		Intent secondactivIntent = new Intent(this, SecondActivity.class);
 		tabSpec1.setContent(photosIntent);
 		tabSpec2.setContent(secondactivIntent);
 

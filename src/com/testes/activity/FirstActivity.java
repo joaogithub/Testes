@@ -1,30 +1,18 @@
 package com.testes.activity;
 
-import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
-import java.util.Set;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.util.ByteArrayBuffer;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -34,14 +22,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences.Editor;
 import android.content.res.Configuration;
-import android.content.res.Resources.Theme;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
-import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Path;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.hardware.usb.UsbDevice;
@@ -65,10 +49,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -77,9 +61,6 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.JsonParser;
-import com.koushikdutta.async.future.FutureCallback;
-import com.koushikdutta.ion.Ion;
 import com.testes.android.R;
 import com.testes.database.DBHelper;
 import com.testes.interfaces.NavigationDrawerCallbacks;
@@ -372,18 +353,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			}
 		});
 		
-		
-//		  String CURRENT_LOCATION = "37.967775, 23.720689";
-//	        String DESTINATION_LOCATION = "37.925942, 23.938683";
-//
-//	        Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
-//	        Uri.parse("http://maps.google.com/maps?saddr="+ CURRENT_LOCATION +"&daddr="+CURRENT_LOCATION)); //Added ampersand
-//	        startActivity(intent); 
-		
-//	        String DESTINATION_LOCATION = "37.925942,  23.938683";
-//	        Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
-//	        Uri.parse("http://maps.google.com/maps?q="+DESTINATION_LOCATION));
-//	        startActivity(intent); 
+
 	        
 		HashMap<Integer, Random> randomsHashMap = new HashMap<Integer, Random>();
 
@@ -401,7 +371,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 
 			@Override
 			public void onClick(View v) {
-				startActivity(new Intent(FirstActivity.this, SecondActivity.class));
+				startActivity(new Intent(FirstActivity.this, FragmentsActivity.class));
 
 			}
 		});
@@ -764,7 +734,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			@Override
 			public void onClick(View v) {
 				//				startActivity(new Intent(First.this, FullImageActivity.class));
-				Intent secondIntent = new Intent(FirstActivity.this, ThirdActivity.class);
+				Intent secondIntent = new Intent(FirstActivity.this, SecondActivity.class);
 				HashMap<String, String> hashMap = new HashMap<String, String>();
 
 				hashMap.put("A","1");

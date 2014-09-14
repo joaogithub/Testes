@@ -362,7 +362,7 @@ public class DrawerLayoutActivity extends ActionBarActivity implements Navigatio
 			break;
 			// FAQ
 		case 4:
-			Intent faqIntent = new Intent(DrawerLayoutActivity.this, ThirdActivity.class);
+			Intent faqIntent = new Intent(DrawerLayoutActivity.this, SecondActivity.class);
 			faqIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 			faqIntent.putExtra(SELECTED_POSITION, position);
 			startActivity(faqIntent);

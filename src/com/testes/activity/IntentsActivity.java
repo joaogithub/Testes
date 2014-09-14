@@ -105,6 +105,26 @@ public class IntentsActivity extends ActionBarActivity {
 				intent.putExtra("mimeType", "image/*");
 				startActivity(Intent.createChooser(intent, "View:"));
 
+				//GPS coordinates
+				
+//				  String CURRENT_LOCATION = "37.967775, 23.720689";
+//			        String DESTINATION_LOCATION = "37.925942, 23.938683";
+		//
+//			        Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+//			        Uri.parse("http://maps.google.com/maps?saddr="+ CURRENT_LOCATION +"&daddr="+CURRENT_LOCATION)); //Added ampersand
+//			        startActivity(intent); 
+				
+//			        String DESTINATION_LOCATION = "37.925942,  23.938683";
+		        String DESTINATION_LOCATION = "My location name";
+		        String latit = "37.925942";
+		        String longit = "23.938683";
+			    Intent mapIntent = new Intent(android.content.Intent.ACTION_VIEW,
+			    Uri.parse("geo:<"+latit+">,<"+longit+">?q=<"+latit+">,<"+longit+">("+DESTINATION_LOCATION+")")); //name the label
+			    startActivity(intent);
+			    //GPS location
+//		        Uri.parse("http://maps.google.com/maps?q="+DESTINATION_LOCATION));
+			        startActivity(intent); 
+				
 			}
 		});
 
