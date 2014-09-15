@@ -94,7 +94,7 @@ public class SecondActivity extends ActionBarActivity {
 	@SuppressLint("NewApi")
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.layout_drawer_activity);
+		setContentView(R.layout.layout_sec_activity);
 
 		if(getIntent().getExtras()!=null){
 			coinsValue  = getIntent().getIntExtra("coins", 0);

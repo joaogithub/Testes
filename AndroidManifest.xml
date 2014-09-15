@@ -101,6 +101,8 @@
         </activity>
         <activity android:name="com.testes.activity.SecondActivity" >
         </activity>
+        <activity android:name="com.testes.activity.DrawerActivity" >
+        </activity>
         <activity android:name="com.testes.activity.SpinnerActivity" >
         </activity>
         <activity android:name="com.testes.activity.ScrollViewActivity" >

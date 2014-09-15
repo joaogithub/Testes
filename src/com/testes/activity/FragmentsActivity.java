@@ -75,19 +75,19 @@ public class FragmentsActivity extends ActionBarActivity{
 			//			mediaPlayer.prepare(); 
 			//			mediaPlayer.setLooping(true); 
 			//			mediaPlayer.setVolume(100, 100);
-			mediaPlayer.start(); 
+			//			mediaPlayer.start(); 
 		}
 		catch (Exception e) {
 			e.printStackTrace(); 
-			Log.d("NOT WORKING","NOT WORKING"); 
+			Log.d("FragmentsActivity","playre NOT WORKING"); 
 		}
 
 		//		Button buttonFade = (Button) findViewById(R.id.operateButton);
 		ImageView image = (ImageView) findViewById(R.id.helloWorldImage);
 		((GradientDrawable) image.getDrawable()).setColor(Color.RED);
-		        final Animation animationFadeIn = AnimationUtils.loadAnimation(this, android.R.anim.fade_in);
-		        final Animation animationFadeOut = AnimationUtils.loadAnimation(this,android.R.anim.fade_out);
-		      
+		final Animation animationFadeIn = AnimationUtils.loadAnimation(this, android.R.anim.fade_in);
+		final Animation animationFadeOut = AnimationUtils.loadAnimation(this,android.R.anim.fade_out);
+
 		//        buttonFade.setOnClickListener(new Button.OnClickListener() {
 		//            int i = 0;
 		//            @Override
@@ -102,8 +102,8 @@ public class FragmentsActivity extends ActionBarActivity{
 		//                }
 		//            }
 		//        });
-		
-		        
+
+
 	}
 
 	View.OnClickListener myhandler1 = new View.OnClickListener() {
@@ -113,35 +113,35 @@ public class FragmentsActivity extends ActionBarActivity{
 	};
 
 
-//    
-//    public void mostrarDetalle(){
-//        int n=MainActivity.lista.size();
-//
-//        for(int i=0;i<n;i++ ){
-//
-//            if(MainActivity.lista.get(i).getTitulo().toString().equals(str)){
-//
-//                titulo=MainActivity.lista.get(i).getTitulo().toString();
-//                hra=MainActivity.lista.get(i).getHora().toString();
-//                lugar=MainActivity.lista.get(i).getLugar().toString();
-//                detalles=MainActivity.lista.get(i).getDescripcion().toString();             
-//            }           
-//        }
-//
-//        TextView txtTitulo = (TextView)findViewById(R.id.titulo_lbl);
-//        txtTitulo.setText(titulo);
-//
-//        TextView txtHora = (TextView)findViewById(R.id.hora_lbl);
-//        txtHora.setText(hra);
-//
-//        TextView txtLugar = (TextView)findViewById(R.id.lugar_lbl);
-//        txtLugar.setText(lugar);
-//
-//        TextView txtCambiado = (TextView)findViewById(R.id.detalles_lbl);
-//        txtCambiado.setText(detalles);
-//
-//    }
-	
+	//    
+	//    public void mostrarDetalle(){
+	//        int n=MainActivity.lista.size();
+	//
+	//        for(int i=0;i<n;i++ ){
+	//
+	//            if(MainActivity.lista.get(i).getTitulo().toString().equals(str)){
+	//
+	//                titulo=MainActivity.lista.get(i).getTitulo().toString();
+	//                hra=MainActivity.lista.get(i).getHora().toString();
+	//                lugar=MainActivity.lista.get(i).getLugar().toString();
+	//                detalles=MainActivity.lista.get(i).getDescripcion().toString();             
+	//            }           
+	//        }
+	//
+	//        TextView txtTitulo = (TextView)findViewById(R.id.titulo_lbl);
+	//        txtTitulo.setText(titulo);
+	//
+	//        TextView txtHora = (TextView)findViewById(R.id.hora_lbl);
+	//        txtHora.setText(hra);
+	//
+	//        TextView txtLugar = (TextView)findViewById(R.id.lugar_lbl);
+	//        txtLugar.setText(lugar);
+	//
+	//        TextView txtCambiado = (TextView)findViewById(R.id.detalles_lbl);
+	//        txtCambiado.setText(detalles);
+	//
+	//    }
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu){
 		MenuInflater inflater = getMenuInflater();
@@ -222,6 +222,8 @@ public class FragmentsActivity extends ActionBarActivity{
 				Bundle savedInstanceState) {
 			View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 			myView = (TextView) rootView.findViewById(R.id.textView1);
+
+			((ActionBarActivity)getActivity()).getSupportActionBar().setIcon(R.drawable.icn_seta_preto);
 
 			FragmentsActivity activity = (FragmentsActivity) getActivity();
 			fragPerson = activity.getPerson();

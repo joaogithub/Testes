@@ -28,6 +28,7 @@ import android.graphics.BitmapFactory.Options;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.StateListDrawable;
 import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbManager;
 import android.media.MediaRecorder;
@@ -70,7 +71,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 	TextView text1;
 	EditText linkEditText, e2;
 	Button dialogButton, sub, circleTestButton, imageButton,intentsButton, connectbutton,animationActivityButton, mainActivityButton, secondButton, scrollViewButton, tableLayoutButton,tabHostButton, listViewButton, createTemFiles,webViewButton,viewPagerButton, spinnerButton;
-	Button drawerButton, fragmentsButton,sensorButton,toggleButtonActivity, drawableButton,ttSpeechButton,canvasButton,pickerButton,seekBarButton,editTextButton;
+	Button drawerButton,drawerLayoutButton, fragmentsButton,sensorButton,toggleButtonActivity, drawableButton,ttSpeechButton,canvasButton,pickerButton,seekBarButton,editTextButton;
 	Context c=this;
 	ScrollView scrollViewLayout;
 	RelativeLayout drawerRelativeLayout;
@@ -103,6 +104,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		animationActivityButton = (Button) findViewById(R.id.animationButton);
 		pickerButton = (Button) findViewById(R.id.pickersButton);
 		ttSpeechButton= (Button) findViewById(R.id.ttSpeechButton);
+		drawerLayoutButton = (Button) findViewById(R.id.drawerLayoutButton);
 		mainActivityButton = (Button) findViewById(R.id.mainButtton);
 		imageView = (ImageView)findViewById(R.id.imageViewFirst);
 		scrollViewLayout = (ScrollView) findViewById(R.id.scrollViewLayout);
@@ -143,6 +145,8 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		//			e.printStackTrace();
 		//		}
 
+		
+		
 		View root = ((ViewGroup) findViewById(android.R.id.content)).getChildAt(0);
 
 		int color = Color.TRANSPARENT;
@@ -296,6 +300,15 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			}
 		});
 
+		drawerLayoutButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				startActivity(new Intent(FirstActivity.this, DrawerActivity.class));
+				
+			}
+		});
+		
 		canvasButton.setOnClickListener(new OnClickListener() {
 
 			@Override

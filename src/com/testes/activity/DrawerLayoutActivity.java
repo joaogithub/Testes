@@ -66,6 +66,7 @@ public class DrawerLayoutActivity extends ActionBarActivity implements Navigatio
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.layout_drawerimage_activity);
+//		setContentView(R.layout.layout_second_activity);
 
 		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
 		mUserLearnedDrawer = sp.getBoolean(PREF_USER_LEARNED_DRAWER, false);
@@ -96,7 +97,7 @@ public class DrawerLayoutActivity extends ActionBarActivity implements Navigatio
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				selectItem(position);
-				
+
 			}
 		});
 
@@ -177,21 +178,18 @@ public class DrawerLayoutActivity extends ActionBarActivity implements Navigatio
 	}
 
 	public void setaswall(View view) { // SET AS WALLPAPER BUTTON
-		WallpaperManager myWallpaperManager
-		= WallpaperManager.getInstance(getApplicationContext());
+		WallpaperManager myWallpaperManager	= WallpaperManager.getInstance(getApplicationContext());
 		try {
 			Bitmap bitmap=((BitmapDrawable)_imageView.getDrawable()).getBitmap();
 			if(bitmap!=null)
 				myWallpaperManager.setBitmap(bitmap);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
 	public void setaaswall(View view) { // SET AS WALLPAPER BUTTON
-		WallpaperManager myWallpaperManager 
-		= WallpaperManager.getInstance(getApplicationContext());
+		WallpaperManager myWallpaperManager = WallpaperManager.getInstance(getApplicationContext());
 	};
 
 	/**
