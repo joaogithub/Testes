@@ -6,7 +6,7 @@
         android:id="@+id/tile1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/hexagon"
+        android:src="@drawable/ic_hexagon"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
         android:layout_marginLeft="0dp"

@@ -13,8 +13,7 @@
             android:id="@+id/loading_layout"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:visibility="visible"
-            android:background="@drawable/border" >
+            android:visibility="gone" >
 
             <ProgressBar
                 android:id="@+id/progressBar"
@@ -22,6 +21,14 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true" />
         </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/linLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:visibility="visible" >
+        </LinearLayout>
     </FrameLayout>
 
     <RelativeLayout
@@ -35,19 +42,19 @@
             android:id="@+id/support_project"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:clickable="true"
             android:layout_alignParentBottom="true"
-            android:background="@drawable/support_project_selector" >
+            android:background="@drawable/support_project_selector"
+            android:clickable="true" >
 
             <ImageView
                 android:id="@+id/navigation_icon"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:duplicateParentState="true"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
+                android:duplicateParentState="true"
                 android:src="@drawable/ic_support" />
 
             <TextView
@@ -55,8 +62,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:duplicateParentState="true"
                 android:layout_toRightOf="@+id/navigation_icon"
+                android:duplicateParentState="true"
                 android:gravity="center_vertical"
                 android:text="navigation_support_project"
                 android:textColor="@color/white"
