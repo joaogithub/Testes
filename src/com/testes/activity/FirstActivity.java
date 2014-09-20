@@ -171,7 +171,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		Bitmap backBitmap = BitmapFactory.decodeResource(getResources(),  R.drawable.image_load_success1);
 		Options options = new Options();
 		options.inSampleSize = 2;
-		Bitmap failBitmap = BitmapFactory.decodeResource(getResources(),  R.drawable.image_load_failed,options);
+//		Bitmap failBitmap = BitmapFactory.decodeResource(getResources(),  R.drawable.image_load_failed,options);
 
 		Button button = new Button(c);
 		button.setId(2000);
