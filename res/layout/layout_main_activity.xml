@@ -114,17 +114,25 @@
 
         <Button
             android:id="@+id/intentsButton"
-            android:layout_width="190dp"
+            android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_below="@+id/drawableButton"
             android:layout_centerHorizontal="true"
             android:text="Intents" />
 
+        <Button
+            android:id="@+id/alarmManagerButton"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_below="@+id/intentsButton"
+            android:layout_centerHorizontal="true"
+            android:text="Alarm Manager" />
+        
         <ImageView
             android:id="@+id/imageViewFirst"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/intentsButton"
+            android:layout_below="@+id/alarmManagerButton"
             android:layout_centerHorizontal="true"
             android:src="@color/green" />
 

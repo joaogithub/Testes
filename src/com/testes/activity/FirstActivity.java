@@ -70,7 +70,8 @@ import com.testes.receiver.WifiScanReceiver;
 public class FirstActivity extends FragmentActivity implements ActionMode.Callback, NavigationDrawerCallbacks {
 	TextView text1;
 	EditText linkEditText, e2;
-	Button dialogButton, sub, circleTestButton, imageButton,intentsButton, connectbutton,animationActivityButton, mainActivityButton, secondButton, scrollViewButton, tableLayoutButton,tabHostButton, listViewButton, createTemFiles,webViewButton,viewPagerButton, spinnerButton;
+	Button dialogButton, sub, circleTestButton, imageButton,intentsButton, connectbutton,animationActivityButton, mainActivityButton, secondButton, scrollViewButton, tableLayoutButton,tabHostButton;
+	Button listViewButton, createTemFiles,webViewButton,viewPagerButton, spinnerButton,alarmsButton;
 	Button drawerButton,drawerLayoutButton, fragmentsButton,sensorButton,toggleButtonActivity, drawableButton,ttSpeechButton,canvasButton,pickerButton,seekBarButton,editTextButton;
 	Context c=this;
 	ScrollView scrollViewLayout;
@@ -103,6 +104,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		seekBarButton = (Button) findViewById(R.id.seekBarButton);
 		animationActivityButton = (Button) findViewById(R.id.animationButton);
 		pickerButton = (Button) findViewById(R.id.pickersButton);
+		alarmsButton = (Button) findViewById(R.id.alarmManagerButton);
 		ttSpeechButton= (Button) findViewById(R.id.ttSpeechButton);
 		drawerLayoutButton = (Button) findViewById(R.id.drawerLayoutButton);
 		mainActivityButton = (Button) findViewById(R.id.mainButtton);
@@ -273,6 +275,15 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			}
 		});
 
+		alarmsButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				startActivity(new Intent(FirstActivity.this, AlarmsActivity.class));
+				
+			}
+		});
+		
 		spinnerButton.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -562,7 +573,6 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 
 			}
 		});
-
 
 		text1.setText("TEXT" + getString(R.string.code));
 
