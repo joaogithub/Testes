@@ -84,30 +84,15 @@ public class MainActivity extends ListActivity {
 		strScreenDIP += "The exact physical pixels per inch of the screen in the Y dimension: " + dMetrics.ydpi + "\n";
 		System.out.println(strScreenDIP);
 
-		
 		getListView().setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position,
 					long id) {
-				// TODO Auto-generated method stub
 
 			}
 		});
 	}
-
-	/**
-	 * Creates a Document from a string
-	 * @param xml The string from wich a new Document is going to be created
-	 * @return the new Document
-	 * @throws Exception 
-	 */
-	public static Document loadXMLFromString(String xml) throws Exception{
-		DocumentBuilder builder = factory.newDocumentBuilder();
-		InputSource is = new InputSource(new StringReader(xml));
-		return builder.parse(is);
-	}
-
 
 	//private void highlightMenuItemImage(double menuItemId) {
 	//	for(WebImageView image : _menuItemImages) {
@@ -133,15 +118,6 @@ public class MainActivity extends ListActivity {
 
 	}
 
-	/**
-	 * checks if network is available
-	 * @return boolean indicating if there is network or not
-	 */
-	public boolean isNetworkAvailable() {
-		ConnectivityManager connectivityManager  = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-		NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-		return activeNetworkInfo != null;
-	}
 
 	private static String getSizeName(Context context) {
 		int screenLayout = context.getResources().getConfiguration().screenLayout;
