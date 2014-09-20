@@ -563,12 +563,6 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			}
 		});
 
-		//ringtone intent
-		//		Intent intent = new Intent(RingtoneManager.ACTION_RINGTONE_PICKER);
-		//		intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_ALL);
-		//        intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TITLE, "Select Tone");
-		//        intent.putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, RingtoneManager.getActualDefaultRingtoneUri(getApplicationContext(), RingtoneManager.TYPE_ALARM));
-		//		startActivity(intent);
 
 		text1.setText("TEXT" + getString(R.string.code));
 

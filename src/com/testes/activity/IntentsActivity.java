@@ -11,6 +11,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.media.ExifInterface;
+import android.media.RingtoneManager;
 import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.Build;
@@ -34,7 +35,7 @@ public class IntentsActivity extends ActionBarActivity {
 
 	String buttonText= "";
 	ImageView startImage;
-	Button send, search, capture, setasButton, viewButton, pickButton, callButton, getContentButton;
+	Button send, search, capture, setasButton, viewButton, pickButton, callButton, getContentButton, ringToneButton;
 	LinearLayout viewToInject;
 	String imageUri;
 
@@ -52,6 +53,7 @@ public class IntentsActivity extends ActionBarActivity {
 		capture = (Button) findViewById(R.id.captureIntentButton);
 		pickButton = (Button) findViewById(R.id.pickIntentButton);
 		setasButton = (Button) findViewById(R.id.setAsButton);
+		ringToneButton = (Button) findViewById(R.id.getRingTonesButton);
 		callButton = (Button) findViewById(R.id.callButton);
 		getContentButton = (Button) findViewById(R.id.getContnetIntentButton);
 		viewButton = (Button) findViewById(R.id.viewButton);
@@ -66,6 +68,20 @@ public class IntentsActivity extends ActionBarActivity {
 			}
 		});
 
+		ringToneButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+
+				//ringtone intent
+				Intent intent = new Intent(RingtoneManager.ACTION_RINGTONE_PICKER);
+				intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_ALL);
+				intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TITLE, "Select Tone");
+				intent.putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, RingtoneManager.getActualDefaultRingtoneUri(getApplicationContext(), RingtoneManager.TYPE_ALARM));
+				startActivity(intent);
+			}
+		});
+		
 		callButton.setOnClickListener(new OnClickListener() {
 			
 			@Override

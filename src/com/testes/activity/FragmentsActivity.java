@@ -67,15 +67,15 @@ public class FragmentsActivity extends ActionBarActivity{
 		person.name= "John";
 
 		checkbox = (CheckBox) findViewById(R.id.checkbox_meat);
-		String path = "android.resource://" + getPackageName() + "/" + R.raw.music1; //set up MediaPlayer
-		MediaPlayer mediaPlayer = MediaPlayer.create(FragmentsActivity.this, R.raw.music1);
+		String path = "android.resource://" + getPackageName() + "/" + R.raw.f1; //set up MediaPlayer
+		MediaPlayer mediaPlayer = MediaPlayer.create(FragmentsActivity.this, R.raw.f1);
 
 		try {
 			//			mediaPlayer.setDataSource(path); 
 			//			mediaPlayer.prepare(); 
 			//			mediaPlayer.setLooping(true); 
 			//			mediaPlayer.setVolume(100, 100);
-			//			mediaPlayer.start(); 
+						mediaPlayer.start(); 
 		}
 		catch (Exception e) {
 			e.printStackTrace(); 
