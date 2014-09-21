@@ -115,7 +115,6 @@ public class MainActivity extends ListActivity {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
 
 

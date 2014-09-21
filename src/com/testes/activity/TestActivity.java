@@ -33,10 +33,11 @@ import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.testes.android.R;
 
 public class TestActivity extends Activity{
-
 
 	private int select1;
 	private TextView col1, brewingTextView;
@@ -59,8 +60,8 @@ public class TestActivity extends Activity{
 			public void onClick(View v) {
 				 class SendSaveRequest extends AsyncTask<String, Void, String> {
 
-		                // private Gson gson = new GsonBuilder().create();
-		                // String data = gson.toJson(message);
+		                 private Gson gson = new GsonBuilder().create();
+//		                 String data = gson.toJson(message);
 
 		                private String sendMessage(String message, String address) {
 		                    String url = "http://192.168.87.108:8080/MSS/"

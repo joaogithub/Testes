@@ -31,6 +31,8 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
 import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbManager;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.net.Uri;
 import android.net.wifi.WifiManager;
@@ -173,6 +175,8 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		options.inSampleSize = 2;
 //		Bitmap failBitmap = BitmapFactory.decodeResource(getResources(),  R.drawable.image_load_failed,options);
 
+		
+		
 		Button button = new Button(c);
 		button.setId(2000);
 		final AlertDialog myDialog = new AlertDialog.Builder(FirstActivity.this)
@@ -219,7 +223,8 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		});
 
 		//	 change the titlebar color
-		//				getSupportActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.background_action_bar));
+//				getActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.background_action_bar));
+		getActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.border));
 		//		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		//		getSupportActionBar().setHomeButtonEnabled(true);
 		//		getSupportActionBar().setDisplayShowCustomEnabled(true);
@@ -796,7 +801,8 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			}
 		}
 
-		//		MediaPlayer p = new MediaPlayer();
+		MediaPlayer p = new MediaPlayer();
+		p.setAudioStreamType(AudioManager.STREAM_VOICE_CALL);
 		final MediaRecorder recorder = new MediaRecorder();
 		////		android.hardware.Camera mCamera = Camera.open();
 		////		mCamera.unlock();
