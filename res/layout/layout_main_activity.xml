@@ -22,6 +22,13 @@
             android:layout_alignParentTop="true"
             class="com.testes.android.MainFragment" />
 
+        <com.testes.customview.CircleView
+            android:id="@+id/circleView"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerInParent="true"
+            android:layout_above="@+id/add" />
+
         <EditText
             android:id="@+id/myEditText"
             android:layout_width="wrap_content"
@@ -49,7 +56,7 @@
 
         <Button
             android:id="@+id/ttSpeechButton"
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_below="@+id/add"
             android:layout_centerHorizontal="true"
@@ -86,15 +93,14 @@
             android:layout_below="@+id/seekBarButton"
             android:layout_centerHorizontal="true"
             android:text="Sensor" />
-        
-          <Button
+
+        <Button
             android:id="@+id/drawerLayoutButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/sensorButton"
             android:layout_centerHorizontal="true"
             android:text="Drawer Layout Test" />
-        
 
         <Button
             android:id="@+id/animationButton"
@@ -127,7 +133,7 @@
             android:layout_below="@+id/intentsButton"
             android:layout_centerHorizontal="true"
             android:text="Alarm Manager" />
-        
+
         <ImageView
             android:id="@+id/imageViewFirst"
             android:layout_width="wrap_content"

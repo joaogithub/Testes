@@ -133,8 +133,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		Log.i("FirstActivity", deviceList.toString());
 		UsbDevice device = deviceList.get("deviceName");
 		Toast.makeText(getApplicationContext(),"Attached device is : "+ device, Toast.LENGTH_LONG).show();
-
-		//		
+	
 		//		try {
 		//			URL url = new URL ("http://youcrypt.com/assets/images/osx.jpg");
 		//			URLConnection urlconnect = url.openConnection();
@@ -149,7 +148,6 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		//			e.printStackTrace();
 		//		}
 
-		
 		
 		View root = ((ViewGroup) findViewById(android.R.id.content)).getChildAt(0);
 
@@ -174,8 +172,6 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		Options options = new Options();
 		options.inSampleSize = 2;
 //		Bitmap failBitmap = BitmapFactory.decodeResource(getResources(),  R.drawable.image_load_failed,options);
-
-		
 		
 		Button button = new Button(c);
 		button.setId(2000);
@@ -949,8 +945,6 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			//
 
 
-
-
 			//			
 			//			Ion.with(FirstActivity.this).load("http://---------").setMultipartParameter("IUser_ID=", "126").setMultipartFile("", new File(strFilePath)).setMultipartParameter("User_ID=", "amody@gmail.com").setMultipartParameter("FileTitle", strFileTitle).setMultipartParameter("DT", strDocumentType).asString().setCallback(new FutureCallback<String>() {
 			//				@Override
@@ -1206,14 +1200,12 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 
 	@Override
 	protected void onStop() {
-		// TODO Auto-generated method stub
 		super.onStop();
 
 	}
 
 	@Override
 	public void onNavigationDrawerItemSelected(int position) {
-		// TODO Auto-generated method stub
 
 	}
 

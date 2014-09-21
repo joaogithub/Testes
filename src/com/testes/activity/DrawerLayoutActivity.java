@@ -1,6 +1,7 @@
 package com.testes.activity;
 
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -18,6 +19,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -66,18 +68,18 @@ public class DrawerLayoutActivity extends ActionBarActivity implements Navigatio
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.layout_drawerimage_activity);
-//		setContentView(R.layout.layout_second_activity);
+		//		setContentView(R.layout.layout_second_activity);
 
 		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
 		mUserLearnedDrawer = sp.getBoolean(PREF_USER_LEARNED_DRAWER, false);
 
-		//		// get intent data
-		//		Intent i = getIntent();
-		//
-		//		// Selected image id
-		//		//int position = i.getExtras().getInt("id");
-		//		//ArrayAdapter imageAdapter = new ArrayAdapter(this);
-		//
+		// get intent data
+		Intent i = getIntent();
+
+		// Selected image id
+		//	int position = i.getExtras().getInt("id");
+		//ArrayAdapter imageAdapter = new ArrayAdapter(this);
+
 		_imageView = (ImageView) findViewById(R.id.profileImage);
 
 		Bitmap bitmap = ((BitmapDrawable)_imageView.getDrawable()).getBitmap();
@@ -104,17 +106,14 @@ public class DrawerLayoutActivity extends ActionBarActivity implements Navigatio
 		//		//imageView.setImageResource(imageAdapter.mThumbIds[position]);
 		//		setaswall(new View(this));
 
-		//		Calendar testCalendar = Calendar.getInstance();
-		//
-		//		testCalendar.setFirstDayOfWeek(Calendar.SUNDAY);
-		//
-		//		Log.e("WEEEK TEST:", ""+ testCalendar.get(Calendar.WEEK_OF_YEAR) + " "+ testCalendar.getFirstDayOfWeek());
-		//
-		//		testCalendar.add(Calendar.WEEK_OF_YEAR, 1);
-		//
-		//		Log.e("WEEEK TEST:", ""+ testCalendar.get(Calendar.WEEK_OF_YEAR));
+		Calendar testCalendar = Calendar.getInstance();
+		testCalendar.setFirstDayOfWeek(Calendar.SUNDAY);
+		Log.e("WEEEK TEST:", ""+ testCalendar.get(Calendar.WEEK_OF_YEAR) + " "+ testCalendar.getFirstDayOfWeek());
+		testCalendar.add(Calendar.WEEK_OF_YEAR, 1);
+		Log.e("WEEEK TEST:", ""+ testCalendar.get(Calendar.WEEK_OF_YEAR));
+
 		Point p = new Point(5,5);
-		//		floodFill(bitmap, p, bitmap.getPixel(5, 5), R.color.green);
+		floodFill(bitmap, p, bitmap.getPixel(5, 5), R.color.green);
 
 	}
 
@@ -244,7 +243,7 @@ public class DrawerLayoutActivity extends ActionBarActivity implements Navigatio
 	protected void onPostCreate(Bundle savedInstanceState) {
 		super.onPostCreate(savedInstanceState);
 		// Sync the toggle state after onRestoreInstanceState has occurred.
-		mDrawerToggle.syncState();
+		//		mDrawerToggle.syncState();
 	}
 
 

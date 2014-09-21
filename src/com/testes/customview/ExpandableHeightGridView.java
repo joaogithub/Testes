@@ -1,4 +1,4 @@
-package com.testes.android;
+package com.testes.customview;
 
 import android.content.Context;
 import android.util.AttributeSet;
