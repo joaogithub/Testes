@@ -113,7 +113,7 @@ public class DrawerLayoutActivity extends ActionBarActivity implements Navigatio
 		Log.e("WEEEK TEST:", ""+ testCalendar.get(Calendar.WEEK_OF_YEAR));
 
 		Point p = new Point(5,5);
-		floodFill(bitmap, p, bitmap.getPixel(5, 5), R.color.green);
+//		floodFill(bitmap, p, bitmap.getPixel(5, 5), R.color.green);
 
 	}
 
@@ -154,7 +154,8 @@ public class DrawerLayoutActivity extends ActionBarActivity implements Navigatio
 				boolean spanUp = false;
 				boolean spanDown = false;
 				while (x < width && image.getPixel(x, y) == target) {
-					image.setPixel(x, y, replacement);
+					if(image.isMutable())
+						image.setPixel(x, y, replacement);
 					if (!spanUp && y > 0 && image.getPixel(x, y - 1) == target) {
 						queue.add(new Point(x, y - 1));
 						spanUp = true;
@@ -243,7 +244,7 @@ public class DrawerLayoutActivity extends ActionBarActivity implements Navigatio
 	protected void onPostCreate(Bundle savedInstanceState) {
 		super.onPostCreate(savedInstanceState);
 		// Sync the toggle state after onRestoreInstanceState has occurred.
-		//		mDrawerToggle.syncState();
+		mDrawerToggle.syncState();
 	}
 
 

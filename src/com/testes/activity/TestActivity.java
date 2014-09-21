@@ -87,13 +87,15 @@ public class TestActivity extends Activity{
 		                    try {
 		                        Log.i("client", "Trying to execute");
 		                        response = client.execute(post);
-		                        Log.i("client", "Execution success");                           
+		                        Log.i("client", "Execution success");  
+		                      
 		                    } catch (ClientProtocolException e) {
 		                        Log.i("client", "Problems with execute post, ClientProtocolException");
 		                        e.printStackTrace();
 		                    } catch (IOException e) {
 		                        Log.i("client", "Problems with execute post, IOException");
 		                        e.printStackTrace();
+		                        return null;
 		                    }
 
 		                    HttpEntity entity = response.getEntity();
