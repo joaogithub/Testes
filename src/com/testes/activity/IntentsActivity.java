@@ -34,7 +34,7 @@ public class IntentsActivity extends ActionBarActivity {
 
 	String buttonText= "";
 	ImageView startImage;
-	Button send, search, capture, setasButton, viewButton, mapsButton, playButton,browserButton, pickButton, callButton, getContentButton, ringToneButton;
+	Button send, search, capture, setasButton, viewButton, mapsButton, openMediPlayerButton, playFileButton,browserButton, pickButton, callButton, getContentButton, ringToneButton;
 	String imageUri;
 
 	private static final int PICK_REQUEST_CODE = 100;
@@ -53,7 +53,8 @@ public class IntentsActivity extends ActionBarActivity {
 		setasButton = (Button) findViewById(R.id.setAsButton);
 		ringToneButton = (Button) findViewById(R.id.getRingTonesButton);
 		callButton = (Button) findViewById(R.id.callButton);
-		playButton = (Button) findViewById(R.id.playButton);
+		openMediPlayerButton = (Button) findViewById(R.id.playButton);
+		playFileButton = (Button) findViewById(R.id.playFileButton);
 		mapsButton = (Button) findViewById(R.id.mapsButton);
 		browserButton = (Button) findViewById(R.id.webButton);
 		getContentButton = (Button) findViewById(R.id.getContnetIntentButton);
@@ -93,14 +94,28 @@ public class IntentsActivity extends ActionBarActivity {
 			}
 		});
 
-		playButton.setOnClickListener(new OnClickListener() {
+		openMediPlayerButton.setOnClickListener(new OnClickListener() {
 
 			@SuppressLint("InlinedApi")
 			@Override
 			public void onClick(View v) {
-				Intent i = new Intent(Intent.ACTION_MAIN);
-				i.addCategory(Intent.CATEGORY_APP_MUSIC);
-				startActivity(i);
+				Intent musicIntent = new Intent(Intent.ACTION_MAIN);
+				musicIntent.addCategory(Intent.CATEGORY_APP_MUSIC);
+//				File musicFile = new File(getExternalFilesDir(Environment.DIRECTORY_MUSIC),"muse - survival.mp3");
+//				musicIntent.setDataAndType(Uri.fromFile(musicFile), "audio/*");
+				startActivity(musicIntent);
+			}
+		});
+		
+		playFileButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				//play audio file from sdcard
+				Intent intent = new Intent(MediaStore.INTENT_ACTION_MUSIC_PLAYER);
+				File musicFile = new File(getExternalFilesDir(Environment.DIRECTORY_MUSIC),"muse - survival.mp3");
+				intent.setDataAndType(Uri.fromFile(musicFile), "audio/*");
+				startActivity(intent);
 			}
 		});
 		
@@ -170,11 +185,7 @@ public class IntentsActivity extends ActionBarActivity {
 //				intent.addCategory(Intent.CATEGORY_DEFAULT);
 				//		        intent.setDataAndType(Uri.parse("android.resource://"+getPackageName()+"/"+ R.drawable.ic_launcher), "image/*");
 				intent.setDataAndType(Uri.parse(imageUri), "image/*");
-				//play audio file from sdcard
-//				Intent intent = new Intent(MediaStore.INTENT_ACTION_MUSIC_PLAYER);
-//				File musicFile = new File(getExternalFilesDir(Environment.DIRECTORY_MUSIC),"muse - survival.mp3");
-//				intent.setDataAndType(Uri.fromFile(musicFile), "audio/*");
-//				
+
 				intent.putExtra("mimeType", "image/*");
 				startActivity(Intent.createChooser(intent, "View/Play:"));
 
