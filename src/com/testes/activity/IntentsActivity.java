@@ -110,6 +110,9 @@ public class IntentsActivity extends ActionBarActivity {
 			}
 		});
 
+//		Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"));
+//		startActivity(browserIntent);
+		
 		setasButton.setOnClickListener(new OnClickListener() {
 
 			@Override

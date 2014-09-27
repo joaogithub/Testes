@@ -21,7 +21,7 @@ public class DrawerActivity extends ActionBarActivity{
 		setContentView(R.layout.layout_third_drawer_activity);
 
 		drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-		drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+	
 		drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
 
 		getSupportActionBar().setHomeButtonEnabled(true);
@@ -47,10 +47,10 @@ public class DrawerActivity extends ActionBarActivity{
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch(item.getItemId()){
 		case android.R.id.home:
-			if(!drawer.isDrawerOpen(Gravity.LEFT))
-				drawer.openDrawer(Gravity.LEFT);
-			else
-				drawer.closeDrawer(Gravity.LEFT);
+//			if(!drawer.isDrawerOpen(Gravity.LEFT))
+//				drawer.openDrawer(Gravity.LEFT);
+//			else
+//				drawer.closeDrawer(Gravity.LEFT);
 			break;
 		}
 		return super.onOptionsItemSelected(item);

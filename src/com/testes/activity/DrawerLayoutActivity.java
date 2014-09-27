@@ -227,8 +227,12 @@ public class DrawerLayoutActivity extends ActionBarActivity implements Navigatio
 			throw new ClassCastException("Activity must implement NavigationDrawerCallbacks.");
 		}
 
+		
+		
 		setUp(R.id.left_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
 
+//		mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+		
 		super.onStart();
 	}
 
@@ -246,7 +250,6 @@ public class DrawerLayoutActivity extends ActionBarActivity implements Navigatio
 		// Sync the toggle state after onRestoreInstanceState has occurred.
 		mDrawerToggle.syncState();
 	}
-
 
 
 	/**

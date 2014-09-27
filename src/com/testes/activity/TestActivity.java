@@ -48,7 +48,6 @@ public class TestActivity extends Activity{
 	{
 	    super.onCreate(savedInstanceState);
 
-
 	    setContentView(R.layout.layout_image_activity);
 
 	    col1 = (TextView) findViewById(R.id.col1TextView);

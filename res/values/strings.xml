@@ -9,6 +9,8 @@
     <string name="enabled">enabled</string>
     <string name="create_title_hint">Create Title</string>
     <string name="disabled">disabled</string>
+    <string name="yes">yes</string>
+    <string name="no">no</string>
     <string name="things">coisas</string>
     <string name="code">\u00B9 \u2074</string>
 </resources>
