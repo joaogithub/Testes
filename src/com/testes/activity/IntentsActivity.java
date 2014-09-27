@@ -35,7 +35,7 @@ public class IntentsActivity extends ActionBarActivity {
 
 	String buttonText= "";
 	ImageView startImage;
-	Button send, search, capture, setasButton, viewButton, pickButton, callButton, getContentButton, ringToneButton;
+	Button send, search, capture, setasButton, viewButton, mapsButton, browserButton, pickButton, callButton, getContentButton, ringToneButton;
 	LinearLayout viewToInject;
 	String imageUri;
 
@@ -55,6 +55,8 @@ public class IntentsActivity extends ActionBarActivity {
 		setasButton = (Button) findViewById(R.id.setAsButton);
 		ringToneButton = (Button) findViewById(R.id.getRingTonesButton);
 		callButton = (Button) findViewById(R.id.callButton);
+		mapsButton = (Button) findViewById(R.id.mapsButton);
+		browserButton = (Button) findViewById(R.id.webButton);
 		getContentButton = (Button) findViewById(R.id.getContnetIntentButton);
 		viewButton = (Button) findViewById(R.id.viewButton);
 		startImage = (ImageView) findViewById(R.id.previewImage);
@@ -69,7 +71,7 @@ public class IntentsActivity extends ActionBarActivity {
 		});
 
 		ringToneButton.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 
@@ -81,9 +83,9 @@ public class IntentsActivity extends ActionBarActivity {
 				startActivity(intent);
 			}
 		});
-		
+
 		callButton.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				Intent callIntent = new Intent(Intent.ACTION_CALL);
@@ -91,16 +93,16 @@ public class IntentsActivity extends ActionBarActivity {
 				startActivityForResult(callIntent, CALL_REQUEST_CODE);
 			}
 		});
-		
+
 		getContentButton.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				Intent i = new Intent(Intent.ACTION_GET_CONTENT);
 				startActivity(i);
 			}
 		});
-		
+
 		pickButton.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -110,9 +112,45 @@ public class IntentsActivity extends ActionBarActivity {
 			}
 		});
 
-//		Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"));
-//		startActivity(browserIntent);
-		
+		browserButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://autodatapt.com/autodata_online.php"));
+				//https://www.autodata-online.net/online/login/autodatalogon.aspx
+				startActivity(browserIntent);
+
+			}});
+
+
+		mapsButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				//	Intent mapIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:37.423156,-122.084917?q=37.423156,-122.084917(Label+Name)"));
+
+				String uriBegin = "geo:" + "47.531605" + "," + "21.627312";
+				String query = "47.531605" + "," + "21.627312" + "(DeviceId"+")";
+
+				String encodedQuery = Uri.encode(query);
+				String uriString = uriBegin + "?q=" + encodedQuery + "&z=16";
+				Uri uri = Uri.parse(uriString);
+				Intent viewIntent = new Intent(android.content.Intent.ACTION_VIEW, uri);
+
+				viewIntent.putExtra("DeviceId", "DeviceId");
+
+				//	    startActivity(intent);
+				
+				String DESTINATION_LOCATION = "Label+Name";
+				String latit = "37.925942";
+				String longit = "-122.084917";
+				Intent mapIntent = new Intent(android.content.Intent.ACTION_VIEW,
+						Uri.parse("geo:<"+latit+">,<"+longit+">?q=<"+latit+">,<"+longit+">("+DESTINATION_LOCATION+")")); //name the label
+				startActivity(mapIntent);
+
+			}
+		});
+
 		setasButton.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -125,25 +163,20 @@ public class IntentsActivity extends ActionBarActivity {
 				startActivity(Intent.createChooser(intent, "View:"));
 
 				//GPS coordinates
-				
-//				  String CURRENT_LOCATION = "37.967775, 23.720689";
-//			        String DESTINATION_LOCATION = "37.925942, 23.938683";
-		//
-//			        Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
-//			        Uri.parse("http://maps.google.com/maps?saddr="+ CURRENT_LOCATION +"&daddr="+CURRENT_LOCATION)); //Added ampersand
-//			        startActivity(intent); 
-				
-//			        String DESTINATION_LOCATION = "37.925942,  23.938683";
-		        String DESTINATION_LOCATION = "My location name";
-		        String latit = "37.925942";
-		        String longit = "23.938683";
-			    Intent mapIntent = new Intent(android.content.Intent.ACTION_VIEW,
-			    Uri.parse("geo:<"+latit+">,<"+longit+">?q=<"+latit+">,<"+longit+">("+DESTINATION_LOCATION+")")); //name the label
-			    startActivity(intent);
-			    //GPS location
-//		        Uri.parse("http://maps.google.com/maps?q="+DESTINATION_LOCATION));
-			        startActivity(intent); 
-				
+
+				//				  String CURRENT_LOCATION = "37.967775, 23.720689";
+				//			        String DESTINATION_LOCATION = "37.925942, 23.938683";
+				//
+				//			        Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+				//			        Uri.parse("http://maps.google.com/maps?saddr="+ CURRENT_LOCATION +"&daddr="+CURRENT_LOCATION)); //Added ampersand
+				//			        startActivity(intent); 
+
+				//			        String DESTINATION_LOCATION = "37.925942,  23.938683";
+
+				//GPS location
+				//		        Uri.parse("http://maps.google.com/maps?q="+DESTINATION_LOCATION));
+				startActivity(intent); 
+
 			}
 		});
 
@@ -178,7 +211,7 @@ public class IntentsActivity extends ActionBarActivity {
 				{
 					screenshotUri = Uri.parse("market://details?id=com.android.chrome");
 					sharingIntent.setType("text/plain");
-//					sharingIntent.putExtra(Intent.EXTRA_STREAM, screenshotUri);
+					//					sharingIntent.putExtra(Intent.EXTRA_STREAM, screenshotUri);
 					sharingIntent.putExtra(Intent.EXTRA_TEXT, "market://details?id=com.android.chrome");
 					if(Build.VERSION.SDK_INT>15)
 						sharingIntent.putExtra(Intent.EXTRA_HTML_TEXT, "market://details?id=com.android.chrome");
@@ -191,29 +224,29 @@ public class IntentsActivity extends ActionBarActivity {
 
 		String incomingNumber = "+351916379917";
 		Uri uri = Uri.withAppendedPath(Phones.CONTENT_FILTER_URL,  Uri.encode(incomingNumber));
-        Toast.makeText(this, incomingNumber, Toast.LENGTH_LONG).show();
-                    String name = null;
-    Cursor cursor = getContentResolver().query(uri,new String[] { ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME }, null, null, null);
-                        Toast.makeText(this, "unknown", Toast.LENGTH_LONG).show();
-                        // Invoke endCall()
-                         if (cursor != null && cursor.moveToFirst()) {
+		Toast.makeText(this, incomingNumber, Toast.LENGTH_LONG).show();
+		String name = null;
+		Cursor cursor = getContentResolver().query(uri,new String[] { ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME }, null, null, null);
+		Toast.makeText(this, "unknown", Toast.LENGTH_LONG).show();
+		// Invoke endCall()
+		if (cursor != null && cursor.moveToFirst()) {
 
-//                             editor1.putBoolean("fromcontacts", true);
-//                             editor1.putBoolean("notfromcontacts", false);
-//                             editor1.putString("incomingnumbername", cursor.getString(0));
-//                             editor1.commit();
-//                             Toast.makeText(this, p.getString("incomingnumbername", "unknown"), Toast.LENGTH_LONG).show();
-                         }
+			//                             editor1.putBoolean("fromcontacts", true);
+			//                             editor1.putBoolean("notfromcontacts", false);
+			//                             editor1.putString("incomingnumbername", cursor.getString(0));
+			//                             editor1.commit();
+			//                             Toast.makeText(this, p.getString("incomingnumbername", "unknown"), Toast.LENGTH_LONG).show();
+		}
 
-                         else
-                         {
-//                             editor1.putBoolean("notfromcontacts", true);
-//                             editor1.putBoolean("fromcontacts", false);
-//                             editor1.putString("incomingnumbername", "Unknown");
-//                             editor1.commit();
-                     Toast.makeText(this, "incomingnumbername", Toast.LENGTH_LONG).show();
-                         }
-		
+		else
+		{
+			//                             editor1.putBoolean("notfromcontacts", true);
+			//                             editor1.putBoolean("fromcontacts", false);
+			//                             editor1.putString("incomingnumbername", "Unknown");
+			//                             editor1.commit();
+			Toast.makeText(this, "incomingnumbername", Toast.LENGTH_LONG).show();
+		}
+
 		//		Matrix matrix = getMatrix();
 		//
 		//	    RectF drawableRect = new RectF(0, 0, Background.getWidth(), Background.getHeight());
@@ -364,41 +397,41 @@ public class IntentsActivity extends ActionBarActivity {
 		}
 	}
 
-	
-	
+
+
 	public void saveImageToSDCard(Bitmap bitmap) {
-        String dirname = "/Amazing Wallpapers/";
+		String dirname = "/Amazing Wallpapers/";
 
-        File myDir = new File(Environment
-                .getExternalStorageDirectory().getPath() + dirname);
+		File myDir = new File(Environment
+				.getExternalStorageDirectory().getPath() + dirname);
 
-        myDir.mkdirs();
+		myDir.mkdirs();
 
-        String str = String.valueOf(System.currentTimeMillis());
+		String str = String.valueOf(System.currentTimeMillis());
 
-        String fname = "Wallpaper-" + str +  ".jpg";
-        File file = new File(myDir, fname);
-        if (file.exists())
-            file.delete();
-        try {
-            FileOutputStream out = new FileOutputStream(file);
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
-            out.flush();
-            out.close();
-            Toast.makeText(
-                    this,
-                    "Toast_saved".replace("#",
-                            "\"" + "Gallery name" + "\""),
-                    Toast.LENGTH_SHORT).show();
-            Log.d("Intents", "Wallpaper saved to:" + file.getAbsolutePath());
+		String fname = "Wallpaper-" + str +  ".jpg";
+		File file = new File(myDir, fname);
+		if (file.exists())
+			file.delete();
+		try {
+			FileOutputStream out = new FileOutputStream(file);
+			bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
+			out.flush();
+			out.close();
+			Toast.makeText(
+					this,
+					"Toast_saved".replace("#",
+							"\"" + "Gallery name" + "\""),
+							Toast.LENGTH_SHORT).show();
+			Log.d("Intents", "Wallpaper saved to:" + file.getAbsolutePath());
 
-        } catch (Exception e) {
-            e.printStackTrace();
-            Toast.makeText(this,
-                    "toast_saved_failed",
-                    Toast.LENGTH_SHORT).show();
-        }
-    }
-	
+		} catch (Exception e) {
+			e.printStackTrace();
+			Toast.makeText(this,
+					"toast_saved_failed",
+					Toast.LENGTH_SHORT).show();
+		}
+	}
+
 }
 

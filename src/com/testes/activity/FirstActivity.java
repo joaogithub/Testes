@@ -156,18 +156,6 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		if (background instanceof ColorDrawable)
 			color = ((ColorDrawable) background).getColor();
 
-		String uriBegin = "geo:" + "47.531605" + "," + "21.627312";
-		String query = "47.531605" + "," + "21.627312" + "(DeviceId"+")";
-
-		String encodedQuery = Uri.encode(query);
-		String uriString = uriBegin + "?q=" + encodedQuery + "&z=16";
-		Uri uri = Uri.parse(uriString);
-		Intent viewIntent = new Intent(android.content.Intent.ACTION_VIEW, uri);
-
-		viewIntent.putExtra("DeviceId", "DeviceId");
-
-		//	    startActivity(intent);
-
 		Bitmap backBitmap = BitmapFactory.decodeResource(getResources(),  R.drawable.image_load_success1);
 		Options options = new Options();
 		options.inSampleSize = 2;
