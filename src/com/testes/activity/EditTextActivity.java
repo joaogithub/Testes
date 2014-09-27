@@ -6,6 +6,7 @@ import org.json.JSONObject;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
@@ -20,7 +21,7 @@ public class EditTextActivity extends ActionBarActivity{
 
 	String buttonText= "";
 	LinearLayout viewToInject;
-	EditText numberEdit;
+	private EditText numberEdit, doubleEdit;
 	TextView angleText;
 	View line;
 
@@ -31,7 +32,6 @@ public class EditTextActivity extends ActionBarActivity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-
 		setContentView(R.layout.activity_edittext);
 
 		String [] degreesValues = new String [20];
@@ -40,6 +40,7 @@ public class EditTextActivity extends ActionBarActivity{
 			degreesValues[i] = String.valueOf(i)+ (char) 0x00B0;
 		}
 
+		doubleEdit =  (EditText) findViewById(R.id.doubleEditText);
 		final EditText editText = (EditText) findViewById(R.id.editTextAct);
 		
 		editText.addTextChangedListener(new TextWatcher() {
@@ -103,7 +104,19 @@ public class EditTextActivity extends ActionBarActivity{
 
 	}
 
-
+	public void whenbuttonisclicked(View view){
+	    doubleEdit = (EditText) findViewById(R.id.doubleEditText);
+	    String edittext1str = doubleEdit.getText().toString();
+	    double editext1dob = 0;
+	    if(!TextUtils.isEmpty(edittext1str))
+	    	editext1dob = Double.parseDouble(edittext1str);
+	    
+	    String edittext2str = "2";
+	    double editext2dob = Double.parseDouble(edittext2str);
+	    double add = (editext1dob + editext2dob);
+	    String yourDoubleString = String.valueOf(add);
+	    Log.i("EditTextActivity", "result:"+yourDoubleString);     
+	}
 
 
 }

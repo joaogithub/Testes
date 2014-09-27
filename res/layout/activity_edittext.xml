@@ -26,10 +26,33 @@
         android:hint="hint_username"
         android:imeOptions="actionNext"
         android:maxLength="22"
+        android:paddingEnd="7dp"
         android:paddingLeft="7dp"
+        android:paddingStart="7dp"
         android:saveEnabled="false"
         android:singleLine="true"
         android:textColorHint="#DDAAAAAA"
         android:textSize="17sp" />
+
+    <EditText
+        android:id="@+id/doubleEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/user2"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="20dp"
+        android:hint="Double Here"
+        android:inputType="numberDecimal" />
+
+    <Button
+        android:id="@+id/addButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/doubleEditText"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="56dp"
+        android:onClick="whenbuttonisclicked"
+        android:text="Add" />
 
 </RelativeLayout>

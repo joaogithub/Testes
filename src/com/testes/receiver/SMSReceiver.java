@@ -13,8 +13,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.provider.ContactsContract;
+import android.provider.ContactsContract.PhoneLookup;
 import android.telephony.SmsMessage;
 import android.util.Log;
 import android.widget.Toast;
@@ -45,12 +49,33 @@ public class SMSReceiver extends BroadcastReceiver{
 						String msgBody = msgs[i].getMessageBody();
 					}
 					Date date = new Date(msgs[0].getTimestampMillis());
-					String logValue = "SMS from: "+msgs[0].getOriginatingAddress() + " "+ date.toString()+" "+msgs[0].getMessageBody();
+					
+					//Resolving the contact name from the contacts.
+					Uri lookupUri = Uri.withAppendedPath(PhoneLookup.CONTENT_FILTER_URI, Uri.encode(msgs[0].getOriginatingAddress()));
+					Cursor cursor = context.getContentResolver().query(lookupUri, new String[]{ContactsContract.Data.DISPLAY_NAME},null,null,null);
+					String contactName = "Desconhecido";
+					try {
+						if(cursor.moveToFirst()){
+							String  displayName = cursor.getString(0);
+							contactName = displayName;   
+							Log.i("SMSReceiver", "from "+contactName);
+						}
+						else
+							Log.i("SMSReceiver", "Desconhecido");
+
+					} catch (Exception e) {
+						e.printStackTrace();
+					}finally{
+						cursor.close();
+					}
+					
+					String logValue = "SMS from: "+contactName + " " +msgs[0].getOriginatingAddress() + " "+ date.toString()+" "+msgs[0].getMessageBody();
 					String previousLog = preferences.getString(SMS_LOG, "");
 					Log.i("SMSReceiver","SMS from: "+msgs[0].getOriginatingAddress() + " "+ date.toString()+" "+msgs[0].getMessageBody());
 
 					//save info in preferences
 					editor.putString(SMS_LOG, previousLog+"\n"+logValue).commit();
+
 
 					//                   //send email
 					//                   Intent sendMailIntent = new Intent(Intent.ACTION_SEND);
