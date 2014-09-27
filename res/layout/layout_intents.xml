@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootIntentsRelativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    
+    <LinearLayout
+        android:id="@+id/firstLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/secondLayout"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/sendIntentButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Send"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/callIntentButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Call"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/pickIntentButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pick"
+            android:visibility="visible" />
+
+        
+
+        <ImageView
+            android:id="@+id/previewImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:scaleType="centerCrop" />
+
+        <Button
+            android:id="@+id/getContnetIntentButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GetContent"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/getRingTonesButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ringtones"
+            android:visibility="visible" />
+        
+        <Button
+            android:id="@+id/playButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Play"
+            android:visibility="visible" />
+        
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/secondLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="50dp"
+        android:gravity="center"
+        android:orientation="vertical" >
+    
+        <Button
+            android:id="@+id/webButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Browser"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/mapsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Maps"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/setAsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Set As"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/captureIntentButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Capture"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/viewButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="View"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/callButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Call"
+            android:visibility="visible" />
+        
+    </LinearLayout>
+</RelativeLayout>
+</ScrollView>

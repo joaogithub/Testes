@@ -19,7 +19,6 @@ public class SensorActivity extends ActionBarActivity{
 
 	String buttonText= "";
 	ImageView startImage;
-	LinearLayout viewToInject;
 	TextView angleText;
 	View line;
 

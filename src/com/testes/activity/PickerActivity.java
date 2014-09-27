@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
@@ -17,7 +16,6 @@ public class PickerActivity extends ActionBarActivity{
 
 	String buttonText= "";
 	ImageView startImage;
-	LinearLayout viewToInject;
 	EditText numberEdit;
 	TextView angleText;
 	View line;

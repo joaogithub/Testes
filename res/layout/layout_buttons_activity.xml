@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/rootRelativeLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
 
     <LinearLayout
         android:id="@+id/viewToInject"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical" >
 
@@ -15,6 +16,7 @@
             android:id="@+id/sendIntentButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/icn_home_exercises"
             android:text="Send"
             android:visibility="visible" />
 
@@ -30,20 +32,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Pick"
-            android:visibility="visible" />
-
-        <Button
-            android:id="@+id/webButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Browser"
-            android:visibility="visible" />
-
-        <Button
-            android:id="@+id/mapsButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Maps"
             android:visibility="visible" />
 
         <Button
@@ -80,15 +68,15 @@
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:scaleType="centerCrop" />
-
+        
         <Button
             android:id="@+id/getContnetIntentButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="GetContent"
             android:visibility="visible" />
-
-        <Button
+        
+         <Button
             android:id="@+id/getRingTonesButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -96,4 +84,4 @@
             android:visibility="visible" />
     </LinearLayout>
 
-</ScrollView>
+</RelativeLayout>

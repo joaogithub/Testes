@@ -38,7 +38,6 @@ public class ButtonsActivity extends ActionBarActivity{
 		rootView.removeView(viewToInject);
 		rootView.addView(viewToInject);
 		
-		
 	}
 
 

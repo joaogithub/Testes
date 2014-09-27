@@ -10,16 +10,9 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.testes.android.R;
 
@@ -27,7 +20,6 @@ public class CanvasActivity extends ActionBarActivity{
 
 	String buttonText= "";
 	private ImageView imageView;
-	LinearLayout viewToInject;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

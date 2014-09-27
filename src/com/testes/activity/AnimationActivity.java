@@ -15,7 +15,6 @@ public class AnimationActivity extends ActionBarActivity{
 
 	String buttonText= "";
 	Button oneBtn, twoChb, threeChb;
-	LinearLayout viewToInject;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

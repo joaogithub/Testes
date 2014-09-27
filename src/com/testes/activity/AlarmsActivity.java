@@ -6,28 +6,18 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 
-import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.ParseException;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.view.Gravity;
-import android.view.ViewGroup.LayoutParams;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.testes.android.R;
 
 public class AlarmsActivity extends ActionBarActivity{
 
 	String buttonText= "";
-	LinearLayout viewToInject;
 	private long timeInMs;
 
 	@Override
@@ -77,8 +67,8 @@ public class AlarmsActivity extends ActionBarActivity{
 	    Intent intent = new Intent(this, FirstActivity.class);
 	    PendingIntent action = PendingIntent.getActivity(this, 0,intent, Intent.FLAG_ACTIVITY_NEW_TASK);
 
-	    AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
-	    am.set(AlarmManager.RTC_WAKEUP, timeInMs, action);
+	    AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+	    alarmManager.set(AlarmManager.RTC_WAKEUP, timeInMs, action);
 	}
 	
 }

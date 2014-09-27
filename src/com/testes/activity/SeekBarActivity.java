@@ -1,6 +1,7 @@
 package com.testes.activity;
 
 import android.animation.ObjectAnimator;
+import android.annotation.SuppressLint;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -14,7 +15,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
-
 import com.testes.android.R;
 
 public class SeekBarActivity extends ActionBarActivity {
@@ -22,12 +22,12 @@ public class SeekBarActivity extends ActionBarActivity {
 	String buttonText= "";
 	ImageView startImage;
 	Button send, search, capture;
-	LinearLayout viewToInject;
 	SeekBar sbPower;
 	RelativeLayout powerContainer;
 	String imageUri;
 	Rect delegateArea;
 
+	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

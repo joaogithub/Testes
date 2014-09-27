@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-
+import android.annotation.SuppressLint;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -26,7 +26,6 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.echonest.api.v4.EchoNestAPI;
 import com.echonest.api.v4.EchoNestException;
 import com.echonest.api.v4.Track;
@@ -35,8 +34,8 @@ import com.testes.android.R;
 public class ImageActivity extends ActionBarActivity{
 
 	String buttonText= "";
-	LinearLayout viewToInject;
 
+	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -174,11 +173,11 @@ public class ImageActivity extends ActionBarActivity{
 
 	        if(!file.canRead())
 	        {
-	            System.out.println("Insert a valid path!");
+	           Log.i("ImageActivity","Insert a valid path!");
 	        }
 
 	        EchoNestAPI echoNest = new EchoNestAPI("XLNN9CZXKLXYFC66X");
-	        System.out.println("hello!");
+	        Log.i("ImageActivity","hello!");
 	        
 	        Track track = null;
 			try {
@@ -210,7 +209,6 @@ public class ImageActivity extends ActionBarActivity{
 	        try {
 				System.out.println("Title: "+track.getTitle());
 			} catch (EchoNestException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			

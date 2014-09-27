@@ -4,7 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
@@ -28,15 +28,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-
 import com.testes.android.R;
 
 public class IntentsActivity extends ActionBarActivity {
 
 	String buttonText= "";
 	ImageView startImage;
-	Button send, search, capture, setasButton, viewButton, mapsButton, browserButton, pickButton, callButton, getContentButton, ringToneButton;
-	LinearLayout viewToInject;
+	Button send, search, capture, setasButton, viewButton, mapsButton, playButton,browserButton, pickButton, callButton, getContentButton, ringToneButton;
 	String imageUri;
 
 	private static final int PICK_REQUEST_CODE = 100;
@@ -47,7 +45,7 @@ public class IntentsActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		setContentView(R.layout.layout_buttons_activity);
+		setContentView(R.layout.layout_intents);
 
 		send = (Button) findViewById(R.id.sendIntentButton);
 		capture = (Button) findViewById(R.id.captureIntentButton);
@@ -55,6 +53,7 @@ public class IntentsActivity extends ActionBarActivity {
 		setasButton = (Button) findViewById(R.id.setAsButton);
 		ringToneButton = (Button) findViewById(R.id.getRingTonesButton);
 		callButton = (Button) findViewById(R.id.callButton);
+		playButton = (Button) findViewById(R.id.playButton);
 		mapsButton = (Button) findViewById(R.id.mapsButton);
 		browserButton = (Button) findViewById(R.id.webButton);
 		getContentButton = (Button) findViewById(R.id.getContnetIntentButton);
@@ -94,6 +93,17 @@ public class IntentsActivity extends ActionBarActivity {
 			}
 		});
 
+		playButton.setOnClickListener(new OnClickListener() {
+
+			@SuppressLint("InlinedApi")
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(Intent.ACTION_MAIN);
+				i.addCategory(Intent.CATEGORY_APP_MUSIC);
+				startActivity(i);
+			}
+		});
+		
 		getContentButton.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -151,16 +161,22 @@ public class IntentsActivity extends ActionBarActivity {
 			}
 		});
 
-		setasButton.setOnClickListener(new OnClickListener() {
+		viewButton.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(Intent.ACTION_VIEW);
-				intent.addCategory(Intent.CATEGORY_DEFAULT);
+				
+//				intent.addCategory(Intent.CATEGORY_DEFAULT);
 				//		        intent.setDataAndType(Uri.parse("android.resource://"+getPackageName()+"/"+ R.drawable.ic_launcher), "image/*");
 				intent.setDataAndType(Uri.parse(imageUri), "image/*");
+				//play audio file from sdcard
+//				Intent intent = new Intent(MediaStore.INTENT_ACTION_MUSIC_PLAYER);
+//				File musicFile = new File(getExternalFilesDir(Environment.DIRECTORY_MUSIC),"muse - survival.mp3");
+//				intent.setDataAndType(Uri.fromFile(musicFile), "audio/*");
+//				
 				intent.putExtra("mimeType", "image/*");
-				startActivity(Intent.createChooser(intent, "View:"));
+				startActivity(Intent.createChooser(intent, "View/Play:"));
 
 				//GPS coordinates
 
@@ -175,7 +191,7 @@ public class IntentsActivity extends ActionBarActivity {
 
 				//GPS location
 				//		        Uri.parse("http://maps.google.com/maps?q="+DESTINATION_LOCATION));
-				startActivity(intent); 
+//				startActivity(intent); 
 
 			}
 		});
@@ -191,7 +207,6 @@ public class IntentsActivity extends ActionBarActivity {
 				//		        intent.setDataAndType(Uri.parse(imageUri), "image/jpeg");
 				intent.putExtra("mimeType", "image/*");
 				startActivity(Intent.createChooser(intent, "Set as:"));
-
 			}
 		});
 

@@ -11,8 +11,6 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.testes.android.R;
@@ -20,7 +18,6 @@ import com.testes.android.R;
 public class EditTextActivity extends ActionBarActivity{
 
 	String buttonText= "";
-	LinearLayout viewToInject;
 	private EditText numberEdit, doubleEdit;
 	TextView angleText;
 	View line;
