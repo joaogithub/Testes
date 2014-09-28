@@ -9,6 +9,7 @@
         android:targetSdkVersion="20" />
 
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -124,12 +125,10 @@
         <activity android:name="com.testes.activity.WebViewActivity" >
         </activity>
         <!-- Receive Wi-Fi connection state changes -->
-        <receiver android:name=".WifiScanReceiver" >
+        <receiver android:name="com.testes.receiver.WifiScanReceiver" >
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
-        </receiver>
-        <receiver android:name="com.testes.receiver.WifiScanReceiver" >
         </receiver>
         <receiver
             android:name="com.testes.receiver.SMSReceiver"

@@ -100,6 +100,7 @@ public class IntentsActivity extends ActionBarActivity {
 			@Override
 			public void onClick(View v) {
 				Intent musicIntent = new Intent(Intent.ACTION_MAIN);
+//				Intent intent = new Intent(MediaStore.INTENT_ACTION_MUSIC_PLAYER);
 				musicIntent.addCategory(Intent.CATEGORY_APP_MUSIC);
 //				File musicFile = new File(getExternalFilesDir(Environment.DIRECTORY_MUSIC),"muse - survival.mp3");
 //				musicIntent.setDataAndType(Uri.fromFile(musicFile), "audio/*");
@@ -112,10 +113,10 @@ public class IntentsActivity extends ActionBarActivity {
 			@Override
 			public void onClick(View v) {
 				//play audio file from sdcard
-				Intent intent = new Intent(MediaStore.INTENT_ACTION_MUSIC_PLAYER);
+				Intent playFileIntent = new Intent(Intent.ACTION_VIEW);
 				File musicFile = new File(getExternalFilesDir(Environment.DIRECTORY_MUSIC),"muse - survival.mp3");
-				intent.setDataAndType(Uri.fromFile(musicFile), "audio/*");
-				startActivity(intent);
+				playFileIntent.setDataAndType(Uri.fromFile(musicFile), "audio/*");
+				startActivity(playFileIntent);
 			}
 		});
 		
@@ -181,7 +182,6 @@ public class IntentsActivity extends ActionBarActivity {
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(Intent.ACTION_VIEW);
-				
 //				intent.addCategory(Intent.CATEGORY_DEFAULT);
 				//		        intent.setDataAndType(Uri.parse("android.resource://"+getPackageName()+"/"+ R.drawable.ic_launcher), "image/*");
 				intent.setDataAndType(Uri.parse(imageUri), "image/*");
