@@ -26,7 +26,7 @@
         android:textColorHint="#DDAAAAAA"
         android:textSize="17sp" />
 
-        <Button
+    <Button
         android:id="@+id/threeChb"
         android:layout_width="230dp"
         android:layout_height="37dp"
@@ -40,5 +40,21 @@
         android:singleLine="true"
         android:textColorHint="#DDAAAAAA"
         android:textSize="17sp" />
-    
+
+    <LinearLayout
+        android:id="@+id/tennisBallLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/threeChb"
+        android:layout_marginTop="20dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/ball"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ball" />
+    </LinearLayout>
+
 </RelativeLayout>
