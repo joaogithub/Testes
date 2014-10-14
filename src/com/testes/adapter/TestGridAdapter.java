@@ -34,6 +34,7 @@ public class TestGridAdapter extends BaseAdapter
 	private FragmentActivity activity;
 
 	private Context context; 
+	private static final int REQUEST_TEXT_CODE=0;
 
 	String text;
 
@@ -104,7 +105,7 @@ public class TestGridAdapter extends BaseAdapter
 			view = (ViewHolder) arg1.getTag();
 		}
 
-		OnClickListener alert = new OnClickListener() {
+		OnClickListener alertOnClickListener = new OnClickListener() {
 
 			public void onClick(View v) 
 			{
@@ -117,13 +118,14 @@ public class TestGridAdapter extends BaseAdapter
 
 				selectDateFragment.setArguments(args);
 
+				selectDateFragment.setTargetFragment(selectDateFragment, REQUEST_TEXT_CODE);
+				
 				selectDateFragment.setOnDateSetListener(new DatePickerDialog.OnDateSetListener()
 				{
 
 					@Override
 					public void onDateSet(DatePicker view, int yy, int mm, int dd)
 					{
-
 						if(yy<2014)
 							return;
 						String saved_date = pref.getString("SavedDate", null);
@@ -139,7 +141,7 @@ public class TestGridAdapter extends BaseAdapter
 
 		};
 
-		view.txt.setOnClickListener(alert);
+		view.txt.setOnClickListener(alertOnClickListener);
 
 		text = String.valueOf(abc.get(arg0));
 
@@ -161,7 +163,6 @@ public class TestGridAdapter extends BaseAdapter
 	public class SelectDateFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener 
 	{
 
-
 		private DatePickerDialog.OnDateSetListener externalListener;
 
 		public void setOnDateSetListener(DatePickerDialog.OnDateSetListener listener)
@@ -172,8 +173,6 @@ public class TestGridAdapter extends BaseAdapter
 		@Override
 		public Dialog onCreateDialog(Bundle savedInstanceState) 
 		{
-
-
 			final Calendar calendar = Calendar.getInstance();
 
 			int yy = calendar.get(Calendar.YEAR);
@@ -183,8 +182,6 @@ public class TestGridAdapter extends BaseAdapter
 			int dd = calendar.get(Calendar.DAY_OF_MONTH);
 
 			return new DatePickerDialog(getActivity(), this, yy, mm, dd);
-
-
 		}
 
 
@@ -196,7 +193,6 @@ public class TestGridAdapter extends BaseAdapter
 			preferences.edit().putString("SavedDate", String.valueOf(dd+"/"+mm+"/"+yy)).commit();
 			int coinsValue = 0;
 			preferences.edit().putInt("coinsValue", coinsValue).commit();
-
 
 			Log.d("SavedDate : ", String.valueOf(dd+"/"+mm+"/"+yy));
 

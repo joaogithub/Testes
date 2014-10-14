@@ -649,21 +649,19 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 				//
 				//				}, 2000);
 
+				AlertDialog myAlertDialog = new AlertDialog.Builder(FirstActivity.this)
+				.setMessage("My Dialog Message")
+				.setPositiveButton("YES",
+						new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog,	int whichButton) {
 
-//				AlertDialog myAlertDialog = new AlertDialog.Builder(FirstActivity.this)
-//				.setMessage("My Dialog Message")
-//				.setPositiveButton("YES",
-//						new DialogInterface.OnClickListener() {
-//					public void onClick(DialogInterface dialog,	int whichButton) {
-//
-//					}
-//				}).setNegativeButton("NO", new DialogInterface.OnClickListener() {
-//					public void onClick(DialogInterface dialog,	int whichButton) {
-//
-//					}
-//				}).create();
-//				myAlertDialog.show();
+					}
+				}).setNegativeButton("NO", new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog,	int whichButton) {
 
+					}
+				}).create();
+				myAlertDialog.show();
 			}
 		});
 

@@ -87,9 +87,9 @@ public class DrawerLayoutActivity extends ActionBarActivity implements Navigatio
 		mDrawerListView = (ListView) findViewById(R.id.left_drawer);
 
 		mDrawerListView.setAdapter(new DrawerItemAdapter(getSupportActionBar().getThemedContext(),
-				R.layout.drawer_item, new String[] { "wall_title", "my_account",
-			"feedback_title", "about_title",
-		"faq_title" }, new Integer[] { R.drawable.abc_ab_share_pack_holo_light,
+				R.layout.drawer_item, new String[] { "Main Activity", "First Activity",
+			getString(R.string.check), getString(R.string.grid), "Second Activity"
+		 }, new Integer[] { R.drawable.abc_ab_share_pack_holo_light,
 			R.drawable.abc_ab_stacked_solid_dark_holo, R.drawable.icn_exercises_2dig, R.drawable.icn_seta_preto,
 			R.drawable.nd_icon_mural }));
 
@@ -108,7 +108,7 @@ public class DrawerLayoutActivity extends ActionBarActivity implements Navigatio
 
 		Calendar testCalendar = Calendar.getInstance();
 		testCalendar.setFirstDayOfWeek(Calendar.SUNDAY);
-		Log.e("WEEEK TEST:", ""+ testCalendar.get(Calendar.WEEK_OF_YEAR) + " "+ testCalendar.getFirstDayOfWeek());
+		Log.e("DrawerLayoutActivity - WEEEK TEST:", ""+ testCalendar.get(Calendar.WEEK_OF_YEAR) + " "+ testCalendar.getFirstDayOfWeek());
 		testCalendar.add(Calendar.WEEK_OF_YEAR, 1);
 		Log.e("WEEEK TEST:", ""+ testCalendar.get(Calendar.WEEK_OF_YEAR));
 
