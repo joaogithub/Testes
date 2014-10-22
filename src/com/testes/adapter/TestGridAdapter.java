@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -24,7 +26,9 @@ import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.wearable.NodeApi.GetConnectedNodesResult;
 import com.testes.android.R;
+import com.testes.database.TinyDB;
 
 public class TestGridAdapter extends BaseAdapter
 {
@@ -45,12 +49,11 @@ public class TestGridAdapter extends BaseAdapter
 	SelectDateFragment selectDateFragment;
 
 
-	public TestGridAdapter(FragmentActivity activity , Context cont,ArrayList<String> abc)
+	public TestGridAdapter(FragmentActivity activity , Context conte,ArrayList<String> abc)
 	{
-
 		super();
 		this.activity=activity;
-		this.context = cont;
+		this.context = conte;
 		this.abc = abc;
 	}
 
@@ -135,8 +138,10 @@ public class TestGridAdapter extends BaseAdapter
 
 				});
 
-				selectDateFragment.show(activity.getSupportFragmentManager(), "DatePicker");       
+//				selectDateFragment.show(activity.getSupportFragmentManager(), "DatePicker");       
 
+				new TimelineSettings().show(activity.getSupportFragmentManager(), "Timeline");
+				
 			}
 
 		};
@@ -159,6 +164,48 @@ public class TestGridAdapter extends BaseAdapter
 
 	}
 
+	public class TimelineSettings extends DialogFragment {
+	    final ArrayList<String> selected_categories = new ArrayList<String>();
+	    final String[]items = {"Fourniture","Nourriture","Voyages","Habillement","Médias","Autres"};
+	    TinyDB tinydb = new TinyDB(context);
+	    private SharedPreferences sharedPreference;
+	    private SharedPreferences.Editor sharedPrefEditor;
+
+	    @Override
+	    public Dialog onCreateDialog(Bundle savedInstanceState) {
+	        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+	        // Set the dialog title
+	        builder.setTitle("Choisissez vos paramètres")
+	                .setMultiChoiceItems(items, null,
+	                        new DialogInterface.OnMultiChoiceClickListener() {
+	                            @Override
+	                            public void onClick(DialogInterface dialog, int indexselected,
+	                                                boolean isChecked) {
+	                                if (isChecked) {
+	                                    // If the user checked the item, add it to the selected items
+	                                    selected_categories.add(String.valueOf(indexselected));
+	                                } else if (selected_categories.contains(String.valueOf(indexselected))) {
+	                                    // Else, if the item is already in the array, remove it
+	                                    selected_categories.remove(String.valueOf(indexselected));
+	                                }
+	                            }
+	                        })
+	                        // Set the action buttons
+	                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+	                    @Override
+	                    public void onClick(DialogInterface dialog, int id) {
+	                    	tinydb.putList("selected",selected_categories);
+	                    }
+	                })
+	                .setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
+	                    @Override
+	                    public void onClick(DialogInterface dialog, int id) {
+	                    }
+	                });
+	        return builder.create();
+	    }
+	}
+	
 	@SuppressLint("ValidFragment")
 	public class SelectDateFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener 
 	{

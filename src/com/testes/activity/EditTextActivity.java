@@ -62,7 +62,9 @@ public class EditTextActivity extends ActionBarActivity{
 
 			@Override
 			public void afterTextChanged(Editable s) {
-				
+				if(s.length()>0)
+					Log.i("EditTextActivity", "some text");
+					
 			}
 		});
 		
