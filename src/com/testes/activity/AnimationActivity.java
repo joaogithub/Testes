@@ -90,12 +90,10 @@ public class AnimationActivity extends ActionBarActivity{
 					}
 					
 				}, 200);
-				
 			}
 		});
 		
 	}
-
 
 	@SuppressLint("NewApi")
 	void drawBallGhost(int shadowValue){

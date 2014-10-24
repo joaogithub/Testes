@@ -12,7 +12,6 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
@@ -26,7 +25,7 @@ import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.wearable.NodeApi.GetConnectedNodesResult;
+import com.testes.activity.GridViewActivity;
 import com.testes.android.R;
 import com.testes.database.TinyDB;
 
@@ -49,10 +48,10 @@ public class TestGridAdapter extends BaseAdapter
 	SelectDateFragment selectDateFragment;
 
 
-	public TestGridAdapter(FragmentActivity activity , Context conte,ArrayList<String> abc)
+	public TestGridAdapter(FragmentActivity gridViewActivity , Context conte,ArrayList<String> abc)
 	{
 		super();
-		this.activity=activity;
+		this.activity=gridViewActivity;
 		this.context = conte;
 		this.abc = abc;
 	}
@@ -82,7 +81,7 @@ public class TestGridAdapter extends BaseAdapter
 
 
 	@Override
-	public View getView(final int arg0, View arg1, ViewGroup arg2) 
+	public View getView(final int position, View convertView, ViewGroup parent) 
 	{
 
 		final SharedPreferences pref = context.getApplicationContext().getSharedPreferences("TestDate", 0);
@@ -91,21 +90,21 @@ public class TestGridAdapter extends BaseAdapter
 
 		LayoutInflater inflator = activity.getLayoutInflater();
 
-		if(arg1==null)
+		if(convertView==null)
 		{
 
 			view = new ViewHolder();
 
-			arg1 = inflator.inflate(R.layout.test_grid_item, null);
+			convertView = inflator.inflate(R.layout.test_grid_item, null);
 
-			view.txt = (TextView) arg1.findViewById(R.id.txt);
+			view.txt = (TextView) convertView.findViewById(R.id.txt);
 
-			arg1.setTag(view);
+			convertView.setTag(view);
 
 		}
 		else
 		{
-			view = (ViewHolder) arg1.getTag();
+			view = (ViewHolder) convertView.getTag();
 		}
 
 		OnClickListener alertOnClickListener = new OnClickListener() {
@@ -113,7 +112,7 @@ public class TestGridAdapter extends BaseAdapter
 			public void onClick(View v) 
 			{
 
-				Toast.makeText(activity.getApplicationContext(), abc.get(arg0)+" - Clicked ", Toast.LENGTH_SHORT).show();
+				Toast.makeText(activity.getApplicationContext(), abc.get(position)+" - Clicked ", Toast.LENGTH_SHORT).show();
 
 				selectDateFragment = new SelectDateFragment();
 
@@ -138,9 +137,10 @@ public class TestGridAdapter extends BaseAdapter
 
 				});
 
-//				selectDateFragment.show(activity.getSupportFragmentManager(), "DatePicker");       
-
-				new TimelineSettings().show(activity.getSupportFragmentManager(), "Timeline");
+				if(position%2==0)
+					selectDateFragment.show(activity.getSupportFragmentManager(), "DatePicker");       
+				else
+					new TimelineSettings().show(activity.getSupportFragmentManager(), "Timeline");
 				
 			}
 
@@ -148,7 +148,7 @@ public class TestGridAdapter extends BaseAdapter
 
 		view.txt.setOnClickListener(alertOnClickListener);
 
-		text = String.valueOf(abc.get(arg0));
+		text = String.valueOf(abc.get(position));
 
 		view.txt.setBackgroundResource(R.drawable.background_action_bar);
 
@@ -160,13 +160,14 @@ public class TestGridAdapter extends BaseAdapter
 
 		view.txt.setText(text);
 
-		return arg1;
+		return convertView;
 
 	}
 
 	public class TimelineSettings extends DialogFragment {
-	    final ArrayList<String> selected_categories = new ArrayList<String>();
+	    ArrayList<String> selected_categories = new ArrayList<String>();
 	    final String[]items = {"Fourniture","Nourriture","Voyages","Habillement","Médias","Autres"};
+	    boolean[] itemsChecked = {false, false, false, false, false, false};
 	    TinyDB tinydb = new TinyDB(context);
 	    private SharedPreferences sharedPreference;
 	    private SharedPreferences.Editor sharedPrefEditor;
@@ -174,19 +175,33 @@ public class TestGridAdapter extends BaseAdapter
 	    @Override
 	    public Dialog onCreateDialog(Bundle savedInstanceState) {
 	        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+	        
+	        selected_categories = tinydb.getList("selected");
+	        
+	        for(int i=0;i<itemsChecked.length;i++){
+	        	if(selected_categories.contains((String)String.valueOf(i)))
+	        			itemsChecked[i]=true;
+	        }
+	        
+//	        selected_categories = new ArrayList<String>();
+	        
 	        // Set the dialog title
 	        builder.setTitle("Choisissez vos paramètres")
-	                .setMultiChoiceItems(items, null,
+	                .setMultiChoiceItems(items, itemsChecked,
 	                        new DialogInterface.OnMultiChoiceClickListener() {
 	                            @Override
 	                            public void onClick(DialogInterface dialog, int indexselected,
 	                                                boolean isChecked) {
 	                                if (isChecked) {
 	                                    // If the user checked the item, add it to the selected items
-	                                    selected_categories.add(String.valueOf(indexselected));
-	                                } else if (selected_categories.contains(String.valueOf(indexselected))) {
+	                                	if(!selected_categories.contains((String)String.valueOf(indexselected))){
+	                                		selected_categories.add(String.valueOf(indexselected));
+	                                    	itemsChecked[indexselected]=true;
+	                                	}
+	                                } else if (selected_categories.contains((String)String.valueOf(indexselected))) {
 	                                    // Else, if the item is already in the array, remove it
-	                                    selected_categories.remove(String.valueOf(indexselected));
+	                                    selected_categories.remove((String)String.valueOf(indexselected));
+	                                    itemsChecked[indexselected]=false;
 	                                }
 	                            }
 	                        })
