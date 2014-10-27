@@ -122,17 +122,24 @@ public class ScrollViewActivity extends Activity {
 		mTitle.setLayoutParams(params);
 	}
 
+	@Override
+	protected void onStop() {
+		super.onStop();
+		if(customHandler!=null)
+			customHandler.removeCallbacks(firstHalfRunnable);
+	}
+	
 	private Runnable firstHalfRunnable = new Runnable() {
 		public void run() {
 			Future longRunningTaskFurure = threadPoolExecutor.submit(firstHalfRunnable);
 			timeInMilliseconds = SystemClock.uptimeMillis() - startTime;
 			updatedTime = timeSwapBuff + timeInMilliseconds;
-			System.out.println(updatedTime + " cast secs" + (int) (updatedTime / 1000));
+			Log.i("ScrollViewActivity", updatedTime + " cast secs: " + (int) (updatedTime / 1000));
 			int secs = (int) (updatedTime / 1000);
 			//    int mins = secs / 60;
 
 			secs = secs % 91;
-			System.out.println("secs: "+ secs);
+			Log.i("ScrollViewActivity", "Secs: "+ secs);
 			int milliseconds = (int) (updatedTime % 1000);
 
 			timervalue.setText("minuto" + ":"

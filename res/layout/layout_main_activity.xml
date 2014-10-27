@@ -79,10 +79,18 @@
             android:text="Spinneractivity" />
 
         <Button
+            android:id="@+id/jsonButton"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_below="@+id/spinnerButton"
+            android:layout_centerHorizontal="true"
+            android:text="JsonParsing" />
+        
+        <Button
             android:id="@+id/seekBarButton"
             android:layout_width="190dp"
             android:layout_height="40dp"
-            android:layout_below="@+id/spinnerButton"
+            android:layout_below="@+id/jsonButton"
             android:layout_centerHorizontal="true"
             android:text="SeekBar" />
 

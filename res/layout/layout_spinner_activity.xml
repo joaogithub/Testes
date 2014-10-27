@@ -5,6 +5,8 @@
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:gravity="center"
+    android:paddingRight="20dp"
+    android:paddingLeft="20dp"
     android:orientation="vertical" >
 
     <!-- The main content view -->

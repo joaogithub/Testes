@@ -39,7 +39,7 @@ public class EditTextActivity extends ActionBarActivity{
 
 		doubleEdit =  (EditText) findViewById(R.id.doubleEditText);
 		final EditText editText = (EditText) findViewById(R.id.editTextAct);
-		
+
 		editText.addTextChangedListener(new TextWatcher() {
 
 			@Override
@@ -56,7 +56,7 @@ public class EditTextActivity extends ActionBarActivity{
 			@Override
 			public void beforeTextChanged(CharSequence s, int start, int count,
 					int after) {
-				
+
 
 			}
 
@@ -64,29 +64,11 @@ public class EditTextActivity extends ActionBarActivity{
 			public void afterTextChanged(Editable s) {
 				if(s.length()>0)
 					Log.i("EditTextActivity", "some text");
-					
+
 			}
 		});
-		
-		
-		
-		JSONObject obj = new JSONObject();
-        String name ="Vũ Viết Kiên";
-                   try {                           
-                       obj.put("name", name);                          
 
-                   } catch (JSONException e) {
-                       e.printStackTrace();
-                   }
-		
-                   try {
-					Log.i("String,", ""+obj.get("name"));
-				} catch (JSONException e) {
-					e.printStackTrace();
-				}
-                   
 	}
-
 
 
 	@Override
@@ -104,17 +86,17 @@ public class EditTextActivity extends ActionBarActivity{
 	}
 
 	public void whenbuttonisclicked(View view){
-	    doubleEdit = (EditText) findViewById(R.id.doubleEditText);
-	    String edittext1str = doubleEdit.getText().toString();
-	    double editext1dob = 0;
-	    if(!TextUtils.isEmpty(edittext1str))
-	    	editext1dob = Double.parseDouble(edittext1str);
-	    
-	    String edittext2str = "2";
-	    double editext2dob = Double.parseDouble(edittext2str);
-	    double add = (editext1dob + editext2dob);
-	    String yourDoubleString = String.valueOf(add);
-	    Log.i("EditTextActivity", "result:"+yourDoubleString);     
+		doubleEdit = (EditText) findViewById(R.id.doubleEditText);
+		String edittext1str = doubleEdit.getText().toString();
+		double editext1dob = 0;
+		if(!TextUtils.isEmpty(edittext1str))
+			editext1dob = Double.parseDouble(edittext1str);
+
+		String edittext2str = "2";
+		double editext2dob = Double.parseDouble(edittext2str);
+		double add = (editext1dob + editext2dob);
+		String yourDoubleString = String.valueOf(add);
+		Log.i("EditTextActivity", "result:"+yourDoubleString);     
 	}
 
 

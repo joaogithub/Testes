@@ -9,6 +9,7 @@ import com.testes.android.R.layout;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,10 +17,11 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
+import android.widget.TextView;
 
 public class SpinnerActivity extends Activity{
 
-	Spinner spinnerRegion, spinnerDistrict;
+	Spinner regionSpinner, districtSpinner;
 	int selectionCount=0;
 	Hashtable<Integer,ArrayList<String>> spinnerValues;
 
@@ -50,20 +52,21 @@ public class SpinnerActivity extends Activity{
 		spinnerValues.put(1, itasyDistricts);
 		spinnerValues.put(2, thirdRegionDistricts);
 
-		spinnerRegion = (Spinner) findViewById(R.id.spinner_region);
-		if(spinnerRegion != null) {
+		regionSpinner = (Spinner) findViewById(R.id.spinner_region);
+		if(regionSpinner != null) {
 
-			FilterSpinnerAdapter regionadapter = new FilterSpinnerAdapter(getApplicationContext(), R.layout.movie_detail_spinner_item, regions);
+			FilterSpinnerAdapter regionAdapter = new FilterSpinnerAdapter(getApplicationContext(), R.layout.movie_detail_spinner_item, regions);
 
-			regionadapter.setDropDownViewResource(R.layout.layout_simple_spinner_dropdown_item);
-			spinnerRegion.setAdapter(regionadapter);
-			spinnerRegion.setOnItemSelectedListener(new OnItemSelectedListener() {
+			regionAdapter.setDropDownViewResource(R.layout.layout_simple_spinner_dropdown_item);
+			regionSpinner.setAdapter(regionAdapter);
+			regionSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
 
 				@Override
 				public void onItemSelected(AdapterView<?> adapterView, View view, int position, long itemId) {
 						FilterSpinnerAdapter newDistrictAdapter = new FilterSpinnerAdapter(getApplicationContext(), R.layout.movie_detail_spinner_item, spinnerValues.get(position));
 						newDistrictAdapter.setDropDownViewResource(R.layout.layout_simple_spinner_dropdown_item);
-						spinnerDistrict.setAdapter(newDistrictAdapter);			
+						((TextView)view).setTextColor(Color.BLUE);
+						districtSpinner.setAdapter(newDistrictAdapter);			
 				}
 
 				@Override
@@ -72,18 +75,20 @@ public class SpinnerActivity extends Activity{
 
 		}
 
-		spinnerDistrict = (Spinner) findViewById(R.id.spinner_district);
-		if(spinnerDistrict != null) {
+		districtSpinner = (Spinner) findViewById(R.id.spinner_district);
+		if(districtSpinner != null) {
 
 			FilterSpinnerAdapter districtadapter = new FilterSpinnerAdapter(getApplicationContext(), R.layout.movie_detail_spinner_item, analamangaDistricts);
 
 			districtadapter.setDropDownViewResource(R.layout.layout_simple_spinner_dropdown_item);
-			spinnerDistrict.setAdapter(districtadapter);
-			spinnerDistrict.setOnItemSelectedListener(new OnItemSelectedListener() {
+			districtSpinner.setAdapter(districtadapter);
+			districtSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
 
 				@Override
 				public void onItemSelected(AdapterView<?> adapterView, View view, int position, long itemId) {
 					//do whatever you want here
+					if(view!=null)
+						((TextView)view).setTextColor(Color.MAGENTA);
 				}
 
 				@Override
@@ -92,7 +97,7 @@ public class SpinnerActivity extends Activity{
 
 		}
 		
-		spinnerRegion.setSelection(1);
+		regionSpinner.setSelection(1);
 		
 	}
 

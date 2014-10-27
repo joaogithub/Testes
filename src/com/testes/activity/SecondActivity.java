@@ -201,10 +201,10 @@ public class SecondActivity extends ActionBarActivity {
 			osw.close();
 
 		} catch (FileNotFoundException e) {
-			
+
 			e.printStackTrace();
 		} catch (IOException e) {
-			
+
 			e.printStackTrace();
 		}
 		//        home=(Button)findViewById(R.id.home_btn);
@@ -316,9 +316,9 @@ public class SecondActivity extends ActionBarActivity {
 
 				Log.d("try1", "testss");
 				try {
-					JSONObject obj = new JSONObject(jsonResult);
+					JSONObject object = new JSONObject(jsonResult);
 
-					x = obj.getString("topalbums");
+					x = object.getString("topalbums");
 					JSONObject obj2 = new JSONObject(x);
 					z = obj2.getJSONArray("album");
 					for (int i = 0; i < z.length(); i++) {
@@ -390,13 +390,13 @@ public class SecondActivity extends ActionBarActivity {
 
 	}
 
-	 public void find(View view) {
-	        if (bluetoothadapt.isDiscovering()) {
-	            // the button is pressed when it discovers, so cancel the discovery
-	            bluetoothadapt.cancelDiscovery();
-	        }
-	 }
-	
+	public void find(View view) {
+		if (bluetoothadapt.isDiscovering()) {
+			// the button is pressed when it discovers, so cancel the discovery
+			bluetoothadapt.cancelDiscovery();
+		}
+	}
+
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 

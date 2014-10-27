@@ -54,8 +54,6 @@ public class MainFragment extends Fragment{
 		LayoutParams lp = new ViewGroup.LayoutParams(200, 400);
 		_view.setLayoutParams(lp);
 
-
-
 		return _view;	
 	}
 
