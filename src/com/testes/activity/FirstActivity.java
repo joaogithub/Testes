@@ -129,10 +129,10 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		Log.i("FirstActivity", "onCreate() first");
 
 		UsbManager manager = (UsbManager) getSystemService(Context.USB_SERVICE);
-		HashMap<String, UsbDevice> deviceList = manager.getDeviceList();
-		Log.i("FirstActivity", deviceList.toString());
-		UsbDevice device = deviceList.get("deviceName");
-		Toast.makeText(getApplicationContext(),"Attached device is : "+ device, Toast.LENGTH_LONG).show();
+//		HashMap<String, UsbDevice> deviceList = manager.getDeviceList();
+//		Log.i("FirstActivity", deviceList.toString());
+//		UsbDevice device = deviceList.get("deviceName");
+//		Toast.makeText(getApplicationContext(),"Attached device is : "+ device, Toast.LENGTH_LONG).show();
 	
 		//		try {
 		//			URL url = new URL ("http://youcrypt.com/assets/images/osx.jpg");
