@@ -19,12 +19,10 @@ public class TextFragment extends Fragment{
 	public View onCreateView(LayoutInflater inflater,
 			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-
 		_textview = new TextView(getActivity());
 		_textview.setText("My textview");
 		
-		
-		return super.onCreateView(inflater, container, savedInstanceState);
+		return _textview;
 	}
 	
 }

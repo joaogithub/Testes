@@ -23,7 +23,7 @@ public class EditTextFragment extends Fragment{
 		_editView =  new EditText(getActivity());
 		_editView.setHint("MyEdittext");
 		
-		return super.onCreateView(inflater, container, savedInstanceState);
+		return _editView;
 	}
 	
 }

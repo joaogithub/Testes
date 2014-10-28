@@ -73,7 +73,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 	TextView text1;
 	EditText linkEditText, e2;
 	Button dialogButton, sub, circleTestButton, imageButton,intentsButton, connectbutton,animationActivityButton, mainActivityButton, secondButton, scrollViewButton, tableLayoutButton,tabHostButton;
-	Button listViewButton, createTemFiles,webViewButton,viewPagerButton, spinnerButton,alarmsButton;
+	Button listViewButton, createTemFiles,webViewButton,viewPagerButton, spinnerButton,alarmsButton, jsonButton;
 	Button drawerButton,drawerLayoutButton, fragmentsButton,sensorButton,toggleButtonActivity, drawableButton,ttSpeechButton,canvasButton,pickerButton,seekBarButton,editTextButton;
 	Context c=this;
 	ScrollView scrollViewLayout;
@@ -99,6 +99,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		webViewButton = (Button) findViewById(R.id.webViewButton);
 		toggleButtonActivity = (Button) findViewById(R.id.toggleButton);
 		connectbutton = (Button) findViewById(R.id.connect);
+		jsonButton = (Button) findViewById(R.id.jsonButton);
 		imageButton = (Button) findViewById(R.id.imageButton);
 		editTextButton = (Button) findViewById(R.id.editTextButton);
 		sensorButton = (Button) findViewById(R.id.sensorButton);
@@ -180,6 +181,14 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			}
 		});
 
+		jsonButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+				startActivity(new Intent(FirstActivity.this, JsonParseActivity.class));
+			}
+		});
 
 		linkEditText.addTextChangedListener(new TextWatcher() {
 
@@ -192,7 +201,6 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			@Override
 			public void beforeTextChanged(CharSequence s, int start, int count,
 					int after) {
-				// TODO Auto-generated method stub
 
 			}
 
@@ -207,8 +215,8 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		});
 
 		//	 change the titlebar color
-//				getActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.background_action_bar));
-		getActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.border));
+//		getActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.background_action_bar));
+//		getActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.border));
 		//		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		//		getSupportActionBar().setHomeButtonEnabled(true);
 		//		getSupportActionBar().setDisplayShowCustomEnabled(true);
@@ -365,8 +373,6 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 				startActivity(new Intent(FirstActivity.this, AgendaDetail.class));
 			}
 		});
-		
-
 	        
 		HashMap<Integer, Random> randomsHashMap = new HashMap<Integer, Random>();
 
@@ -832,7 +838,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 
 		String a = ".o.o.o.o.-";
 		a = a.substring(0,a.length()-1);
-		System.out.println(a);
+		Log.i("FirstActivity", a);
 
 	}
 
