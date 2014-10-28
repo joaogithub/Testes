@@ -5,10 +5,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -18,6 +21,7 @@ import com.testes.android.R;
 
 public class AnimationActivity extends ActionBarActivity{
 
+	protected static final String TAG = "AnimationActivity";
 	String buttonText= "";
 	Button oneBtn, twoChb, threeChb;
 	LinearLayout ballLayout;
@@ -95,6 +99,27 @@ public class AnimationActivity extends ActionBarActivity{
 			}
 		});
 
+		ScaleAnimation scaleAnimation =
+				new ScaleAnimation(1.0f, 5f, 1.0f, 5f,
+						ScaleAnimation.RELATIVE_TO_SELF, 1f,
+						ScaleAnimation.RELATIVE_TO_SELF, 1f);
+
+		scaleAnimation.setDuration(9000);
+
+		ImageView lol = (ImageView) findViewById(R.id.meetImage);
+
+		lol.setOnTouchListener(new OnTouchListener() {
+			
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				Log.i(TAG, "x:"+event.getX() + ", y:"+ event.getY());
+				return false;
+			}
+		});
+		
+		lol.setImageResource(R.drawable.medal_portugues2_aula);
+		lol.setAnimation(scaleAnimation);
+
 		final ImageView imageView=(ImageView)findViewById(R.id.meetImage);
 		Animation anim1 = new TranslateAnimation(0,0,300,0);
 		anim1.setDuration(3000);
@@ -108,11 +133,11 @@ public class AnimationActivity extends ActionBarActivity{
 
 			@Override
 			public void onAnimationEnd(Animation animation) {
-//				Animation anim2 = new TranslateAnimation(0, 0, 824, 1024);
-//				anim2.setDuration(3000);
-//				anim2.setFillAfter(true);
-//				imageView.clearAnimation();
-//				imageView.startAnimation(anim2);
+				//				Animation anim2 = new TranslateAnimation(0, 0, 824, 1024);
+				//				anim2.setDuration(3000);
+				//				anim2.setFillAfter(true);
+				//				imageView.clearAnimation();
+				//				imageView.startAnimation(anim2);
 			}
 
 			@Override
@@ -122,7 +147,7 @@ public class AnimationActivity extends ActionBarActivity{
 		});
 
 
-		imageView.startAnimation(anim1);
+//		imageView.startAnimation(anim1);
 
 	}
 

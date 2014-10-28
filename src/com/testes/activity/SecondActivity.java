@@ -31,7 +31,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.widget.ListPopupWindow;
+import android.support.v7.internal.widget.ListPopupWindow;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
