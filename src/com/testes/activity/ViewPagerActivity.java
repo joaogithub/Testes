@@ -112,7 +112,6 @@ public class ViewPagerActivity extends ActionBarActivity{
 			return fragmentsArray.get(position);
 		}
 		
-		
 	}
 	
 }

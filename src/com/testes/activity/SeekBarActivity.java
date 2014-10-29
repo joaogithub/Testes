@@ -35,20 +35,10 @@ public class SeekBarActivity extends ActionBarActivity {
 		setContentView(R.layout.activity_seekbar);
 
 		powerContainer = (RelativeLayout) findViewById(R.id.powerContainer);
-		TextView animText = (TextView) findViewById(R.id.animTextView);
-
+		
 		delegateArea = new Rect();
 		sbPower = (SeekBar) findViewById(R.id.seekBar);
 		//		sbPower.getHitRect(delegateArea);
-
-		ObjectAnimator animator = ObjectAnimator.ofFloat(getWindow().getDecorView(), "rotation", 0,
-				90, 180, 270, 360);
-		animator.setDuration(3000);
-		animator.setRepeatCount(1);
-//		animator.start();
-
-		Animation movingJumpAnimation = AnimationUtils.loadAnimation(this, R.anim.animation_splash);
-		//		animText.startAnimation(movingJumpAnimation);
 
 		Log.i("Rect TOP",String.valueOf(delegateArea.top));
 		Log.i("Rect RIGHT",String.valueOf(delegateArea.right));

@@ -1,6 +1,9 @@
 package com.testes.activity;
 
+import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
@@ -16,6 +19,7 @@ import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.testes.android.R;
 
@@ -27,6 +31,7 @@ public class AnimationActivity extends ActionBarActivity{
 	LinearLayout ballLayout;
 	private ImageView tennisBall;
 
+	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -99,26 +104,30 @@ public class AnimationActivity extends ActionBarActivity{
 			}
 		});
 
-		ScaleAnimation scaleAnimation =
+		final ScaleAnimation scaleAnimation =
 				new ScaleAnimation(1.0f, 5f, 1.0f, 5f,
-						ScaleAnimation.RELATIVE_TO_SELF, 1f,
-						ScaleAnimation.RELATIVE_TO_SELF, 1f);
+						ScaleAnimation.RELATIVE_TO_SELF, 0.5f,
+						ScaleAnimation.RELATIVE_TO_SELF, 0.5f);
 
 		scaleAnimation.setDuration(9000);
 
 		ImageView lol = (ImageView) findViewById(R.id.meetImage);
 
+		lol.setImageResource(R.drawable.medal_portugues2_aula);
+
 		lol.setOnTouchListener(new OnTouchListener() {
-			
+
 			@Override
-			public boolean onTouch(View v, MotionEvent event) {
+			public boolean onTouch(final View v, MotionEvent event) {
+				ScaleAnimation scaleAnim = scaleAnimation;
 				Log.i(TAG, "x:"+event.getX() + ", y:"+ event.getY());
-				return false;
+				startScaleAnimation(v, scaleAnim, event.getX()/v.getWidth(), event.getY()/v.getHeight());
+				v.performClick();
+				return true;
 			}
 		});
-		
-		lol.setImageResource(R.drawable.medal_portugues2_aula);
-		lol.setAnimation(scaleAnimation);
+
+		//		lol.setAnimation(scaleAnimation);
 
 		final ImageView imageView=(ImageView)findViewById(R.id.meetImage);
 		Animation anim1 = new TranslateAnimation(0,0,300,0);
@@ -147,7 +156,21 @@ public class AnimationActivity extends ActionBarActivity{
 		});
 
 
-//		imageView.startAnimation(anim1);
+		//		imageView.startAnimation(anim1);
+
+		TextView animText = (TextView) findViewById(R.id.animTextView);
+
+		if(Build.VERSION.SDK_INT>10){
+			//JUMP ANIMATION
+			ObjectAnimator animator = ObjectAnimator.ofFloat(getWindow().getDecorView(), "rotation", 0,
+					90, 180, 270, 360);
+			animator.setDuration(3000);
+			animator.setRepeatCount(1);
+			animator.start();
+
+			Animation movingJumpAnimation = AnimationUtils.loadAnimation(this, R.anim.animation_splash);
+			animText.startAnimation(movingJumpAnimation);
+		}
 
 	}
 
@@ -159,6 +182,20 @@ public class AnimationActivity extends ActionBarActivity{
 		ballLayout.addView(shadowTennisBall);
 	}
 
+
+	static void startAnimationText(Context context){
+
+	}
+
+	static void startScaleAnimation(View v, ScaleAnimation scaleAnim, float pivotX, float pivotY){
+		scaleAnim =
+				new ScaleAnimation(1.0f, 5f, 1.0f, 5f,
+						ScaleAnimation.RELATIVE_TO_SELF, pivotX,
+						ScaleAnimation.RELATIVE_TO_SELF, pivotY);
+		scaleAnim.setDuration(4000);
+
+		v.startAnimation(scaleAnim);
+	}
 
 	@Override
 	protected void onPause() {

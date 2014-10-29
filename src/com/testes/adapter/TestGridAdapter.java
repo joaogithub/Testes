@@ -168,14 +168,14 @@ public class TestGridAdapter extends BaseAdapter
 	    ArrayList<String> selected_categories = new ArrayList<String>();
 	    final String[]items = {"Fourniture","Nourriture","Voyages","Habillement","Médias","Autres"};
 	    boolean[] itemsChecked = {false, false, false, false, false, false};
-	    TinyDB tinydb = new TinyDB(context);
+	    TinyDB tinydb;
 	    private SharedPreferences sharedPreference;
 	    private SharedPreferences.Editor sharedPrefEditor;
 
 	    @Override
 	    public Dialog onCreateDialog(Bundle savedInstanceState) {
 	        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-	        
+	        tinydb = new TinyDB(getActivity());
 	        selected_categories = tinydb.getList("selected");
 	        
 	        for(int i=0;i<itemsChecked.length;i++){

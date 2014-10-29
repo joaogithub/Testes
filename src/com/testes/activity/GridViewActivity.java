@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.testes.adapter.TestGridAdapter;
 import com.testes.android.R;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -22,7 +23,7 @@ public class GridViewActivity extends ActionBarActivity
 
 	TestGridAdapter testGridAdapter;
 
-	GridView gv;
+	GridView gridView;
 	Button button;
 
 	int mLastFirstVisibleItem;
@@ -32,13 +33,13 @@ public class GridViewActivity extends ActionBarActivity
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
 	{
-
-		super.onCreate(savedInstanceState);
-		Log.i("Home","onCreate() home");
 		getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
+		super.onCreate(savedInstanceState);
+		Log.i("GridViewActivity","onCreate() home");
+		
 		setContentView(R.layout.home_gridview);
 
-		gv = (GridView) findViewById(R.id.gridView1);
+		gridView = (GridView) findViewById(R.id.gridView1);
 		button = (Button) findViewById(R.id.nextButton);
 		
 		abc = new ArrayList<String>();
@@ -59,9 +60,9 @@ public class GridViewActivity extends ActionBarActivity
 			}
 		});
 		
-		gv.setAdapter(testGridAdapter);
+		gridView.setAdapter(testGridAdapter);
 
-		gv.setOnScrollListener(new AbsListView.OnScrollListener() {
+		gridView.setOnScrollListener(new AbsListView.OnScrollListener() {
 			public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
 				if (mLastFirstVisibleItem > firstVisibleItem) {
 //					Log.e(getClass().toString(), "scrolling up");
