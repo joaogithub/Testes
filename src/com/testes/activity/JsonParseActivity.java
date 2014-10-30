@@ -22,6 +22,9 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.testes.android.R;
+
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -37,6 +40,8 @@ public class JsonParseActivity extends Activity{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		setContentView(R.layout.activity_main_empty);
 		
 		JSONObject obj = new JSONObject();
 		String name ="Vũ Viết Kiên";

@@ -97,23 +97,23 @@ public class WebViewActivity extends ActionBarActivity{
 						webview.setVisibility(View.VISIBLE);
 					}
 				});
+				
 				//Autofitting a webview
 				//Method 1 
 				//Doesn't work properly on the tablet
-				//
+				
 				//webview.setPadding(0, 0, 0, 0);
 				//webview.setInitialScale(getScale());
 
 				//Method 2 
 				//Doesn't seem to work with higher density screens
-				//
+				
 				//webview.getSettings().setLoadWithOverviewMode(true);
 				//webview.getSettings().setUseWideViewPort(true);
 				//webview.getSettings().setBuiltInZoomControls(true);
 				
 				//Method 3 
 				//Changes the text layout to fit the screen
-				//
 				//webview.getSettings().setLayoutAlgorithm(LayoutAlgorithm.NARROW_COLUMNS);
 				
 				webview.loadUrl(url);
@@ -123,10 +123,12 @@ public class WebViewActivity extends ActionBarActivity{
 			}
 		
 	}
-
+	
 	public void onBackPressed() {
 		if (webview.canGoBack())
 			webview.goBack();
+		else
+			super.onBackPressed();
 	}
 	
 }

@@ -22,6 +22,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences.Editor;
 import android.content.res.Configuration;
+import android.opengl.GLSurfaceView;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
@@ -40,6 +41,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.os.Vibrator;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.view.ActionMode;
@@ -64,6 +66,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.analytics.Tracker;
 import com.testes.android.R;
 import com.testes.database.DBHelper;
 import com.testes.interfaces.NavigationDrawerCallbacks;
@@ -87,6 +90,21 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 
 	String bString, aString;
 
+	/**
+	   * Enum used to identify the tracker that needs to be used for tracking.
+	   *
+	   * A single tracker is usually enough for most purposes. In case you do need multiple trackers,
+	   * storing them all in Application object helps ensure that they are created only once per
+	   * application instance.
+	   */
+	  public enum TrackerName {
+	    APP_TRACKER, // Tracker used only in this app.
+	    GLOBAL_TRACKER, // Tracker used by all the apps from a company. eg: roll-up tracking.
+	    ECOMMERCE_TRACKER, // Tracker used by all ecommerce transactions from a company.
+	  }
+
+	  HashMap<TrackerName, Tracker> mTrackers = new HashMap<TrackerName, Tracker>();
+	
 	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -789,6 +807,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			}
 		}
 
+		
 		MediaPlayer p = new MediaPlayer();
 		p.setAudioStreamType(AudioManager.STREAM_VOICE_CALL);
 		final MediaRecorder recorder = new MediaRecorder();
@@ -852,6 +871,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		}
 	}
 
+	
 	private void startRecording() {
 		Toast.makeText(FirstActivity.this, "Recording Message", Toast.LENGTH_SHORT).show();
 

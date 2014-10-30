@@ -34,6 +34,7 @@ import com.testes.android.R;
 public class ImageActivity extends ActionBarActivity{
 
 	String buttonText= "";
+	static final String TAG = "ImageActivity";
 
 	@SuppressLint("NewApi")
 	@Override
@@ -46,7 +47,7 @@ public class ImageActivity extends ActionBarActivity{
 		//	    RelativeLayout.LayoutParams paramsImage = (RelativeLayout.LayoutParams) imgView.
 		//	   double conversion = minute*2.7;
 		//	   int topmargin = (int)conversion;
-		//	  // params.setMargins(0,topmargin,0,0);
+		// params.setMargins(0,topmargin,0,0);
 		//	   params.topMargin = topmargin;
 		//	   paramsImage.topMargin = topmargin+15;
 		SimpleDateFormat df = new SimpleDateFormat("h:mm a");
@@ -82,22 +83,21 @@ public class ImageActivity extends ActionBarActivity{
 				Instances.RDATE
 				};
 
-
-		Cursor cur = Instances.query(resolver, EVENT_PROJECTION, System.currentTimeMillis(), System.currentTimeMillis()+3*24*60*60*1000);
+		Cursor cursor = Instances.query(resolver, EVENT_PROJECTION, System.currentTimeMillis(), System.currentTimeMillis()+3*24*60*60*1000);
 
 		// Use the cursor to step through the returned records
-		while (cur.moveToNext()) 
+		while (cursor.moveToNext()) 
 		{
-			String eventTitle = cur.getString(cur.getColumnIndex(Instances.TITLE));
-			long eventStartDt = cur.getLong(cur.getColumnIndex(Instances.BEGIN));
-			long eventEndDt = cur.getLong(cur.getColumnIndex(Instances.END));
-			long instanceID = cur.getLong(cur.getColumnIndex(Instances.EVENT_ID));
-			String rrule = cur.getString(cur.getColumnIndex(Instances.RRULE));
-			String rdate = cur.getString(cur.getColumnIndex(Instances.RDATE));
+			String eventTitle = cursor.getString(cursor.getColumnIndex(Instances.TITLE));
+			long eventStartDt = cursor.getLong(cursor.getColumnIndex(Instances.BEGIN));
+			long eventEndDt = cursor.getLong(cursor.getColumnIndex(Instances.END));
+			long instanceID = cursor.getLong(cursor.getColumnIndex(Instances.EVENT_ID));
+			String rrule = cursor.getString(cursor.getColumnIndex(Instances.RRULE));
+			String rdate = cursor.getString(cursor.getColumnIndex(Instances.RDATE));
 			Log.i("calendarActivitu", rrule + " date:"+ rdate);
 				instanceIdList.add(String.valueOf(instanceID));
 				startDateList.add(eventStartDt);
-				//				    		            instanceEnd.add(eventEndDt);
+				//instanceEnd.add(eventEndDt);
 			
 		}
 
@@ -160,7 +160,6 @@ public class ImageActivity extends ActionBarActivity{
 		
 		new EchoTask().execute();
 		
-		
 	}
 
 	public class EchoTask extends AsyncTask<Void, Void, Void>{
@@ -173,11 +172,11 @@ public class ImageActivity extends ActionBarActivity{
 
 	        if(!file.canRead())
 	        {
-	           Log.i("ImageActivity","Insert a valid path!");
+	           Log.i(TAG,"Insert a valid path!");
 	        }
 
 	        EchoNestAPI echoNest = new EchoNestAPI("XLNN9CZXKLXYFC66X");
-	        Log.i("ImageActivity","hello!");
+	        Log.i(TAG,"hello echonest!");
 	        
 	        Track track = null;
 			try {
@@ -190,7 +189,7 @@ public class ImageActivity extends ActionBarActivity{
 				e.printStackTrace();
 			}
 
-	        System.out.println("uploaded!");
+	        Log.i(TAG, "uploaded!");
 	        try {
 				track.waitForAnalysis((60*1000)/2);
 			} catch (EchoNestException e) {
@@ -198,16 +197,14 @@ public class ImageActivity extends ActionBarActivity{
 				e.printStackTrace();
 			}
 
-
-	        System.out.println("ID: "+track.getID());
+	        Log.i(TAG, "ID: "+track.getID());
 	        try {
-				System.out.println("Artist: "+track.getArtistName());
+				Log.i(TAG, "Artist: "+track.getArtistName());
 			} catch (EchoNestException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 	        try {
-				System.out.println("Title: "+track.getTitle());
+				Log.i(TAG, "Title: "+track.getTitle());
 			} catch (EchoNestException e) {
 				e.printStackTrace();
 			}
@@ -218,6 +215,3 @@ public class ImageActivity extends ActionBarActivity{
 	}
 	
 }
-
-
-
