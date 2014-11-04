@@ -57,7 +57,7 @@ public class IntentsActivity extends ActionBarActivity {
 		playFileButton = (Button) findViewById(R.id.playFileButton);
 		mapsButton = (Button) findViewById(R.id.mapsButton);
 		browserButton = (Button) findViewById(R.id.webButton);
-		getContentButton = (Button) findViewById(R.id.getContnetIntentButton);
+		getContentButton = (Button) findViewById(R.id.getContentIntentButton);
 		viewButton = (Button) findViewById(R.id.viewButton);
 		startImage = (ImageView) findViewById(R.id.previewImage);
 

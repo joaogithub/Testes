@@ -34,6 +34,7 @@ import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbManager;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnInfoListener;
 import android.media.MediaRecorder;
 import android.net.Uri;
 import android.net.wifi.WifiManager;
@@ -87,6 +88,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 	ImageView imageView;
 	MediaRecorder recorder;
 	boolean isVoiceButtonHeld = false;
+	public static final String TAG = "FirstActivity";
 
 	String bString, aString;
 
@@ -808,8 +810,18 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		}
 
 		
-		MediaPlayer p = new MediaPlayer();
-		p.setAudioStreamType(AudioManager.STREAM_VOICE_CALL);
+		MediaPlayer mediaPlayer = new MediaPlayer();
+		mediaPlayer.setAudioStreamType(AudioManager.STREAM_VOICE_CALL);
+		
+		mediaPlayer.setOnInfoListener(new OnInfoListener() {
+			
+			@Override
+			public boolean onInfo(MediaPlayer mp, int what, int extra) {
+				Log.i(TAG, "info :"+ what +" "+ extra);
+				return false;
+			}
+		});
+		
 		final MediaRecorder recorder = new MediaRecorder();
 		////		android.hardware.Camera mCamera = Camera.open();
 		////		mCamera.unlock();
