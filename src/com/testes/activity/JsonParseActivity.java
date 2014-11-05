@@ -19,23 +19,28 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.google.gson.JsonObject;
 import com.testes.android.R;
 
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.os.AsyncTaskCompat;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 
-public class JsonParseActivity extends Activity{
+public class JsonParseActivity extends ActionBarActivity{
 
-	String TAG = "JsonParseActivity";
 	int POST = 1;
 	int GET = 2;
+	public static String TAG = "JsonParseActivity";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -92,8 +97,34 @@ public class JsonParseActivity extends Activity{
 	    SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss");
 	    df.setTimeZone(tz);
 	    String time = df.format(new Date(millis));
-	    Log.i("Duration in seconds: ", time);
-	
+	    Log.i(TAG, "Duration in seconds:"+ time);
+	    
+	    
+	    new AsyncTask<Void,Void, String>(){
+
+			@Override
+			protected String doInBackground(Void... params) {
+				return makeServiceCall("https://api.github.com/users", 2, null);
+			}
+			
+			protected void onPostExecute(String result) {
+				try {
+					result = "[{\"subject\":\"Subject One\",\"time\":\"2:00pm\"},{\"subject\":\"Subject Two\",\"time\":\"2:30pm\"}]";
+					JSONArray readerArray = new JSONArray(result);
+					String [] items = new String[readerArray.length()];
+					for(int i=0;i<readerArray.length();i++){
+						JSONObject userObject = (JSONObject) readerArray.get(i);
+						String login = userObject.getString("login");
+						//add login to your ArrayList here
+						int id = userObject.getInt("id");
+					}
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+				
+			};
+	    	
+	    }.execute();
 	    
 	}
 	

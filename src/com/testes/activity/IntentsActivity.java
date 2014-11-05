@@ -9,7 +9,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Matrix;
+import android.hardware.Camera;
 import android.media.ExifInterface;
 import android.media.RingtoneManager;
 import android.media.ThumbnailUtils;
@@ -22,6 +24,7 @@ import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.SurfaceView;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -36,6 +39,7 @@ public class IntentsActivity extends ActionBarActivity {
 	ImageView startImage;
 	Button send, search, capture, setasButton, viewButton, mapsButton, openMediPlayerButton, playFileButton,browserButton, pickButton, callButton, getContentButton, ringToneButton;
 	String imageUri;
+	public static final String TAG = "IntentsActivity";
 
 	private static final int PICK_REQUEST_CODE = 100;
 	private static final int CALL_REQUEST_CODE = 200;
@@ -214,8 +218,8 @@ public class IntentsActivity extends ActionBarActivity {
 				Intent intent = new Intent(Intent.ACTION_ATTACH_DATA);
 				intent.addCategory(Intent.CATEGORY_DEFAULT);
 				intent.setDataAndType(Uri.parse("android.resource://"+getPackageName()+"/"+ R.drawable.ic_launcher), "image/*");
-				Log.i("URI", ""+Uri.parse("android.resource://com.testes.android/drawable/ic_launcher").toString() + getPackageName());
-				//		        intent.setDataAndType(Uri.parse(imageUri), "image/jpeg");
+				Log.i(TAG, "URI" +Uri.parse("android.resource://com.testes.android/drawable/ic_launcher").toString() + getPackageName());
+				//intent.setDataAndType(Uri.parse(imageUri), "image/jpeg");
 				intent.putExtra("mimeType", "image/*");
 				startActivity(Intent.createChooser(intent, "Set as:"));
 			}
@@ -272,26 +276,14 @@ public class IntentsActivity extends ActionBarActivity {
 			//                             editor1.commit();
 			Toast.makeText(this, "incomingnumbername", Toast.LENGTH_LONG).show();
 		}
-
-		//		Matrix matrix = getMatrix();
-		//
-		//	    RectF drawableRect = new RectF(0, 0, Background.getWidth(), Background.getHeight());
-		//	    RectF viewRect = new RectF(0, 0, screenWidth, screenHeight);
-		//	    Log.d("tag", drawableRect.toString());
-		//	    Log.d("tag", viewRect.toString());
-		//
-		//	    matrix.setRectToRect(drawableRect, viewRect, Matrix.ScaleToFit.CENTER);
-
 	}
-
-
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
 		super.onActivityResult(requestCode, resultCode, data);
 
-		if(requestCode ==CAPTURE_REQUEST_CODE && resultCode ==Activity.RESULT_OK){
+		if(requestCode == CAPTURE_REQUEST_CODE && resultCode ==Activity.RESULT_OK){
 			ExifInterface exif;
 			int rotate = 0;
 			Bitmap bitmap =(Bitmap) data.getExtras().get("data"); 
@@ -301,13 +293,13 @@ public class IntentsActivity extends ActionBarActivity {
 				imageUri = data.getData().toString();
 
 				ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-				Log.i("COMPRESSED Bitmap", " "+bitmap.compress(Bitmap.CompressFormat.PNG, 40, bytes));
+				Log.i(TAG, "COMPRESSED Bitmap:" +bitmap.compress(Bitmap.CompressFormat.PNG, 40, bytes));
 
 				try {
 					File directory = new File(Environment.getExternalStorageDirectory() + "/myDirectory/");
-					Log.i("Created external folder successfully", " "+directory.mkdirs());
+					Log.i(TAG, "Created external folder successfully: " +directory.mkdirs());
 					File f = new File(Environment.getExternalStorageDirectory() + "/myDirectory/" + "test.png");
-					Log.i("Created external file successfully", " "+f.createNewFile() + " file exists "+ f.exists());
+					Log.i(TAG, "Created external file successfully: " +f.createNewFile() + " file exists "+ f.exists());
 					if(f.exists()){
 						FileOutputStream fo = new FileOutputStream(f);
 						fo.write(bytes.toByteArray());
@@ -315,14 +307,14 @@ public class IntentsActivity extends ActionBarActivity {
 					}
 				} catch (IOException e) {
 					e.printStackTrace();
-					Log.e("MyActivity", "Was unable to copy image" + e.toString());
+					Log.e(TAG, "Was unable to copy image: " + e.toString());
 				}
 
 				ByteArrayOutputStream stream = new ByteArrayOutputStream();
 				bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), data.getData());
-				Log.i("COMPRESSED", " " +bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream));
+				Log.i(TAG, "COMPRESSED " +bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream));
 				byte[] byteArray = stream.toByteArray();
-				Log.i("byte array length", ""+byteArray.length);
+				Log.i(TAG, "byte array length:" +byteArray.length);
 
 				File file = new File(getFilesDir()+"/file.png");
 				FileOutputStream fos = new FileOutputStream(file);
@@ -331,7 +323,7 @@ public class IntentsActivity extends ActionBarActivity {
 				fos.flush();
 				fos.close();
 
-				Log.i("IntentsActivity", "imageuri ="+ imageUri);
+				Log.i(TAG, "imageuri = "+ imageUri);
 				exif = new ExifInterface(imageUri);
 				int exifOrientation = exif.getAttributeInt(
 						ExifInterface.TAG_ORIENTATION,
@@ -357,12 +349,12 @@ public class IntentsActivity extends ActionBarActivity {
 				Matrix mtx = new Matrix();
 				try
 				{
-					Log.i("mutable bitmap?" ,""+ bitmap.isMutable() + " w: "+width + " h: "+ height);
+					Log.i(TAG, "mutable bitmap? " + bitmap.isMutable() + " w: "+width + " h: "+ height);
 					bitmap = ThumbnailUtils.extractThumbnail(bitmap, 100, 100);
 					//							Bitmap.createBitmap(bitmap, 40, 40, width-40, height-40, null, false);
 					startImage.setImageBitmap(bitmap);
 
-					Log.i("mutable bitmap after?" ,""+ bitmap.isMutable() + " w: "+width + " h: "+ height);
+					Log.i(TAG, "mutable bitmap after? " + bitmap.isMutable() + " w: "+width + " h: "+ height);
 				}
 				catch(OutOfMemoryError e)
 				{
@@ -416,14 +408,33 @@ public class IntentsActivity extends ActionBarActivity {
 			}
 		}
 		else if(requestCode == CALL_REQUEST_CODE && resultCode==Activity.RESULT_OK){
-			Log.i("IntentsActivity", data.toString());
+			Log.i(TAG, data.toString());
 		}
 		else{
-			Log.i("IntentsActivity", "ACTION FAILED");
+			Log.i(TAG, "ACTION FAILED");
 		}
 	}
 
+	public class MyPreview implements Camera.PreviewCallback {
 
+        @Override
+        public void onPreviewFrame(byte[] data, Camera camera) {
+            Log.d(TAG, "Got a camera frame");
+
+            Canvas canvas = null;
+
+            try {
+                    canvas = new SurfaceView(IntentsActivity.this).getHolder().lockCanvas(null);
+
+                    Log.d(TAG, "Got Bitmap");
+            } finally {
+                if (canvas != null) {
+                	new SurfaceView(IntentsActivity.this).getHolder().unlockCanvasAndPost(canvas);
+                }
+            }
+        }
+
+    }
 
 	public void saveImageToSDCard(Bitmap bitmap) {
 		String dirname = "/Amazing Wallpapers/";
@@ -449,7 +460,7 @@ public class IntentsActivity extends ActionBarActivity {
 					"Toast_saved".replace("#",
 							"\"" + "Gallery name" + "\""),
 							Toast.LENGTH_SHORT).show();
-			Log.d("Intents", "Wallpaper saved to:" + file.getAbsolutePath());
+			Log.d(TAG, "Wallpaper saved to:" + file.getAbsolutePath());
 
 		} catch (Exception e) {
 			e.printStackTrace();

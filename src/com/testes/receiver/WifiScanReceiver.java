@@ -14,9 +14,9 @@ public class WifiScanReceiver extends BroadcastReceiver{
         ConnectivityManager conMan = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE); 
         NetworkInfo netInfo = conMan.getActiveNetworkInfo();
         if (netInfo != null && netInfo.getType() == ConnectivityManager.TYPE_WIFI) 
-            Log.d("WifiReceiver", "Have Wifi Connection");
+            Log.d("WifiReceiver", "Wifi Connection is enabled");
         else
-            Log.d("WifiReceiver", "Don't have Wifi Connection");    
+            Log.d("WifiReceiver", "No Wifi Connection found");    
     }   
 
 }

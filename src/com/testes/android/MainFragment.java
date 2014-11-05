@@ -11,6 +11,9 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Paint.Align;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -89,7 +92,7 @@ public class MainFragment extends Fragment{
 	public void onPrepareOptionsMenu(Menu menu) {
 		super.onPrepareOptionsMenu(menu);
 		Drawable backgroundImage = getResources().getDrawable(R.drawable.icn_exercises_2dig);
-		//        Bitmap backBitmap = BitmapFactory.decodeResource(getResources(),  R.drawable.icn_exercises_2dig);
+		Bitmap backBitmap = BitmapFactory.decodeResource(getResources(),  R.drawable.icn_exercises_2dig);
 
 		// You can also use Config.ARGB_4444 to conserve memory or ARGB_565 if 
 		// you don't have any transparency.
@@ -101,18 +104,18 @@ public class MainFragment extends Fragment{
 		// Set up the paint for use with our Canvas
 		Paint imagePaint = new Paint();
 		        
-		//        //background paint
-		//        Paint greenPaint = new Paint();
-		//        greenPaint.setColor(getResources().getColor(R.color.green));
-		//        
-		//        imagePaint.setTextAlign(Align.CENTER);
-		//        imagePaint.setTextSize(23f);
-		//        imagePaint.setFlags(Paint.FAKE_BOLD_TEXT_FLAG);
-		//        imagePaint.setColor(getResources().getColor(R.color.white));
-		//
-		//        //rect that holds the green circle
-		//        RectF circleRect = new RectF(0,(float)(IMAGE_HEIGHT/3),IMAGE_WIDTH+(IMAGE_WIDTH/2),(float)(IMAGE_HEIGHT/3)+(IMAGE_HEIGHT));
-		//        Rect recta = new Rect(IMAGE_WIDTH/3,IMAGE_HEIGHT/3,IMAGE_WIDTH*2, IMAGE_HEIGHT*2);
+		//background paint
+		Paint greenPaint = new Paint();
+		greenPaint.setColor(getResources().getColor(R.color.green));
+		        
+		imagePaint.setTextAlign(Align.CENTER);
+		imagePaint.setTextSize(23f);
+		imagePaint.setFlags(Paint.FAKE_BOLD_TEXT_FLAG);
+		imagePaint.setColor(getResources().getColor(R.color.white));
+		
+		        //rect that holds the green circle
+//		        RectF circleRect = new RectF(0,(float)(IMAGE_HEIGHT/3),IMAGE_WIDTH+(IMAGE_WIDTH/2),(float)(IMAGE_HEIGHT/3)+(IMAGE_HEIGHT));
+//		        Rect recta = new Rect(IMAGE_WIDTH/3,IMAGE_HEIGHT/3,IMAGE_WIDTH*2, IMAGE_HEIGHT*2);
 		//        // Draw the image to our canvas
 		//        //backgroundImage.draw(imageCanvas);
 		//        Matrix scaleMatrix = new Matrix();

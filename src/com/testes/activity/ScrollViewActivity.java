@@ -72,7 +72,6 @@ public class ScrollViewActivity extends Activity {
 		});
 
 			
-		
 		startButton.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View view) {

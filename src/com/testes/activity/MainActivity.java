@@ -1,6 +1,7 @@
 package com.testes.activity;
 
 import java.io.StringReader;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -30,6 +31,7 @@ import android.provider.Settings.Secure;
 import android.support.v4.view.PagerAdapter;
 import android.support.v7.app.ActionBarActivity;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Display;
 import android.view.MenuItem;
 import android.view.View;
@@ -56,11 +58,14 @@ public class MainActivity extends ListActivity {
 	ArrayList <String> layoutData;
 	static ProgressDialog progressDialog;
 	private Context _context;
+	
+	public static String TAG = "MainActivity";
+	
 	@SuppressLint("NewApi")
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-//		setContentView(R.layout.layout_spinner_activity);
+		setContentView(R.layout.rodrigo_layout);
 		_context = this;
 
 		//Print display size and characteristics
@@ -70,7 +75,7 @@ public class MainActivity extends ListActivity {
 		int height = display.getHeight(); // deprecated
 		DisplayMetrics dMetrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(dMetrics);
-		String strScreenDIP = "The model of the device is: "+ android.os.Build.MANUFACTURER + " "+ android.os.Build.MODEL+ " with brand " + android.os.Build.BRAND + " as product "+ android.os.Build.PRODUCT+ "\n";
+		String strScreenDIP = "The model of the device is: "+ android.os.Build.MANUFACTURER + " "+ android.os.Build.MODEL+ " with brand " + android.os.Build.BRAND + " as product "+ android.os.Build.PRODUCT+ " with serial "+android.os.Build.SERIAL + "\n";
 		strScreenDIP += "The Android ID is " + Secure.ANDROID_ID + "\n";
 		strScreenDIP += "The current API version is: " + android.os.Build.VERSION.SDK_INT + "\n";
 		strScreenDIP += "Screen size category is: "+getSizeName(this) + "\n";
@@ -82,7 +87,7 @@ public class MainActivity extends ListActivity {
 		strScreenDIP += "A scaling factor for fonts displayed on the display: " + dMetrics.scaledDensity + "\n";
 		strScreenDIP += "The exact physical pixels per inch of the screen in the X dimension: " + dMetrics.xdpi + "\n";
 		strScreenDIP += "The exact physical pixels per inch of the screen in the Y dimension: " + dMetrics.ydpi + "\n";
-		System.out.println(strScreenDIP);
+		Log.i(TAG, strScreenDIP + " "+  getManufacturerSerialNumber());
 
 		getListView().setOnItemClickListener(new OnItemClickListener() {
 
@@ -176,4 +181,18 @@ public class MainActivity extends ListActivity {
 		super.onConfigurationChanged(newConfig);
 	}
 
+
+
+public static String getManufacturerSerialNumber() {
+  String serial = null; 
+  try {
+      Class<?> c = Class.forName("android.os.SystemProperties");
+      Method get = c.getMethod("get", String.class, String.class);
+      serial = (String) get.invoke(c, "ril.serialnumber", "unknown");
+  } catch (Exception ignored) {}
+  return serial;
+}
+
+
+	
 }

@@ -13,7 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class AgendaDetail extends Activity implements TextToSpeech.OnInitListener {
+public class AgendaDetailActivity extends Activity implements TextToSpeech.OnInitListener {
 
 private TextToSpeech tts;
 private Button btnspeak;

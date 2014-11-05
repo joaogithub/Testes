@@ -53,14 +53,12 @@ public class SeekBarActivity extends ActionBarActivity {
 		//		sbPower.setLayoutParams(params);
 		//		sbPower.setThumbOffset(0);
 
-		sbPower.getHitRect(delegateArea);
+//		sbPower.getHitRect(delegateArea);
 
 		Log.i("Rect TOP",String.valueOf(delegateArea.top));
 		Log.i("Rect RIGHT",String.valueOf(delegateArea.right));
 		Log.i("Rect BOTTOM",String.valueOf(delegateArea.bottom));
 		Log.i("Rect LEFT",String.valueOf(delegateArea.left));
-
-
 	}
 
 	@Override
@@ -71,10 +69,10 @@ public class SeekBarActivity extends ActionBarActivity {
 		float wWidth = ((mWidth * .7f) > 756 ) ? 756 : mWidth * .7f;
 		ViewGroup.LayoutParams params = sbPower.getLayoutParams();
 		params.width = (int) wWidth;
-		sbPower.setLayoutParams(params);
+//		sbPower.setLayoutParams(params);
 		//		sbPower.setThumbOffset(0);
 
-		sbPower.getHitRect(delegateArea);
+//		sbPower.getHitRect(delegateArea);
 
 		Log.i("Rect TOP resume",String.valueOf(delegateArea.top));
 		Log.i("Rect RIGHT resume",String.valueOf(delegateArea.right));

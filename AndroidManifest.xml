@@ -68,7 +68,7 @@
         </activity>
         <activity android:name="com.testes.activity.EditTextActivity" >
         </activity>
-        <activity android:name="com.testes.activity.AgendaDetail" >
+        <activity android:name="com.testes.activity.AgendaDetailActivity" >
         </activity>
         <activity android:name="com.testes.activity.ImageActivity" >
         </activity>

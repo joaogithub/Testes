@@ -48,7 +48,7 @@ public class AnimationActivity extends ActionBarActivity{
 		threeChb = (Button) findViewById(R.id.threeChb);
 		tennisBall = (ImageView) findViewById(R.id.ball);
 		ballLayout = (LinearLayout) findViewById(R.id.tennisBallLayout);
-		
+
 		oneBtn.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -130,7 +130,7 @@ public class AnimationActivity extends ActionBarActivity{
 
 		//		lol.setAnimation(scaleAnimation);
 
-		final ImageView imageView=(ImageView)findViewById(R.id.meetImage);
+		final ImageView imageView =(ImageView)findViewById(R.id.meetImage);
 		Animation anim1 = new TranslateAnimation(0,0,300,0);
 		anim1.setDuration(3000);
 		anim1.setFillAfter(true);
@@ -143,10 +143,10 @@ public class AnimationActivity extends ActionBarActivity{
 
 			@Override
 			public void onAnimationEnd(Animation animation) {
-				//				Animation anim2 = new TranslateAnimation(0, 0, 824, 1024);
-				//				anim2.setDuration(3000);
-				//				anim2.setFillAfter(true);
-				//				imageView.clearAnimation();
+				Animation anim2 = new TranslateAnimation(0, 0, 824, 1024);
+				anim2.setDuration(3000);
+				anim2.setFillAfter(true);
+				imageView.clearAnimation();
 				//				imageView.startAnimation(anim2);
 			}
 
@@ -167,10 +167,10 @@ public class AnimationActivity extends ActionBarActivity{
 					90, 180, 270, 360);
 			animator.setDuration(3000);
 			animator.setRepeatCount(1);
-//			animator.start();
+			//			animator.start();
 
 			Animation movingJumpAnimation = AnimationUtils.loadAnimation(this, R.anim.animation_splash);
-//			animText.startAnimation(movingJumpAnimation);
+			//			animText.startAnimation(movingJumpAnimation);
 		}
 
 	}

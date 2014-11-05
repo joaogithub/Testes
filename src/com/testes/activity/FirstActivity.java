@@ -360,7 +360,6 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			@Override
 			public void onClick(View v) {
 				startActivity(new Intent(FirstActivity.this, SeekBarActivity.class));
-				//				
 				FirstActivity.this.overridePendingTransition(R.anim.animation1, R.anim.animation3);
 			}
 		});
@@ -383,14 +382,14 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			}
 		});
 
-		Random i = new Random();
-		i.nextInt();
+		Random random = new Random();
+		random.nextInt();
 		
 		ttSpeechButton.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				startActivity(new Intent(FirstActivity.this, AgendaDetail.class));
+				startActivity(new Intent(FirstActivity.this, AgendaDetailActivity.class));
 			}
 		});
 	        
