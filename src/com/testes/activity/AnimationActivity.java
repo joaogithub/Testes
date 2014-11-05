@@ -48,6 +48,7 @@ public class AnimationActivity extends ActionBarActivity{
 		threeChb = (Button) findViewById(R.id.threeChb);
 		tennisBall = (ImageView) findViewById(R.id.ball);
 		ballLayout = (LinearLayout) findViewById(R.id.tennisBallLayout);
+		
 		oneBtn.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -111,11 +112,11 @@ public class AnimationActivity extends ActionBarActivity{
 
 		scaleAnimation.setDuration(9000);
 
-		ImageView lol = (ImageView) findViewById(R.id.meetImage);
+		ImageView lolImageView = (ImageView) findViewById(R.id.meetImage);
 
-		lol.setImageResource(R.drawable.medal_portugues2_aula);
+		lolImageView.setImageResource(R.drawable.medal_portugues2_aula);
 
-		lol.setOnTouchListener(new OnTouchListener() {
+		lolImageView.setOnTouchListener(new OnTouchListener() {
 
 			@Override
 			public boolean onTouch(final View v, MotionEvent event) {
@@ -161,15 +162,15 @@ public class AnimationActivity extends ActionBarActivity{
 		TextView animText = (TextView) findViewById(R.id.animTextView);
 
 		if(Build.VERSION.SDK_INT>10){
-			//JUMP ANIMATION
+			//SCREEN ROTATE ANIMATION
 			ObjectAnimator animator = ObjectAnimator.ofFloat(getWindow().getDecorView(), "rotation", 0,
 					90, 180, 270, 360);
 			animator.setDuration(3000);
 			animator.setRepeatCount(1);
-			animator.start();
+//			animator.start();
 
 			Animation movingJumpAnimation = AnimationUtils.loadAnimation(this, R.anim.animation_splash);
-			animText.startAnimation(movingJumpAnimation);
+//			animText.startAnimation(movingJumpAnimation);
 		}
 
 	}

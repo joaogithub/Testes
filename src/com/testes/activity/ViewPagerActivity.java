@@ -43,7 +43,6 @@ public class ViewPagerActivity extends ActionBarActivity{
 
 		setContentView(R.layout.layout_pager_activity);
 
-		
 		firstFragment = new ImageFragment();
 		secondFragment = new TextFragment();
 		thirdFragment = new EditTextFragment();

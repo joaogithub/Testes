@@ -17,7 +17,7 @@
         android:layout_height="37dp"
         android:layout_below="@+id/buttonAct"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         android:height="137dp"
         android:maxLength="22"
         android:paddingLeft="7dp"
@@ -32,7 +32,7 @@
         android:layout_height="37dp"
         android:layout_below="@+id/twoChb"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         android:height="137dp"
         android:maxLength="22"
         android:paddingLeft="7dp"
@@ -61,18 +61,18 @@
         android:id="@+id/meetImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_below="@+id/tennisBallLayout"
         android:src="@drawable/meet" />
 
     <TextView
         android:id="@+id/animTextView"
         android:layout_width="100dp"
-        android:gravity="center"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
         android:layout_height="40dp"
-        android:layout_marginTop="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
         android:text="ANIMATION" />
-    
+
 </RelativeLayout>

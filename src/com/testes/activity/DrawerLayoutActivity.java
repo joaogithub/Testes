@@ -90,7 +90,7 @@ public class DrawerLayoutActivity extends ActionBarActivity implements Navigatio
 				R.layout.drawer_item, new String[] { "Main Activity", "First Activity",
 			getString(R.string.check), getString(R.string.grid), "Second Activity"
 		 }, new Integer[] { R.drawable.abc_ab_share_pack_holo_light,
-			R.drawable.abc_ab_stacked_solid_dark_holo, R.drawable.icn_exercises_2dig, R.drawable.icn_seta_preto,
+			R.drawable.abc_ab_share_pack_holo_light, R.drawable.icn_exercises_2dig, R.drawable.icn_seta_preto,
 			R.drawable.nd_icon_mural }));
 
 		mDrawerListView.setOnItemClickListener(new OnItemClickListener() {
@@ -103,8 +103,8 @@ public class DrawerLayoutActivity extends ActionBarActivity implements Navigatio
 			}
 		});
 
-		//		//imageView.setImageResource(imageAdapter.mThumbIds[position]);
-		//		setaswall(new View(this));
+		//	imageView.setImageResource(imageAdapter.mThumbIds[position]);
+		//	setaswall(new View(this));
 
 		Calendar testCalendar = Calendar.getInstance();
 		testCalendar.setFirstDayOfWeek(Calendar.SUNDAY);

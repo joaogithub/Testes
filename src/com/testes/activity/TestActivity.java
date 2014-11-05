@@ -41,7 +41,7 @@ public class TestActivity extends Activity{
 
 	private int select1;
 	private TextView col1, brewingTextView;
-
+	public static final String TAG = "TestActivity";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -84,15 +84,15 @@ public class TestActivity extends Activity{
 		                    HttpClient client = new DefaultHttpClient();
 		                    HttpResponse response = null;
 		                    try {
-		                        Log.i("client", "Trying to execute");
+		                        Log.i(TAG, "Trying to execute");
 		                        response = client.execute(post);
-		                        Log.i("client", "Execution success");  
+		                        Log.i(TAG, "Execution success");  
 		                      
 		                    } catch (ClientProtocolException e) {
-		                        Log.i("client", "Problems with execute post, ClientProtocolException");
+		                        Log.i(TAG, "Problems with execute post, ClientProtocolException");
 		                        e.printStackTrace();
 		                    } catch (IOException e) {
-		                        Log.i("client", "Problems with execute post, IOException");
+		                        Log.i(TAG, "Problems with execute post, IOException");
 		                        e.printStackTrace();
 		                        return null;
 		                    }
