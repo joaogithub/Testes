@@ -6,7 +6,7 @@
 
     <uses-sdk
         android:minSdkVersion="10"
-        android:targetSdkVersion="20" />
+        android:targetSdkVersion="21" />
 
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -56,7 +56,8 @@
         </activity>
         <activity android:name="com.testes.activity.MainActivity" >
         </activity>
-        <activity android:name="com.testes.activity.ButtonsActivity" >
+        <activity android:name="com.testes.activity.ButtonsActivity"
+            android:theme="@style/AppTabTheme" >
         </activity>
         <activity android:name="com.testes.activity.CheckListActivity" >
         </activity>

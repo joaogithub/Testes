@@ -111,6 +111,7 @@ public class JsonParseActivity extends ActionBarActivity{
 				try {
 					result = "[{\"subject\":\"Subject One\",\"time\":\"2:00pm\"},{\"subject\":\"Subject Two\",\"time\":\"2:30pm\"}]";
 					JSONArray readerArray = new JSONArray(result);
+					Log.i(TAG, ((JSONArray)readerArray).toString());
 					String [] items = new String[readerArray.length()];
 					for(int i=0;i<readerArray.length();i++){
 						JSONObject userObject = (JSONObject) readerArray.get(i);

@@ -87,7 +87,7 @@ public class MainActivity extends ListActivity {
 		strScreenDIP += "A scaling factor for fonts displayed on the display: " + dMetrics.scaledDensity + "\n";
 		strScreenDIP += "The exact physical pixels per inch of the screen in the X dimension: " + dMetrics.xdpi + "\n";
 		strScreenDIP += "The exact physical pixels per inch of the screen in the Y dimension: " + dMetrics.ydpi + "\n";
-		Log.i(TAG, strScreenDIP + " "+  getManufacturerSerialNumber());
+		Log.i(TAG, strScreenDIP + " Serial Number: "+  getManufacturerSerialNumber());
 
 		getListView().setOnItemClickListener(new OnItemClickListener() {
 

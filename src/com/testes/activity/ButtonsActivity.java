@@ -2,7 +2,11 @@ package com.testes.activity;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBar.TabListener;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.ActionBar.Tab;
 import android.view.Gravity;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
@@ -29,7 +33,28 @@ public class ButtonsActivity extends ActionBarActivity{
 		RelativeLayout rootView= (RelativeLayout) findViewById(R.id.rootRelativeLayout);
 		viewToInject = (LinearLayout) findViewById(R.id.viewToInject);
 
-		getSupportActionBar();
+		ActionBar actionBar = getSupportActionBar();
+		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+		ActionBar.TabListener listener = new TabListener() {
+			
+			@Override
+			public void onTabUnselected(Tab arg0, FragmentTransaction arg1) {
+				
+			}
+			
+			@Override
+			public void onTabSelected(Tab arg0, FragmentTransaction arg1) {
+				
+			}
+			
+			@Override
+			public void onTabReselected(Tab arg0, FragmentTransaction arg1) {
+				
+			}
+		};
+		
+		actionBar.addTab(actionBar.newTab().setText("Primeira").setTabListener(listener));
+		actionBar.addTab(actionBar.newTab().setText("Segunda").setTabListener(listener));
 
 		appendSenderText("primeiro");
 		appendReceiverText("segundo");
