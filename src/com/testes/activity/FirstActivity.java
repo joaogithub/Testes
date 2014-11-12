@@ -147,11 +147,15 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		tabHostButton = (Button) findViewById(R.id.tabsHostButton);
 		listViewButton  = (Button) findViewById(R.id.listViewButton);
 
-		Log.i("FirstActivity", "onCreate() first");
+		Log.i(TAG, "onCreate() first");
 
+		int unicode = 0x1F60A;
+
+		animationActivityButton.setText(animationActivityButton.getText() +" "+ new String(Character.toChars(unicode)));
+		
 		UsbManager manager = (UsbManager) getSystemService(Context.USB_SERVICE);
-//		HashMap<String, UsbDevice> deviceList = manager.getDeviceList();
-//		Log.i("FirstActivity", deviceList.toString());
+		HashMap<String, UsbDevice> deviceList = manager.getDeviceList();
+		Log.i(TAG, deviceList.toString());
 //		UsbDevice device = deviceList.get("deviceName");
 //		Toast.makeText(getApplicationContext(),"Attached device is : "+ device, Toast.LENGTH_LONG).show();
 	
@@ -276,7 +280,6 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		// The '-1' here means to vibrate once
 		// '0' would make the pattern vibrate indefinitely
 		//		vibrator.vibrate(pattern, -1);
-
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date date = new Date();

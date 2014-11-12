@@ -3,7 +3,7 @@
     <!--
         Base application theme for API 14+. This theme completely replaces
         AppBaseTheme from BOTH res/values/styles.xml and
-        res/values-v11/styles.xml on API 14+ devices.
+        res/values-v11/styles.xml on API 14+ devices.
     -->
     <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
         <item name="homeAsUpIndicator">@drawable/custom_nav_drawer</item>
@@ -26,17 +26,13 @@
 
     <!-- Application theme. -->
     <style name="AppTabTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
-        <item name="android:actionBarTabBarStyle">@style/ActionBarTabStyle.A</item>
-        <item name="android:actionBarDivider">@drawable/tab_divider</item>
-        <item name="android:actionBarStyle">@style/ActionBarTabViewStyle</item>
+        <item name="actionBarDivider">@drawable/tab_divider</item>
+        <item name="showDividers">middle</item>
     </style>
 
     <style name="ActionBarTabViewStyle" parent="@android:style/Widget.Holo.ActionBar.TabView">
-        <item name="android:dividerHeight">5dp</item>
         <item name="android:divider">@drawable/tab_divider</item>
-        <item name="android:dividerPadding">20dp</item>
         <item name="android:showDividers">middle</item>
         <item name="android:background">@drawable/startbutton</item>
     </style>

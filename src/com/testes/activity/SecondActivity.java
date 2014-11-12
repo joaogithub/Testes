@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -21,6 +22,7 @@ import org.json.JSONObject;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -55,6 +57,7 @@ import com.testes.android.R;
 public class SecondActivity extends ActionBarActivity {
 
 	ArrayAdapter<String> adapter;
+	public static final String TAG = "SecondActivity";
 	ArrayList<String> artistName = new ArrayList<String>();
 	LinearLayout root;
 	TextView Biography;
@@ -87,19 +90,19 @@ public class SecondActivity extends ActionBarActivity {
 
 		if(getIntent().getExtras()!=null){
 			coinsValue  = getIntent().getIntExtra("coins", 0);
-			Log.i("Coins", "coins: "+ coinsValue);
+			Log.i(TAG, "Coins: "+ coinsValue);
 		}
-		//		Serializable s = getIntent().getExtras().getSerializable("key");
-		//		System.out.println(s);
-		//		
-		//		HashMap<String, String> hashMap = (HashMap<String, String>) s;
-		//		System.out.println(hashMap.toString());
-		//        if (i.hasExtra("aKey")) {
+				Serializable s = getIntent().getExtras().getSerializable("key");
+				Log.i(TAG, s.toString());
+				
+				HashMap<String, String> hashMap = (HashMap<String, String>) s;
+				Log.i(TAG, hashMap.toString());
+//		        if (i.hasExtra("aKey")) {
 		//            value = i.getStringExtra("aKey");
 		//             new DownloadFilesTask().execute(value);
-		//        }
-		//		getSupportActionBar().setHomeButtonEnabled(true);
-		//		getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+//		        }
+				getSupportActionBar().setHomeButtonEnabled(true);
+				getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
 		imageView = (ImageView) findViewById(R.id.drawer_icon);
 
@@ -117,7 +120,6 @@ public class SecondActivity extends ActionBarActivity {
 
 		bluetoothadapt = BluetoothAdapter.getDefaultAdapter();
 		if (bluetoothadapt == null) {
-			//	        	statusConnection.setText("Not supported");
 			Toast.makeText(getApplicationContext(), "Your device does not support Bluetooth", Toast.LENGTH_LONG).show();
 			popupButton.setEnabled(false);
 		} else {
@@ -133,10 +135,10 @@ public class SecondActivity extends ActionBarActivity {
 		});
 
 		ArrayList<String> array = new ArrayList<String>();
-		array.add("spendisse vel libero lacinia neque hendrerit posuere nec ac sem. Aliquam laoreet ullamcorper tortor, tincidunt suscipit eros pulvinar dictum. Cras eleifend ante at laoreet facilisis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridic lorem ipsum");
-		array.add(" odio. Quisque at rutrum tellus. Nullam hendrerit nisl non ligula condimentum varius aliquet eget turpis. Cras cursus arcu ornare elit dictum, et aliquet sem condimentum. Praesent mauris mi, malesuada volutpat dictum a, porta non mauris. Cras non sce");
+		array.add("spendisse vel libero lacinia aoreet ullamcorper tortor, tincidunt suscipitdictum. Cras eleifend ante at laoreet facilisis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridic lorem ipsum");
+		array.add(" odio. Quisque at rutrum tellus. Nsl non ligula condimentum varius aliqu cursus arcu ornare elit dictum, et aliquet sem condimentum. Praesent mauris mi, malesuada volutpat dictum a, porta non mauris. Cras non sce");
 		array.add("Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci veli");
-		array.add("ltricies interdum sit amet nec ante. Suspendisse vel dolor dolor. Donec eget mattis lorem. Donec eget quam porta, hendrerit sapien a, interdum arcu. Integer rutrum, ante sed posuere adipiscing, nisl mi malesuada lorem, quis egestas sem augue fauci");
+		array.add("ltricies interdum sit ame lorem. Donec eget quam porta, hendrerit sapien a, interdum arcu. Integer rutrum, ante sed posuere adipiscing, nisl mi malesuada lorem, quis egestas sem augue fauci");
 
 		final ListPopupWindow showRoomListPopupWindow = new ListPopupWindow(SecondActivity.this);
 		showRoomListPopupWindow.setAdapter(new ArrayAdapter(SecondActivity.this,
@@ -161,10 +163,10 @@ public class SecondActivity extends ActionBarActivity {
 				showRoomListPopupWindow.show();
 				// no divider
 				showRoomListPopupWindow.getListView().setDivider(null);
-
 			}
 		});
 
+		//contacts button
 		contactsButton.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -179,14 +181,15 @@ public class SecondActivity extends ActionBarActivity {
 					while (contentCursor.moveToNext()) {
 						String id = contentCursor.getString(contentCursor.getColumnIndex(ContactsContract.Contacts._ID));
 						String name = contentCursor.getString(contentCursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
+						String timesContacted = contentCursor.getString(contentCursor.getColumnIndex(ContactsContract.Contacts.TIMES_CONTACTED));
 
 						if (Integer.parseInt(contentCursor.getString(contentCursor.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER))) > 0) {
-							Cursor pCur = contentResolver.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+							Cursor phoneCursor = contentResolver.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
 									null,ContactsContract.CommonDataKinds.Phone.CONTACT_ID+ " = ?",new String[] { id }, null);
 
-							while (pCur.moveToNext()) {
-								String phoneNo = pCur.getString(pCur.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
-								Log.i("contacts phonenumber"+ pCur.getPosition()+ ":",phoneNo);
+							while (phoneCursor.moveToNext()) {
+								String phoneNo = phoneCursor.getString(phoneCursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+								Log.i(TAG, "Contacts phonenumber: "+ phoneCursor.getPosition()+ ":"+ phoneNo);
 							}
 						}
 					}
@@ -205,7 +208,6 @@ public class SecondActivity extends ActionBarActivity {
 
 			e.printStackTrace();
 		} catch (IOException e) {
-
 			e.printStackTrace();
 		}
 		//        home=(Button)findViewById(R.id.home_btn);
@@ -213,17 +215,15 @@ public class SecondActivity extends ActionBarActivity {
 		//        search_layout=(LinearLayout)findViewById(R.id.search_layout);
 		//        mybooks=(Button)findViewById(R.id.mybooks_btn);
 		//        contact=(Button)findViewById(R.id.contact_btn);
-		//        about=(Button)findViewById(R.id.about_btn);
-		//        
+		//        about=(Button)findViewById(R.id.about_btn);      
 		//        search_btn = (Button) findViewById(R.id.search_btn);
-		//        
 		//        inputSearch=(EditText)findViewById(R.id.timeEdit);
-		//        lv=(ListView)findViewById(R.id.bookList);
+//		        lv=(ListView)findViewById(R.id.bookList);
 
 
 		String a="Mão";
 
-		//        AlertDialog.Builder builder = new AlertDialog.Builder(this,AlertDialog.THEME_HOLO_LIGHT);
+		AlertDialog.Builder builder = new AlertDialog.Builder(this,AlertDialog.THEME_HOLO_LIGHT);
 		//        ListAdapter adapter = new CustomDialogAdapter(context, itemsList);
 		//        builder.setAdapter(adapter, listener);
 		final EditText input = new EditText(this);
@@ -298,7 +298,7 @@ public class SecondActivity extends ActionBarActivity {
 			String x = "";
 			String y = "";
 			int count = 0;
-			JSONArray z;
+			JSONArray zArray;
 			xxx = "";
 
 			String jsonResult = "";
@@ -315,27 +315,27 @@ public class SecondActivity extends ActionBarActivity {
 				jsonResult = inputStreamToString(
 						response.getEntity().getContent()).toString();
 
-				Log.d("try1", "testss");
+				Log.d(TAG, "try1 testss");
 				try {
 					JSONObject object = new JSONObject(jsonResult);
 
 					x = object.getString("topalbums");
 					JSONObject obj2 = new JSONObject(x);
-					z = obj2.getJSONArray("album");
-					for (int i = 0; i < z.length(); i++) {
-						JSONObject c = z.getJSONObject(i);
+					zArray = obj2.getJSONArray("album");
+					for (int i = 0; i < zArray.length(); i++) {
+						JSONObject c = zArray.getJSONObject(i);
 
 						xxx = c.getString("name");
 					}
 
-					// for (int i = 0; i < array.length(); i++) {
-					// String name;
-					//
-					// JSONObject obj4 = array.getJSONObject(i);
-					// xxx = obj4.getString("name") + "\n";
-					//
-					// artistName.add(xxx);
-					// }
+					for (int i = 0; i < zArray.length(); i++) {
+						String name;
+
+						JSONObject obj4 = zArray.getJSONObject(i);
+						// xxx = obj4.getString("name") + "\n";
+						//
+						// artistName.add(xxx);
+					}
 
 					// JSONObject obj5 = new JSONObject(x);
 					// x = obj5.getString("image");
@@ -347,9 +347,8 @@ public class SecondActivity extends ActionBarActivity {
 					// JSONArray array = new JSONArray(jsonResult);
 
 				} catch (JSONException e2) {
-					// TODO Auto-generated catch block
 					e2.printStackTrace();
-					Log.d("jsonexce", "testss");
+					Log.e(TAG, "jsonexception secondactivity testss");
 				}
 
 			} catch (ClientProtocolException e) {
