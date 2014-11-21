@@ -6,7 +6,8 @@
 
     <uses-sdk
         android:minSdkVersion="10"
-        android:targetSdkVersion="21" />
+        android:maxSdkVersion="21"
+        android:targetSdkVersion="20" />
 
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -70,6 +71,8 @@
         </activity>
         <activity android:name="com.testes.activity.EditTextActivity" >
         </activity>
+        <activity android:name="com.testes.activity.SlidingActivity" >
+        </activity>
         <activity android:name="com.testes.activity.AgendaDetailActivity" >
         </activity>
         <activity android:name="com.testes.activity.ImageActivity" >
@@ -110,7 +113,8 @@
         </activity>
         <activity android:name="com.testes.activity.DrawerActivity" >
         </activity>
-        <activity android:name="com.testes.activity.SpinnerActivity" >
+        <activity android:name="com.testes.activity.SpinnerActivity"
+            android:theme="@style/Theme.AppCompat.Light" >
         </activity>
         <activity android:name="com.testes.activity.ScrollViewActivity" >
         </activity>

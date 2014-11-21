@@ -20,5 +20,9 @@ public class TestFragment extends Fragment{
 		
 		return mView;
 	}
+
+	public static Fragment newInstance(boolean b) {
+		return new TestFragment();
+	}
 	
 }
