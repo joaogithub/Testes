@@ -20,6 +20,8 @@ public class EditTextActivity extends ActionBarActivity{
 	String buttonText= "";
 	private EditText numberEdit, doubleEdit;
 	TextView angleText;
+	private boolean atualizando = false;
+	public static final String TAG = "EditTextActivity";
 	View line;
 
 	float degreesSoItIsParallelToTheGround=0f;
@@ -45,10 +47,10 @@ public class EditTextActivity extends ActionBarActivity{
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
 				if(s.toString().contains(",")){
-					Log.i("CONTAINS", "CONTAINS");
+					Log.i(TAG, "Contains");
 				}
 				if(s.length()>3){
-					Log.i("Content", s.toString().replace("'", "''"));
+					Log.i(TAG,"Content: " + s.toString().replace("'", "''"));
 				}
 
 			}
@@ -57,19 +59,58 @@ public class EditTextActivity extends ActionBarActivity{
 			public void beforeTextChanged(CharSequence s, int start, int count,
 					int after) {
 
-
 			}
 
 			@Override
 			public void afterTextChanged(Editable s) {
 				if(s.length()>0)
-					Log.i("EditTextActivity", "some text");
-
+					Log.i(TAG, "some text");
 			}
 		});
 
+		doubleEdit.addTextChangedListener(filterTextWatcherTelefone);
+		
 	}
 
+	private TextWatcher filterTextWatcherTelefone = new TextWatcher() {
+        public void afterTextChanged(Editable s) {
+
+
+        }
+
+        public void beforeTextChanged(CharSequence s, int start, int count,
+                int after) {
+        }
+
+        public void onTextChanged(CharSequence s, int start, int before,
+                int count) {
+            try {
+                if (atualizando) {
+                    atualizando = false;
+                    return;
+                }
+
+                String resultado = limparFormatacaoNumero(s.toString());
+
+//                if (isNumero(resultado)) {
+
+                    if (resultado.length() <= 14) {
+                        resultado = adicionarFormatacaoTelefone(resultado);
+
+                    } else {
+                        resultado = resultado.substring(0, 14);
+                        resultado = adicionarFormatacaoTelefone(resultado);
+                    }
+                    atualizando = true;
+                    doubleEdit.setText(resultado);
+                    doubleEdit.setSelection(doubleEdit.getText().length());
+
+//                }
+            } catch (Exception e) {
+            	e.printStackTrace();
+            }
+        }
+    };
 
 	@Override
 	protected void onPause() {
@@ -82,11 +123,9 @@ public class EditTextActivity extends ActionBarActivity{
 	protected void onResume() {
 
 		super.onResume();
-
 	}
 
 	public void whenbuttonisclicked(View view){
-		doubleEdit = (EditText) findViewById(R.id.doubleEditText);
 		String edittext1str = doubleEdit.getText().toString();
 		double editext1dob = 0;
 		if(!TextUtils.isEmpty(edittext1str))
@@ -96,8 +135,15 @@ public class EditTextActivity extends ActionBarActivity{
 		double editext2dob = Double.parseDouble(edittext2str);
 		double add = (editext1dob + editext2dob);
 		String yourDoubleString = String.valueOf(add);
-		Log.i("EditTextActivity", "result:"+yourDoubleString);     
+		Log.i(TAG, "result:"+yourDoubleString);   
 	}
 
+	public String adicionarFormatacaoTelefone(String string){
+		return "444+"+string;
+	}
 
+	public String limparFormatacaoNumero(String s){
+		return s.trim();
+	}
+	
 }

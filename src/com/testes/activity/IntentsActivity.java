@@ -16,12 +16,14 @@ import android.media.ExifInterface;
 import android.media.RingtoneManager;
 import android.media.ThumbnailUtils;
 import android.net.Uri;
+import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.Contacts.Phones;
 import android.provider.ContactsContract;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.SurfaceView;
@@ -37,7 +39,7 @@ public class IntentsActivity extends ActionBarActivity {
 
 	String buttonText= "";
 	ImageView startImage;
-	Button send, search, capture, setasButton, viewButton, mapsButton, openMediPlayerButton, playFileButton,browserButton, pickButton, callButton, getContentButton, ringToneButton;
+	Button send, search, capture, setasButton, viewButton, mapsButton, openMediPlayerButton, playFileButton,browserButton, pickButton, callButton, getContentButton, ringToneButton, settingsButton;
 	String imageUri;
 	public static final String TAG = "IntentsActivity";
 
@@ -59,6 +61,7 @@ public class IntentsActivity extends ActionBarActivity {
 		callButton = (Button) findViewById(R.id.callButton);
 		openMediPlayerButton = (Button) findViewById(R.id.playButton);
 		playFileButton = (Button) findViewById(R.id.playFileButton);
+		settingsButton =(Button) findViewById(R.id.settingsButton);
 		mapsButton = (Button) findViewById(R.id.mapsButton);
 		browserButton = (Button) findViewById(R.id.webButton);
 		getContentButton = (Button) findViewById(R.id.getContentIntentButton);
@@ -74,6 +77,18 @@ public class IntentsActivity extends ActionBarActivity {
 			}
 		});
 
+		settingsButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+//				startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
+//				startActivity(new Intent(Settings.ACTION_WIFI_IP_SETTINGS));
+				startActivity(new Intent(Settings.ACTION_WIRELESS_SETTINGS));
+			
+				
+			}
+		});
+		
 		ringToneButton.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -104,16 +119,16 @@ public class IntentsActivity extends ActionBarActivity {
 			@Override
 			public void onClick(View v) {
 				Intent musicIntent = new Intent(Intent.ACTION_MAIN);
-//				Intent intent = new Intent(MediaStore.INTENT_ACTION_MUSIC_PLAYER);
+				//				Intent intent = new Intent(MediaStore.INTENT_ACTION_MUSIC_PLAYER);
 				musicIntent.addCategory(Intent.CATEGORY_APP_MUSIC);
-//				File musicFile = new File(getExternalFilesDir(Environment.DIRECTORY_MUSIC),"muse - survival.mp3");
-//				musicIntent.setDataAndType(Uri.fromFile(musicFile), "audio/*");
+				//				File musicFile = new File(getExternalFilesDir(Environment.DIRECTORY_MUSIC),"muse - survival.mp3");
+				//				musicIntent.setDataAndType(Uri.fromFile(musicFile), "audio/*");
 				startActivity(musicIntent);
 			}
 		});
-		
+
 		playFileButton.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				//play audio file from sdcard
@@ -123,7 +138,7 @@ public class IntentsActivity extends ActionBarActivity {
 				startActivity(playFileIntent);
 			}
 		});
-		
+
 		getContentButton.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -170,7 +185,7 @@ public class IntentsActivity extends ActionBarActivity {
 				viewIntent.putExtra("DeviceId", "DeviceId");
 
 				//	    startActivity(intent);
-				
+
 				String DESTINATION_LOCATION = "Label+Name";
 				String latit = "37.925942";
 				String longit = "-122.084917";
@@ -186,7 +201,7 @@ public class IntentsActivity extends ActionBarActivity {
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(Intent.ACTION_VIEW);
-//				intent.addCategory(Intent.CATEGORY_DEFAULT);
+				//				intent.addCategory(Intent.CATEGORY_DEFAULT);
 				//		        intent.setDataAndType(Uri.parse("android.resource://"+getPackageName()+"/"+ R.drawable.ic_launcher), "image/*");
 				intent.setDataAndType(Uri.parse(imageUri), "image/*");
 
@@ -206,7 +221,7 @@ public class IntentsActivity extends ActionBarActivity {
 
 				//GPS location
 				//		        Uri.parse("http://maps.google.com/maps?q="+DESTINATION_LOCATION));
-//				startActivity(intent); 
+				//				startActivity(intent); 
 
 			}
 		});
@@ -417,24 +432,24 @@ public class IntentsActivity extends ActionBarActivity {
 
 	public class MyPreview implements Camera.PreviewCallback {
 
-        @Override
-        public void onPreviewFrame(byte[] data, Camera camera) {
-            Log.d(TAG, "Got a camera frame");
+		@Override
+		public void onPreviewFrame(byte[] data, Camera camera) {
+			Log.d(TAG, "Got a camera frame");
 
-            Canvas canvas = null;
+			Canvas canvas = null;
 
-            try {
-                    canvas = new SurfaceView(IntentsActivity.this).getHolder().lockCanvas(null);
+			try {
+				canvas = new SurfaceView(IntentsActivity.this).getHolder().lockCanvas(null);
 
-                    Log.d(TAG, "Got Bitmap");
-            } finally {
-                if (canvas != null) {
-                	new SurfaceView(IntentsActivity.this).getHolder().unlockCanvasAndPost(canvas);
-                }
-            }
-        }
+				Log.d(TAG, "Got Bitmap");
+			} finally {
+				if (canvas != null) {
+					new SurfaceView(IntentsActivity.this).getHolder().unlockCanvasAndPost(canvas);
+				}
+			}
+		}
 
-    }
+	}
 
 	public void saveImageToSDCard(Bitmap bitmap) {
 		String dirname = "/Amazing Wallpapers/";

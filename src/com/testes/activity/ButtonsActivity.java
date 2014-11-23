@@ -62,9 +62,7 @@ public class ButtonsActivity extends ActionBarActivity{
 //		viewToInject.addView(viewToInject);
 		rootView.removeView(viewToInject);
 		rootView.addView(viewToInject);
-		
 	}
-
 
 	private void appendSenderText(String message) {
 

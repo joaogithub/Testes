@@ -26,8 +26,8 @@
             android:id="@+id/circleView"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_centerInParent="true"
-            android:layout_above="@+id/add" />
+            android:layout_above="@+id/add"
+            android:layout_centerInParent="true" />
 
         <EditText
             android:id="@+id/myEditText"
@@ -85,7 +85,7 @@
             android:layout_below="@+id/spinnerButton"
             android:layout_centerHorizontal="true"
             android:text="JsonParsing" />
-        
+
         <Button
             android:id="@+id/seekBarButton"
             android:layout_width="190dp"
@@ -237,10 +237,18 @@
             android:text="TableLayout" />
 
         <Button
+            android:id="@+id/slidingMenuButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tableButton"
+            android:layout_centerHorizontal="true"
+            android:text="SlidingMenu" />
+
+        <Button
             android:id="@+id/testViewButton"
             android:layout_width="190dp"
             android:layout_height="40dp"
-            android:layout_below="@+id/tableButton"
+            android:layout_below="@+id/slidingMenuButton"
             android:layout_centerHorizontal="true"
             android:text="CircleTest" />
 

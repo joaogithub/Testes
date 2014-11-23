@@ -77,7 +77,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 	TextView text1;
 	EditText linkEditText, e2;
 	Button dialogButton, sub, circleTestButton, imageButton,intentsButton, connectbutton,animationActivityButton, mainActivityButton, secondButton, scrollViewButton, tableLayoutButton,tabHostButton;
-	Button listViewButton, createTemFiles,webViewButton,viewPagerButton, spinnerButton,alarmsButton, jsonButton;
+	Button listViewButton, createTemFiles,webViewButton,viewPagerButton, spinnerButton,alarmsButton, jsonButton,slidingMenuButton;
 	Button drawerButton,drawerLayoutButton, fragmentsButton,sensorButton,toggleButtonActivity, drawableButton,ttSpeechButton,canvasButton,pickerButton,seekBarButton,editTextButton;
 	Context c=this;
 	ScrollView scrollViewLayout;
@@ -93,20 +93,20 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 	String bString, aString;
 
 	/**
-	   * Enum used to identify the tracker that needs to be used for tracking.
-	   *
-	   * A single tracker is usually enough for most purposes. In case you do need multiple trackers,
-	   * storing them all in Application object helps ensure that they are created only once per
-	   * application instance.
-	   */
-	  public enum TrackerName {
-	    APP_TRACKER, // Tracker used only in this app.
-	    GLOBAL_TRACKER, // Tracker used by all the apps from a company. eg: roll-up tracking.
-	    ECOMMERCE_TRACKER, // Tracker used by all ecommerce transactions from a company.
-	  }
+	 * Enum used to identify the tracker that needs to be used for tracking.
+	 *
+	 * A single tracker is usually enough for most purposes. In case you do need multiple trackers,
+	 * storing them all in Application object helps ensure that they are created only once per
+	 * application instance.
+	 */
+	public enum TrackerName {
+		APP_TRACKER, // Tracker used only in this app.
+		GLOBAL_TRACKER, // Tracker used by all the apps from a company. eg: roll-up tracking.
+		ECOMMERCE_TRACKER, // Tracker used by all ecommerce transactions from a company.
+	}
 
-	  HashMap<TrackerName, Tracker> mTrackers = new HashMap<TrackerName, Tracker>();
-	
+	HashMap<TrackerName, Tracker> mTrackers = new HashMap<TrackerName, Tracker>();
+
 	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -117,6 +117,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		drawableButton = (Button) findViewById(R.id.drawableButton);
 		secondButton = (Button) findViewById(R.id.secondButton);
 		webViewButton = (Button) findViewById(R.id.webViewButton);
+		slidingMenuButton = (Button) findViewById(R.id.slidingMenuButton);
 		toggleButtonActivity = (Button) findViewById(R.id.toggleButton);
 		connectbutton = (Button) findViewById(R.id.connect);
 		jsonButton = (Button) findViewById(R.id.jsonButton);
@@ -147,14 +148,18 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		tabHostButton = (Button) findViewById(R.id.tabsHostButton);
 		listViewButton  = (Button) findViewById(R.id.listViewButton);
 
-		Log.i("FirstActivity", "onCreate() first");
+		Log.i(TAG, "onCreate() first");
+
+		int unicode = 0x1F60A;
+
+		animationActivityButton.setText(animationActivityButton.getText() +" "+ new String(Character.toChars(unicode)));
 
 		UsbManager manager = (UsbManager) getSystemService(Context.USB_SERVICE);
-//		HashMap<String, UsbDevice> deviceList = manager.getDeviceList();
-//		Log.i("FirstActivity", deviceList.toString());
-//		UsbDevice device = deviceList.get("deviceName");
-//		Toast.makeText(getApplicationContext(),"Attached device is : "+ device, Toast.LENGTH_LONG).show();
-	
+		HashMap<String, UsbDevice> deviceList = manager.getDeviceList();
+		Log.i(TAG, deviceList.toString());
+		//		UsbDevice device = deviceList.get("deviceName");
+		//		Toast.makeText(getApplicationContext(),"Attached device is : "+ device, Toast.LENGTH_LONG).show();
+
 		//		try {
 		//			URL url = new URL ("http://youcrypt.com/assets/images/osx.jpg");
 		//			URLConnection urlconnect = url.openConnection();
@@ -169,7 +174,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		//			e.printStackTrace();
 		//		}
 
-		
+
 		View root = ((ViewGroup) findViewById(android.R.id.content)).getChildAt(0);
 
 		int color = Color.TRANSPARENT;
@@ -180,8 +185,8 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		Bitmap backBitmap = BitmapFactory.decodeResource(getResources(),  R.drawable.image_load_success1);
 		Options options = new Options();
 		options.inSampleSize = 2;
-//		Bitmap failBitmap = BitmapFactory.decodeResource(getResources(),  R.drawable.image_load_failed,options);
-		
+		//		Bitmap failBitmap = BitmapFactory.decodeResource(getResources(),  R.drawable.image_load_failed,options);
+
 		Button button = new Button(c);
 		button.setId(2000);
 		final AlertDialog myDialog = new AlertDialog.Builder(FirstActivity.this)
@@ -202,10 +207,10 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		});
 
 		jsonButton.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
-				
+
 				startActivity(new Intent(FirstActivity.this, JsonParseActivity.class));
 			}
 		});
@@ -234,9 +239,18 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			}
 		});
 
+		slidingMenuButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				startActivity(new Intent(FirstActivity.this, SlidingActivity.class));
+				
+			}
+		});
+		
 		//	 change the titlebar color
-//		getActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.background_action_bar));
-//		getActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.border));
+		//		getActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.background_action_bar));
+		//		getActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.border));
 		//		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		//		getSupportActionBar().setHomeButtonEnabled(true);
 		//		getSupportActionBar().setDisplayShowCustomEnabled(true);
@@ -277,7 +291,6 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		// '0' would make the pattern vibrate indefinitely
 		//		vibrator.vibrate(pattern, -1);
 
-
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date date = new Date();
 		String dateString = sdf.format(date);
@@ -293,14 +306,14 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		});
 
 		alarmsButton.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				startActivity(new Intent(FirstActivity.this, AlarmsActivity.class));
-				
+
 			}
 		});
-		
+
 		spinnerButton.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -329,14 +342,14 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		});
 
 		drawerLayoutButton.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				startActivity(new Intent(FirstActivity.this, DrawerActivity.class));
-				
+
 			}
 		});
-		
+
 		canvasButton.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -384,15 +397,15 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 
 		Random random = new Random();
 		random.nextInt();
-		
+
 		ttSpeechButton.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				startActivity(new Intent(FirstActivity.this, AgendaDetailActivity.class));
 			}
 		});
-	        
+
 		HashMap<Integer, Random> randomsHashMap = new HashMap<Integer, Random>();
 
 		listViewButton.setOnClickListener(new OnClickListener() {
@@ -808,19 +821,19 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			}
 		}
 
-		
+
 		MediaPlayer mediaPlayer = new MediaPlayer();
 		mediaPlayer.setAudioStreamType(AudioManager.STREAM_VOICE_CALL);
-		
+
 		mediaPlayer.setOnInfoListener(new OnInfoListener() {
-			
+
 			@Override
 			public boolean onInfo(MediaPlayer mp, int what, int extra) {
 				Log.i(TAG, "info :"+ what +" "+ extra);
 				return false;
 			}
 		});
-		
+
 		final MediaRecorder recorder = new MediaRecorder();
 		////		android.hardware.Camera mCamera = Camera.open();
 		////		mCamera.unlock();
@@ -882,7 +895,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		}
 	}
 
-	
+
 	private void startRecording() {
 		Toast.makeText(FirstActivity.this, "Recording Message", Toast.LENGTH_SHORT).show();
 
@@ -1154,8 +1167,13 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 
 
 	@Override
+	protected void onStart() {
+		super.onStart();
+	}
+
+	@Override
 	protected void onResume() {
-		Log.i("firstacti", "onresume first");
+		Log.i(TAG, "onResume first");
 		super.onResume();
 	}
 
