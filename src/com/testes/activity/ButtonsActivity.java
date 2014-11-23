@@ -24,10 +24,10 @@ public class ButtonsActivity extends ActionBarActivity{
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+//		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 		super.onCreate(savedInstanceState);
-		getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,
-				WindowManager.LayoutParams.FLAG_SECURE);
+//		getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,
+//				WindowManager.LayoutParams.FLAG_SECURE);
 		setContentView(R.layout.layout_buttons_activity);
 
 		RelativeLayout rootView= (RelativeLayout) findViewById(R.id.rootRelativeLayout);

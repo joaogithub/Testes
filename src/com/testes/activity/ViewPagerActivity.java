@@ -29,7 +29,7 @@ public class ViewPagerActivity extends ActionBarActivity{
 
 	ViewPager viewPager;
 	private TestesPagerAdapter _awesomePagerAdapter; 
-	private ArrayList<Fragment> fragmentsArray = new ArrayList<Fragment>();
+	
 	private ImageView imageView;
 	private Fragment firstFragment, secondFragment, thirdFragment;
 	private TextView textView;
@@ -46,21 +46,18 @@ public class ViewPagerActivity extends ActionBarActivity{
 		firstFragment = new ImageFragment();
 		secondFragment = new TextFragment();
 		thirdFragment = new EditTextFragment();
-		fragmentsArray.add(secondFragment);
-		fragmentsArray.add(firstFragment);
-		fragmentsArray.add(thirdFragment);
 		
 		viewPager = (ViewPager) findViewById(R.id.testesPager);
 		_awesomePagerAdapter = new TestesPagerAdapter(getSupportFragmentManager());
 		viewPager.setAdapter(_awesomePagerAdapter);
 		
     	int layoutWidth = viewPager.getWidth();
-    	Log.i(TAG, "layout width:"+ layoutWidth);
+    	Log.i(TAG, "viewpager layout width:"+ layoutWidth);
     	
     	viewPager.post(new Runnable() {
     	    @Override
     	    public void run() {
-    	        Log.d(TAG,"Check my ViewPager Width: " + viewPager.getMeasuredWidth());
+    	        Log.i(TAG,"Check my ViewPager Width: " + viewPager.getMeasuredWidth());
     	        }
     	    });
 		
@@ -68,8 +65,13 @@ public class ViewPagerActivity extends ActionBarActivity{
 	
 	public class TestesPagerAdapter extends FragmentStatePagerAdapter{
 
+		private ArrayList<Fragment> fragmentsArray = new ArrayList<Fragment>();
+		
 		public TestesPagerAdapter(FragmentManager fragmentManager) {
 			super(fragmentManager);
+			fragmentsArray.add(secondFragment);
+			fragmentsArray.add(firstFragment);
+			fragmentsArray.add(thirdFragment);
 		}
 
 		@Override
@@ -79,15 +81,15 @@ public class ViewPagerActivity extends ActionBarActivity{
 
 		@Override
 		public void destroyItem(ViewGroup container, int position, Object object) {
-			
+			super.destroyItem(container, position, object);
 			Log.i(TAG, "destroyed item"+ position);
 		}
 		
 		@Override
 		public Object instantiateItem(ViewGroup container, int position) {
-		
-			return fragmentsArray.get(position);
-			
+			if(!fragmentsArray.isEmpty())
+				return fragmentsArray.get(position);
+			else return null;
 		}
 		
 		@Override
@@ -102,7 +104,6 @@ public class ViewPagerActivity extends ActionBarActivity{
 		
 		@Override
 		public CharSequence getPageTitle(int position) {
-			
 			return super.getPageTitle(position);
 		}
 

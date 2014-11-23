@@ -32,7 +32,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.os.AsyncTaskCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 

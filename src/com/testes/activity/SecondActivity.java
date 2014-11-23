@@ -32,7 +32,7 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.v4.widget.ListPopupWindowCompat;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.widget.ListPopupWindow;
+import android.support.v7.internal.widget.ListPopupWindow;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -145,7 +145,7 @@ public class SecondActivity extends ActionBarActivity {
 
 		showRoomListPopupWindow.setAnchorView(popupButton);
 
-		showRoomListPopupWindow.setWidth(ListPopupWindow.WRAP_CONTENT);
+		showRoomListPopupWindow.setWidth(android.support.v7.internal.widget.ListPopupWindow.WRAP_CONTENT);
 
 
 		showRoomListPopupWindow.setOnItemClickListener(new OnItemClickListener() {

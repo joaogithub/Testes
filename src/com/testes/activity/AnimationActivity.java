@@ -77,6 +77,11 @@ public class AnimationActivity extends ActionBarActivity{
 			}
 		});
 
+		Animation anim = AnimationUtils.loadAnimation(this, R.anim.full_rotation);
+        anim.setRepeatCount(Animation.INFINITE);
+        tennisBall.startAnimation(anim);
+        tennisBall.animate();
+		
 		tennisBall.setOnClickListener(new OnClickListener() {
 
 			@Override
