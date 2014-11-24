@@ -102,7 +102,6 @@
             android:layout_above="@+id/btnConfirm"
             android:layout_alignLeft="@+id/button1"
             android:layout_alignRight="@+id/button1"
-            android:onClick="pickPhoto"
             android:text="Select photo"
             android:textSize="15sp" />
 

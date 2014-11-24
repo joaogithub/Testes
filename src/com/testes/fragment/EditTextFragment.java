@@ -8,7 +8,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class EditTextFragment extends Fragment{
@@ -21,6 +23,8 @@ public class EditTextFragment extends Fragment{
 
 
 		_editView =  new EditText(getActivity());
+		LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+		_editView.setLayoutParams(lp);
 		_editView.setHint("MyEdittext");
 		
 		return _editView;

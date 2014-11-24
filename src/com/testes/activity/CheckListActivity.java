@@ -11,9 +11,6 @@ import com.testes.android.R;
 
 
 public class CheckListActivity extends ListActivity{
-//
-//
-//	public class ActivityCreation extends ListActivity{
 		/**
 		 * @param args
 		 */

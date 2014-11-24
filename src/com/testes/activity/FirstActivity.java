@@ -446,6 +446,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			@Override
 			public void onClick(View v) {
 				startActivity(new Intent(FirstActivity.this, TestActivity.class));
+//				startActivity(new Intent(FirstActivity.this, TabHostActivity.class));
 
 			}
 		});
@@ -484,9 +485,8 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
 			int layoutDirection = fragmentsButton.getLayoutDirection();
 			int absoluteGravity = Gravity.getAbsoluteGravity(Gravity.CENTER, layoutDirection);
-			Log.i("GRAVITY", layoutDirection + " "+ absoluteGravity);
+			Log.i(TAG, "GRAVITY: " + layoutDirection + " "+ absoluteGravity);
 		}
-
 
 		/**
 		 * 
@@ -585,14 +585,14 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 
 				File myFolder = new File(getFilesDir(), "/Images/abc/");
 				myFolder.mkdirs();
-				Log.i("FirstActivity", "folder name: "+myFolder.getName());
+				Log.i(TAG, "folder name: "+myFolder.getName());
 				try {
 					for (int i = 0; i < 3; i++) {
 						String ab = i + ".png";
 						File file = new File(myFolder.getAbsolutePath()//folder path
 								+File.separator
 								+ab); //file name
-						Log.i("FirstActivity", "file "+ i + " created : " + file.createNewFile());
+						Log.i(TAG, "file "+ i + " created : " + file.createNewFile());
 					}
 				} catch (IOException e) {
 					e.printStackTrace();

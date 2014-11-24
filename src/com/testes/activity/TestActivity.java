@@ -30,6 +30,10 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
@@ -50,93 +54,93 @@ public class TestActivity extends ActionBarActivity{
 	{
 		super.onCreate(savedInstanceState);
 
-		setContentView(R.layout.layout_image_activity);
+//		setContentView(R.layout.layout_image_activity);
+		setContentView(R.layout.new_layout);
 
 		col1 = (TextView) findViewById(R.id.col1TextView);
 		brewingTextView = (TextView) findViewById(R.id.brewingText);
 
-		brewingTextView.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				class SendSaveRequest extends AsyncTask<String, Void, String> {
-
-					private Gson gson = new GsonBuilder().create();
-					//		                String data = gson.toJson(message);
-
-					private String sendMessage(String message, String address) {
-						String url = "http://192.168.87.108:8080/MSS/"
-								+ address;
-
-						HttpPost post = new HttpPost(url);
-
-						List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(
-								1);
-						nameValuePairs.add(new BasicNameValuePair("report",
-								message));
-
-						try {
-							post.setEntity(new UrlEncodedFormEntity(
-									nameValuePairs));
-						} catch (UnsupportedEncodingException e) {
-							e.printStackTrace();
-							Log.i("client", "Your url encoding is shiat fail");
-						}
-
-						HttpClient client = new DefaultHttpClient();
-						HttpResponse response = null;
-						try {
-							Log.i(TAG, "Trying to execute");
-							response = client.execute(post);
-							Log.i(TAG, "Execution success");  
-
-						} catch (ClientProtocolException e) {
-							Log.i(TAG, "Problems with execute post, ClientProtocolException");
-							e.printStackTrace();
-						} catch (IOException e) {
-							Log.i(TAG, "Problems with execute post, IOException");
-							e.printStackTrace();
-							return null;
-						}
-
-						HttpEntity entity = response.getEntity();
-
-						String responseText = "";
-						try {
-							responseText = EntityUtils.toString(entity);
-						} catch (ParseException e) {
-							e.printStackTrace();
-						} catch (IOException e) {
-							e.printStackTrace();
-						}
-						return responseText;
-
-					}
-
-					@Override
-					protected String doInBackground(String... params) {
-						return sendMessage(params[0], params[1]);
-					}
-
-					@Override
-					protected void onPostExecute(String result) {
-						Toast.makeText(TestActivity.this, result,
-								Toast.LENGTH_LONG).show();
-					}
-
-				}
-
-				//		            String msg = gson.toJson(TestActivity.this
-				//		                    .generateSavePayload(
-				//		                    		TestActivity.this.circlesToArea(),
-				//		                    		TestActivity.this.userId,
-				//		                    		TestActivity.this.userPassword));
-
-				new SendSaveRequest().execute("msg", "save");
-			}
-
-		});
-
+//		brewingTextView.setOnClickListener(new OnClickListener() {
+//
+//			@Override
+//			public void onClick(View v) {
+//				class SendSaveRequest extends AsyncTask<String, Void, String> {
+//
+//					private Gson gson = new GsonBuilder().create();
+//					//		                String data = gson.toJson(message);
+//
+//					private String sendMessage(String message, String address) {
+//						String url = "http://192.168.87.108:8080/MSS/"
+//								+ address;
+//
+//						HttpPost post = new HttpPost(url);
+//
+//						List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(
+//								1);
+//						nameValuePairs.add(new BasicNameValuePair("report",
+//								message));
+//
+//						try {
+//							post.setEntity(new UrlEncodedFormEntity(
+//									nameValuePairs));
+//						} catch (UnsupportedEncodingException e) {
+//							e.printStackTrace();
+//							Log.i("client", "Your url encoding is shiat fail");
+//						}
+//
+//						HttpClient client = new DefaultHttpClient();
+//						HttpResponse response = null;
+//						try {
+//							Log.i(TAG, "Trying to execute");
+//							response = client.execute(post);
+//							Log.i(TAG, "Execution success");  
+//
+//						} catch (ClientProtocolException e) {
+//							Log.i(TAG, "Problems with execute post, ClientProtocolException");
+//							e.printStackTrace();
+//						} catch (IOException e) {
+//							Log.i(TAG, "Problems with execute post, IOException");
+//							e.printStackTrace();
+//							return null;
+//						}
+//
+//						HttpEntity entity = response.getEntity();
+//
+//						String responseText = "";
+//						try {
+//							responseText = EntityUtils.toString(entity);
+//						} catch (ParseException e) {
+//							e.printStackTrace();
+//						} catch (IOException e) {
+//							e.printStackTrace();
+//						}
+//						return responseText;
+//
+//					}
+//
+//					@Override
+//					protected String doInBackground(String... params) {
+//						return sendMessage(params[0], params[1]);
+//					}
+//
+//					@Override
+//					protected void onPostExecute(String result) {
+//						Toast.makeText(TestActivity.this, result,
+//								Toast.LENGTH_LONG).show();
+//					}
+//
+//				}
+//
+////				String msg = gson.toJson(TestActivity.this
+////						                    .generateSavePayload(
+////						                    		TestActivity.this.circlesToArea(),
+////						                    		TestActivity.this.userId,
+////						                    		TestActivity.this.userPassword));
+//
+//				new SendSaveRequest().execute("msg", "save");
+//			}
+//
+//		});
 
 		ArrayList<ArrayList<String>> getQuestion = new ArrayList<ArrayList<String>>();
 		ArrayList<String> choices = new ArrayList<String>();
@@ -219,7 +223,67 @@ public class TestActivity extends ActionBarActivity{
 			});
 		}
 
-		//	    initializeActivity();   
+		//	    initializeActivity();
+		
+		LinearLayout ll = (LinearLayout)findViewById(R.id.linearlayout1);           
+        final RadioGroup rg = new RadioGroup(this);
+        final RadioGroup rg2 = new RadioGroup(this);
+        rg.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+        rg.setOrientation(LinearLayout.HORIZONTAL);
+        rg2.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+        rg2.setOrientation(LinearLayout.HORIZONTAL);
+        String [] drinks = new String [] {"Mountain Dew", "7Up", "Root Beer", "Pepsi", "Cola", "Ice Tea"};
+        int i = 0;
+        
+        while(i<drinks.length){
+            final String drinkname = drinks[i];
+            Log.i(TAG, "drinkname: "+drinkname);
+            RadioButton rb = new RadioButton(this);
+            rb.setText(drinkname);  
+            if(i %2==0)
+            	rg.addView(rb);
+            else
+            	rg2.addView(rb);
+            i++;
+        }
+        
+        rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+            	if(rg2.getCheckedRadioButtonId()!=-1){
+            		rg2.setOnCheckedChangeListener(null);
+            		rg2.check(-1);
+            		rg2.setOnCheckedChangeListener(this);
+            	}
+            	
+                int id = group.getCheckedRadioButtonId();
+                RadioButton selectrb = (RadioButton) findViewById(id);
+                if(selectrb!=null)
+                	Log.i(TAG,selectrb.getText().toString());
+            }
+        });
+        
+        rg2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+            	if(rg.getCheckedRadioButtonId()!=-1){
+            		rg.setOnCheckedChangeListener(null);
+            		rg.clearCheck();
+            		rg.setOnCheckedChangeListener(this);
+            	}
+            	
+                int id = group.getCheckedRadioButtonId();
+                RadioButton selectrb = (RadioButton) findViewById(id);
+                if(selectrb!=null)
+                	Log.i(TAG,selectrb.getText().toString());
+            }
+        });
+        
+        ll.addView(rg);
+        ll.addView(rg2);
+		
 	}
 
 	private void initializeActivity()
@@ -256,7 +320,7 @@ public class TestActivity extends ActionBarActivity{
 			GradientDrawable shape = (GradientDrawable) bgDrawable.findDrawableByLayerId(R.id.pat1);
 			shape.mutate();
 			shape.setColor(Color.WHITE);
-			Log.i("TEST", "DESELECT IT");
+			Log.i(TAG, "TEST "+  "DESELECT IT");
 		}
 
 	}

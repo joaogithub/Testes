@@ -21,6 +21,7 @@ public class SlidingActivity extends Activity implements SlidingActivityBase{
 		mHelper = new SlidingActivityHelper(this);
 		mHelper.onCreate(savedInstanceState);
 		setBehindContentView(R.layout.hidden_fragment_frame);
+		setContentView(R.layout.long_layout);
 	}
 	
 	/* (non-Javadoc)

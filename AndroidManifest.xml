@@ -77,6 +77,8 @@
         </activity>
         <activity android:name="com.testes.activity.ImageActivity" >
         </activity>
+        <activity android:name="com.testes.activity.TabHostActivity" >
+        </activity>
         <activity android:name="com.testes.activity.ToggleButtonActivity" >
         </activity>
         <activity android:name="com.testes.activity.AnimationActivity" >

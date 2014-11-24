@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Iterator;
 import java.util.List;
 import java.util.TimeZone;
 
@@ -19,12 +20,20 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
+import org.codehaus.jackson.JsonParseException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.google.gson.JsonObject;
+import com.testes.android.Exam;
 import com.testes.android.R;
+
+
+
+
 
 
 import android.app.Activity;
@@ -125,6 +134,42 @@ public class JsonParseActivity extends ActionBarActivity{
 			};
 	    	
 	    }.execute();
+	    
+	    
+	    String JsonString = "[{\"name\":\"foo\",\"slug\":\"foo2\"}]";
+	    JSONObject object = null;
+		try {
+			object = new JSONObject(JsonString);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+
+	    Iterator<String> keys= object.keys();
+
+	    while (keys.hasNext()){
+
+	        String keyValue = (String)keys.next();
+	        try {
+				JsonString = JsonString + object.getString(keyValue);
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+	    }
+
+	    JsonString= JsonString.substring(1, JsonString.length()-1);
+	    ObjectMapper mp = new ObjectMapper();
+	    try {
+			Object response = mp.readValue(JsonString, Exam.class);
+		} catch (JsonParseException e) {
+			
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			
+			e.printStackTrace();
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
 	    
 	}
 	

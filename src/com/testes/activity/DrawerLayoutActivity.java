@@ -344,12 +344,12 @@ public class DrawerLayoutActivity extends ActionBarActivity implements Navigatio
 			startActivity(accountIntent);
 			overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out);
 			break;
-			// feedback
+			// checklist
 		case 2:
-			Intent feedbackIntent = new Intent(DrawerLayoutActivity.this, CheckListActivity.class);
-			feedbackIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-			feedbackIntent.putExtra(SELECTED_POSITION, position);
-			startActivity(feedbackIntent);
+			Intent checkListIntent = new Intent(DrawerLayoutActivity.this, CheckListActivity.class);
+			checkListIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+			checkListIntent.putExtra(SELECTED_POSITION, position);
+			startActivity(checkListIntent);
 			overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out);
 			break;
 
