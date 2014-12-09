@@ -38,6 +38,11 @@ public class SplashActivity extends Activity {
 		params.gravity = Gravity.CENTER;
 		addContentView(imageView, params);
 		
+		int i = 2;
+		int c = i+3;
+		i=4;
+		Log.i("Splash activity referne:", ""+c);
+		
 		new Thread(){
             public void run(){
                 try {
