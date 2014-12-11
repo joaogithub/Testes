@@ -4,6 +4,8 @@ import java.net.InetAddress;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.UnknownHostException;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
@@ -35,8 +37,11 @@ public class ScrollViewActivity extends Activity {
 	ImageView mImageArrowBack;
 	TextView mTitle;
 	ImageButton close;
+	private Timer timer;
+	private TimerTask timerTask;
 	boolean visible = false;
 	long timeInMilliseconds = 0L;
+	int count = 0;
 	long timeSwapBuff = 0L;
 	long updatedTime = 0L;
 	String secondHalf;
@@ -71,6 +76,7 @@ public class ScrollViewActivity extends Activity {
 
 		});
 
+		clockTask();
 			
 		startButton.setOnClickListener(new View.OnClickListener() {
 
@@ -108,6 +114,27 @@ public class ScrollViewActivity extends Activity {
 
 	}
 
+	//ten ten seconds change textview
+	private void clockTask(){
+        timer = new Timer();
+        timerTask = new TimerTask() {
+
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+					
+					@Override
+					public void run() {
+						timervalue.setText(String.valueOf(count += 10));
+					}
+				});
+                
+            }
+        };
+        
+        timer.scheduleAtFixedRate(timerTask, 100, 1000);
+    }
+	
 	private void setBackButton(boolean visible) {
 		RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) mTitle.getLayoutParams();
 		if (visible) {
@@ -126,6 +153,8 @@ public class ScrollViewActivity extends Activity {
 		super.onStop();
 		if(customHandler!=null)
 			customHandler.removeCallbacks(firstHalfRunnable);
+		if(timerTask!=null)
+			timerTask.cancel();
 	}
 	
 	private Runnable firstHalfRunnable = new Runnable() {

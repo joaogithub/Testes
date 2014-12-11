@@ -5,5 +5,6 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="textsize">17sp</dimen>
     <dimen name="navigation_width">200dp</dimen>
+    <dimen name="form_screen_equipment_combo_box_dropdown_vertical_offset">-50dp</dimen>
 
 </resources>

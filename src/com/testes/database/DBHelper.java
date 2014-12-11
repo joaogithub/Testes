@@ -70,6 +70,13 @@ public class DBHelper extends SQLiteOpenHelper{
 	    ArrayList<Cow> list = new ArrayList<Cow>();
 	    Cursor cursor = database.query(VACAS_TABLE_NAME, 
 	        null, null, null, null, null, Vacas.NOMBRE+" ASC");
+	    
+	    String [] columns = new String[] { "phone", "isBloacked" };
+	    String phone = "21212";
+	    
+	    Cursor secCursor = database.query(VACAS_TABLE_NAME, 
+		        null, "? = "+phone+" AND ? = 1", columns, null, null, Vacas.NOMBRE+" ASC");
+	    
 	    if (cursor.moveToFirst()) {
 	         do {
 	        	 Cow vaca = new Cow(cursor.getLong(0), cursor.getString(1),

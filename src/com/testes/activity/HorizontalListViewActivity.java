@@ -49,6 +49,7 @@ public class HorizontalListViewActivity extends Activity {
 			}
 		});
 
+		_listView.setItemChecked(-1, true);
 
 	}
 

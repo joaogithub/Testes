@@ -279,6 +279,8 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		DBHelper dbHelper = new DBHelper(this, "simple_db", null, 1);
 
 		dbHelper.createMessageReaduser("user", 2);
+		
+//		dbHelper.selectAllVacas();
 
 		new ParseHttpResponse().execute();
 
@@ -783,7 +785,9 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 				hashMap.put("B","");
 
 				Bundle extras = new Bundle();
-				extras.putSerializable("key", hashMap);
+				String[][] results = new String[2][3] ;
+//				extras.putSerializable("key", hashMap);
+				extras.putSerializable("results", (String [][])results);
 				secondIntent.putExtra("coins", 10);
 				secondIntent.putExtras(extras);
 				secondIntent.putExtra("aKey", "key");

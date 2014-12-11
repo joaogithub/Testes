@@ -5,11 +5,21 @@
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:gravity="center"
-    android:paddingRight="20dp"
+    android:orientation="vertical"
     android:paddingLeft="20dp"
-    android:orientation="vertical" >
+    android:paddingRight="20dp" >
 
     <!-- The main content view -->
+
+    <Spinner
+        android:id="@+id/equipment_selector"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:dropDownVerticalOffset="@dimen/form_screen_equipment_combo_box_dropdown_vertical_offset"
+        android:dropDownWidth="match_parent"
+        android:popupBackground="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown" />
 
     <Spinner
         android:id="@+id/spinner_region"

@@ -87,8 +87,11 @@ public class SecondActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.layout_sec_activity);
-
+		Bundle bundle = null;
 		if(getIntent().getExtras()!=null){
+			bundle = getIntent().getExtras();
+			Serializable res = bundle.getSerializable("results");
+
 			coinsValue  = getIntent().getIntExtra("coins", 0);
 			Log.i(TAG, "Coins: "+ coinsValue);
 		}
@@ -136,7 +139,7 @@ public class SecondActivity extends ActionBarActivity {
 
 		ArrayList<String> array = new ArrayList<String>();
 		array.add("spendisse vel libero lacinia aoreet ullamcorper tortor, tincidunt suscipitdictum. Cras eleifend ante at laoreet facilisis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridic lorem ipsum");
-		array.add(" odio. Quisque at rutrum tellus. Nsl non ligula condimentum varius aliqu cursus arcu ornare elit dictum, et aliquet sem condimentum. Praesent mauris mi, malesuada volutpat dictum a, porta non mauris. Cras non sce");
+		array.add(" odio. Quisque at rutrum tellus. Nsl none elit dictum, et aliquet sem condimentum. Praesent mauris mi, malesuada volutpat dictum a, porta non mauris. Cras non sce");
 		array.add("Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci veli");
 		array.add("ltricies interdum sit ame lorem. Donec eget quam porta, hendrerit sapien a, interdum arcu. Integer rutrum, ante sed posuere adipiscing, nisl mi malesuada lorem, quis egestas sem augue fauci");
 
