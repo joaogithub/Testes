@@ -27,9 +27,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.fasterxml.jackson.core.JsonFactory;
 import com.google.gson.JsonObject;
 import com.testes.android.Exam;
 import com.testes.android.R;
+
 
 
 
@@ -135,6 +137,8 @@ public class JsonParseActivity extends ActionBarActivity{
 	    	
 	    }.execute();
 	    
+	    JsonFactory factory = new JsonFactory();
+	    factory.canHandleBinaryNatively();
 	    
 	    String JsonString = "[{\"name\":\"foo\",\"slug\":\"foo2\"}]";
 	    JSONObject object = null;
@@ -144,17 +148,17 @@ public class JsonParseActivity extends ActionBarActivity{
 			e.printStackTrace();
 		}
 
-	    Iterator<String> keys= object.keys();
-
-	    while (keys.hasNext()){
-
-	        String keyValue = (String)keys.next();
-	        try {
-				JsonString = JsonString + object.getString(keyValue);
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}
-	    }
+//	    Iterator<String> keys = object.keys();
+//
+//	    while (keys.hasNext()){
+//
+//	        String keyValue = (String)keys.next();
+//	        try {
+//				JsonString = JsonString + object.getString(keyValue);
+//			} catch (JSONException e) {
+//				e.printStackTrace();
+//			}
+//	    }
 
 	    JsonString= JsonString.substring(1, JsonString.length()-1);
 	    ObjectMapper mp = new ObjectMapper();
