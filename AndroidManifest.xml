@@ -73,6 +73,8 @@
         </activity>
         <activity android:name="com.testes.activity.SlidingActivity" >
         </activity>
+        <activity android:name="com.testes.activity.VideoViewActivity" >
+        </activity>
         <activity android:name="com.testes.activity.AgendaDetailActivity" >
         </activity>
         <activity android:name="com.testes.activity.ImageActivity" >

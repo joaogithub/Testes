@@ -79,7 +79,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 	TextView text1;
 	EditText linkEditText, e2;
 	Button dialogButton, sub, circleTestButton, imageButton,intentsButton, connectbutton,animationActivityButton, mainActivityButton, secondButton, scrollViewButton, tableLayoutButton,tabHostButton;
-	Button listViewButton, createTemFiles,webViewButton,viewPagerButton, spinnerButton,alarmsButton, jsonButton,slidingMenuButton;
+	Button listViewButton, createTemFiles,webViewButton,videoViewButton, viewPagerButton, spinnerButton,alarmsButton, jsonButton,slidingMenuButton;
 	Button drawerButton,drawerLayoutButton, fragmentsButton,sensorButton,toggleButtonActivity, drawableButton,ttSpeechButton,canvasButton,pickerButton,seekBarButton,editTextButton;
 	Context c=this;
 	ScrollView scrollViewLayout;
@@ -126,6 +126,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		imageButton = (Button) findViewById(R.id.imageButton);
 		editTextButton = (Button) findViewById(R.id.editTextButton);
 		sensorButton = (Button) findViewById(R.id.sensorButton);
+		videoViewButton = (Button) findViewById(R.id.videoViewButton);
 		canvasButton = (Button) findViewById(R.id.canvasButton);
 		seekBarButton = (Button) findViewById(R.id.seekBarButton);
 		animationActivityButton = (Button) findViewById(R.id.animationButton);
@@ -608,6 +609,15 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			}
 		});
 
+		videoViewButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				startActivity(new Intent(FirstActivity.this, VideoViewActivity.class));
+				
+			}
+		});
+		
 		text1.setText("TEXT" + getString(R.string.code));
 
 		text1.setOnClickListener(new OnClickListener() {

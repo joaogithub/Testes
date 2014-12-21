@@ -215,16 +215,24 @@
         <Button
             android:id="@+id/canvasButton"
             android:layout_width="190dp"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/fragmentsInfoButton"
             android:layout_centerHorizontal="true"
             android:text="Canvas" />
 
         <Button
+            android:id="@+id/videoViewButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/canvasButton"
+            android:layout_centerHorizontal="true"
+            android:text="VideoView" />
+
+        <Button
             android:id="@+id/scrollViewButton"
             android:layout_width="190dp"
             android:layout_height="40dp"
-            android:layout_below="@+id/canvasButton"
+            android:layout_below="@+id/videoViewButton"
             android:layout_centerHorizontal="true"
             android:text="Scroll" />
 
