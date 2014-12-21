@@ -75,7 +75,7 @@ public class FragmentsActivity extends ActionBarActivity{
 			//			mediaPlayer.prepare(); 
 			//			mediaPlayer.setLooping(true); 
 			//			mediaPlayer.setVolume(100, 100);
-						mediaPlayer.start(); 
+//						mediaPlayer.start(); 
 		}
 		catch (Exception e) {
 			e.printStackTrace(); 

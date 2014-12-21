@@ -19,12 +19,15 @@
         android:layout_height="50dp"
         android:text="Quantity" />
 
-    <ToggleButton
+    <Switch
         android:id="@+id/mySwitch"
-        android:layout_width="wrap_content"
+        android:layout_width="70dp"
         android:layout_height="50dp"
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
-        android:thumb="@drawable/test_rounded_corners" />
+        android:textColor="@android:color/white"
+        android:textOff="M"
+        android:textOn="K"
+        android:thumb="@color/green" />
 
 </LinearLayout>

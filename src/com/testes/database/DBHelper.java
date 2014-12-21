@@ -101,14 +101,14 @@ public class DBHelper extends SQLiteOpenHelper{
 		  values.put(Vacas.FECHA_NACIMIENTO, vaca.getFecha_nacimiento());
 		  values.put(Vacas.PADRE, vaca.getPadre());
 		  values.put(Vacas.MADRE, vaca.getMadre());
-		  database = this.getWritableDatabase();
+		  database = getWritableDatabase();
 		  long id = database.insert(VACAS_TABLE_NAME, null, values);
 		  return id;
 
 		}
 	
 	public Integer deleteContact(Integer id) {
-	    SQLiteDatabase db = this.getWritableDatabase();
+	    SQLiteDatabase db = getWritableDatabase();
 	    return db.delete(TABLE_MESSAGES_READUSER, "id = ? ",
 	            new String[] { Integer.toString(id) });
 	}

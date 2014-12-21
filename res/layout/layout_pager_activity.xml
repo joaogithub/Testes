@@ -5,12 +5,13 @@
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:gravity="center"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:padding="2dp" >
 
     <android.support.v4.view.ViewPager
         android:id="@+id/testesPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
+        android:layout_height="match_parent"
+        android:background="@color/green" />
 
 </RelativeLayout>

@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
@@ -15,6 +16,7 @@ import com.testes.android.R;
 public class ToggleButtonActivity extends Activity{
 
 		protected static final String TAG = "ToggleButtonActivity";
+		private CompoundButton compound;
 
 		@Override
 		protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,14 @@ public class ToggleButtonActivity extends Activity{
 
 			ToggleButton toggleButton = (ToggleButton) findViewById(R.id.toggle_btn_sunday);
 			final TextView num = (TextView) findViewById(R.id.num);
+			
+			if(android.os.Build.VERSION.SDK_INT>13)
+				compound = (Switch) findViewById(R.id.mySwitch);
+			else
+				compound = (ToggleButton) findViewById(R.id.mySwitch);
+			
+			
+			
 			
 			toggleButton.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 				

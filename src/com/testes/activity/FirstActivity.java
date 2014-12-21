@@ -69,7 +69,9 @@ import android.widget.Toast;
 
 import com.google.android.gms.analytics.Tracker;
 import com.testes.android.R;
+import com.testes.data.Phone;
 import com.testes.database.DBHelper;
+import com.testes.database.PhoneDal;
 import com.testes.interfaces.NavigationDrawerCallbacks;
 import com.testes.receiver.WifiScanReceiver;
 
@@ -174,7 +176,10 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		//			e.printStackTrace();
 		//		}
 
+		PhoneDal phone = new PhoneDal(this);
 
+		phone.addItem(new Phone());
+		
 		View root = ((ViewGroup) findViewById(android.R.id.content)).getChildAt(0);
 
 		int color = Color.TRANSPARENT;
