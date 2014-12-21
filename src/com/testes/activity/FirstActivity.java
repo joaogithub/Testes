@@ -2,6 +2,7 @@ package com.testes.activity;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.ref.WeakReference;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -61,6 +62,7 @@ import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
@@ -82,6 +84,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 	Button listViewButton, createTemFiles,webViewButton,videoViewButton, viewPagerButton, spinnerButton,alarmsButton, jsonButton,slidingMenuButton;
 	Button drawerButton,drawerLayoutButton, fragmentsButton,sensorButton,toggleButtonActivity, drawableButton,ttSpeechButton,canvasButton,pickerButton,seekBarButton,editTextButton;
 	Context c=this;
+	ImageButton facebookLoginButton;
 	ScrollView scrollViewLayout;
 	RelativeLayout drawerRelativeLayout;
 	String videoUrl;
@@ -139,6 +142,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		scrollViewLayout = (ScrollView) findViewById(R.id.scrollViewLayout);
 		fragmentsButton = (Button) findViewById(R.id.fragmentsInfoButton);
 		drawerButton = (Button) findViewById(R.id.fullImage);
+		facebookLoginButton = (ImageButton) findViewById(R.id.facebokLoginButton);
 		intentsButton = (Button) findViewById(R.id.intentsButton);
 		circleTestButton =  (Button) findViewById(R.id.testViewButton);
 		drawerRelativeLayout = (RelativeLayout) findViewById(R.id.drawer_layout);
@@ -180,7 +184,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		PhoneDal phone = new PhoneDal(this);
 
 		phone.addItem(new Phone());
-		
+
 		View root = ((ViewGroup) findViewById(android.R.id.content)).getChildAt(0);
 
 		int color = Color.TRANSPARENT;
@@ -246,14 +250,14 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		});
 
 		slidingMenuButton.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				startActivity(new Intent(FirstActivity.this, SlidingActivity.class));
-				
+
 			}
 		});
-		
+
 		//	 change the titlebar color
 		//		getActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.background_action_bar));
 		//		getActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.border));
@@ -285,8 +289,8 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		DBHelper dbHelper = new DBHelper(this, "simple_db", null, 1);
 
 		dbHelper.createMessageReaduser("user", 2);
-		
-//		dbHelper.selectAllVacas();
+
+		//		dbHelper.selectAllVacas();
 
 		new ParseHttpResponse().execute();
 
@@ -394,6 +398,15 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			}
 		});
 
+		facebookLoginButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				startActivity(new Intent(FirstActivity.this, FacebookActivity.class));
+				overridePendingTransition(android.R.anim.slide_out_right, android.R.anim.slide_in_left);
+			}
+		});
+		
 		sensorButton.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -454,7 +467,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			@Override
 			public void onClick(View v) {
 				startActivity(new Intent(FirstActivity.this, TestActivity.class));
-//				startActivity(new Intent(FirstActivity.this, TabHostActivity.class));
+				//				startActivity(new Intent(FirstActivity.this, TabHostActivity.class));
 
 			}
 		});
@@ -610,14 +623,14 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		});
 
 		videoViewButton.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				startActivity(new Intent(FirstActivity.this, VideoViewActivity.class));
-				
+
 			}
 		});
-		
+
 		text1.setText("TEXT" + getString(R.string.code));
 
 		text1.setOnClickListener(new OnClickListener() {
@@ -637,6 +650,8 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			}
 		});
 
+		WeakReference<FirstActivity> myWeakActivity = new WeakReference<FirstActivity>(this);
+//		myWeakActivity.get().createOptionsMenu();
 
 		drawerButton.setOnClickListener(new OnClickListener() {
 
@@ -717,6 +732,13 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 					}
 				}).create();
 				myAlertDialog.show();
+				
+//				get();
+
+				Dialog myOptionsDialog = new Dialog(FirstActivity.this); //throwsNPE
+				myOptionsDialog.setContentView(R.layout.dialog_pagenumber);
+				myOptionsDialog.show();
+
 			}
 		});
 
@@ -801,7 +823,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 
 				Bundle extras = new Bundle();
 				String[][] results = new String[2][3] ;
-//				extras.putSerializable("key", hashMap);
+				//				extras.putSerializable("key", hashMap);
 				extras.putSerializable("results", (String [][])results);
 				secondIntent.putExtra("coins", 10);
 				secondIntent.putExtras(extras);
@@ -1234,6 +1256,12 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		}
 	};
 
+	public void createOptionsMenu() {
+	    Log.e("ActivityContext null?","" + this);
+	    Dialog myOptionsDialog = new Dialog(this); //throwsNPE
+	    myOptionsDialog.setContentView(R.layout.dialog_pagenumber);
+	    myOptionsDialog.show();
+	}
 
 	@Override
 	public boolean onActionItemClicked(ActionMode arg0, MenuItem arg1) {
