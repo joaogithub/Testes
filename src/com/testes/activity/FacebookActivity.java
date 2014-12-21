@@ -32,7 +32,7 @@ public class FacebookActivity extends Activity{
 		setContentView(R.layout.facebook_layout);
 		uiHelper = new UiLifecycleHelper(this, callback);
 	    uiHelper.onCreate(savedInstanceState);
-//		getFBIntent(this, getString(R.string.facebook_app_id));
+		startActivity(getFBIntent(this, "joaoamaro.silva.1"));
 		
 	}
 	
@@ -42,7 +42,7 @@ public class FacebookActivity extends Activity{
             // Check if FB app is even installed
             context.getPackageManager().getPackageInfo("com.facebook.katana", 0);
             String facebookScheme = "fb://profile/" + facebookId; //also tried with /page
-            Log.d("FB_LINK", facebookScheme);
+            Log.i("FB_LINK", facebookScheme);
             return new Intent(Intent.ACTION_VIEW, Uri.parse(facebookScheme));
         }
         catch(Exception e) {
