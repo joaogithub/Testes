@@ -44,10 +44,11 @@ public class ListViewActivity extends Activity {
 		//		adapter = new NormalAdapter(this, titles);
 		//		adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,titles);
 		
-		
 		adapter = new MyAdapter();
 		_listView.setAdapter(adapter);
 
+		_listView.setSelection(2);
+		
 		_listView.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override

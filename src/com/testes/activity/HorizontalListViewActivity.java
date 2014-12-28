@@ -45,7 +45,7 @@ public class HorizontalListViewActivity extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				Log.i("listViewActivity", "CLICK "+ position);
+				Log.i("HorizontalListViewActivity", "CLICK "+ position);
 			}
 		});
 
