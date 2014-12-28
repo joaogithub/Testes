@@ -11,4 +11,14 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp" />
 
+    <ImageButton
+        android:layout_width="60dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:onClick="share"
+        android:scaleType="center"
+        android:src="@drawable/gp" >
+    </ImageButton>
+
 </LinearLayout>

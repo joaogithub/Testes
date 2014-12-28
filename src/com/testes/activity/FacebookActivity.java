@@ -3,20 +3,29 @@ package com.testes.activity;
 import com.facebook.Session;
 import com.facebook.SessionState;
 import com.facebook.UiLifecycleHelper;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
+import com.google.android.gms.drive.Drive;
+import com.google.android.gms.plus.Plus;
 import com.testes.android.R;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentSender.SendIntentException;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
-public class FacebookActivity extends Activity{
+public class FacebookActivity extends Activity implements GoogleApiClient.ConnectionCallbacks, OnConnectionFailedListener{
 
 	public static final String TAG = "FacebookActivity";
 	
 	private UiLifecycleHelper uiHelper;
+	private static final int REQUEST_CODE_RESOLVE_ERR = 1;
+	GoogleApiClient mGoogleClient;
 	
 	private Session.StatusCallback callback = new Session.StatusCallback() {
 	    @Override
@@ -32,7 +41,8 @@ public class FacebookActivity extends Activity{
 		setContentView(R.layout.facebook_layout);
 		uiHelper = new UiLifecycleHelper(this, callback);
 	    uiHelper.onCreate(savedInstanceState);
-		startActivity(getFBIntent(this, "joaoamaro.silva.1"));
+	    //start profile page
+//		startActivity(getFBIntent(this, "joaoamaro.silva.1"));
 		
 	}
 	
@@ -58,6 +68,47 @@ public class FacebookActivity extends Activity{
 	    } else if (state.isClosed()) {
 	        Log.i(TAG, "Logged out...");
 	    }
+	}
+	
+	public void share(View v){
+		mGoogleClient = new GoogleApiClient.Builder(this)
+	    .addApi(Drive.API)
+	    .addScope(Drive.SCOPE_FILE)
+	    .addScope(Plus.SCOPE_PLUS_LOGIN)
+	    .addConnectionCallbacks(this)
+	    .addOnConnectionFailedListener(this)
+	    .build();
+		
+		mGoogleClient.connect();
+	}
+
+
+	@Override
+	public void onConnected(Bundle connectionHint) {
+		Log.i(TAG, connectionHint.toString());
+	}
+
+
+	@Override
+	public void onConnectionSuspended(int cause) {
+		Log.i(TAG, "suspended: "+ cause);
+		
+	}
+	
+	@Override
+	public void onConnectionFailed(ConnectionResult result) {
+	    Log.e(TAG,"GoogleClient connection failed!");
+	    Log.e(TAG, "result: "+ result.getErrorCode());
+	    if (result.hasResolution()) {
+	        try {
+	            result.startResolutionForResult(this, REQUEST_CODE_RESOLVE_ERR);
+	        } catch (SendIntentException e) {
+	            mGoogleClient.connect();
+	        }
+	    }
+	    // Speichern Sie das Ergebnis und beheben Sie den Verbindungsfehler bei einem Klick des Nutzers.
+	   ConnectionResult mGoogleConnectionResult = result;
+
 	}
 	
 }
