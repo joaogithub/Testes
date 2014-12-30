@@ -50,6 +50,7 @@ import android.support.v7.view.ActionMode;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -640,12 +641,14 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		});
 
 		text1.setText("TEXT" + getString(R.string.code));
-
+		
 		text1.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				startActivityForResult(new Intent(FirstActivity.this, ButtonsActivity.class), 100);
+				if(text1.getTextSize()==14 || text1.getTextSize()==15 || text1.getTextSize()==16 || text1.getTextSize()==17|| text1.getTextSize()==18|| text1.getTextSize()==19|| text1.getTextSize()==20|| text1.getTextSize()==21)
+					text1.setTextSize(TypedValue.COMPLEX_UNIT_PX, text1.getTextSize()+1);
 			}
 		});
 

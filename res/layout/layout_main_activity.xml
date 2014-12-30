@@ -167,7 +167,8 @@
             android:layout_below="@+id/imageViewFirst"
             android:layout_centerHorizontal="true"
             android:gravity="center"
-            android:text="Default text" />
+            android:text="Default text"
+            android:textSize="14px" />
 
         <Button
             android:id="@+id/createTempFilesButton"

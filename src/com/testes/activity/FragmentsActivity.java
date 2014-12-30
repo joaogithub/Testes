@@ -41,6 +41,7 @@ public class FragmentsActivity extends ActionBarActivity{
 
 	private static TextView myView, myOtherView;
 	CheckBox checkbox;
+	private static final String TAG = "FragmentsActivity";
 
 	Person person = new Person();
 
@@ -158,12 +159,11 @@ public class FragmentsActivity extends ActionBarActivity{
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		if(item.getItemId()== R.id.item_add){
-			Intent i = new Intent();
-			i.addCategory(Intent.CATEGORY_HOME);
+			Intent intent = new Intent();
+			intent.addCategory(Intent.CATEGORY_HOME);
 		}
 		return super.onOptionsItemSelected(item);
 	}
-
 
 	/**
 	 * A replacement fragment containing a simple view.
@@ -242,25 +242,24 @@ public class FragmentsActivity extends ActionBarActivity{
 				public void onClick(View v) {
 					Fragment signupFragment = new ReplaceFragment();
 					FragmentTransaction transaction = getFragmentManager().beginTransaction();
-					transaction.replace(((ViewGroup)getView().getParent()).getId(), signupFragment).commit();
+					//adding to back stack
+					transaction.addToBackStack("replace").replace(((ViewGroup)getView().getParent()).getId(), signupFragment).commit();
 
-					MapFragment mapf = (MapFragment) MapFragment.newInstance();
-					GoogleMap mapView = mapf.getMap();
-					mapView.setOnMapLoadedCallback(new OnMapLoadedCallback() {
-
-						@Override
-						public void onMapLoaded() {
-							Log.i("MAP LOADDEE", "MAP IS READY");
-
-						}
-					});
+					MapFragment mapFragment = (MapFragment) MapFragment.newInstance();
+//					GoogleMap mapView = mapFragment.getMap();
+//					mapView.setOnMapLoadedCallback(new OnMapLoadedCallback() {
+//
+//						@Override
+//						public void onMapLoaded() {
+//							Log.i(TAG, "MAP LOADDED, MAP IS READY");
+//
+//						}
+//					});
 
 					//					transaction.add(((ViewGroup)getView().getParent()).getId(), mapf, "TAG").commit();
 
 				}
 			});
-
-
 
 			return rootView;
 		}
