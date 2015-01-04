@@ -126,11 +126,31 @@ public class AnimationActivity extends ActionBarActivity{
 				new ScaleAnimation(1.0f, 5f, 1.0f, 5f,
 						ScaleAnimation.RELATIVE_TO_SELF, 0.5f,
 						ScaleAnimation.RELATIVE_TO_SELF, 0.5f);
+		
+		final ScaleAnimation starScaleAnimation =
+				new ScaleAnimation(0.3f, 1f, 0.3f, 1f,
+						ScaleAnimation.RELATIVE_TO_SELF, 0.5f,
+						ScaleAnimation.RELATIVE_TO_SELF, 0.5f);
 
 		scaleAnimation.setDuration(9000);
 
 		ImageView lolImageView = (ImageView) findViewById(R.id.meetImage);
+		ImageView starImageView = (ImageView) findViewById(R.id.scale_anim);
 
+		starImageView.setOnTouchListener(new OnTouchListener() {
+
+			@Override
+			public boolean onTouch(final View v, MotionEvent event) {
+				starScaleAnimation.setDuration(500);
+				((ImageView) v).setImageResource(R.drawable.star);
+				ScaleAnimation scaleAnim = starScaleAnimation;
+				Log.i(TAG, "x:"+event.getX() + ", y:"+ event.getY());
+				v.startAnimation(scaleAnim);
+				v.performClick();
+				return true;
+			}
+		});
+		
 		lolImageView.setImageResource(R.drawable.medal_portugues2_aula);
 
 		lolImageView.setOnTouchListener(new OnTouchListener() {
@@ -205,6 +225,13 @@ public class AnimationActivity extends ActionBarActivity{
 
 	}
 
+	/**
+	 * stars a scale animation of 4 seconds duration over a view where that view was touched
+	 * @param v
+	 * @param scaleAnim
+	 * @param pivotX
+	 * @param pivotY
+	 */
 	static void startScaleAnimation(View v, ScaleAnimation scaleAnim, float pivotX, float pivotY){
 		scaleAnim =
 				new ScaleAnimation(1.0f, 5f, 1.0f, 5f,

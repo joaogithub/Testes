@@ -1,86 +1,101 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal" >
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
 
-    <Button
-        android:id="@+id/buttonAct"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        android:singleLine="true" />
-
-    <Button
-        android:id="@+id/twoChb"
-        android:layout_width="230dp"
-        android:layout_height="37dp"
-        android:layout_below="@+id/buttonAct"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:height="137dp"
-        android:maxLength="22"
-        android:paddingLeft="7dp"
-        android:saveEnabled="false"
-        android:singleLine="true"
-        android:textColorHint="#DDAAAAAA"
-        android:textSize="17sp" />
-
-    <Button
-        android:id="@+id/threeChb"
-        android:layout_width="230dp"
-        android:layout_height="37dp"
-        android:layout_below="@+id/twoChb"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:height="137dp"
-        android:maxLength="22"
-        android:paddingLeft="7dp"
-        android:saveEnabled="false"
-        android:singleLine="true"
-        android:textColorHint="#DDAAAAAA"
-        android:textSize="17sp" />
-
-    <LinearLayout
-        android:id="@+id/tennisBallLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/threeChb"
-        android:layout_marginTop="20dp"
-        android:gravity="center_vertical"
         android:orientation="horizontal" >
 
+        <Button
+            android:id="@+id/buttonAct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:singleLine="true" />
+
+        <Button
+            android:id="@+id/twoChb"
+            android:layout_width="230dp"
+            android:layout_height="37dp"
+            android:layout_below="@+id/buttonAct"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:height="137dp"
+            android:maxLength="22"
+            android:paddingLeft="7dp"
+            android:saveEnabled="false"
+            android:singleLine="true"
+            android:textColorHint="#DDAAAAAA"
+            android:textSize="17sp" />
+
+        <Button
+            android:id="@+id/threeChb"
+            android:layout_width="230dp"
+            android:layout_height="37dp"
+            android:layout_below="@+id/twoChb"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:height="137dp"
+            android:maxLength="22"
+            android:paddingLeft="7dp"
+            android:saveEnabled="false"
+            android:singleLine="true"
+            android:textColorHint="#DDAAAAAA"
+            android:textSize="17sp" />
+
+        <LinearLayout
+            android:id="@+id/tennisBallLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/threeChb"
+            android:layout_marginTop="20dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/ball"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ball" />
+        </LinearLayout>
+
         <ImageView
-            android:id="@+id/ball"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/ball" />
-    </LinearLayout>
+            android:id="@+id/meetImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tennisBallLayout"
+            android:src="@drawable/meet" />
 
-    <ImageView
-        android:id="@+id/meetImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tennisBallLayout"
-        android:src="@drawable/meet" />
+        <TextView
+            android:id="@+id/animTextView"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="ANIMATION" />
 
-    <TextView
-        android:id="@+id/animTextView"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="30dp"
-        android:layout_marginTop="30dp"
-        android:gravity="center"
-        android:text="ANIMATION" />
+        <ImageView
+            android:id="@+id/simple_anim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/meetImage"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:src="@anim/animationdrawable" />
 
-    <ImageView
-        android:id="@+id/simple_anim"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:src="@anim/animationdrawable" />
+        <ImageView
+            android:id="@+id/scale_anim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/simple_anim"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:src="@drawable/star" />
+    </RelativeLayout>
 
-</RelativeLayout>
+</ScrollView>
