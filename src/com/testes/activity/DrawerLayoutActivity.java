@@ -43,6 +43,7 @@ public class DrawerLayoutActivity extends ActionBarActivity implements Navigatio
 	 * Remember the position of the selected item.
 	 */
 	private static final String SELECTED_POSITION = "selected_navigation_drawer_position";
+	private static final String TAG = "DrawerLayoutActivity";
 
 	/**
 	 * Per the design guidelines, you should show the drawer on launch until the user manually expands it. This shared
@@ -72,10 +73,13 @@ public class DrawerLayoutActivity extends ActionBarActivity implements Navigatio
 
 		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
 		mUserLearnedDrawer = sp.getBoolean(PREF_USER_LEARNED_DRAWER, false);
-
+		
 		// get intent data
 		Intent i = getIntent();
 
+		if(i.getParcelableExtra("cow")!=null)
+			Log.i(TAG, "Cow passed");
+		
 		// Selected image id
 		//	int position = i.getExtras().getInt("id");
 		//ArrayAdapter imageAdapter = new ArrayAdapter(this);

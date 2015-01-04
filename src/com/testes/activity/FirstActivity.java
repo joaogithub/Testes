@@ -44,6 +44,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.os.Parcelable;
 import android.os.Vibrator;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.view.ActionMode;
@@ -72,6 +73,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.analytics.Tracker;
 import com.testes.android.R;
+import com.testes.data.Cow;
 import com.testes.data.Phone;
 import com.testes.database.DBHelper;
 import com.testes.database.PhoneDal;
@@ -668,8 +670,10 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 
 			@Override
 			public void onClick(View v) {
-
-				startActivity(new Intent(FirstActivity.this, DrawerLayoutActivity.class));
+				Intent drawerIntent  = new Intent(FirstActivity.this, DrawerLayoutActivity.class);
+				Cow vaca = new Cow(3, "sda", "sds", "", 3, 2, 3);
+				drawerIntent.putExtra("cow", (Parcelable)vaca);
+				startActivity(drawerIntent);
 
 			}
 		});
