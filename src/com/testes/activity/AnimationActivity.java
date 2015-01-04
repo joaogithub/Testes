@@ -52,15 +52,15 @@ public class AnimationActivity extends ActionBarActivity{
 
 		ImageView img = (ImageView)findViewById(R.id.simple_anim);
 		final AnimationDrawable animDrawable = (AnimationDrawable)img.getDrawable();
-        
-		
-        new Runnable() {
-            @Override
-            public void run() {
-            	animDrawable.start();
-            }
-        }.run();
-        
+
+
+		new Runnable() {
+			@Override
+			public void run() {
+				animDrawable.start();
+			}
+		}.run();
+
 		oneBtn.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -90,10 +90,10 @@ public class AnimationActivity extends ActionBarActivity{
 		});
 
 		Animation anim = AnimationUtils.loadAnimation(this, R.anim.full_rotation);
-        anim.setRepeatCount(Animation.INFINITE);
-        tennisBall.startAnimation(anim);
-        tennisBall.animate();
-		
+		anim.setRepeatCount(Animation.INFINITE);
+		tennisBall.startAnimation(anim);
+		tennisBall.animate();
+
 		tennisBall.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -126,31 +126,30 @@ public class AnimationActivity extends ActionBarActivity{
 				new ScaleAnimation(1.0f, 5f, 1.0f, 5f,
 						ScaleAnimation.RELATIVE_TO_SELF, 0.5f,
 						ScaleAnimation.RELATIVE_TO_SELF, 0.5f);
-		
-		final ScaleAnimation starScaleAnimation =
-				new ScaleAnimation(0.3f, 1f, 0.3f, 1f,
-						ScaleAnimation.RELATIVE_TO_SELF, 0.5f,
-						ScaleAnimation.RELATIVE_TO_SELF, 0.5f);
+
+		//		starScaleAnimation.set
 
 		scaleAnimation.setDuration(9000);
 
 		ImageView lolImageView = (ImageView) findViewById(R.id.meetImage);
 		ImageView starImageView = (ImageView) findViewById(R.id.scale_anim);
 
-		starImageView.setOnTouchListener(new OnTouchListener() {
+		starImageView.setOnClickListener(new OnClickListener() {
 
 			@Override
-			public boolean onTouch(final View v, MotionEvent event) {
+			public void onClick(View v) {
+				ScaleAnimation starScaleAnimation =
+						new ScaleAnimation(0.3f, 1f, 0.3f, 1f,
+								ScaleAnimation.RELATIVE_TO_SELF, 0.5f,
+								ScaleAnimation.RELATIVE_TO_SELF, 0.5f);
+
 				starScaleAnimation.setDuration(500);
 				((ImageView) v).setImageResource(R.drawable.star);
 				ScaleAnimation scaleAnim = starScaleAnimation;
-				Log.i(TAG, "x:"+event.getX() + ", y:"+ event.getY());
 				v.startAnimation(scaleAnim);
-				v.performClick();
-				return true;
 			}
 		});
-		
+
 		lolImageView.setImageResource(R.drawable.medal_portugues2_aula);
 
 		lolImageView.setOnTouchListener(new OnTouchListener() {

@@ -90,12 +90,13 @@
 
         <ImageView
             android:id="@+id/scale_anim"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_below="@id/simple_anim"
             android:layout_centerHorizontal="true"
-            android:gravity="center"
-            android:src="@drawable/star" />
+            android:layout_marginTop="20dp"
+            android:background="@android:color/white"
+            android:gravity="center" />
     </RelativeLayout>
 
 </ScrollView>
