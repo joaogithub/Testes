@@ -3,6 +3,7 @@ package com.testes.activity;
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -49,6 +50,17 @@ public class AnimationActivity extends ActionBarActivity{
 		tennisBall = (ImageView) findViewById(R.id.ball);
 		ballLayout = (LinearLayout) findViewById(R.id.tennisBallLayout);
 
+		ImageView img = (ImageView)findViewById(R.id.simple_anim);
+		final AnimationDrawable animDrawable = (AnimationDrawable)img.getDrawable();
+        
+		
+        new Runnable() {
+            @Override
+            public void run() {
+            	animDrawable.start();
+            }
+        }.run();
+        
 		oneBtn.setOnClickListener(new OnClickListener() {
 
 			@Override

@@ -1,0 +1,15 @@
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/animation"
+    android:oneshot="false" >
+
+    <item
+        android:drawable="@drawable/pig1"
+        android:duration="250"/>
+    <item
+        android:drawable="@drawable/pig2"
+        android:duration="250"/>
+    <item
+        android:drawable="@drawable/pig3"
+        android:duration="250"/>
+
+</animation-list>
