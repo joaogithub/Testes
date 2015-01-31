@@ -19,7 +19,7 @@ import android.widget.GridView;
 public class GridViewActivity extends ActionBarActivity 
 {
 
-	ArrayList<String> abc;
+	ArrayList<String> abcList;
 
 	TestGridAdapter testGridAdapter;
 
@@ -42,24 +42,24 @@ public class GridViewActivity extends ActionBarActivity
 		gridView = (GridView) findViewById(R.id.gridView1);
 		button = (Button) findViewById(R.id.nextButton);
 		
-		abc = new ArrayList<String>();
+		abcList = new ArrayList<String>();
 
-		for(int i=0;i<100;i++)		{
-			abc.add(String.valueOf(i));
+		for(int i=0;i<25;i++)		{
+			abcList.add(String.valueOf(i));
 		}
 
-		testGridAdapter = new TestGridAdapter(GridViewActivity.this,GridViewActivity.this,abc);
+		testGridAdapter = new TestGridAdapter(GridViewActivity.this,GridViewActivity.this,abcList);
 
 		button.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-
-				((TabsActivity) getParent()).getTabHost().setCurrentTab(2);
-				
+				((TabsActivity) getParent()).getTabHost().setCurrentTab(2);	
 			}
 		});
 		
+		if(abcList.size() == 25 || abcList.size() == 9)
+			gridView.setNumColumns((int) Math.sqrt(abcList.size()));
 		gridView.setAdapter(testGridAdapter);
 
 		gridView.setOnScrollListener(new AbsListView.OnScrollListener() {

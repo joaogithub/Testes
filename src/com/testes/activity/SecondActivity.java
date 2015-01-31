@@ -94,18 +94,21 @@ public class SecondActivity extends ActionBarActivity {
 
 			coinsValue  = getIntent().getIntExtra("coins", 0);
 			Log.i(TAG, "Coins: "+ coinsValue);
+
+			Serializable s = getIntent().getExtras().getSerializable("key");
+			Log.i(TAG,s!=null?s.toString():"null key serializable");
+
+//			HashMap<String, String> hashMap = (HashMap<String, String>) s;
+//			Log.i(TAG, hashMap.toString());
 		}
-				Serializable s = getIntent().getExtras().getSerializable("key");
-				Log.i(TAG, s.toString());
-				
-				HashMap<String, String> hashMap = (HashMap<String, String>) s;
-				Log.i(TAG, hashMap.toString());
-//		        if (i.hasExtra("aKey")) {
+		//		        if (i.hasExtra("aKey")) {
 		//            value = i.getStringExtra("aKey");
 		//             new DownloadFilesTask().execute(value);
-//		        }
-				getSupportActionBar().setHomeButtonEnabled(true);
-				getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+		//		        }
+		if(getSupportActionBar()!=null){
+			getSupportActionBar().setHomeButtonEnabled(true);
+			getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+		}
 
 		imageView = (ImageView) findViewById(R.id.drawer_icon);
 
@@ -221,7 +224,7 @@ public class SecondActivity extends ActionBarActivity {
 		//        about=(Button)findViewById(R.id.about_btn);      
 		//        search_btn = (Button) findViewById(R.id.search_btn);
 		//        inputSearch=(EditText)findViewById(R.id.timeEdit);
-//		        lv=(ListView)findViewById(R.id.bookList);
+		//		        lv=(ListView)findViewById(R.id.bookList);
 
 
 		String a="Mão";

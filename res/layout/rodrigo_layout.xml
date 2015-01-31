@@ -14,7 +14,7 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Rodrigo"
+        android:text="Screen Test"
         android:textSize="30sp"
         android:textStyle="bold" />
 

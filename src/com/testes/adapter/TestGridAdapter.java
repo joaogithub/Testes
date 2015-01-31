@@ -25,14 +25,13 @@ import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.testes.activity.GridViewActivity;
 import com.testes.android.R;
 import com.testes.database.TinyDB;
 
 public class TestGridAdapter extends BaseAdapter
 {
 
-	private ArrayList<String> abc;
+	private ArrayList<String> abcStringList;
 
 	private FragmentActivity activity;
 
@@ -53,19 +52,19 @@ public class TestGridAdapter extends BaseAdapter
 		super();
 		this.activity=gridViewActivity;
 		this.context = conte;
-		this.abc = abc;
+		this.abcStringList = abc;
 	}
 
 	@Override
 	public int getCount() 
 	{
-		return abc.size();
+		return abcStringList.size();
 	}
 
 	@Override
 	public Object getItem(int in) 
 	{       
-		return abc.get(in);
+		return abcStringList.get(in);
 	}
 
 	@Override
@@ -86,33 +85,41 @@ public class TestGridAdapter extends BaseAdapter
 
 		final SharedPreferences pref = context.getApplicationContext().getSharedPreferences("TestDate", 0);
 
-		ViewHolder view;
+		ViewHolder viewHolder;
 
-		LayoutInflater inflator = activity.getLayoutInflater();
+		LayoutInflater inflater = activity.getLayoutInflater();
 
 		if(convertView==null)
 		{
 
-			view = new ViewHolder();
+			viewHolder = new ViewHolder();
 
-			convertView = inflator.inflate(R.layout.test_grid_item, null);
+			convertView = inflater.inflate(R.layout.test_grid_item, null);
 
-			view.txt = (TextView) convertView.findViewById(R.id.txt);
+			viewHolder.txt = (TextView) convertView.findViewById(R.id.txt);
 
-			convertView.setTag(view);
+			convertView.setTag(viewHolder);
 
 		}
 		else
 		{
-			view = (ViewHolder) convertView.getTag();
+			viewHolder = (ViewHolder) convertView.getTag();
 		}
 
+		
+		if(position == abcStringList.size()/2){
+			convertView.setVisibility(View.INVISIBLE);
+		}
+		else{
+			convertView.setVisibility(View.VISIBLE);
+		}
+		
 		OnClickListener alertOnClickListener = new OnClickListener() {
 
 			public void onClick(View v) 
 			{
 
-				Toast.makeText(activity.getApplicationContext(), abc.get(position)+" - Clicked ", Toast.LENGTH_SHORT).show();
+				Toast.makeText(activity.getApplicationContext(), abcStringList.get(position)+" - Clicked ", Toast.LENGTH_SHORT).show();
 
 				selectDateFragment = new SelectDateFragment();
 
@@ -146,19 +153,19 @@ public class TestGridAdapter extends BaseAdapter
 
 		};
 
-		view.txt.setOnClickListener(alertOnClickListener);
+		viewHolder.txt.setOnClickListener(alertOnClickListener);
 
-		text = String.valueOf(abc.get(position));
+		text = String.valueOf(abcStringList.get(position));
 
-		view.txt.setBackgroundResource(R.drawable.background_action_bar);
+		viewHolder.txt.setBackgroundResource(R.drawable.background_action_bar);
 
-		view.txt.setTextSize(18);
+		viewHolder.txt.setTextSize(18);
 
-		view.txt.setTextColor(Color.BLACK);
+		viewHolder.txt.setTextColor(Color.BLACK);
 
-		view.txt.setGravity(Gravity.CENTER);    
+		viewHolder.txt.setGravity(Gravity.CENTER);    
 
-		view.txt.setText(text);
+		viewHolder.txt.setText(text);
 
 		return convertView;
 
