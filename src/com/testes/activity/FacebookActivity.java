@@ -1,5 +1,14 @@
 package com.testes.activity;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentSender.SendIntentException;
+import android.net.Uri;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+
 import com.facebook.Session;
 import com.facebook.SessionState;
 import com.facebook.UiLifecycleHelper;
@@ -9,15 +18,6 @@ import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListe
 import com.google.android.gms.drive.Drive;
 import com.google.android.gms.plus.Plus;
 import com.testes.android.R;
-
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentSender.SendIntentException;
-import android.net.Uri;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 
 public class FacebookActivity extends Activity implements GoogleApiClient.ConnectionCallbacks, OnConnectionFailedListener{
 

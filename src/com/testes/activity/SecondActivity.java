@@ -22,6 +22,7 @@ import org.json.JSONObject;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.ActivityOptions;
 import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.content.ContentResolver;
@@ -30,6 +31,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.v4.widget.ListPopupWindowCompat;
@@ -98,8 +100,8 @@ public class SecondActivity extends ActionBarActivity {
 			Serializable s = getIntent().getExtras().getSerializable("key");
 			Log.i(TAG,s!=null?s.toString():"null key serializable");
 
-//			HashMap<String, String> hashMap = (HashMap<String, String>) s;
-//			Log.i(TAG, hashMap.toString());
+			//			HashMap<String, String> hashMap = (HashMap<String, String>) s;
+			//			Log.i(TAG, hashMap.toString());
 		}
 		//		        if (i.hasExtra("aKey")) {
 		//            value = i.getStringExtra("aKey");
@@ -139,6 +141,14 @@ public class SecondActivity extends ActionBarActivity {
 
 			}
 		});
+
+		if(Build.VERSION.SDK_INT>Build.VERSION_CODES.KITKAT){
+			Intent detailIntent = new Intent(SecondActivity.this, ImageActivity.class);
+			String transitionName = getString(R.string.my_transition);
+			ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(this,
+					popupButton, transitionName);
+			startActivity(detailIntent, options.toBundle());
+		}
 
 		ArrayList<String> array = new ArrayList<String>();
 		array.add("spendisse vel libero lacinia aoreet ullamcorper tortor, tincidunt suscipitdictum. Cras eleifend ante at laoreet facilisis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridic lorem ipsum");

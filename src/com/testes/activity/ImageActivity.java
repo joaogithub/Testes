@@ -95,10 +95,10 @@ public class ImageActivity extends ActionBarActivity{
 			String rrule = cursor.getString(cursor.getColumnIndex(Instances.RRULE));
 			String rdate = cursor.getString(cursor.getColumnIndex(Instances.RDATE));
 			Log.i("calendarActivitu", rrule + " date:"+ rdate);
-				instanceIdList.add(String.valueOf(instanceID));
-				startDateList.add(eventStartDt);
-				//instanceEnd.add(eventEndDt);
-			
+			instanceIdList.add(String.valueOf(instanceID));
+			startDateList.add(eventStartDt);
+			//instanceEnd.add(eventEndDt);
+
 		}
 
 		ArrayList<String> selectedNames  = new ArrayList<String>();
@@ -157,61 +157,63 @@ public class ImageActivity extends ActionBarActivity{
 				}
 			}
 		}
-		
+
 		new EchoTask().execute();
-		
+
 	}
 
 	public class EchoTask extends AsyncTask<Void, Void, Void>{
 
 		@Override
 		protected Void doInBackground(Void... params) {
-			
+
 			String[] args={"/storage/sdcard0/Music/halo.mp3"};
-	        File file = new File(args[0]);
+			File file = new File(args[0]);
 
-	        if(!file.canRead())
-	        {
-	           Log.i(TAG,"Insert a valid path!");
-	        }
+			if(!file.canRead())
+			{
+				Log.i(TAG,"Insert a valid path!");
+			}
 
-	        EchoNestAPI echoNest = new EchoNestAPI("XLNN9CZXKLXYFC66X");
-	        Log.i(TAG,"hello echonest!");
-	        
-	        Track track = null;
+			EchoNestAPI echoNest = new EchoNestAPI("XLNN9CZXKLXYFC66X");
+			Log.i(TAG,"hello echonest!");
+
+			Track track = null;
 			try {
 				track = echoNest.uploadTrack(file);
 			} catch (EchoNestException e) {
-				
+
 				e.printStackTrace();
 			} catch (IOException e) {
-				
+
 				e.printStackTrace();
 			}
 
-	        Log.i(TAG, "uploaded!");
-	        try {
-				track.waitForAnalysis((60*1000)/2);
-			} catch (EchoNestException e) {
-				
-				e.printStackTrace();
+			Log.i(TAG, "uploaded!");
+			if(track!=null){
+				try {
+					track.waitForAnalysis((60*1000)/2);
+				} catch (EchoNestException e) {
+
+					e.printStackTrace();
+				}
+
+				Log.i(TAG, "ID: "+track.getID());
+				try {
+					Log.i(TAG, "Artist: "+track.getArtistName());
+				} catch (EchoNestException e) {
+					e.printStackTrace();
+				}
+				try {
+					Log.i(TAG, "Title: "+track.getTitle());
+				} catch (EchoNestException e) {
+					e.printStackTrace();
+				}
 			}
 
-	        Log.i(TAG, "ID: "+track.getID());
-	        try {
-				Log.i(TAG, "Artist: "+track.getArtistName());
-			} catch (EchoNestException e) {
-				e.printStackTrace();
-			}
-	        try {
-				Log.i(TAG, "Title: "+track.getTitle());
-			} catch (EchoNestException e) {
-				e.printStackTrace();
-			}
-			
 			return null;
 		}
-		
+
 	}
-	
+
 }
