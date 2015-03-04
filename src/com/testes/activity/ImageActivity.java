@@ -5,11 +5,15 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+
 import android.annotation.SuppressLint;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.BitmapFactory.Options;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -26,6 +30,7 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import com.echonest.api.v4.EchoNestAPI;
 import com.echonest.api.v4.EchoNestException;
 import com.echonest.api.v4.Track;
@@ -160,6 +165,12 @@ public class ImageActivity extends ActionBarActivity{
 
 		new EchoTask().execute();
 
+		Bitmap backBitmap = BitmapFactory.decodeResource(getResources(),  R.drawable.image_load_success1);
+		Options options = new Options();
+		options.inSampleSize = 2;
+		//		Bitmap failBitmap = BitmapFactory.decodeResource(getResources(),  R.drawable.image_load_failed,options);
+
+		
 	}
 
 	public class EchoTask extends AsyncTask<Void, Void, Void>{

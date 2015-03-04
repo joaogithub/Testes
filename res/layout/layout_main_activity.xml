@@ -299,11 +299,20 @@
             android:layout_marginTop="2dp"
             android:text="Connect" />
 
+         <Button
+            android:id="@+id/picassoButton"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/connect"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="2dp"
+            android:text="Picasso loading" />
+        
         <Button
             android:id="@+id/imageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/connect"
+            android:layout_below="@+id/picassoButton"
             android:layout_centerHorizontal="true"
             android:text="ImageActivity" />
 

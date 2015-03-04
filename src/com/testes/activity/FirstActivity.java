@@ -83,7 +83,7 @@ import com.testes.receiver.WifiScanReceiver;
 public class FirstActivity extends FragmentActivity implements ActionMode.Callback, NavigationDrawerCallbacks {
 	TextView text1;
 	EditText linkEditText, e2;
-	Button dialogButton, sub, circleTestButton, imageButton,intentsButton, connectbutton,animationActivityButton, mainActivityButton, secondButton, scrollViewButton, tableLayoutButton,tabHostButton;
+	Button dialogButton, sub, circleTestButton, imageButton, picassoButton, intentsButton, connectbutton,animationActivityButton, mainActivityButton, secondButton, scrollViewButton, tableLayoutButton,tabHostButton;
 	Button listViewButton, horizontalListViewButton,createTemFiles,webViewButton,videoViewButton, viewPagerButton, spinnerButton,alarmsButton, jsonButton,slidingMenuButton;
 	Button drawerButton,drawerLayoutButton, fragmentsButton,sensorButton,toggleButtonActivity, drawableButton,ttSpeechButton,canvasButton,pickerButton,seekBarButton,editTextButton;
 	Context c=this;
@@ -128,6 +128,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		slidingMenuButton = (Button) findViewById(R.id.slidingMenuButton);
 		toggleButtonActivity = (Button) findViewById(R.id.toggleButton);
 		connectbutton = (Button) findViewById(R.id.connect);
+		picassoButton = (Button) findViewById(R.id.picassoButton);
 		jsonButton = (Button) findViewById(R.id.jsonButton);
 		imageButton = (Button) findViewById(R.id.imageButton);
 		editTextButton = (Button) findViewById(R.id.editTextButton);
@@ -196,11 +197,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		if (background instanceof ColorDrawable)
 			color = ((ColorDrawable) background).getColor();
 
-		Bitmap backBitmap = BitmapFactory.decodeResource(getResources(),  R.drawable.image_load_success1);
-		Options options = new Options();
-		options.inSampleSize = 2;
-		//		Bitmap failBitmap = BitmapFactory.decodeResource(getResources(),  R.drawable.image_load_failed,options);
-
+	
 		Button button = new Button(c);
 		button.setId(2000);
 		final AlertDialog myDialog = new AlertDialog.Builder(FirstActivity.this)
@@ -366,6 +363,15 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			}
 		});
 
+		picassoButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				startActivity(new Intent(FirstActivity.this, PicassoActivity.class));
+
+			}
+		});
+		
 		canvasButton.setOnClickListener(new OnClickListener() {
 
 			@Override
