@@ -167,8 +167,10 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		animationActivityButton.setText(animationActivityButton.getText() +" "+ new String(Character.toChars(unicode)));
 
 		UsbManager manager = (UsbManager) getSystemService(Context.USB_SERVICE);
-		HashMap<String, UsbDevice> deviceList = manager.getDeviceList();
-		Log.i(TAG, deviceList.toString());
+		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB){
+			HashMap<String, UsbDevice> deviceList = manager.getDeviceList();
+			Log.i(TAG, deviceList.toString());
+		}
 		//		UsbDevice device = deviceList.get("deviceName");
 		//		Toast.makeText(getApplicationContext(),"Attached device is : "+ device, Toast.LENGTH_LONG).show();
 
@@ -194,10 +196,12 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 
 		int color = Color.TRANSPARENT;
 		Drawable background = root.getBackground();
-		if (background instanceof ColorDrawable)
-			color = ((ColorDrawable) background).getColor();
+		
+		if (background instanceof ColorDrawable){
+			if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
+				color = ((ColorDrawable) background).getColor();
+		}
 
-	
 		Button button = new Button(c);
 		button.setId(2000);
 		final AlertDialog myDialog = new AlertDialog.Builder(FirstActivity.this)
@@ -371,7 +375,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 
 			}
 		});
-		
+
 		canvasButton.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -649,7 +653,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		});
 
 		text1.setText("TEXT" + getString(R.string.code));
-		
+
 		text1.setOnClickListener(new OnClickListener() {
 
 			@Override
