@@ -1103,7 +1103,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			//				}
 			//
 			//				String bufferString = new String(total.toString());
-			//				//				System.out.println(bufferString);
+			//								System.out.println(bufferString);
 			//				if(bufferString.contains("iframe"))
 			//					System.out.println("TEM IFRAME");
 			//				if(bufferString.contains("lock-"))
@@ -1227,7 +1227,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		int characterSteps = (int) ((rounded)*base);
 
 		char character = alpha[characterSteps];
-		System.out.println("char:"+ character);
+		Log.i(TAG, "char:"+ character);
 		return character;
 	}
 

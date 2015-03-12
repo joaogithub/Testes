@@ -93,8 +93,8 @@ public class DrawerLayoutActivity extends ActionBarActivity implements Navigatio
 		mDrawerListView.setAdapter(new DrawerItemAdapter(getSupportActionBar().getThemedContext(),
 				R.layout.drawer_item, new String[] { "Main Activity", "First Activity",
 			getString(R.string.check), getString(R.string.grid), "Second Activity"
-		 }, new Integer[] { R.drawable.abc_ab_share_pack_holo_light,
-			R.drawable.abc_ab_share_pack_holo_light, R.drawable.icn_exercises_2dig, R.drawable.icn_seta_preto,
+		 }, new Integer[] { R.drawable.abc_ab_share_pack_mtrl_alpha,
+			R.drawable.abc_ab_share_pack_mtrl_alpha, R.drawable.icn_exercises_2dig, R.drawable.icn_seta_preto,
 			R.drawable.nd_icon_mural }));
 
 		mDrawerListView.setOnItemClickListener(new OnItemClickListener() {

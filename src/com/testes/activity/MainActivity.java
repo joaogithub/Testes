@@ -54,7 +54,7 @@ public class MainActivity extends ListActivity {
 	static ListView lv;
 	static HttpResponse response;
 	public ImageView img1, img2, img3, img4;
-	public TextView emptyText, text2, text3;
+	public TextView emptyText, text2, text3, specsView;
 	ArrayList <String> layoutData;
 	static ProgressDialog progressDialog;
 	private Context _context;
@@ -67,6 +67,8 @@ public class MainActivity extends ListActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.rodrigo_layout);
 		_context = this;
+		
+		specsView = (TextView) findViewById(R.id.specsView);
 
 		//Print display size and characteristics
 		WindowManager wm = (WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
@@ -77,18 +79,20 @@ public class MainActivity extends ListActivity {
 		getWindowManager().getDefaultDisplay().getMetrics(dMetrics);
 		String strScreenDIP = "The model of the device is: "+ android.os.Build.MANUFACTURER + " "+ android.os.Build.MODEL+ " with brand " + android.os.Build.BRAND + " as product "+ android.os.Build.PRODUCT+ " with serial "+android.os.Build.SERIAL + "\n";
 		strScreenDIP += "The Android ID is " + Secure.ANDROID_ID + "\n";
-		strScreenDIP += "The current API version is: " + android.os.Build.VERSION.SDK_INT + "\n";
 		strScreenDIP += "Screen size category is: "+getSizeName(this) + "\n";
 		strScreenDIP += "The logical density of the display is: " + dMetrics.density + "\n";
 		strScreenDIP += "The screen density expressed as dots-per-inch is: " + dMetrics.densityDpi + " - "+ getScreenDensityName(dMetrics.densityDpi)+"\n";
 		strScreenDIP += "The screen size in dp: " + height/((float)dMetrics.densityDpi/160) + "x"+ width/((float)dMetrics.densityDpi/160)+ "\n";
 		strScreenDIP += "The absolute height of the display in pixels: " + dMetrics.heightPixels +"\n";
 		strScreenDIP += "The absolute width of the display in pixels: " + dMetrics.widthPixels+ "\n";
+		strScreenDIP += "The current API version is: " + android.os.Build.VERSION.SDK_INT + "\n";
 		strScreenDIP += "A scaling factor for fonts displayed on the display: " + dMetrics.scaledDensity + "\n";
 		strScreenDIP += "The exact physical pixels per inch of the screen in the X dimension: " + dMetrics.xdpi + "\n";
 		strScreenDIP += "The exact physical pixels per inch of the screen in the Y dimension: " + dMetrics.ydpi + "\n";
 		Log.i(TAG, strScreenDIP + " Serial Number: "+  getManufacturerSerialNumber());
 
+		specsView.setText(strScreenDIP + " Serial Number: "+  getManufacturerSerialNumber());
+		
 		getListView().setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
