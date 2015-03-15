@@ -1,10 +1,9 @@
 package com.testes.activity;
 
-import com.testes.android.R;
-
-import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+
+import com.testes.android.R;
 
 public class AdsActivity extends ActionBarActivity{
 

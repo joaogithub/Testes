@@ -6,17 +6,16 @@
     android:orientation="horizontal" >
 
     <ListView
-        android:id="@+id/ListGroups"
+        android:id="@+id/listGroups"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="50dp"
+        android:background="@color/darkpink" >
     </ListView>
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+        android:layout_width="320px"
+        android:layout_height="50px"
         ads:adSize="BANNER"
         ads:adUnitId="@string/banner_ad_unit_id" >
     </com.google.android.gms.ads.AdView>

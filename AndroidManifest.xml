@@ -90,7 +90,7 @@
         </activity>
         <activity android:name="com.testes.activity.PicassoActivity" >
         </activity>
-        <activity android:name="com.testes.activity.AdActivity" >
+        <activity android:name="com.testes.activity.AdsActivity" >
         </activity>
         <activity android:name="com.testes.activity.SlidingActivity" >
         </activity>
