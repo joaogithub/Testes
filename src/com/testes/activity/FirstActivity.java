@@ -81,6 +81,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdActivity;
 import com.google.android.gms.analytics.Tracker;
 import com.testes.android.R;
 import com.testes.data.Cow;
@@ -95,7 +96,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 	EditText linkEditText, e2;
 	Button dialogButton, sub, circleTestButton, imageButton, picassoButton, intentsButton, connectbutton,animationActivityButton, mainActivityButton, secondButton, scrollViewButton, tableLayoutButton,tabHostButton;
 	Button listViewButton, layoutButton,horizontalListViewButton,createTemFiles,webViewButton,videoViewButton, viewPagerButton, spinnerButton,alarmsButton, jsonButton,slidingMenuButton;
-	Button drawerButton,drawerLayoutButton, fragmentsButton,sensorButton,toggleButtonActivity, drawableButton,ttSpeechButton,canvasButton,pickerButton,seekBarButton,editTextButton;
+	Button drawerButton,drawerLayoutButton, adButton, fragmentsButton,sensorButton,toggleButtonActivity, drawableButton,ttSpeechButton,canvasButton,pickerButton,seekBarButton,editTextButton;
 	Context c=this;
 	ImageButton facebookLoginButton;
 	ScrollView scrollViewLayout;
@@ -139,6 +140,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		webViewButton = (Button) findViewById(R.id.webViewButton);
 		slidingMenuButton = (Button) findViewById(R.id.slidingMenuButton);
 		toggleButtonActivity = (Button) findViewById(R.id.toggleButton);
+		adButton = (Button) findViewById(R.id.adButton);
 		connectbutton = (Button) findViewById(R.id.connect);
 		picassoButton = (Button) findViewById(R.id.picassoButton);
 		jsonButton = (Button) findViewById(R.id.jsonButton);
@@ -425,6 +427,14 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			}
 		});
 
+		adButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				startActivity(new Intent(FirstActivity.this, AdsActivity.class));
+			}
+		});
+		
 		facebookLoginButton.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -600,8 +610,15 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		}
 
 		else{
-			CellLocation celllocation = telephonyManager.getCellLocation();
-			Log.i(TAG, celllocation.toString());
+
+			if(telephonyManager.getNeighboringCellInfo()!=null && !telephonyManager.getNeighboringCellInfo().isEmpty()){
+				telephonyManager.getNeighboringCellInfo().get(0);
+			}
+			else{
+
+				CellLocation celllocation = telephonyManager.getCellLocation();
+				Log.i(TAG, celllocation.toString());
+			}
 		}
 
 		final ProgressDialog dialog = new ProgressDialog(this);

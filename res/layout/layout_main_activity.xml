@@ -160,11 +160,19 @@
             android:layout_centerHorizontal="true"
             android:text="Alarm Manager" />
 
+        <Button
+            android:id="@+id/adButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/alarmManagerButton"
+            android:layout_centerHorizontal="true"
+            android:text="Ads" />
+
         <ImageView
             android:id="@+id/imageViewFirst"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/alarmManagerButton"
+            android:layout_below="@+id/adButton"
             android:layout_centerHorizontal="true"
             android:src="@color/green" />
 

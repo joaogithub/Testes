@@ -1,5 +1,6 @@
 package com.testes.activity;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.format.Time;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
@@ -19,6 +21,7 @@ public class PickerActivity extends ActionBarActivity{
 	EditText numberEdit;
 	TextView angleText;
 	View line;
+	private LinearLayout numberPicker;
 
 	float degreesSoItIsParallelToTheGround=0f;
 	String phoneRotationDegrees="";
@@ -26,7 +29,6 @@ public class PickerActivity extends ActionBarActivity{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
 
 		setContentView(R.layout.activity_pickers);
 
@@ -36,7 +38,10 @@ public class PickerActivity extends ActionBarActivity{
 			degreesValues[i] = String.valueOf(i)+ (char) 0x00B0;
 		}
 
-		NumberPicker picker = (NumberPicker) findViewById(R.id.numberPicker);
+		if(Build.VERSION.SDK_INT>10)
+			numberPicker = (NumberPicker) findViewById(R.id.numberPicker);
+		else
+			numberPicker = (LinearLayout) findViewById(R.id.numberPicker);
 //		picker.setMinValue(0);
 //		picker.setMaxValue(19);
 //		picker.setDisplayedValues(degreesValues);

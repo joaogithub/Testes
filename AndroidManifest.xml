@@ -90,6 +90,8 @@
         </activity>
         <activity android:name="com.testes.activity.PicassoActivity" >
         </activity>
+        <activity android:name="com.testes.activity.AdActivity" >
+        </activity>
         <activity android:name="com.testes.activity.SlidingActivity" >
         </activity>
         <activity android:name="com.testes.activity.VideoViewActivity" >

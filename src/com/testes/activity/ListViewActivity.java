@@ -58,6 +58,8 @@ public class ListViewActivity extends Activity {
 			}
 		});
 
+		_listView.pointToPosition(200, 20);
+		
 		_listView.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE_MODAL);              
 
 		_listView.setMultiChoiceModeListener(new MultiChoiceModeListener() { 
