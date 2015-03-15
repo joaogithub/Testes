@@ -48,6 +48,16 @@ import android.os.Parcelable;
 import android.os.Vibrator;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.view.ActionMode;
+import android.telephony.CellInfo;
+import android.telephony.CellInfoGsm;
+import android.telephony.CellInfoWcdma;
+import android.telephony.CellLocation;
+import android.telephony.CellSignalStrength;
+import android.telephony.CellSignalStrengthGsm;
+import android.telephony.CellSignalStrengthWcdma;
+import android.telephony.PhoneStateListener;
+import android.telephony.SignalStrength;
+import android.telephony.TelephonyManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -84,7 +94,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 	TextView text1;
 	EditText linkEditText, e2;
 	Button dialogButton, sub, circleTestButton, imageButton, picassoButton, intentsButton, connectbutton,animationActivityButton, mainActivityButton, secondButton, scrollViewButton, tableLayoutButton,tabHostButton;
-	Button listViewButton, horizontalListViewButton,createTemFiles,webViewButton,videoViewButton, viewPagerButton, spinnerButton,alarmsButton, jsonButton,slidingMenuButton;
+	Button listViewButton, layoutButton,horizontalListViewButton,createTemFiles,webViewButton,videoViewButton, viewPagerButton, spinnerButton,alarmsButton, jsonButton,slidingMenuButton;
 	Button drawerButton,drawerLayoutButton, fragmentsButton,sensorButton,toggleButtonActivity, drawableButton,ttSpeechButton,canvasButton,pickerButton,seekBarButton,editTextButton;
 	Context c=this;
 	ImageButton facebookLoginButton;
@@ -119,7 +129,9 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
 		setContentView(R.layout.layout_main_activity);
+
 		linkEditText = (EditText) findViewById(R.id.myEditText);
 		dialogButton = (Button) findViewById(R.id.add);
 		drawableButton = (Button) findViewById(R.id.drawableButton);
@@ -132,6 +144,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		jsonButton = (Button) findViewById(R.id.jsonButton);
 		imageButton = (Button) findViewById(R.id.imageButton);
 		editTextButton = (Button) findViewById(R.id.editTextButton);
+		layoutButton = (Button) findViewById(R.id.layoutButton);
 		horizontalListViewButton = (Button) findViewById(R.id.horizontalListViewButton);
 		sensorButton = (Button) findViewById(R.id.sensorButton);
 		videoViewButton = (Button) findViewById(R.id.videoViewButton);
@@ -196,7 +209,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 
 		int color = Color.TRANSPARENT;
 		Drawable background = root.getBackground();
-		
+
 		if (background instanceof ColorDrawable){
 			if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
 				color = ((ColorDrawable) background).getColor();
@@ -568,6 +581,28 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			}
 		});
 
+		TelephonyManager tManager;
+		SignalStrengthListener pListener = new SignalStrengthListener();
+
+
+		tManager = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+		tManager.listen(pListener, PhoneStateListener.LISTEN_SIGNAL_STRENGTHS);
+
+		TelephonyManager telephonyManager = (TelephonyManager)this.getSystemService(Context.TELEPHONY_SERVICE);
+		List<CellInfo> cellList = telephonyManager.getAllCellInfo();
+		CellInfoWcdma cellinfoWcdma = null;
+		if(cellList!=null && !cellList.isEmpty()){
+			cellinfoWcdma = (CellInfoWcdma)telephonyManager.getAllCellInfo().get(0);
+			CellSignalStrengthWcdma cellSignalStrengthWcdma = cellinfoWcdma.getCellSignalStrength();
+			if(Build.VERSION.SDK_INT>=18){
+				cellSignalStrengthWcdma.getDbm();
+			}
+		}
+
+		else{
+			CellLocation celllocation = telephonyManager.getCellLocation();
+			Log.i(TAG, celllocation.toString());
+		}
 
 		final ProgressDialog dialog = new ProgressDialog(this);
 		dialog.setTitle("Please Wait... ");
@@ -594,6 +629,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		});
 
 
+
 		scrollViewButton.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -602,6 +638,16 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 
 			}
 		});
+
+		layoutButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				startActivity(new Intent(FirstActivity.this, LayoutActivity.class));
+
+			}
+		});
+
 
 		createTemFiles.setOnClickListener(new OnClickListener() {
 
@@ -1281,6 +1327,12 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		}
 	};
 
+	@SuppressLint("NewApi")
+	public void onSignalStrengthsChanged(CellSignalStrengthWcdma signalStrength) {
+		//super.onSignalStrengthsChanged(signalStrength);
+
+	}
+
 	public void createOptionsMenu() {
 		Log.e("ActivityContext null?","" + this);
 		Dialog myOptionsDialog = new Dialog(this); //throwsNPE
@@ -1290,19 +1342,16 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 
 	@Override
 	public boolean onActionItemClicked(ActionMode arg0, MenuItem arg1) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean onCreateActionMode(ActionMode arg0, Menu arg1) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public void onDestroyActionMode(ActionMode arg0) {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -1322,5 +1371,30 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 
 	}
 
+	private class SignalStrengthListener extends PhoneStateListener{ 
+
+
+
+		@Override
+		public void onSignalStrengthsChanged(SignalStrength signalStrength) {
+			super.onSignalStrengthsChanged(signalStrength);
+			Log.i("LOG_TAG", "onSignalStrengthsChanged" + signalStrength);
+			//			if(Build.VERSION.SDK_INT>=18){
+			//				if(signalStrength instanceof SignalStrength){
+			//					Log.i("LOG_TAG", "onSignalStrengthsChanged: getcdaRscp" + signalStrength.getDbm());
+			//					int ttt = signalStrength.getDbm();
+			//					text1.setText(String.valueOf(ttt));
+			//				}
+			//				else{
+			Log.i("LOG_TAG", "onSignalStrengthsChanged: getcda dbm: " + signalStrength.getCdmaDbm());
+			int ttt = signalStrength.getCdmaDbm();
+			text1.setText(String.valueOf(ttt));
+			//				}
+			//				}
+		}
+
+		//		}
+
+	}
 
 }

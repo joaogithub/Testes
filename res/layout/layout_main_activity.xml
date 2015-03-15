@@ -71,12 +71,20 @@
             android:text="MainActivity" />
 
         <Button
-            android:id="@+id/spinnerButton"
+            android:id="@+id/layoutButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/mainButtton"
             android:layout_centerHorizontal="true"
-            android:text="Spinneractivity" />
+            android:text="Layout activity" />
+
+        <Button
+            android:id="@+id/spinnerButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layoutButton"
+            android:layout_centerHorizontal="true"
+            android:text="Spinner activity" />
 
         <ImageButton
             android:id="@+id/facebokLoginButton"
@@ -299,7 +307,7 @@
             android:layout_marginTop="2dp"
             android:text="Connect" />
 
-         <Button
+        <Button
             android:id="@+id/picassoButton"
             android:layout_width="230dp"
             android:layout_height="wrap_content"
@@ -307,7 +315,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="2dp"
             android:text="Picasso loading" />
-        
+
         <Button
             android:id="@+id/imageButton"
             android:layout_width="wrap_content"

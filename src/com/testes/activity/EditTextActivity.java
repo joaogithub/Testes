@@ -112,6 +112,7 @@ public class EditTextActivity extends ActionBarActivity{
         }
     };
 
+    
 	@Override
 	protected void onPause() {
 

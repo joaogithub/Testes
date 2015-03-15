@@ -1,0 +1,17 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:customviews="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:id="@+id/agenday_account_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/abc_ab_stacked_transparent_light_holo"
+        android:layout_gravity="center_horizontal" >
+
+        <!-- More Code -->
+    </FrameLayout>
+</LinearLayout>
