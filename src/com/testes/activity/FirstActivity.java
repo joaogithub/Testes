@@ -892,7 +892,8 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			public void onClick(View v) {
 				Intent webviewIntent = new Intent(FirstActivity.this, WebViewActivity.class);
 
-				webviewIntent.putExtra("webview", "www.google.com");
+				webviewIntent.putExtra("webview", "http://www.ustream.tv/embed/679978?v=3&wmode=direct"/*"http://www.google.com"*/);
+				
 				startActivity(webviewIntent);
 
 			}
