@@ -434,7 +434,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 				startActivity(new Intent(FirstActivity.this, AdsActivity.class));
 			}
 		});
-		
+
 		facebookLoginButton.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -601,11 +601,23 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		TelephonyManager telephonyManager = (TelephonyManager)this.getSystemService(Context.TELEPHONY_SERVICE);
 		List<CellInfo> cellList = telephonyManager.getAllCellInfo();
 		CellInfoWcdma cellinfoWcdma = null;
+		CellInfoGsm cellinfoGsm = null;
 		if(cellList!=null && !cellList.isEmpty()){
-			cellinfoWcdma = (CellInfoWcdma)telephonyManager.getAllCellInfo().get(0);
-			CellSignalStrengthWcdma cellSignalStrengthWcdma = cellinfoWcdma.getCellSignalStrength();
-			if(Build.VERSION.SDK_INT>=18){
-				cellSignalStrengthWcdma.getDbm();
+			if(telephonyManager.getAllCellInfo().get(0) instanceof CellInfoWcdma)
+				cellinfoWcdma = (CellInfoWcdma) telephonyManager.getAllCellInfo().get(0);
+			if(telephonyManager.getAllCellInfo().get(0) instanceof CellInfoGsm)
+				cellinfoGsm = (CellInfoGsm) telephonyManager.getAllCellInfo().get(0);
+			if(cellinfoWcdma!=null){
+				CellSignalStrengthWcdma cellSignalStrengthWcdma = cellinfoWcdma.getCellSignalStrength();
+				if(Build.VERSION.SDK_INT>=18){
+					Log.i(TAG, "Wcdma signal dbm:" +cellSignalStrengthWcdma.getDbm());
+				}
+			}
+			if(cellinfoGsm!=null){
+				CellSignalStrengthGsm cellSignalStrengthGsm = cellinfoGsm.getCellSignalStrength();
+				if(Build.VERSION.SDK_INT>=18){
+					Log.i(TAG, "Gsm signal dbm:" + cellSignalStrengthGsm.getDbm());
+				}
 			}
 		}
 
@@ -893,7 +905,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 				Intent webviewIntent = new Intent(FirstActivity.this, WebViewActivity.class);
 
 				webviewIntent.putExtra("webview", "http://www.ustream.tv/embed/679978?v=3&wmode=direct"/*"http://www.google.com"*/);
-				
+
 				startActivity(webviewIntent);
 
 			}

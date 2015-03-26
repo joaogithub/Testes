@@ -33,9 +33,7 @@ public class SensorActivity extends ActionBarActivity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-
 		setContentView(R.layout.sensor_activity);
-
 
 		sensorManager = (SensorManager)getSystemService(SENSOR_SERVICE);
 		accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -44,10 +42,7 @@ public class SensorActivity extends ActionBarActivity{
 
 		line = findViewById(R.id.lineView);
 		angleText = (TextView) findViewById(R.id.angleText);
-
 	}
-
-
 
 	@Override
 	protected void onPause() {
@@ -65,7 +60,6 @@ public class SensorActivity extends ActionBarActivity{
 		Log.i("SENSOR", "Gyroscope enabled: "+sensorManager.registerListener(sensorEventListenerer, gyroscope, SensorManager.SENSOR_DELAY_NORMAL));
 	}
 
-
 	private SensorEventListener sensorEventListenerer = new SensorEventListener() {
 		@SuppressLint("NewApi")
 		@Override
@@ -75,7 +69,6 @@ public class SensorActivity extends ActionBarActivity{
 			 * Here i want to do my calculations 
 			 * so i can find what rotation the line should have
 			 *
-			
 			 */
 			
 			switch(event.sensor.getType()){
