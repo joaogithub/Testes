@@ -192,7 +192,6 @@ public class AnimationActivity extends ActionBarActivity{
 			}
 		});
 
-
 		//		imageView.startAnimation(anim1);
 
 		TextView animText = (TextView) findViewById(R.id.animTextView);

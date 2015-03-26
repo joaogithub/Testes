@@ -205,7 +205,7 @@ public class SecondActivity extends ActionBarActivity {
 
 							while (phoneCursor.moveToNext()) {
 								String phoneNo = phoneCursor.getString(phoneCursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
-								Log.i(TAG, "Contacts phonenumber: "+ phoneCursor.getPosition()+ ":"+ phoneNo);
+								Log.i(TAG, "Contacts phone number: "+ phoneCursor.getPosition()+ ":"+ phoneNo);
 							}
 						}
 					}
@@ -257,20 +257,14 @@ public class SecondActivity extends ActionBarActivity {
 
 		String output;
 
-
-
-		//        search_btn.setOnClickListener(new OnClickListener() {
-		//
-		//            @Override
-		//            public void onClick(View v) {
-		//                // TODO Auto-generated method stub
-		//
+		//		        search_btn.setOnClickListener(new OnClickListener() {
+		//		
+		//           @Override
+		//		            public void onClick(View v) {
 		//                home_layout.setVisibility(View.GONE);
-		//                search_layout.setVisibility(LinearLayout.VISIBLE);
-		//
-		//
-		//            }
-		//        });
+		//	               search_layout.setVisibility(LinearLayout.VISIBLE);
+		//		            }
+		//		        });
 
 
 	}
@@ -368,12 +362,10 @@ public class SecondActivity extends ActionBarActivity {
 				}
 
 			} catch (ClientProtocolException e) {
-				// TODO Auto-generated catch block
 				Log.d("4 catch1", "testss");
 				e.printStackTrace();
 			} catch (IOException e) {
 				Log.d("4 catch 2", "testss");
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			// Toast.makeText(getApplicationContext(), x+" ",
@@ -386,7 +378,6 @@ public class SecondActivity extends ActionBarActivity {
 
 		@Override
 		protected void onProgressUpdate(Integer... values) {
-			// TODO Auto-generated method stub
 			super.onProgressUpdate(values);
 			progress.setProgress(100);
 		}
@@ -395,7 +386,6 @@ public class SecondActivity extends ActionBarActivity {
 			Biography.setText(xxx);
 
 			// bio.setAdapter(adapter);
-
 		}
 
 	}
@@ -435,7 +425,7 @@ public class SecondActivity extends ActionBarActivity {
 								ContactsContract.CommonDataKinds.Phone.CONTACT_ID +" = "+ id,null, null);
 						phones.moveToFirst();
 						String contactNumber = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
-						Log.i("phoneNUmber", "The phone number is "+ contactNumber);
+						Log.i("SecondActivity", "PhoneNumber - The phone number is "+ contactNumber);
 
 					}
 				}

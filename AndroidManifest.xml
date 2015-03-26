@@ -109,6 +109,8 @@
         </activity>
         <activity android:name="com.testes.activity.AnimationActivity" >
         </activity>
+        <activity android:name="com.testes.activity.TextViewAnimationActivity" >
+        </activity>
         <activity android:name="com.testes.activity.CanvasActivity" >
         </activity>
         <activity android:name="com.testes.activity.SeekBarActivity" >

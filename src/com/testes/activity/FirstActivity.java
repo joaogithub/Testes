@@ -96,7 +96,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 	EditText linkEditText, e2;
 	Button dialogButton, sub, circleTestButton, imageButton, picassoButton, intentsButton, connectbutton,animationActivityButton, mainActivityButton, secondButton, scrollViewButton, tableLayoutButton,tabHostButton;
 	Button listViewButton, layoutButton,horizontalListViewButton,createTemFiles,webViewButton,videoViewButton, viewPagerButton, spinnerButton,alarmsButton, jsonButton,slidingMenuButton;
-	Button drawerButton,drawerLayoutButton, adButton, fragmentsButton,sensorButton,toggleButtonActivity, drawableButton,ttSpeechButton,canvasButton,pickerButton,seekBarButton,editTextButton;
+	Button drawerButton,drawerLayoutButton, textAnimationButton, adButton, fragmentsButton,sensorButton,toggleButtonActivity, drawableButton,ttSpeechButton,canvasButton,pickerButton,seekBarButton,editTextButton;
 	Context c=this;
 	ImageButton facebookLoginButton;
 	ScrollView scrollViewLayout;
@@ -162,6 +162,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		scrollViewLayout = (ScrollView) findViewById(R.id.scrollViewLayout);
 		fragmentsButton = (Button) findViewById(R.id.fragmentsInfoButton);
 		drawerButton = (Button) findViewById(R.id.fullImage);
+		textAnimationButton = (Button) findViewById(R.id.textAnimationButton);
 		facebookLoginButton = (ImageButton) findViewById(R.id.facebokLoginButton);
 		intentsButton = (Button) findViewById(R.id.intentsButton);
 		circleTestButton =  (Button) findViewById(R.id.testViewButton);
@@ -492,6 +493,15 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			}
 		});
 
+		textAnimationButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				startActivity(new Intent(FirstActivity.this, TextViewAnimationActivity.class));
+
+			}
+		});
+		
 		tableLayoutButton.setOnClickListener(new OnClickListener() {
 
 			@Override

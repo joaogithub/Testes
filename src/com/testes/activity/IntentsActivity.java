@@ -240,7 +240,6 @@ public class IntentsActivity extends ActionBarActivity {
 			}
 		});
 
-
 		send.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -276,9 +275,9 @@ public class IntentsActivity extends ActionBarActivity {
 		// Invoke endCall()
 		if (cursor != null && cursor.moveToFirst()) {
 
-			//                             editor1.putBoolean("fromcontacts", true);
-			//                             editor1.putBoolean("notfromcontacts", false);
-			//                             editor1.putString("incomingnumbername", cursor.getString(0));
+//			editor1.putBoolean("fromcontacts", true);
+			//editor1.putBoolean("notfromcontacts", false);
+			//editor1.putString("incomingnumbername", cursor.getString(0));
 			//                             editor1.commit();
 			//                             Toast.makeText(this, p.getString("incomingnumbername", "unknown"), Toast.LENGTH_LONG).show();
 		}
