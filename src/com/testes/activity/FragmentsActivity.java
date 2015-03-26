@@ -37,7 +37,7 @@ import com.google.android.gms.maps.MapFragment;
 import com.testes.android.R;
 import com.testes.data.Person;
 
-public class FragmentsActivity extends ActionBarActivity{
+public class FragmentsActivity extends ActionBarActivity implements OnMapLoadedCallback{
 
 	private static TextView myView, myOtherView;
 	CheckBox checkbox;
@@ -112,10 +112,8 @@ public class FragmentsActivity extends ActionBarActivity{
 			FragmentsActivity.this.onBackPressed();
 		}
 	};
-
-
-	//    
-	//    public void mostrarDetalle(){
+ 
+	    public void mostrarDetalle(){
 	//        int n=MainActivity.lista.size();
 	//
 	//        for(int i=0;i<n;i++ ){
@@ -140,8 +138,8 @@ public class FragmentsActivity extends ActionBarActivity{
 	//
 	//        TextView txtCambiado = (TextView)findViewById(R.id.detalles_lbl);
 	//        txtCambiado.setText(detalles);
-	//
-	//    }
+	
+	    }
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu){
@@ -227,7 +225,7 @@ public class FragmentsActivity extends ActionBarActivity{
 
 			FragmentsActivity activity = (FragmentsActivity) getActivity();
 			fragPerson = activity.getPerson();
-			System.out.println(fragPerson.name + " act: "+ activity.person.name);
+			Log.i(TAG, (fragPerson.name + " activity name: "+ activity.person.name));
 			myView.setText(activity.person.name);
 
 			String storyText = "My previous text";
@@ -246,7 +244,7 @@ public class FragmentsActivity extends ActionBarActivity{
 					transaction.addToBackStack("replace").replace(((ViewGroup)getView().getParent()).getId(), signupFragment).commit();
 
 					MapFragment mapFragment = (MapFragment) MapFragment.newInstance();
-//					GoogleMap mapView = mapFragment.getMap();
+					GoogleMap mapView = mapFragment.getMap();
 //					mapView.setOnMapLoadedCallback(new OnMapLoadedCallback() {
 //
 //						@Override
@@ -287,14 +285,12 @@ public class FragmentsActivity extends ActionBarActivity{
 				layout.addView(activeName);
 
 			}
-
 		}
 	}
 
 	public void press(View view){
-		Log.i("SecondActivity", "Pressed");
+		Log.i("FragmentsActivity", "Pressed");
 		myView.setText("Changed");
-
 	}
 
 	public void onCheckBoxClicked(View view){
@@ -304,5 +300,11 @@ public class FragmentsActivity extends ActionBarActivity{
 			Intent myIntent = new Intent(FragmentsActivity.this, SecondActivity.class);
 			startActivity(myIntent);
 		}
+	}
+
+	@Override
+	public void onMapLoaded() {
+		// TODO Auto-generated method stub
+		
 	} 
 }
