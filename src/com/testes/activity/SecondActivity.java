@@ -205,11 +205,13 @@ public class SecondActivity extends ActionBarActivity {
 
 							while (phoneCursor.moveToNext()) {
 								String phoneNo = phoneCursor.getString(phoneCursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
-								Log.i(TAG, "Contacts phone number: "+ phoneCursor.getPosition()+ ":"+ phoneNo);
+								Log.i(TAG, name+" phone number: "+ phoneCursor.getPosition()+ ": "+ phoneNo);
 							}
+							phoneCursor.close();
 						}
 					}
 				}
+				contentCursor.close();
 			}
 		});
 
@@ -421,12 +423,12 @@ public class SecondActivity extends ActionBarActivity {
 
 					if (hasPhone.equalsIgnoreCase("1")) 
 					{
-						Cursor phones = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,null, 
+						Cursor phonesCursor = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,null, 
 								ContactsContract.CommonDataKinds.Phone.CONTACT_ID +" = "+ id,null, null);
-						phones.moveToFirst();
-						String contactNumber = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+						phonesCursor.moveToFirst();
+						String contactNumber = phonesCursor.getString(phonesCursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
 						Log.i("SecondActivity", "PhoneNumber - The phone number is "+ contactNumber);
-
+						phonesCursor.close();
 					}
 				}
 				super.onActivityResult(requestCode, resultCode, data);
