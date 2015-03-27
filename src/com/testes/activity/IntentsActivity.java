@@ -73,22 +73,24 @@ public class IntentsActivity extends ActionBarActivity {
 			@Override
 			public void onClick(View v) {
 				Intent capturingIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+				File file = new File(Environment.getExternalStorageDirectory().getAbsoluteFile()
+						+ "/" + "231" + ".jpg");
+				capturingIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));
+
 				startActivityForResult(capturingIntent, CAPTURE_REQUEST_CODE);
 			}
 		});
 
 		settingsButton.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
-//				startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
-//				startActivity(new Intent(Settings.ACTION_WIFI_IP_SETTINGS));
+				//startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
+				//startActivity(new Intent(Settings.ACTION_WIFI_IP_SETTINGS));
 				startActivity(new Intent(Settings.ACTION_WIRELESS_SETTINGS));
-			
-				
 			}
 		});
-		
+
 		ringToneButton.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -103,6 +105,9 @@ public class IntentsActivity extends ActionBarActivity {
 			}
 		});
 
+		/**
+		 * call home
+		 */
 		callButton.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -152,8 +157,8 @@ public class IntentsActivity extends ActionBarActivity {
 
 			@Override
 			public void onClick(View v) {
-				Intent i = new Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-				startActivityForResult(i, PICK_REQUEST_CODE);
+				Intent pickIntent = new Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+				startActivityForResult(pickIntent, PICK_REQUEST_CODE);
 			}
 		});
 
@@ -300,6 +305,7 @@ public class IntentsActivity extends ActionBarActivity {
 		if(requestCode == CAPTURE_REQUEST_CODE && resultCode ==Activity.RESULT_OK){
 			ExifInterface exif;
 			int rotate = 0;
+//			if(data.getExtras()!=null)
 			Bitmap bitmap =(Bitmap) data.getExtras().get("data"); 
 			saveImageToSDCard(bitmap);
 			try 
@@ -381,7 +387,7 @@ public class IntentsActivity extends ActionBarActivity {
 					width = bitmap.getWidth();
 					height = bitmap.getHeight();
 
-					Log.i("Intents", "rotating "+ rotate + " degrees ");
+					Log.i(TAG, "Intents rotating "+ rotate + " degrees ");
 
 					// Setting pre rotate
 					mtx = new Matrix();

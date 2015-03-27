@@ -442,7 +442,7 @@ public class SecondActivity extends ActionBarActivity {
 
 		String[] whereArgs = new String[] { String.valueOf(contactId), String.valueOf(type) };
 
-		Log.d("sd", "Got contact id: "+contactId);
+		Log.d("SecondActivity", "Got contact id: "+contactId);
 
 		Cursor cursor = context.getContentResolver().query(
 				ContactsContract.CommonDataKinds.Phone.CONTENT_URI, 
@@ -454,7 +454,7 @@ public class SecondActivity extends ActionBarActivity {
 		int phoneNumberIndex = cursor.getColumnIndexOrThrow(ContactsContract.CommonDataKinds.Phone.NUMBER);
 
 		if (cursor != null) {
-			Log.d("ds", "Returned contact count: "+cursor.getCount());
+			Log.d("SecondActivity", "Returned contact count: "+cursor.getCount());
 			try {
 				if (cursor.moveToFirst()) {
 					phoneNumber = cursor.getString(phoneNumberIndex);
@@ -464,7 +464,7 @@ public class SecondActivity extends ActionBarActivity {
 			}
 		}
 
-		Log.d("ds", "Returning phone number: "+phoneNumber);
+		Log.d("SecondActivity", "Returning phone number: "+phoneNumber);
 		return phoneNumber;
 	}
 

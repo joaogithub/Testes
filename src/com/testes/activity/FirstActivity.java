@@ -94,7 +94,7 @@ import com.testes.receiver.WifiScanReceiver;
 public class FirstActivity extends FragmentActivity implements ActionMode.Callback, NavigationDrawerCallbacks {
 	TextView text1;
 	EditText linkEditText, e2;
-	Button dialogButton, sub, circleTestButton, imageButton, picassoButton, intentsButton, connectbutton,animationActivityButton, mainActivityButton, secondButton, scrollViewButton, tableLayoutButton,tabHostButton;
+	Button dialogButton, sub, circleTestButton, centerButton, imageButton, picassoButton, intentsButton, connectbutton,animationActivityButton, mainActivityButton, secondButton, scrollViewButton, tableLayoutButton,tabHostButton;
 	Button listViewButton, layoutButton,horizontalListViewButton,createTemFiles,webViewButton,videoViewButton, viewPagerButton, spinnerButton,alarmsButton, jsonButton,slidingMenuButton;
 	Button drawerButton,drawerLayoutButton, textAnimationButton, adButton, fragmentsButton,sensorButton,toggleButtonActivity, drawableButton,ttSpeechButton,canvasButton,pickerButton,seekBarButton,editTextButton;
 	Context c=this;
@@ -141,6 +141,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		slidingMenuButton = (Button) findViewById(R.id.slidingMenuButton);
 		toggleButtonActivity = (Button) findViewById(R.id.toggleButton);
 		adButton = (Button) findViewById(R.id.adButton);
+		centerButton = (Button) findViewById(R.id.centerButton);
 		connectbutton = (Button) findViewById(R.id.connect);
 		picassoButton = (Button) findViewById(R.id.picassoButton);
 		jsonButton = (Button) findViewById(R.id.jsonButton);
@@ -365,6 +366,15 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			}
 		});
 
+		centerButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				startActivity(new Intent(FirstActivity.this, CenterActivity.class));
+				
+			}
+		});
+		
 		toggleButtonActivity.setOnClickListener(new OnClickListener() {
 
 			@Override
