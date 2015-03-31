@@ -26,10 +26,11 @@ public class DownloadActivity extends ActionBarActivity implements OnClickListen
 	private String stringUrl;
 	private int downloadId;
 	private CheckBox download_state;
-	private int dl_progress;
-	private String [] stockArr;
+	private long dl_progress;
+	private String [] urlArray;
 	private int count;
 	private TextView downloadCount;
+	private static final String TAG = "DownloadActivity";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,12 +42,11 @@ public class DownloadActivity extends ActionBarActivity implements OnClickListen
 
 		manager = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
 		
-		
+		urlArray = new String [] {stringUrl, "https://dl.dropboxusercontent.com/u/668793/Don%27t%20Repeat%20Yourself%20-%20Android%20LX%202014.pdf", "Adas", "adf"};
 	}
 
 	@Override
 	public void onClick(View v) {
-		Log.i("TAG", "clicked");
 		switch (v.getId()) {
 		case R.id.downloadManagerButton:
 
@@ -63,11 +63,11 @@ public class DownloadActivity extends ActionBarActivity implements OnClickListen
 	@SuppressLint("NewApi")
 	public void test(){
 
-		final int x=3;
-		request = new Request(Uri.parse(stringUrl));
+		final int x=0;
+		request = new Request(Uri.parse(urlArray[x]));
 		request.setDestinationInExternalFilesDir(this, "/folder", "example.pdf")
 		//VISIBILITY_HIDDEN gives exception with no permission
-		.setNotificationVisibility(Request.VISIBILITY_VISIBLE)
+		.setNotificationVisibility(Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
 		.setVisibleInDownloadsUi(false);
 		manager.enqueue(request);
 		final Timer myTimer = new Timer();
@@ -81,7 +81,7 @@ public class DownloadActivity extends ActionBarActivity implements OnClickListen
 					long bytes_downloaded = cursor.getLong(cursor.getColumnIndex(DownloadManager.COLUMN_BYTES_DOWNLOADED_SO_FAR));
 					long bytes_total = cursor.getLong(cursor.getColumnIndex(DownloadManager.COLUMN_TOTAL_SIZE_BYTES));
 					try {
-						long dl_progress = (bytes_downloaded * 100)/bytes_total;
+						dl_progress = (bytes_downloaded * 100)/bytes_total;
 						//checkStatus(Const.cursor);
 					} catch(ArithmeticException a){
 						//						checkStatus(cursor);
@@ -90,9 +90,10 @@ public class DownloadActivity extends ActionBarActivity implements OnClickListen
 						myTimer.cancel();
 					}
 					cursor.close();
-					Log.i("download_progress-->",""+dl_progress);
+					Log.i("Download progress-->",""+dl_progress);
+					int xx = x;
 					if(bytes_downloaded == bytes_total){
-						if(stockArr.length == x){
+						if(urlArray.length == xx){
 							Intent i = new Intent(DownloadActivity.this, ScrollViewActivity.class);
 							startActivity(i);
 						}else{
@@ -101,14 +102,14 @@ public class DownloadActivity extends ActionBarActivity implements OnClickListen
 
 								//				int mineFile = fm.moveFileTointernal(this, "/folder", "example.pdf");
 								//				if(mineFile == 1){
-
+								xx++;
 								count++;
 								runOnUiThread(new Runnable(){
 									@Override
 									public void run(){
 										downloadCount = (TextView) findViewById(R.id.txtDownloadCount);
 										downloadCount.setText("Downloaded "+count+" of  3");
-										Log.d("",""+"Downloaded "+count+" of 3");
+										Log.i(TAG,"Downloaded "+count+" of 3");
 									}
 								});
 								//					test();
