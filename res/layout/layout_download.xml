@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/downloadManagerButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Download with download manager" />
+
+    <Button
+        android:id="@+id/chunkDownload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Download chunk" />
+
+    <TextView
+        android:id="@+id/txtDownloadCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Count" >
+    </TextView>
+
+    <CheckBox
+        android:id="@+id/downloadState"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Download State" >
+    </CheckBox>
+
+</LinearLayout>

@@ -305,7 +305,7 @@ public class IntentsActivity extends ActionBarActivity {
 		if(requestCode == CAPTURE_REQUEST_CODE && resultCode ==Activity.RESULT_OK){
 			ExifInterface exif;
 			int rotate = 0;
-//			if(data.getExtras()!=null)
+			if(data!=null){
 			Bitmap bitmap =(Bitmap) data.getExtras().get("data"); 
 			saveImageToSDCard(bitmap);
 			try 
@@ -411,7 +411,7 @@ public class IntentsActivity extends ActionBarActivity {
 			{
 				ex.printStackTrace();
 			}
-
+			}
 		}
 
 		else if(requestCode == PICK_REQUEST_CODE && resultCode==Activity.RESULT_OK){

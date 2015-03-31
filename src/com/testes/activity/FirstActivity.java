@@ -95,7 +95,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 	TextView text1;
 	EditText linkEditText, e2;
 	Button dialogButton, sub, circleTestButton, centerButton, imageButton, picassoButton, intentsButton, connectbutton,animationActivityButton, mainActivityButton, secondButton, scrollViewButton, tableLayoutButton,tabHostButton;
-	Button listViewButton, layoutButton,horizontalListViewButton,createTemFiles,webViewButton,videoViewButton, viewPagerButton, spinnerButton,alarmsButton, jsonButton,slidingMenuButton;
+	Button listViewButton, layoutButton,horizontalListViewButton, downloadButton, createTemFiles,webViewButton,videoViewButton, viewPagerButton, spinnerButton,alarmsButton, jsonButton,slidingMenuButton;
 	Button drawerButton,drawerLayoutButton, textAnimationButton, adButton, fragmentsButton,sensorButton,toggleButtonActivity, drawableButton,ttSpeechButton,canvasButton,pickerButton,seekBarButton,editTextButton;
 	Context c=this;
 	ImageButton facebookLoginButton;
@@ -156,7 +156,8 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		animationActivityButton = (Button) findViewById(R.id.animationButton);
 		pickerButton = (Button) findViewById(R.id.pickersButton);
 		alarmsButton = (Button) findViewById(R.id.alarmManagerButton);
-		ttSpeechButton= (Button) findViewById(R.id.ttSpeechButton);
+		ttSpeechButton = (Button) findViewById(R.id.ttSpeechButton);
+		downloadButton = (Button) findViewById(R.id.downloadButton);
 		drawerLayoutButton = (Button) findViewById(R.id.drawerLayoutButton);
 		mainActivityButton = (Button) findViewById(R.id.mainButtton);
 		imageView = (ImageView)findViewById(R.id.imageViewFirst);
@@ -348,6 +349,15 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			}
 		});
 
+		downloadButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				startActivity(new Intent(FirstActivity.this, DownloadActivity.class));
+				
+			}
+		});
+		
 		spinnerButton.setOnClickListener(new OnClickListener() {
 
 			@Override
