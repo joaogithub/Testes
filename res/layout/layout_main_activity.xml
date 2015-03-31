@@ -47,28 +47,36 @@
             android:visibility="gone" />
 
         <Button
+            android:id="@+id/cardViewButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/myEditText"
+            android:layout_centerHorizontal="true"
+            android:text="CardView" />
+        
+        <Button
             android:id="@+id/add"
             android:layout_width="100dp"
             android:layout_height="40dp"
-            android:layout_below="@+id/myEditText"
+            android:layout_below="@+id/cardViewButton"
             android:layout_centerHorizontal="true"
             android:text="Dialog" />
-
-        <Button
-            android:id="@+id/ttSpeechButton"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_below="@+id/add"
-            android:layout_centerHorizontal="true"
-            android:text="Text To Speech" />
 
         <Button
             android:id="@+id/downloadButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/ttSpeechButton"
+            android:layout_below="@+id/add"
             android:layout_centerHorizontal="true"
             android:text="Downloads" />
+
+        <Button
+            android:id="@+id/ttSpeechButton"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_below="@+id/mainButtton"
+            android:layout_centerHorizontal="true"
+            android:text="Text To Speech" />
 
         <Button
             android:id="@+id/mainButtton"
@@ -82,7 +90,7 @@
             android:id="@+id/layoutButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/mainButtton"
+            android:layout_below="@+id/ttSpeechButton"
             android:layout_centerHorizontal="true"
             android:text="Layout activity" />
 
@@ -343,7 +351,7 @@
             android:id="@+id/picassoButton"
             android:layout_width="230dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/connect"
+            android:layout_below="@+id/imageButton"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="2dp"
             android:text="Picasso loading" />
@@ -352,7 +360,7 @@
             android:id="@+id/imageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/picassoButton"
+            android:layout_below="@+id/connect"
             android:layout_centerHorizontal="true"
             android:text="ImageActivity" />
 
@@ -360,7 +368,7 @@
             android:id="@+id/secondButton"
             android:layout_width="190dp"
             android:layout_height="40dp"
-            android:layout_below="@+id/imageButton"
+            android:layout_below="@+id/picassoButton"
             android:layout_centerHorizontal="true"
             android:text="secondActivity" />
 
@@ -368,7 +376,7 @@
             android:id="@+id/viewPagerActivityButton"
             android:layout_width="190dp"
             android:layout_height="40dp"
-            android:layout_below="@+id/secondButton"
+            android:layout_below="@+id/toggleButton"
             android:layout_centerHorizontal="true"
             android:text="ViewPager" />
 
@@ -376,7 +384,7 @@
             android:id="@+id/toggleButton"
             android:layout_width="190dp"
             android:layout_height="40dp"
-            android:layout_below="@+id/viewPagerActivityButton"
+            android:layout_below="@+id/secondButton"
             android:layout_centerHorizontal="true"
             android:text="Toggles" />
 
@@ -384,7 +392,7 @@
             android:id="@+id/webViewButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/toggleButton"
+            android:layout_below="@id/viewPagerActivityButton"
             android:layout_centerHorizontal="true"
             android:ellipsize="marquee"
             android:focusable="true"
@@ -392,7 +400,7 @@
             android:marqueeRepeatLimit="marquee_forever"
             android:scrollHorizontally="true"
             android:singleLine="true"
-            android:text="See in WEbpage in a decent Webview, with all my love and caring" />
+            android:text="See in Webpage in a decent Webview, with all my love and caring" />
     </RelativeLayout>
 
 </ScrollView>

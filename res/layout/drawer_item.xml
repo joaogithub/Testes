@@ -9,7 +9,7 @@
         android:id="@+id/menuSelectedView"
         android:layout_width="3dp"
         android:layout_height="match_parent"
-        android:background="@color/black"
+        android:background="@android:color/black"
         android:visibility="invisible" >
     </View>
 

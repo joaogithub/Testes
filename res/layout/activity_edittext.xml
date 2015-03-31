@@ -20,7 +20,7 @@
         android:layout_below="@+id/editTextAct"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
-        android:background="@color/white"
+        android:background="@android:color/white"
         android:ems="10"
         android:height="137dp"
         android:hint="hint_username"

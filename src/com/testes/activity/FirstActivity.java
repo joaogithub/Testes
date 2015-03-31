@@ -21,6 +21,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences.Editor;
 import android.content.res.Configuration;
 import android.opengl.GLSurfaceView;
@@ -96,7 +97,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 	EditText linkEditText, e2;
 	Button dialogButton, sub, circleTestButton, centerButton, imageButton, picassoButton, intentsButton, connectbutton,animationActivityButton, mainActivityButton, secondButton, scrollViewButton, tableLayoutButton,tabHostButton;
 	Button listViewButton, layoutButton,horizontalListViewButton, downloadButton, createTemFiles,webViewButton,videoViewButton, viewPagerButton, spinnerButton,alarmsButton, jsonButton,slidingMenuButton;
-	Button drawerButton,drawerLayoutButton, textAnimationButton, adButton, fragmentsButton,sensorButton,toggleButtonActivity, drawableButton,ttSpeechButton,canvasButton,pickerButton,seekBarButton,editTextButton;
+	Button drawerButton,drawerLayoutButton, cardViewButton, textAnimationButton, adButton, fragmentsButton,sensorButton,toggleButtonActivity, drawableButton,ttSpeechButton,canvasButton,pickerButton,seekBarButton,editTextButton;
 	Context c=this;
 	ImageButton facebookLoginButton;
 	ScrollView scrollViewLayout;
@@ -150,6 +151,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		layoutButton = (Button) findViewById(R.id.layoutButton);
 		horizontalListViewButton = (Button) findViewById(R.id.horizontalListViewButton);
 		sensorButton = (Button) findViewById(R.id.sensorButton);
+		cardViewButton = (Button) findViewById(R.id.cardViewButton);
 		videoViewButton = (Button) findViewById(R.id.videoViewButton);
 		canvasButton = (Button) findViewById(R.id.canvasButton);
 		seekBarButton = (Button) findViewById(R.id.seekBarButton);
@@ -233,9 +235,18 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 
 			@Override
 			public void onClick(View v) {
-				Log.i("FIRST", "Clicked ok dialog");
+				Log.i(TAG, "Clicked ok dialog");
 				myDialog.dismiss();
 
+			}
+		});
+
+		cardViewButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+
+				startActivity(new Intent(FirstActivity.this, CardActivity.class));
 			}
 		});
 
@@ -252,7 +263,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
-				Log.i("text", linkEditText.getText().toString() + " "+ linkEditText.getText().toString().contentEquals("center"));
+				Log.i(TAG, "text: "+ linkEditText.getText().toString() + " "+ linkEditText.getText().toString().contentEquals("center"));
 
 			}
 
@@ -299,15 +310,15 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		}
 
 		WifiScanReceiver wifireciever = new WifiScanReceiver();
-		//		for (int i=0;i<100;i++){
-		//			registerReceiver(wifireciever, new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
-		//
-		//			boolean wifiScanSuccedded = wifi.startScan();
-		//			Log.i("succedded", ""+wifiScanSuccedded);
+		//				for (int i=0;i<100;i++){
+		registerReceiver(wifireciever, new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
+
+		boolean wifiScanSuccedded = wifi.startScan();
+		Log.i(TAG, "succedded"+wifiScanSuccedded);
 		//			if (i==99){
 		//				Toast.makeText(getBaseContext(), "Scan Finish", Toast.LENGTH_LONG).show();
 		//			}
-		//		}
+		//				}
 
 		DBHelper dbHelper = new DBHelper(this, "simple_db", null, 1);
 
@@ -329,7 +340,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date date = new Date();
 		String dateString = sdf.format(date);
-		Log.i("current Date", dateString);
+		Log.i(TAG, "Current Date :" +dateString);
 
 		animationActivityButton.setOnClickListener(new OnClickListener() {
 
@@ -354,10 +365,10 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			@Override
 			public void onClick(View v) {
 				startActivity(new Intent(FirstActivity.this, DownloadActivity.class));
-				
+
 			}
 		});
-		
+
 		spinnerButton.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -377,14 +388,14 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 		});
 
 		centerButton.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				startActivity(new Intent(FirstActivity.this, CenterActivity.class));
-				
+
 			}
 		});
-		
+
 		toggleButtonActivity.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -435,7 +446,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			@Override
 			public void onClick(View v) {
 				startActivity(new Intent(FirstActivity.this, SeekBarActivity.class));
-				FirstActivity.this.overridePendingTransition(R.anim.animation1, R.anim.animation3);
+				overridePendingTransition(R.anim.animation1, R.anim.animation3);
 			}
 		});
 
@@ -521,7 +532,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 
 			}
 		});
-		
+
 		tableLayoutButton.setOnClickListener(new OnClickListener() {
 
 			@Override

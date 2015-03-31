@@ -8,11 +8,11 @@ import android.util.Log;
 public class DownloadReceiver extends BroadcastReceiver{
 
 	private final static String TAG = "DownloadReceiver";	
-	
+
 	@Override
 	public void onReceive(Context context, Intent intent) {
 
-		Log.i(TAG, "Download received");
+		Log.i(TAG, "Download finished " + intent.toString());
 	}
 
 }

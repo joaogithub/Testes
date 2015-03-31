@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.testes.android.R;
 
@@ -94,8 +95,7 @@ public class DownloadActivity extends ActionBarActivity implements OnClickListen
 					int xx = x;
 					if(bytes_downloaded == bytes_total){
 						if(urlArray.length == xx){
-							Intent i = new Intent(DownloadActivity.this, ScrollViewActivity.class);
-							startActivity(i);
+							Toast.makeText(DownloadActivity.this, "DOWNLOAD COMPLETED", Toast.LENGTH_LONG).show();
 						}else{
 							int newthumb = 1;
 							if(newthumb == 1){
