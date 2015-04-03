@@ -132,7 +132,7 @@ public class MainFragment extends Fragment{
 		//        //BitmapDrawable  finalImage = writeOnDrawable(R.drawable.icn_exercises_2dig, "205");
 	        // Combine background and text to a LayerDrawable
 		//        LayerDrawable layerDrawable = new LayerDrawable(new Drawable[]{new BitmapDrawable(canvasBitmap)});
-		        menu.findItem(R.id.action_bar_action_exercises).setIcon(R.drawable.icn_exercises_2dig);
+//		        menu.findItem(R.id.action_bar_action_exercises).setIcon(R.drawable.icn_exercises_2dig);
 		
 	}
 

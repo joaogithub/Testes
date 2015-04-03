@@ -723,23 +723,23 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 
 			@Override
 			public void onClick(View v) {
-				//				String []TempFiles ={"c1234c10","c1234c11","c1234c12","c1234c13"};
-				//				for(int i=0;i<=3;i++)
-				//				{
-				//					try{
-				//						String tDir = System.getProperty("java.io.tmpdir");
-				//						System.out.println(tDir);
-				//						File parentFOlder = new File(tDir);
-				//						String tempFile= TempFiles[i]; 
-				//						File temp = File.createTempFile(parentFOlder.getAbsolutePath()+"//"+tempFile, ".xls"); 
-				//
-				//						System.out.println("Temp file : " + temp.getAbsolutePath());
-				//
-				//					}catch(IOException e){
-				//
-				//						e.printStackTrace();
-				//					}
-				//				}
+				String []TempFiles ={"c1234c10","c1234c11","c1234c12","c1234c13"};
+				for(int i=0;i<=3;i++)
+				{
+					//					try{
+					//						String tDir = System.getProperty("java.io.tmpdir");
+					//						System.out.println(tDir);
+					//						File parentFOlder = new File(tDir);
+					//						String tempFile= TempFiles[i]; 
+					//						File temp = File.createTempFile(parentFOlder.getAbsolutePath()+"//"+tempFile, ".xls"); 
+					//
+					//						System.out.println("Temp file : " + temp.getAbsolutePath());
+					//
+					//					}catch(IOException e){
+					//
+					//						e.printStackTrace();
+					//					}
+				}
 
 				File myFolder = new File(getFilesDir(), "/Images/abc/");
 				myFolder.mkdirs();
@@ -754,6 +754,13 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 					}
 				} catch (IOException e) {
 					e.printStackTrace();
+				}
+
+				if (!myFolder.renameTo(new File(getFilesDir(), "/Images/abcd/"))) {
+
+				}
+				else{
+					Log.i(TAG, "success renaming");
 				}
 
 			}
@@ -1442,14 +1449,12 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 
 	}
 
-	private class SignalStrengthListener extends PhoneStateListener{ 
-
-
+	private class SignalStrengthListener extends PhoneStateListener{
 
 		@Override
 		public void onSignalStrengthsChanged(SignalStrength signalStrength) {
 			super.onSignalStrengthsChanged(signalStrength);
-			Log.i("LOG_TAG", "onSignalStrengthsChanged" + signalStrength);
+			Log.i(TAG, "onSignalStrengthsChanged" + signalStrength);
 			//			if(Build.VERSION.SDK_INT>=18){
 			//				if(signalStrength instanceof SignalStrength){
 			//					Log.i("LOG_TAG", "onSignalStrengthsChanged: getcdaRscp" + signalStrength.getDbm());
@@ -1457,14 +1462,26 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			//					text1.setText(String.valueOf(ttt));
 			//				}
 			//				else{
-			Log.i("LOG_TAG", "onSignalStrengthsChanged: getcda dbm: " + signalStrength.getCdmaDbm());
+			Log.i(TAG, "onSignalStrengthsChanged: getcda dbm: " + signalStrength.getCdmaDbm());
 			int ttt = signalStrength.getCdmaDbm();
 			text1.setText(String.valueOf(ttt));
 			//				}
 			//				}
 		}
 
-		//		}
+		public void onCallStateChanged(int state,String incoming)
+		{
+			//Ringing
+			if (state == 1) {
+
+				String msg = "New Phone Call Event. Incomming Number : "+incoming;
+				int duration = Toast.LENGTH_LONG;
+				// Context pcontext;
+				Toast toast = Toast.makeText(getBaseContext(), msg, duration);
+				toast.show();
+			}
+
+		}
 
 	}
 
