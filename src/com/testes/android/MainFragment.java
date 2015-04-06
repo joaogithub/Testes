@@ -12,6 +12,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Paint.Align;
 import android.graphics.Rect;
@@ -120,23 +121,23 @@ public class MainFragment extends Fragment{
 		        //rect that holds the green circle
 //		        RectF circleRect = new RectF(0,(float)(IMAGE_HEIGHT/3),IMAGE_WIDTH+(IMAGE_WIDTH/2),(float)(IMAGE_HEIGHT/3)+(IMAGE_HEIGHT));
 //		        Rect recta = new Rect(IMAGE_WIDTH/3,IMAGE_HEIGHT/3,IMAGE_WIDTH*2, IMAGE_HEIGHT*2);
-		//        // Draw the image to our canvas
+		        // Draw the image to our canvas
 		//        //backgroundImage.draw(imageCanvas);
-		//        Matrix scaleMatrix = new Matrix();
-		//        scaleMatrix.setScale(1.3f,2f);
-		//        //imageCanvas.drawBitmap(backBitmap, scaleMatrix,null);
-		//        imageCanvas.drawBitmap(backBitmap,null,recta,null);
-		//        // Draw the text on top of our image
+		        Matrix scaleMatrix = new Matrix();
+		        scaleMatrix.setScale(1.3f,2f);
+		        //imageCanvas.drawBitmap(backBitmap, scaleMatrix,null);
+//		        imageCanvas.drawBitmap(backBitmap,null,recta,null);
+		        // Draw the text on top of our image
 		//        imageCanvas.drawRoundRect(circleRect,15,15,greenPaint);
 		//        //imageCanvas.drawText("205", (float)(IMAGE_WIDTH/1.5),(float) (IMAGE_HEIGHT), imagePaint);
-		//        
-		//        // This is the final image that you can use 
+		        
+		        // This is the final image that you can use 
 		//        //BitmapDrawable finalImage = new BitmapDrawable(canvasBitmap);
 		//        //BitmapDrawable  finalImage = writeOnDrawable(R.drawable.icn_exercises_2dig, "205");
-		//        // Combine background and text to a LayerDrawable
+	        // Combine background and text to a LayerDrawable
 		//        LayerDrawable layerDrawable = new LayerDrawable(new Drawable[]{new BitmapDrawable(canvasBitmap)});
-		//	    //menu.findItem(R.id.action_bar_action_exercises).setIcon(R.drawable.icn_exercises_2dig);
-		//
+//		        menu.findItem(R.id.action_bar_action_exercises).setIcon(R.drawable.icn_exercises_2dig);
+		
 	}
 
 	@Override

@@ -1,8 +1,10 @@
 package com.testes.activity;
 
+import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -208,6 +210,15 @@ public class AnimationActivity extends ActionBarActivity{
 			//			animText.startAnimation(movingJumpAnimation);
 		}
 
+	}
+
+	@SuppressLint("NewApi")
+	public static void colorFade(View view, Resources res) {
+		if(Build.VERSION.SDK_INT>10){
+			ObjectAnimator colorFadeAnimator = ObjectAnimator.ofObject(view, "backgroundColor", new ArgbEvaluator(), res.getColor(R.color.blue), 0xffccc);
+			colorFadeAnimator.setDuration(30000);
+			colorFadeAnimator.start();
+		}
 	}
 
 	@SuppressLint("NewApi")
