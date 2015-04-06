@@ -71,7 +71,7 @@ public class ButtonsActivity extends ActionBarActivity{
 		msg.setText(message);
 		msg.setId(1);
 		msg.setPadding(10, 10, 10, 10);
-		msg.setTextColor(getResources().getColor(R.color.white));
+		msg.setTextColor(getResources().getColor(Color.WHITE));
 		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
 		params.setMargins(5, 15, 0, 0);
 		params.gravity = Gravity.LEFT;
@@ -87,7 +87,7 @@ public class ButtonsActivity extends ActionBarActivity{
 		msg.setBackgroundResource(R.drawable.img_rbs_login_btn_unpressed);
 		msg.setText(message);
 		msg.setPadding(10, 10, 10, 10);
-		msg.setTextColor(getResources().getColor(R.color.white));
+		msg.setTextColor(getResources().getColor(Color.WHITE));
 		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
 		params.setMargins(0, 15, 5, 0);
 		params.gravity = Gravity.RIGHT;
