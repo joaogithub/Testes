@@ -48,6 +48,7 @@ import android.os.Handler;
 import android.os.Parcelable;
 import android.os.Vibrator;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.view.ActionMode;
 import android.telephony.CellInfo;
 import android.telephony.CellInfoGsm;
@@ -92,7 +93,7 @@ import com.testes.database.PhoneDal;
 import com.testes.interfaces.NavigationDrawerCallbacks;
 import com.testes.receiver.WifiScanReceiver;
 
-public class FirstActivity extends FragmentActivity implements ActionMode.Callback, NavigationDrawerCallbacks {
+public class FirstActivity extends ActionBarActivity implements ActionMode.Callback, NavigationDrawerCallbacks {
 	TextView text1;
 	EditText linkEditText, e2;
 	Button dialogButton, sub, circleTestButton, centerButton, imageButton, picassoButton, intentsButton, connectbutton,animationActivityButton, mainActivityButton, secondButton, scrollViewButton, tableLayoutButton,tabHostButton;
@@ -109,6 +110,7 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 	MediaRecorder recorder;
 	boolean isVoiceButtonHeld = false;
 	public static final String TAG = "FirstActivity";
+	WifiScanReceiver wifiReciever;
 
 	String bString, aString;
 
@@ -309,9 +311,10 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			wifi.setWifiEnabled(true);
 		}
 
-		WifiScanReceiver wifireciever = new WifiScanReceiver();
+		wifiReciever = new WifiScanReceiver();
 		//				for (int i=0;i<100;i++){
-		registerReceiver(wifireciever, new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
+		if(!wifiReciever.isOrderedBroadcast())
+			registerReceiver(wifiReciever, new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
 
 		boolean wifiScanSuccedded = wifi.startScan();
 		Log.i(TAG, "succedded"+wifiScanSuccedded);
@@ -1455,6 +1458,13 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 
 	}
 
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		if(wifiReciever!=null)
+			unregisterReceiver(wifiReciever);
+	}
+	
 	@Override
 	public void onNavigationDrawerItemSelected(int position) {
 

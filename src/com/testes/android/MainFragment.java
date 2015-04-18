@@ -1,5 +1,7 @@
 package com.testes.android;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -20,6 +22,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -31,6 +34,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 
 public class MainFragment extends Fragment{
+	private static final String TAG = "MainFragment";
 	private View _view;
 	ImageView medalIcon;
 	static ProgressDialog progressDialog;
@@ -61,28 +65,28 @@ public class MainFragment extends Fragment{
 		return _view;	
 	}
 
-	//	private String ReadCPUinfo()
-	//	 {
-	//	  ProcessBuilder cmd;
-	//	  String result="";
-	//
-	//	  try{
-	//	   String[] args = {"/system/bin/cat", "/proc/cpuinfo"};
-	//	   cmd = new ProcessBuilder(args);
-	//
-	//	   Process process = cmd.start();
-	//	   InputStream in = process.getInputStream();
-	//	   byte[] re = new byte[1024];
-	//	   while(in.read(re) != -1){
-	//	    System.out.println(new String(re));
-	//	    result = result + new String(re);
-	//	   }
-	//	   in.close();
-	//	  } catch(IOException ex){
-	//	   ex.printStackTrace();
-	//	  }
-	//	  return result;
-	//	 }
+		private String readCPUinfo()
+		 {
+		  ProcessBuilder cmd;
+		  String result="";
+	
+		  try{
+		   String[] args = {"/system/bin/cat", "/proc/cpuinfo"};
+		   cmd = new ProcessBuilder(args);
+	
+		   Process process = cmd.start();
+		   InputStream in = process.getInputStream();
+		   byte[] re = new byte[1024];
+		   while(in.read(re) != -1){
+		    Log.i(TAG, new String(re));
+		    result = result + new String(re);
+		   }
+		   in.close();
+		  } catch(IOException ex){
+		   ex.printStackTrace();
+		  }
+		  return result;
+		 }
 
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
