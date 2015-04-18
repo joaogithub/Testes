@@ -1,5 +1,7 @@
 package com.testes.activity;
 
+import java.util.Calendar;
+
 import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
 import android.content.Intent;
@@ -38,10 +40,14 @@ public class SplashActivity extends Activity {
 		params.gravity = Gravity.CENTER;
 		addContentView(imageView, params);
 		
+		Calendar cal = Calendar.getInstance();
+		cal.set(Calendar.HOUR,4);
+		cal.set(Calendar.MINUTE, 23);
+		
 		int i = 2;
 		int c = i+3;
 		i=4;
-		Log.i("Splash activity referne:", ""+c);
+		Log.i("Splash activity reference:", ""+c);
 		
 		new Thread(){
             public void run(){

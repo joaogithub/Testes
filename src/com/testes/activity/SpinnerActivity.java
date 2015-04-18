@@ -150,15 +150,15 @@ public class SpinnerActivity extends ActionBarActivity implements android.suppor
 		});
 		
 		//spinner with code
-		Spinner view = new Spinner(this, Spinner.MODE_DROPDOWN);
-		view.setLayoutParams(new LayoutParams(android.view.ViewGroup.LayoutParams.MATCH_PARENT, android.view.ViewGroup.LayoutParams.WRAP_CONTENT));
-		view.setAdapter(equipmentAdapter);
-		view.setPrompt("Title");
+		Spinner viewSpinner = new Spinner(this, Spinner.MODE_DROPDOWN);
+		viewSpinner.setLayoutParams(new LayoutParams(android.view.ViewGroup.LayoutParams.MATCH_PARENT, android.view.ViewGroup.LayoutParams.WRAP_CONTENT));
+		viewSpinner.setAdapter(equipmentAdapter);
+		viewSpinner.setPrompt("Title");
 //		view.setPopupBackgroundDrawable(getResources().getDrawable(R.drawable.combo_box_bg));
-		view.setDropDownWidth(android.view.ViewGroup.LayoutParams.MATCH_PARENT);
-		view.setDropDownVerticalOffset(getResources().getDimensionPixelOffset(R.dimen.form_screen_equipment_combo_box_dropdown_vertical_offset));
-//		view.setBackground(getResources().getDrawable(R.drawable.combo_box_bg));
-		addContentView(view, view.getLayoutParams());
+		viewSpinner.setDropDownWidth(android.view.ViewGroup.LayoutParams.MATCH_PARENT);
+		viewSpinner.setDropDownVerticalOffset(getResources().getDimensionPixelOffset(R.dimen.form_screen_equipment_combo_box_dropdown_vertical_offset));
+		viewSpinner.setBackground(getResources().getDrawable(R.drawable.combo_box_bg));
+		addContentView(viewSpinner, viewSpinner.getLayoutParams());
 		
 	}
 

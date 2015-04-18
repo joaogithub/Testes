@@ -99,7 +99,7 @@ public class FirstActivity extends ActionBarActivity implements ActionMode.Callb
 	Button dialogButton, sub, circleTestButton, centerButton, imageButton, picassoButton, intentsButton, connectbutton,animationActivityButton, mainActivityButton, secondButton, scrollViewButton, tableLayoutButton,tabHostButton;
 	Button listViewButton, layoutButton,horizontalListViewButton, downloadButton, createTemFiles,webViewButton,videoViewButton, viewPagerButton, spinnerButton,alarmsButton, jsonButton,slidingMenuButton;
 	Button drawerButton,drawerLayoutButton, cardViewButton, textAnimationButton, adButton, fragmentsButton,sensorButton,toggleButtonActivity, drawableButton,ttSpeechButton,canvasButton,pickerButton,seekBarButton,editTextButton;
-	Context c=this;
+	Context c = this;
 	ImageButton facebookLoginButton;
 	ScrollView scrollViewLayout;
 	RelativeLayout drawerRelativeLayout;
@@ -783,7 +783,6 @@ public class FirstActivity extends ActionBarActivity implements ActionMode.Callb
 
 			}
 		});
-
 		
 		
 		text1.setText("TEXT" + getString(R.string.code));

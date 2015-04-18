@@ -17,8 +17,9 @@ import com.testes.android.R;
 
 public class AlarmsActivity extends ActionBarActivity{
 
-	String buttonText= "";
+	private String buttonText= "";
 	private long timeInMs;
+	private int imagen=0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +84,14 @@ public class AlarmsActivity extends ActionBarActivity{
 			timeInMs = customDate.getTime();
 		}
 
-		Intent intent = new Intent(this, FirstActivity.class);
+		
+		Intent intent = new Intent();
+		
+		switch(imagen){
+		
+		}
+		
+		intent = new Intent(this, FirstActivity.class);
 		PendingIntent actionIntent = PendingIntent.getActivity(this, 0,intent, Intent.FLAG_ACTIVITY_NEW_TASK);
 
 		AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);

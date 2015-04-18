@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Gravity;
@@ -35,6 +36,7 @@ public class ViewPagerActivity extends ActionBarActivity{
 	private TextView textView;
 	private EditText editText;
 	public static final String TAG = "ViewPagerActivity";
+	private ArrayList<Fragment> fragmentsArray = new ArrayList<Fragment>();
 	
 	
 	@Override
@@ -51,21 +53,41 @@ public class ViewPagerActivity extends ActionBarActivity{
 		_awesomePagerAdapter = new TestesPagerAdapter(getSupportFragmentManager());
 		viewPager.setAdapter(_awesomePagerAdapter);
 		
+		viewPager.setOnPageChangeListener(new OnPageChangeListener() {
+			
+			@Override
+			public void onPageSelected(int position) {
+				Log.i(TAG, "changed to page " + position);
+				
+			}
+			
+			@Override
+			public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+				
+				
+			}
+			
+			@Override
+			public void onPageScrollStateChanged(int state) {
+				
+				
+			}
+		});
+		
     	int layoutWidth = viewPager.getWidth();
     	Log.i(TAG, "viewpager layout width:"+ layoutWidth);
     	
-    	viewPager.post(new Runnable() {
-    	    @Override
-    	    public void run() {
-    	        Log.i(TAG,"Check my ViewPager Width: " + viewPager.getMeasuredWidth());
-    	        }
-    	    });
+//    	viewPager.post(new Runnable() {
+//    	    @Override
+//    	    public void run() {
+//    	        Log.i(TAG,"Check my ViewPager Width: " + viewPager.getMeasuredWidth());
+//    	        }
+//    	    });
 		
 	}
 	
 	public class TestesPagerAdapter extends FragmentStatePagerAdapter{
 
-		private ArrayList<Fragment> fragmentsArray = new ArrayList<Fragment>();
 		
 		public TestesPagerAdapter(FragmentManager fragmentManager) {
 			super(fragmentManager);
