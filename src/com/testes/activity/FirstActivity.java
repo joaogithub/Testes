@@ -670,7 +670,8 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			else{
 
 				CellLocation celllocation = telephonyManager.getCellLocation();
-				Log.i(TAG, celllocation.toString());
+				if(celllocation!=null)
+					Log.i(TAG, celllocation.toString());
 			}
 		}
 
@@ -757,11 +758,16 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 				}
 
 				if (!myFolder.renameTo(new File(getFilesDir(), "/Images/abcd/"))) {
-
+					Log.e(TAG, "error renaming file");
 				}
 				else{
 					Log.i(TAG, "success renaming");
 				}
+				
+				File dir2 = new File("/storage/emulated/0/Music/Music/NOUVAU/");
+				if(dir2.mkdirs())
+					Log.i(TAG, "file dir2 created in "+ dir2.getAbsolutePath());
+				Log.i(TAG, "moving 2:" + myFolder.renameTo(dir2));
 
 			}
 		});
@@ -775,6 +781,8 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			}
 		});
 
+		
+		
 		text1.setText("TEXT" + getString(R.string.code));
 
 		text1.setOnClickListener(new OnClickListener() {
@@ -1011,6 +1019,9 @@ public class FirstActivity extends FragmentActivity implements ActionMode.Callba
 			}
 		}
 
+		AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+		audioManager.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
+		audioManager.setParameters("key1=value1;key2=value2;");
 
 		MediaPlayer mediaPlayer = new MediaPlayer();
 		mediaPlayer.setAudioStreamType(AudioManager.STREAM_VOICE_CALL);

@@ -73,6 +73,39 @@ public class JsonParseActivity extends ActionBarActivity{
 			e.printStackTrace();
 		}
 		
+		String contentsAsString = "[{\"Lng\":\"-1.5908601\",\"Lat\":\"53.7987816\"},{\"Lng\":\"-2.5608601\",\"Lat\":\"54.7987816\"}]";
+//		{"Lng":"-3.5608601","Lat":"55.7987816"}
+//		{"Lng":"-4.5608601","Lat":"56.7987816"}
+//		{"Lng":"-5.560837","Lat":"57.7987816"}
+//		{"Lng":"-6.5608294","Lat":"58.7987772"}
+//		{"Lng":"-7.5608506","Lat":"59.7987823"}";
+		
+		JSONObject jsonObject = null;
+		JSONArray jsonArray;
+		try {
+//			jsonObject = new JSONObject(contentsAsString);
+			jsonArray = new JSONArray(contentsAsString);
+			Log.i(TAG, jsonArray.get(0).toString());
+			Iterator<String> iter = jsonObject.keys();
+			  while(iter.hasNext())
+			    {
+			       String key = iter.next();
+			         try{
+			             Object value = jsonObject.get(key);
+			             Log.i(TAG,"Value :- "+ value);
+			         }catch(JSONException e)
+			          {
+			              //error
+			        	 e.printStackTrace();
+			          }
+			    }
+			
+			
+		} catch (JSONException e1) {
+			e1.printStackTrace();
+		}
+
+		
 		// Declarations
 		Calendar cal;
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat( "HH:mm:ss" );
