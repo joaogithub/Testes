@@ -222,6 +222,8 @@ public class FragmentsActivity extends ActionBarActivity implements OnMapLoadedC
 			View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 			myView = (TextView) rootView.findViewById(R.id.textView1);
 
+			setRetainInstance(true);
+			
 			((ActionBarActivity)getActivity()).getSupportActionBar().setIcon(R.drawable.icn_seta_preto);
 
 			FragmentsActivity activity = (FragmentsActivity) getActivity();

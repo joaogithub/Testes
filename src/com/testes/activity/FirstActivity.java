@@ -98,7 +98,7 @@ public class FirstActivity extends ActionBarActivity implements ActionMode.Callb
 	EditText linkEditText, e2;
 	Button dialogButton, sub, circleTestButton, centerButton, imageButton, picassoButton, intentsButton, connectbutton,animationActivityButton, mainActivityButton, secondButton, scrollViewButton, tableLayoutButton,tabHostButton;
 	Button listViewButton, layoutButton,horizontalListViewButton, downloadButton, createTemFiles,webViewButton,videoViewButton, viewPagerButton, spinnerButton,alarmsButton, jsonButton,slidingMenuButton;
-	Button drawerButton,drawerLayoutButton, cardViewButton, textAnimationButton, adButton, fragmentsButton,sensorButton,toggleButtonActivity, drawableButton,ttSpeechButton,canvasButton,pickerButton,seekBarButton,editTextButton;
+	Button drawerButton,drawerLayoutButton, cardViewButton, volleyButton,  textAnimationButton, adButton, fragmentsButton,sensorButton,toggleButtonActivity, drawableButton,ttSpeechButton,canvasButton,pickerButton,seekBarButton,editTextButton;
 	Context c = this;
 	ImageButton facebookLoginButton;
 	ScrollView scrollViewLayout;
@@ -141,6 +141,7 @@ public class FirstActivity extends ActionBarActivity implements ActionMode.Callb
 		drawableButton = (Button) findViewById(R.id.drawableButton);
 		secondButton = (Button) findViewById(R.id.secondButton);
 		webViewButton = (Button) findViewById(R.id.webViewButton);
+		volleyButton = (Button) findViewById(R.id.volleyButton);
 		slidingMenuButton = (Button) findViewById(R.id.slidingMenuButton);
 		toggleButtonActivity = (Button) findViewById(R.id.toggleButton);
 		adButton = (Button) findViewById(R.id.adButton);
@@ -969,6 +970,15 @@ public class FirstActivity extends ActionBarActivity implements ActionMode.Callb
 			}
 		});
 
+		volleyButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent volleyIntent = new Intent(FirstActivity.this, VolleyActivity.class);
+				startActivity(volleyIntent);
+			}
+		});
+		
 		secondButton.setOnClickListener(new OnClickListener() {
 
 			@Override
