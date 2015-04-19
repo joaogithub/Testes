@@ -6,8 +6,10 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.TimeZone;
 
 import org.apache.http.HttpEntity;
@@ -38,13 +40,27 @@ import com.testes.android.R;
 
 
 
+
+
+
+
+
+
+
+
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 public class JsonParseActivity extends ActionBarActivity{
 
@@ -83,7 +99,7 @@ public class JsonParseActivity extends ActionBarActivity{
 		JSONObject jsonObject = null;
 		JSONArray jsonArray;
 		try {
-//			jsonObject = new JSONObject(contentsAsString);
+			jsonObject = new JSONObject(contentsAsString);
 			jsonArray = new JSONArray(contentsAsString);
 			Log.i(TAG, jsonArray.get(0).toString());
 			Iterator<String> iter = jsonObject.keys();
@@ -104,7 +120,6 @@ public class JsonParseActivity extends ActionBarActivity{
 		} catch (JSONException e1) {
 			e1.printStackTrace();
 		}
-
 		
 		// Declarations
 		Calendar cal;
@@ -142,7 +157,6 @@ public class JsonParseActivity extends ActionBarActivity{
 	    String time = df.format(new Date(millis));
 	    Log.i(TAG, "Duration in seconds:"+ time);
 	    
-	    
 	    new AsyncTask<Void,Void, String>(){
 
 			@Override
@@ -173,40 +187,95 @@ public class JsonParseActivity extends ActionBarActivity{
 	    JsonFactory factory = new JsonFactory();
 	    factory.canHandleBinaryNatively();
 	    
-	    String JsonString = "[{\"name\":\"foo\",\"slug\":\"foo2\"}]";
+	    String jsonString = "[{\"name\":\"foo\",\"slug\":\"foo2\"}]";
 	    JSONObject object = null;
+	    JSONArray jsonArr = null;
 		try {
-			object = new JSONObject(JsonString);
+			jsonArr = new JSONArray(jsonString);
+			object = new JSONObject(jsonString);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
 
-//	    Iterator<String> keys = object.keys();
-//
-//	    while (keys.hasNext()){
-//
-//	        String keyValue = (String)keys.next();
-//	        try {
-//				JsonString = JsonString + object.getString(keyValue);
-//			} catch (JSONException e) {
-//				e.printStackTrace();
-//			}
-//	    }
+	    Iterator<String> keys = null;
+	    if(object!=null)
+	    	keys = object.keys();
 
-	    JsonString= JsonString.substring(1, JsonString.length()-1);
+	    if(keys!=null){
+	    while (keys.hasNext()){
+
+	        String keyValue = (String)keys.next();
+	        try {
+				jsonString = jsonString + object.getString(keyValue);
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+	    }
+	    }
+
+	    int count = 3;
+	    
+	    jsonString= jsonString.substring(1, jsonString.length()-1);
 	    ObjectMapper mp = new ObjectMapper();
 	    try {
-			Object response = mp.readValue(JsonString, Exam.class);
-		} catch (JsonParseException e) {
+			Object response = mp.readValue(jsonString, Exam.class);
+		} catch (JsonParseException je) {
+			je.printStackTrace();
+		} catch (JsonMappingException me) {
+			me.printStackTrace();
+		} catch (IOException ie) {
 			
-			e.printStackTrace();
-		} catch (JsonMappingException e) {
-			
-			e.printStackTrace();
-		} catch (IOException e) {
-			
-			e.printStackTrace();
+			ie.printStackTrace();
 		}
+	    
+	    LinearLayout linear = null, layout = null;
+	    LayoutParams layoutParams = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+	    
+	    HashMap<String, String> map = new HashMap<String, String>();
+	    map.put("Sweat", "Sweat");
+	    map.put("tshirt", "tshirt");
+	    map.put("hat", "hat");
+	    Iterator it = map.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry)it.next();
+            if(count%3==0){
+                if(linear!=null){
+                    layout.addView(linear);
+                }
+                linear = new LinearLayout(getApplicationContext());
+                linear.setOrientation(LinearLayout.HORIZONTAL);
+                linear.setLayoutParams(layoutParams);
+            }
+            LinearLayout linear2 = new LinearLayout(getApplicationContext());
+            LinearLayout.LayoutParams lp1 = new LinearLayout.LayoutParams(0, 
+                    LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
+            lp1.setMargins(15, 0, 15, 0);
+            linear2.setLayoutParams(lp1);
+            linear2.setOrientation(LinearLayout.VERTICAL);
+            final String finalstring = (String)pair.getKey();
+            Button button = new Button(getApplicationContext());
+            button.setText((String)pair.getKey());
+            button.setClickable(false);
+            button.setBackgroundColor(getResources().getColor(R.color.friking_blue));
+
+            ImageView image = new ImageView(getApplicationContext());
+//            new DownloadImageTask(image).execute((String)pair.getValue());
+
+            linear2.addView(image);
+            linear2.addView(button);
+            linear.addView(linear2);
+            linear2.setOnClickListener(new View.OnClickListener(){
+                public void onClick(View v){
+                    Intent intent = new Intent(getApplicationContext(), SecondActivity.class);
+                    intent.putExtra("category", finalstring);
+                    startActivity(intent);
+                }
+            });
+            count++;
+            it.remove(); // avoids a ConcurrentModificationException
+        }
+        
+        addContentView(linear, layoutParams);
 	    
 	}
 	

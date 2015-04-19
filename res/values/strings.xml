@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources>
-
     <string name="app_name">Tests</string>
-    <string name="app_name_cover"></string>
+    <string name="app_name_cover"/>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="ok">OK</string>
@@ -16,10 +15,10 @@
     <string name="no">no</string>
     <string name="grid">GridViewActivity</string>
     <string name="check">CheckListActivity</string>
+    <string name="redraw_again">Desenhar outravez</string>
     <string name="things">Coisas</string>
     <string name="code">\u00B9 \u2074</string>
     <string name="app_id">396676243815287</string>
     <string name="my_transition">transition</string>
     <string name="banner_ad_unit_id">ca-app-pub-9028489504757791/4680130060 </string>
-
 </resources>

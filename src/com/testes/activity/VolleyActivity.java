@@ -79,7 +79,7 @@ public class VolleyActivity extends FragmentActivity{
 			@Override
 			public void onErrorResponse(VolleyError volleyError) {
 				volleyError.printStackTrace();
-				Log.e(TAG, volleyError.getMessage());
+				Log.e(TAG, volleyError.getMessage()==null?"Error":volleyError.getMessage());
 			}
 		});
 

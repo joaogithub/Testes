@@ -1053,8 +1053,8 @@ public class FirstActivity extends ActionBarActivity implements ActionMode.Callb
 		////		recorder.setCamera(mCamera);
 		recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
 		String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/audiotest.3gp";
-		//		if (path == null)
-		//			return;
+				if (path == null)
+					return;
 		////		recorder.setVideoSource(MediaRecorder.VideoSource.CAMERA); 
 		recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
 		////		recorder.setVideoEncoder(MediaRecorder.VideoEncoder.H264);
@@ -1062,8 +1062,7 @@ public class FirstActivity extends ActionBarActivity implements ActionMode.Callb
 		recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
 
 		//		recorder.setMaxDuration(300000);
-		//
-		//
+		
 		try {
 			recorder.prepare();
 
@@ -1075,7 +1074,7 @@ public class FirstActivity extends ActionBarActivity implements ActionMode.Callb
 		}
 		//				recorder.start();
 
-		//		MediaPlayer p = new MediaPlayer();
+				MediaPlayer p = new MediaPlayer();
 		//	    final MediaRecorder recorder = new MediaRecorder();
 		//	    recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
 		//	    final String path = getFilesDir().getAbsolutePath()+"/acd";
