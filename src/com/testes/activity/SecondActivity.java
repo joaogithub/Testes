@@ -55,6 +55,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.testes.android.R;
+import com.testes.views.BrushViewClass;
 
 public class SecondActivity extends ActionBarActivity {
 
@@ -67,8 +68,7 @@ public class SecondActivity extends ActionBarActivity {
 	String xxx;
 	ProgressBar progress;
 	String items;
-	Button search_btn, home;
-	LinearLayout home_layout, search_layout; 
+	Button home;
 	String listViewIsEmpty;
 	ImageView imageView;
 	private ListView lv;
@@ -151,9 +151,9 @@ public class SecondActivity extends ActionBarActivity {
 		}
 
 		ArrayList<String> array = new ArrayList<String>();
-		array.add("spendisse vel libero lacinia aoreet ullamcorper tortor, tincidunt suscipitdictum. Cras eleifend ante at laoreet facilisis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridic lorem ipsum");
-		array.add(" odio. Quisque at rutrum tellus. Nsl none elit dictum, et aliquet sem condimentum. Praesent mauris mi, malesuada volutpat dictum a, porta non mauris. Cras non sce");
-		array.add("Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci veli");
+		array.add("spendisse vm. Cras eleifend ante at laoreet facilisis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridic lorem ipsum");
+		array.add("at rutrum tellus. Nsl none elit dictum, et aliquet sem condimentum. Praesent mauris mi, malesuada volutpat dictum a, porta non mauris. Cras non sce");
+		array.add("quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci veli");
 		array.add("ltricies interdum sit ame lorem. Donec eget quam porta, hendrerit sapien a, interdum arcu. Integer rutrum, ante sed posuere adipiscing, nisl mi malesuada lorem, quis egestas sem augue fauci");
 
 		final ListPopupWindow showRoomListPopupWindow = new ListPopupWindow(SecondActivity.this);
@@ -164,7 +164,6 @@ public class SecondActivity extends ActionBarActivity {
 		showRoomListPopupWindow.setAnchorView(popupButton);
 
 		showRoomListPopupWindow.setWidth(android.support.v7.internal.widget.ListPopupWindow.WRAP_CONTENT);
-
 
 		showRoomListPopupWindow.setOnItemClickListener(new OnItemClickListener() {
 
@@ -228,16 +227,12 @@ public class SecondActivity extends ActionBarActivity {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		//        home=(Button)findViewById(R.id.home_btn);
-		//        home_layout=(LinearLayout)findViewById(R.id.home);
-		//        search_layout=(LinearLayout)findViewById(R.id.search_layout);
-		//        mybooks=(Button)findViewById(R.id.mybooks_btn);
-		//        contact=(Button)findViewById(R.id.contact_btn);
-		//        about=(Button)findViewById(R.id.about_btn);      
-		//        search_btn = (Button) findViewById(R.id.search_btn);
-		//        inputSearch=(EditText)findViewById(R.id.timeEdit);
-		//		        lv=(ListView)findViewById(R.id.bookList);
-
+		home=(Button)findViewById(R.id.home_btn);   
+		mybooks=(Button)findViewById(R.id.mybooks_btn);
+		//		contact=(Button)findViewById(R.id.contact_btn);
+		about=(Button)findViewById(R.id.about_btn);
+		inputSearch=(EditText)findViewById(R.id.timeEdit);
+		//	lv=(ListView)findViewById(R.id.bookList);
 
 		String a="Mão";
 
@@ -258,16 +253,6 @@ public class SecondActivity extends ActionBarActivity {
 		//        dialog.show();
 
 		String output;
-
-		//		        search_btn.setOnClickListener(new OnClickListener() {
-		//		
-		//           @Override
-		//		            public void onClick(View v) {
-		//                home_layout.setVisibility(View.GONE);
-		//	               search_layout.setVisibility(LinearLayout.VISIBLE);
-		//		            }
-		//		        });
-
 
 	}
 
@@ -389,12 +374,6 @@ public class SecondActivity extends ActionBarActivity {
 
 			// bio.setAdapter(adapter);
 		}
-
-	}
-
-	public void toggleMenu(View v){
-		Log.i("Toggle method", "Toggle Method");
-		home_layout.setVisibility(View.GONE); // not working
 
 	}
 

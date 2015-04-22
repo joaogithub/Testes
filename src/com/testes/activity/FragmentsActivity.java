@@ -2,6 +2,7 @@ package com.testes.activity;
 
 import java.util.Set;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -221,6 +222,8 @@ public class FragmentsActivity extends ActionBarActivity implements OnMapLoadedC
 			View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 			myView = (TextView) rootView.findViewById(R.id.textView1);
 
+			setRetainInstance(true);
+			
 			((ActionBarActivity)getActivity()).getSupportActionBar().setIcon(R.drawable.icn_seta_preto);
 
 			FragmentsActivity activity = (FragmentsActivity) getActivity();
@@ -262,6 +265,10 @@ public class FragmentsActivity extends ActionBarActivity implements OnMapLoadedC
 			return rootView;
 		}
 
+		@Override
+		public void onAttach(Activity activity) {
+			super.onAttach(activity);
+		}
 
 		public void onViewCreated(View v, Bundle savedInstanceState) {
 			super.onViewCreated(v, savedInstanceState);

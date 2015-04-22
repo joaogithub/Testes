@@ -20,6 +20,8 @@ public class LayoutActivity extends ActionBarActivity{
 		if (view != null) {
 			LinearLayout mContentContainer = (LinearLayout) findViewById(R.id.content);
 			mContentContainer.addView(view);
+			
+			
 		}
 
 	}

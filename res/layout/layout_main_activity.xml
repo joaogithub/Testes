@@ -53,7 +53,7 @@
             android:layout_below="@+id/myEditText"
             android:layout_centerHorizontal="true"
             android:text="CardView" />
-        
+
         <Button
             android:id="@+id/add"
             android:layout_width="100dp"
@@ -389,10 +389,18 @@
             android:text="Toggles" />
 
         <Button
+            android:id="@+id/volleyButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/viewPagerActivityButton"
+            android:layout_centerHorizontal="true"
+            android:text="Volley" />
+
+        <Button
             android:id="@+id/webViewButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/viewPagerActivityButton"
+            android:layout_below="@id/volleyButton"
             android:layout_centerHorizontal="true"
             android:ellipsize="marquee"
             android:focusable="true"

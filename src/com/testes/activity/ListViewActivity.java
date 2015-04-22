@@ -11,22 +11,28 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnClickListener;
 import android.widget.AbsListView;
 import android.widget.AbsListView.MultiChoiceModeListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.testes.android.R;
+import com.testes.views.BrushViewClass;
 
 public class ListViewActivity extends Activity {
 
 	private ListView _listView;
 	private BaseAdapter adapter;
 	private ArrayList<String> titlesArray;
+	private LinearLayout home_linearLayout, search_layout;
+	private Button search_btn;
 
 	@SuppressLint("NewApi")
 	@Override
@@ -40,15 +46,26 @@ public class ListViewActivity extends Activity {
 		titlesArray.add("item 3!");
 		titlesArray.add("item 4!");
 
+		search_btn = (Button) findViewById(R.id.search_btn);
+		
+		search_btn.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				home_linearLayout.setVisibility(View.GONE);
+				search_layout.setVisibility(LinearLayout.VISIBLE);
+			}
+		});
+		
 		_listView = (ListView) findViewById(R.id.bookListView);
 		//		adapter = new NormalAdapter(this, titles);
 		//		adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,titles);
-		
+
 		adapter = new MyAdapter();
 		_listView.setAdapter(adapter);
 
 		_listView.setSelection(2);
-		
+
 		_listView.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -59,10 +76,10 @@ public class ListViewActivity extends Activity {
 		});
 
 		_listView.pointToPosition(200, 20);
-		
+
 		_listView.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE_MODAL);              
 
-		_listView.setMultiChoiceModeListener(new MultiChoiceModeListener() { 
+		_listView.setMultiChoiceModeListener(new MultiChoiceModeListener() {
 
 			//		    @Override                                                                
 			//		    public void deleteSelectedItems() {
@@ -112,6 +129,14 @@ public class ListViewActivity extends Activity {
 				return false;
 			}
 		});
+
+		home_linearLayout=(LinearLayout)findViewById(R.id.home_linear);
+
+		BrushViewClass view=new BrushViewClass(this);
+		home_linearLayout.addView(view.btnEraseAll, view.params);
+
+		search_layout = (LinearLayout)findViewById(R.id.search_layout);
+
 	}
 
 	public class MyAdapter extends BaseAdapter{
@@ -137,25 +162,32 @@ public class ListViewActivity extends Activity {
 
 			ViewHolder viewHolder = new ViewHolder();
 			if(item==null){
-				
+
 				item = getLayoutInflater().inflate(android.R.layout.simple_list_item_2, parent, false);
 
 				item.setTag(viewHolder);
-			
-				
+
+
 			}
 			else{
 				viewHolder = (ViewHolder) item.getTag();
 			}
 
-			
+
 			viewHolder.subTitleText = (TextView) item.findViewById(android.R.id.text2);
 			viewHolder.titleText = (TextView) item.findViewById(android.R.id.text1);
-			
+
 			viewHolder.titleText.setText(titlesArray.get(position));
-			
+
 			return item;
 		}
+
+	}
+
+
+	public void toggleMenu(View v){
+		Log.i("Toggle method", "Toggle Method");
+		home_linearLayout.setVisibility(View.GONE); // not working
 
 	}
 

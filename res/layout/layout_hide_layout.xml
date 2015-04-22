@@ -27,6 +27,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="about_btn" />
+        
+         <Button
+            android:id="@+id/search_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Search" />
 
     </LinearLayout>
 
@@ -38,7 +44,7 @@
 
         <LinearLayout
 
-            android:id="@+id/home"
+            android:id="@+id/home_linear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#888888"
