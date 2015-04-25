@@ -490,7 +490,8 @@ public class FirstActivity extends ActionBarActivity implements ActionMode.Callb
 		});
 
 		Random random = new Random();
-		random.nextInt();
+		Log.i(TAG, "random "+ random.nextInt(1));
+		Log.i(TAG, "random "+ random.nextInt(1));
 
 		ttSpeechButton.setOnClickListener(new OnClickListener() {
 
