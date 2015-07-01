@@ -53,6 +53,12 @@ public class IntentsActivity extends ActionBarActivity {
 
 		setContentView(R.layout.layout_intents);
 
+		Intent sendIntent = getIntent();
+		
+		if(sendIntent!=null){
+			Log.i(TAG, sendIntent.toString());
+		}
+		
 		send = (Button) findViewById(R.id.sendIntentButton);
 		capture = (Button) findViewById(R.id.captureIntentButton);
 		pickButton = (Button) findViewById(R.id.pickIntentButton);
